@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle } from "lucide-react";
+import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 export const Route = createFileRoute("/costflow")({
   head: () => ({
