@@ -39,10 +39,13 @@ function Home() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/demo" className="btn btn-primary">
-                  預約產品 Demo <ArrowRight className="h-4 w-4" />
+                  預約 Demo <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/costflow" className="btn btn-ghost">查看 CostFlow</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
+              <p className="mt-6 text-sm text-muted-foreground">
+                由 <span className="font-semibold text-foreground">宏點科技</span> ／ <span className="font-semibold text-foreground">宏鼎集成</span> 團隊打造，整合多年企業系統開發與工程資訊化導入經驗。
+              </p>
               <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-4 text-sm sm:grid-cols-4">
                 {[
                   ["工程成本決策", "CostFlow"],
