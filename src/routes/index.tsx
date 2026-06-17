@@ -290,7 +290,7 @@ function Home() {
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
                 <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/costflow" className="btn btn-ghost">了解 CostFlow</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
           </div>
