@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as CostflowRouteImport } from './routes/costflow'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SalesopsRoute = SalesopsRouteImport.update({
+  id: '/salesops',
+  path: '/salesops',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CostflowRoute = CostflowRouteImport.update({
   id: '/costflow',
   path: '/costflow',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/costflow': typeof CostflowRoute
+  '/salesops': typeof SalesopsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/costflow': typeof CostflowRoute
+  '/salesops': typeof SalesopsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/costflow': typeof CostflowRoute
+  '/salesops': typeof SalesopsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/costflow'
+  fullPaths: '/' | '/costflow' | '/salesops'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/costflow'
-  id: '__root__' | '/' | '/costflow'
+  to: '/' | '/costflow' | '/salesops'
+  id: '__root__' | '/' | '/costflow' | '/salesops'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CostflowRoute: typeof CostflowRoute
+  SalesopsRoute: typeof SalesopsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/salesops': {
+      id: '/salesops'
+      path: '/salesops'
+      fullPath: '/salesops'
+      preLoaderRoute: typeof SalesopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/costflow': {
       id: '/costflow'
       path: '/costflow'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CostflowRoute: CostflowRoute,
+  SalesopsRoute: SalesopsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
