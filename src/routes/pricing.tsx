@@ -34,7 +34,7 @@ const plans = [
     price: "專案報價", suffix: "",
     desc: "適合多部門、多據點、需要串接既有系統的企業。",
     features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "SLA 與資安規範"],
-    cta: "聯絡顧問", variant: "ghost" as const,
+    cta: "預約 Demo", variant: "ghost" as const,
   },
 ];
 
