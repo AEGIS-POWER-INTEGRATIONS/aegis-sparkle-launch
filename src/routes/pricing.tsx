@@ -103,6 +103,64 @@ function Pricing() {
             </div>
           </div>
         </section>
+
+        {/* 導入服務費 */}
+        <section className="py-20 bg-surface/40 border-y border-border/60">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 導入服務費</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">一次性導入服務，<br />讓系統真正貼合你的流程。</h2>
+              <p className="mt-4 text-muted-foreground">
+                訂閱費用涵蓋平台使用權與更新；以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  name: "基礎導入", price: "NT$50,000", suffix: "起",
+                  desc: "單一產品、單一部門上線。",
+                  items: ["1 場啟動會議", "Excel 匯入與欄位對應", "標準範本套用", "上線教育訓練 1 場"],
+                },
+                {
+                  name: "標準導入", price: "NT$120,000", suffix: "起",
+                  desc: "跨部門流程，含主管儀表板設定。", featured: true,
+                  items: ["2–3 場流程訪談", "客製欄位與報表", "主管儀表板設定", "教育訓練 2 場 + 30 天輔導"],
+                },
+                {
+                  name: "企業導入", price: "NT$300,000", suffix: "起",
+                  desc: "多據點、多角色，含資料治理與權限規劃。",
+                  items: ["完整流程診斷", "權限與資安規範", "歷史資料搬遷", "90 天導入顧問陪跑"],
+                },
+                {
+                  name: "系統串接", price: "另行報價", suffix: "",
+                  desc: "依需求串接 LINE、CRM、ERP、BI 等。",
+                  items: ["LINE Notify / OA", "ERP 雙向同步", "BI 報表整合", "API / Webhook 客製"],
+                },
+              ].map((p) => (
+                <div key={p.name} className={`panel p-6 flex flex-col gap-4 ${p.featured ? "ring-2 ring-gold" : ""}`}>
+                  <div>
+                    <div className="text-sm font-semibold">{p.name}</div>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <span className="text-2xl font-bold tracking-tight">{p.price}</span>
+                      {p.suffix && <span className="text-sm text-muted-foreground">{p.suffix}</span>}
+                    </div>
+                    <p className="mt-2 text-xs text-muted-foreground">{p.desc}</p>
+                  </div>
+                  <ul className="space-y-1.5 text-xs text-muted-foreground">
+                    {p.items.map((i) => (
+                      <li key={i} className="flex gap-1.5"><Check className="h-3.5 w-3.5 mt-0.5 text-gold flex-none" />{i}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 text-sm text-muted-foreground max-w-3xl">
+              ※ 導入服務費為一次性支付；訂閱方案另外計算。實際報價依公司規模、流程複雜度、資料量、所需串接系統與訓練場次調整。簽約前提供書面估價單。
+            </p>
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>
