@@ -31,7 +31,7 @@ function SalesOps() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/pricing" className="btn btn-ghost">查看方案</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
 
