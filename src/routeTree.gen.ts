@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SalesopsRouteImport } from './routes/salesops'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as CostflowRouteImport } from './routes/costflow'
 import { Route as AiLaunchRouteImport } from './routes/ai-launch'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SalesopsRoute = SalesopsRouteImport.update({
   id: '/salesops',
   path: '/salesops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostflowRoute = CostflowRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-launch': typeof AiLaunchRoute
   '/costflow': typeof CostflowRoute
+  '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ai-launch': typeof AiLaunchRoute
   '/costflow': typeof CostflowRoute
+  '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ai-launch': typeof AiLaunchRoute
   '/costflow': typeof CostflowRoute
+  '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ai-launch' | '/costflow' | '/salesops'
+  fullPaths: '/' | '/ai-launch' | '/costflow' | '/pricing' | '/salesops'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ai-launch' | '/costflow' | '/salesops'
-  id: '__root__' | '/' | '/ai-launch' | '/costflow' | '/salesops'
+  to: '/' | '/ai-launch' | '/costflow' | '/pricing' | '/salesops'
+  id: '__root__' | '/' | '/ai-launch' | '/costflow' | '/pricing' | '/salesops'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiLaunchRoute: typeof AiLaunchRoute
   CostflowRoute: typeof CostflowRoute
+  PricingRoute: typeof PricingRoute
   SalesopsRoute: typeof SalesopsRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/salesops'
       fullPath: '/salesops'
       preLoaderRoute: typeof SalesopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/costflow': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiLaunchRoute: AiLaunchRoute,
   CostflowRoute: CostflowRoute,
+  PricingRoute: PricingRoute,
   SalesopsRoute: SalesopsRoute,
 }
 export const routeTree = rootRouteImport
