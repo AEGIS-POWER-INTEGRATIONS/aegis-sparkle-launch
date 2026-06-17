@@ -147,7 +147,7 @@ function CostFlow() {
                     d: "送出 v3 報價前，AI 偵測到材料 #M-2031 單價較歷史均價高 24%，且遺漏一項常用配件。系統提醒重新詢價，避免接案後才發現虧錢。",
                   },
                   {
-                    icon: BarChart3Like, time: "Day 7 · 簽約後", t: "進度與毛利持續追蹤",
+                    icon: LayoutDashboard, time: "Day 7 · 簽約後", t: "進度與毛利持續追蹤",
                     d: "專案開工後，採購、施工、外包成本陸續輸入，老闆儀表板每日更新預估與實際毛利差異，異常超過 ±5% 自動推送至 LINE。",
                   },
                 ].map(({ icon: Icon, time, t, d }, i) => (
