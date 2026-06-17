@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { ArrowRight, Check, FileSpreadsheet, BrainCircuit, BarChart3, Sparkles, Boxes, MessagesSquare } from "lucide-react";
+import { ArrowRight, Check, FileSpreadsheet, BrainCircuit, BarChart3, Sparkles, Boxes, MessagesSquare, Zap, Radio, Cable, Camera, Network, Briefcase } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
