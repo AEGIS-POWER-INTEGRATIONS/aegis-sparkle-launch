@@ -31,7 +31,7 @@ function SalesOps() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/pricing" className="btn btn-ghost">查看方案</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
 
@@ -79,7 +79,10 @@ function SalesOps() {
               <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
                 適合保險、房仲、物流、B2B 業務團隊、POS 通路與顧問型銷售團隊。
               </p>
-              <div className="mt-7 flex justify-center"><Link to="/demo" className="btn btn-primary">預約 SalesOps Demo</Link></div>
+              <div className="mt-7 flex flex-wrap justify-center gap-3">
+                <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+              </div>
             </div>
           </div>
         </section>

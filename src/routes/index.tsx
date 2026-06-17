@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { ArrowRight, Check, FileSpreadsheet, BrainCircuit, BarChart3, Sparkles, Boxes, MessagesSquare } from "lucide-react";
+import { ArrowRight, Check, FileSpreadsheet, BrainCircuit, BarChart3, Sparkles, Boxes, MessagesSquare, Zap, Radio, Cable, Camera, Network, Briefcase } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,10 +39,13 @@ function Home() {
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/demo" className="btn btn-primary">
-                  預約產品 Demo <ArrowRight className="h-4 w-4" />
+                  預約 Demo <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/costflow" className="btn btn-ghost">查看 CostFlow</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
+              <p className="mt-6 text-sm text-muted-foreground">
+                由 <span className="font-semibold text-foreground">宏點科技</span> ／ <span className="font-semibold text-foreground">宏鼎集成</span> 團隊打造，整合多年企業系統開發與工程資訊化導入經驗。
+              </p>
               <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-4 text-sm sm:grid-cols-4">
                 {[
                   ["工程成本決策", "CostFlow"],
@@ -146,8 +149,42 @@ function Home() {
           </div>
         </section>
 
+        {/* AUDIENCE — 適合對象 */}
+        <section className="py-24">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 適合對象</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">為工程公司與業務團隊設計，<br />不是給軟體公司用的通用工具。</h2>
+              <p className="mt-4 text-muted-foreground">
+                我們服務的對象有共同特徵：用 Excel 撐起報價與成本、靠主管追業務進度、想用 AI 卻不知道從哪開始。下列產業最能在 30 天內看到導入成效。
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { icon: Zap, t: "機電工程公司", d: "整合材料、人工、外包成本，追蹤每案毛利的工程團隊。" },
+                { icon: Radio, t: "弱電工程公司", d: "報價項目繁雜、版本變動頻繁、需快速產出 PDF 報價單。" },
+                { icon: Cable, t: "光纖工程公司", d: "材料單價波動大，希望系統即時提醒成本異常與遺漏項目。" },
+                { icon: Camera, t: "監控工程公司", d: "案件多、零組件雜，需把報價與成本資料標準化、可交接。" },
+                { icon: Network, t: "系統整合商", d: "跨廠牌、跨方案的成本管理，希望把工程 Know-how 系統化。" },
+                { icon: Briefcase, t: "中小企業業務團隊", d: "業務行蹤分散、客戶進度斷線，需要 LINE 回報與 AI 週報。" },
+              ].map(({ icon: Icon, t, d }) => (
+                <div key={t} className="panel p-6 flex gap-4">
+                  <div className="grid h-11 w-11 flex-none place-items-center rounded-lg bg-surface-2 text-ink">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold">{t}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{d}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* PRODUCTS */}
-        <section id="products" className="py-24">
+        <section id="products" className="py-24 bg-surface/40 border-y border-border/60">
           <div className="container-x">
             <div className="max-w-2xl">
               <span className="eyebrow"><span className="dot" /> 三套標準化產品</span>
@@ -213,8 +250,8 @@ function Home() {
                 小方案可以線上試用，中高單價則透過 Demo 與顧問診斷成交。既能產品化，又保留 B2B 必要的信任建立。
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">開始預約 Demo</Link>
-                <Link to="/pricing" className="btn btn-ghost">查看價格方案</Link>
+                <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
 
@@ -253,7 +290,7 @@ function Home() {
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
                 <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/costflow" className="btn btn-ghost">了解 CostFlow</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
           </div>
