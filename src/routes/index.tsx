@@ -250,8 +250,8 @@ function Home() {
                 小方案可以線上試用，中高單價則透過 Demo 與顧問診斷成交。既能產品化，又保留 B2B 必要的信任建立。
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">開始預約 Demo</Link>
-                <Link to="/pricing" className="btn btn-ghost">查看價格方案</Link>
+                <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
 
