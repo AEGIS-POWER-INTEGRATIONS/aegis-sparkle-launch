@@ -18,17 +18,17 @@ function QuestPlay() {
   const { id } = Route.useParams();
   const navigate = useNavigate();
   const quest = useMemo(() => QUESTS.find((q) => q.id === id), [id]);
-  if (!quest) throw notFound();
 
   const [turnIdx, setTurnIdx] = useState(0);
-  const [log, setLog] = useState<LogEntry[]>([
-    { role: "system", text: `任務開始：${quest.brief}` },
-    { role: "ai", text: quest.turns[0].text },
-  ]);
+  const [log, setLog] = useState<LogEntry[]>(() => quest
+    ? [{ role: "system", text: `任務開始：${quest.brief}` }, { role: "ai", text: quest.turns[0].text }]
+    : []);
   const [scores, setScores] = useState<Record<SkillKey, number>>({
     progress: 50, cost: 50, quality: 50, safety: 50, subcontractor: 50, client: 50, documentation: 50,
   });
   const [input, setInput] = useState("");
+
+  if (!quest) throw notFound();
 
   const currentTurn = quest.turns[turnIdx];
   const remaining = quest.turns.length - turnIdx;
