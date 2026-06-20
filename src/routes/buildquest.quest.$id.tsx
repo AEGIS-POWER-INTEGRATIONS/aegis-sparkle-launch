@@ -50,8 +50,8 @@ function QuestPlay() {
       { role: "system", text: c.feedback },
     ];
     const nextIdx = turnIdx + 1;
-    if (nextIdx < quest.turns.length) {
-      newLog.push({ role: "ai", text: quest.turns[nextIdx].text });
+    if (nextIdx < q.turns.length) {
+      newLog.push({ role: "ai", text: q.turns[nextIdx].text });
     }
     setLog(newLog);
     setTurnIdx(nextIdx);
@@ -60,7 +60,7 @@ function QuestPlay() {
   function finish() {
     const params = new URLSearchParams();
     (Object.keys(scores) as SkillKey[]).forEach((k) => params.set(k, String(scores[k])));
-    navigate({ to: "/buildquest/result/$id", params: { id: quest.id }, search: Object.fromEntries(params) as never });
+    navigate({ to: "/buildquest/result/$id", params: { id: q.id }, search: Object.fromEntries(params) as never });
   }
 
   return (
