@@ -29,10 +29,11 @@ function QuestPlay() {
   const [input, setInput] = useState("");
 
   if (!quest) throw notFound();
+  const q = quest;
 
-  const currentTurn = quest.turns[turnIdx];
-  const remaining = quest.turns.length - turnIdx;
-  const done = turnIdx >= quest.turns.length;
+  const currentTurn = q.turns[turnIdx];
+  const remaining = q.turns.length - turnIdx;
+  const done = turnIdx >= q.turns.length;
 
   function applyChoice(c: DialogChoice) {
     setScores((prev) => {
