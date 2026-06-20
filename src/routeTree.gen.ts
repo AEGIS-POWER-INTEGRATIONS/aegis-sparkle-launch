@@ -13,8 +13,19 @@ import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CostflowRouteImport } from './routes/costflow'
+import { Route as BuildquestRouteImport } from './routes/buildquest'
 import { Route as AiLaunchRouteImport } from './routes/ai-launch'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuildquestIndexRouteImport } from './routes/buildquest.index'
+import { Route as BuildquestQuestsRouteImport } from './routes/buildquest.quests'
+import { Route as BuildquestProfileRouteImport } from './routes/buildquest.profile'
+import { Route as BuildquestKnowledgeRouteImport } from './routes/buildquest.knowledge'
+import { Route as BuildquestHallRouteImport } from './routes/buildquest.hall'
+import { Route as BuildquestClassSelectRouteImport } from './routes/buildquest.class-select'
+import { Route as BuildquestAdminQuestsRouteImport } from './routes/buildquest.admin-quests'
+import { Route as BuildquestAdminRouteImport } from './routes/buildquest.admin'
+import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
+import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
 
 const SalesopsRoute = SalesopsRouteImport.update({
   id: '/salesops',
@@ -36,6 +47,11 @@ const CostflowRoute = CostflowRouteImport.update({
   path: '/costflow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildquestRoute = BuildquestRouteImport.update({
+  id: '/buildquest',
+  path: '/buildquest',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AiLaunchRoute = AiLaunchRouteImport.update({
   id: '/ai-launch',
   path: '/ai-launch',
@@ -46,14 +62,75 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildquestIndexRoute = BuildquestIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestQuestsRoute = BuildquestQuestsRouteImport.update({
+  id: '/quests',
+  path: '/quests',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestProfileRoute = BuildquestProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestKnowledgeRoute = BuildquestKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestHallRoute = BuildquestHallRouteImport.update({
+  id: '/hall',
+  path: '/hall',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestClassSelectRoute = BuildquestClassSelectRouteImport.update({
+  id: '/class-select',
+  path: '/class-select',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestAdminQuestsRoute = BuildquestAdminQuestsRouteImport.update({
+  id: '/admin-quests',
+  path: '/admin-quests',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestAdminRoute = BuildquestAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestResultIdRoute = BuildquestResultIdRouteImport.update({
+  id: '/result/$id',
+  path: '/result/$id',
+  getParentRoute: () => BuildquestRoute,
+} as any)
+const BuildquestQuestIdRoute = BuildquestQuestIdRouteImport.update({
+  id: '/quest/$id',
+  path: '/quest/$id',
+  getParentRoute: () => BuildquestRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ai-launch': typeof AiLaunchRoute
+  '/buildquest': typeof BuildquestRouteWithChildren
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
+  '/buildquest/admin': typeof BuildquestAdminRoute
+  '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
+  '/buildquest/class-select': typeof BuildquestClassSelectRoute
+  '/buildquest/hall': typeof BuildquestHallRoute
+  '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
+  '/buildquest/profile': typeof BuildquestProfileRoute
+  '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/buildquest/': typeof BuildquestIndexRoute
+  '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
+  '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,40 +139,100 @@ export interface FileRoutesByTo {
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
+  '/buildquest/admin': typeof BuildquestAdminRoute
+  '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
+  '/buildquest/class-select': typeof BuildquestClassSelectRoute
+  '/buildquest/hall': typeof BuildquestHallRoute
+  '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
+  '/buildquest/profile': typeof BuildquestProfileRoute
+  '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/buildquest': typeof BuildquestIndexRoute
+  '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
+  '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ai-launch': typeof AiLaunchRoute
+  '/buildquest': typeof BuildquestRouteWithChildren
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
+  '/buildquest/admin': typeof BuildquestAdminRoute
+  '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
+  '/buildquest/class-select': typeof BuildquestClassSelectRoute
+  '/buildquest/hall': typeof BuildquestHallRoute
+  '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
+  '/buildquest/profile': typeof BuildquestProfileRoute
+  '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/buildquest/': typeof BuildquestIndexRoute
+  '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
+  '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/ai-launch'
+    | '/buildquest'
     | '/costflow'
     | '/demo'
     | '/pricing'
     | '/salesops'
+    | '/buildquest/admin'
+    | '/buildquest/admin-quests'
+    | '/buildquest/class-select'
+    | '/buildquest/hall'
+    | '/buildquest/knowledge'
+    | '/buildquest/profile'
+    | '/buildquest/quests'
+    | '/buildquest/'
+    | '/buildquest/quest/$id'
+    | '/buildquest/result/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ai-launch' | '/costflow' | '/demo' | '/pricing' | '/salesops'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/ai-launch'
     | '/costflow'
     | '/demo'
     | '/pricing'
     | '/salesops'
+    | '/buildquest/admin'
+    | '/buildquest/admin-quests'
+    | '/buildquest/class-select'
+    | '/buildquest/hall'
+    | '/buildquest/knowledge'
+    | '/buildquest/profile'
+    | '/buildquest/quests'
+    | '/buildquest'
+    | '/buildquest/quest/$id'
+    | '/buildquest/result/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/ai-launch'
+    | '/buildquest'
+    | '/costflow'
+    | '/demo'
+    | '/pricing'
+    | '/salesops'
+    | '/buildquest/admin'
+    | '/buildquest/admin-quests'
+    | '/buildquest/class-select'
+    | '/buildquest/hall'
+    | '/buildquest/knowledge'
+    | '/buildquest/profile'
+    | '/buildquest/quests'
+    | '/buildquest/'
+    | '/buildquest/quest/$id'
+    | '/buildquest/result/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AiLaunchRoute: typeof AiLaunchRoute
+  BuildquestRoute: typeof BuildquestRouteWithChildren
   CostflowRoute: typeof CostflowRoute
   DemoRoute: typeof DemoRoute
   PricingRoute: typeof PricingRoute
@@ -132,6 +269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CostflowRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buildquest': {
+      id: '/buildquest'
+      path: '/buildquest'
+      fullPath: '/buildquest'
+      preLoaderRoute: typeof BuildquestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ai-launch': {
       id: '/ai-launch'
       path: '/ai-launch'
@@ -146,12 +290,113 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buildquest/': {
+      id: '/buildquest/'
+      path: '/'
+      fullPath: '/buildquest/'
+      preLoaderRoute: typeof BuildquestIndexRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/quests': {
+      id: '/buildquest/quests'
+      path: '/quests'
+      fullPath: '/buildquest/quests'
+      preLoaderRoute: typeof BuildquestQuestsRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/profile': {
+      id: '/buildquest/profile'
+      path: '/profile'
+      fullPath: '/buildquest/profile'
+      preLoaderRoute: typeof BuildquestProfileRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/knowledge': {
+      id: '/buildquest/knowledge'
+      path: '/knowledge'
+      fullPath: '/buildquest/knowledge'
+      preLoaderRoute: typeof BuildquestKnowledgeRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/hall': {
+      id: '/buildquest/hall'
+      path: '/hall'
+      fullPath: '/buildquest/hall'
+      preLoaderRoute: typeof BuildquestHallRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/class-select': {
+      id: '/buildquest/class-select'
+      path: '/class-select'
+      fullPath: '/buildquest/class-select'
+      preLoaderRoute: typeof BuildquestClassSelectRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/admin-quests': {
+      id: '/buildquest/admin-quests'
+      path: '/admin-quests'
+      fullPath: '/buildquest/admin-quests'
+      preLoaderRoute: typeof BuildquestAdminQuestsRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/admin': {
+      id: '/buildquest/admin'
+      path: '/admin'
+      fullPath: '/buildquest/admin'
+      preLoaderRoute: typeof BuildquestAdminRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/result/$id': {
+      id: '/buildquest/result/$id'
+      path: '/result/$id'
+      fullPath: '/buildquest/result/$id'
+      preLoaderRoute: typeof BuildquestResultIdRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
+    '/buildquest/quest/$id': {
+      id: '/buildquest/quest/$id'
+      path: '/quest/$id'
+      fullPath: '/buildquest/quest/$id'
+      preLoaderRoute: typeof BuildquestQuestIdRouteImport
+      parentRoute: typeof BuildquestRoute
+    }
   }
 }
+
+interface BuildquestRouteChildren {
+  BuildquestAdminRoute: typeof BuildquestAdminRoute
+  BuildquestAdminQuestsRoute: typeof BuildquestAdminQuestsRoute
+  BuildquestClassSelectRoute: typeof BuildquestClassSelectRoute
+  BuildquestHallRoute: typeof BuildquestHallRoute
+  BuildquestKnowledgeRoute: typeof BuildquestKnowledgeRoute
+  BuildquestProfileRoute: typeof BuildquestProfileRoute
+  BuildquestQuestsRoute: typeof BuildquestQuestsRoute
+  BuildquestIndexRoute: typeof BuildquestIndexRoute
+  BuildquestQuestIdRoute: typeof BuildquestQuestIdRoute
+  BuildquestResultIdRoute: typeof BuildquestResultIdRoute
+}
+
+const BuildquestRouteChildren: BuildquestRouteChildren = {
+  BuildquestAdminRoute: BuildquestAdminRoute,
+  BuildquestAdminQuestsRoute: BuildquestAdminQuestsRoute,
+  BuildquestClassSelectRoute: BuildquestClassSelectRoute,
+  BuildquestHallRoute: BuildquestHallRoute,
+  BuildquestKnowledgeRoute: BuildquestKnowledgeRoute,
+  BuildquestProfileRoute: BuildquestProfileRoute,
+  BuildquestQuestsRoute: BuildquestQuestsRoute,
+  BuildquestIndexRoute: BuildquestIndexRoute,
+  BuildquestQuestIdRoute: BuildquestQuestIdRoute,
+  BuildquestResultIdRoute: BuildquestResultIdRoute,
+}
+
+const BuildquestRouteWithChildren = BuildquestRoute._addFileChildren(
+  BuildquestRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AiLaunchRoute: AiLaunchRoute,
+  BuildquestRoute: BuildquestRouteWithChildren,
   CostflowRoute: CostflowRoute,
   DemoRoute: DemoRoute,
   PricingRoute: PricingRoute,
@@ -160,13 +405,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

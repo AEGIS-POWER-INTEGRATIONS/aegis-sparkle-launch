@@ -240,3 +240,141 @@
     font-weight: 600;
   }
 }
+
+/* ====================================================== */
+/* Aegis BuildQuest — Modern Retro RPG scope (.bq)        */
+/* ====================================================== */
+.bq {
+  --bq-bg: #0b0f1f;
+  --bq-bg-2: #0f1428;
+  --bq-panel: #131a33;
+  --bq-panel-2: #1a2245;
+  --bq-border: rgba(120, 140, 220, 0.18);
+  --bq-border-strong: rgba(160, 180, 240, 0.32);
+  --bq-text: #e7ecff;
+  --bq-text-dim: #9aa4cc;
+  --bq-gold: #f4c75a;
+  --bq-gold-soft: #ffe39a;
+  --bq-cyan: #5fe1d5;
+  --bq-violet: #a78bfa;
+  --bq-blue: #5b8def;
+  --bq-rose: #ff6b8a;
+  --bq-green: #66e39a;
+  color: var(--bq-text);
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(167, 139, 250, 0.18), transparent 70%),
+    radial-gradient(900px 500px at -10% 10%, rgba(95, 225, 213, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--bq-bg) 0%, var(--bq-bg-2) 100%);
+  min-height: 100vh;
+  font-family: var(--font-sans);
+}
+.bq h1, .bq h2, .bq h3, .bq h4 {
+  letter-spacing: 0.02em;
+  font-weight: 800;
+}
+.bq .bq-display {
+  font-family: "Orbitron", "Rajdhani", "Noto Sans TC", sans-serif;
+  letter-spacing: 0.08em;
+}
+
+.bq-panel {
+  background: linear-gradient(180deg, var(--bq-panel) 0%, var(--bq-panel-2) 100%);
+  border: 1px solid var(--bq-border);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 20px 60px -30px rgba(0,0,0,0.7);
+}
+.bq-panel-glow {
+  position: relative;
+}
+.bq-panel-glow::before {
+  content: "";
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(244,199,90,0.5), rgba(167,139,250,0.4), rgba(95,225,213,0.4));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
+}
+
+.bq-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .25rem .6rem;
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  background: rgba(244,199,90,0.12);
+  color: var(--bq-gold);
+  border: 1px solid rgba(244,199,90,0.35);
+  border-radius: 999px;
+}
+.bq-chip-cyan { background: rgba(95,225,213,0.1); color: var(--bq-cyan); border-color: rgba(95,225,213,0.35); }
+.bq-chip-violet { background: rgba(167,139,250,0.12); color: var(--bq-violet); border-color: rgba(167,139,250,0.4); }
+.bq-chip-rose { background: rgba(255,107,138,0.12); color: var(--bq-rose); border-color: rgba(255,107,138,0.4); }
+.bq-chip-muted { background: rgba(255,255,255,0.05); color: var(--bq-text-dim); border-color: var(--bq-border); }
+
+.bq-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .7rem 1.1rem;
+  border-radius: 10px;
+  font-weight: 700; font-size: .9rem;
+  letter-spacing: .04em;
+  border: 1px solid var(--bq-border-strong);
+  background: linear-gradient(180deg, #1c2550, #131a33);
+  color: var(--bq-text);
+  cursor: pointer; transition: transform .12s ease, filter .2s ease, box-shadow .2s ease;
+}
+.bq-btn:hover { filter: brightness(1.15); box-shadow: 0 0 0 3px rgba(91,141,239,0.15); }
+.bq-btn:active { transform: translateY(1px); }
+.bq-btn-gold {
+  background: linear-gradient(180deg, #f7d779, #d99a2b);
+  color: #20180a; border-color: #f4c75a;
+  box-shadow: 0 6px 20px -10px rgba(244,199,90,0.7);
+}
+.bq-btn-gold:hover { box-shadow: 0 8px 24px -8px rgba(244,199,90,0.8); }
+.bq-btn-ghost { background: transparent; }
+
+.bq-input {
+  width: 100%;
+  padding: .65rem .85rem;
+  border-radius: 10px;
+  background: rgba(11,15,31,0.6);
+  border: 1px solid var(--bq-border-strong);
+  color: var(--bq-text);
+  outline: none;
+  font-size: .95rem;
+}
+.bq-input:focus { border-color: var(--bq-gold); box-shadow: 0 0 0 3px rgba(244,199,90,0.2); }
+
+.bq-bar {
+  position: relative;
+  height: 8px; border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+  border: 1px solid var(--bq-border);
+}
+.bq-bar > span {
+  position: absolute; inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--bq-cyan), var(--bq-blue));
+  border-radius: inherit;
+  box-shadow: 0 0 12px rgba(95,225,213,0.5);
+}
+.bq-bar-gold > span { background: linear-gradient(90deg, var(--bq-gold-soft), var(--bq-gold)); box-shadow: 0 0 12px rgba(244,199,90,0.5); }
+.bq-bar-violet > span { background: linear-gradient(90deg, #c4b5fd, var(--bq-violet)); box-shadow: 0 0 12px rgba(167,139,250,0.5); }
+
+.bq-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--bq-border-strong), transparent);
+}
+
+.bq-link-row { color: var(--bq-text-dim); transition: color .15s ease; }
+.bq-link-row:hover { color: var(--bq-gold); }
+
+.bq-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+
+}
