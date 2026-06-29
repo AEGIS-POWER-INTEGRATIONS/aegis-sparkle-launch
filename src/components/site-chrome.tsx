@@ -66,12 +66,12 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border bg-surface/60">
       <div className="container-x grid gap-10 py-14 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Brand />
-          <p className="mt-4 text-sm font-semibold">
+          <Brand size="lg" />
+          <p className="mt-5 text-base font-semibold text-foreground">
             宏鼎集成股份有限公司
           </p>
-          <p className="text-xs text-muted-foreground tracking-wider">
-            Aegis Power Integrations Co., Ltd.
+          <p className="text-xs text-muted-foreground tracking-[0.14em] font-medium mt-1">
+            AEGIS POWER INTEGRATIONS CO., LTD.
           </p>
           <p className="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
             AI 時代的工程與企業系統整合夥伴，提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統。
