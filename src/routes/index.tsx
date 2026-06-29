@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import heroMain from "@/assets/hero-main.jpg";
+import bannerEngineering from "@/assets/banner-engineering.jpg";
+import bannerAi from "@/assets/banner-ai.jpg";
+import bannerApps from "@/assets/banner-apps.jpg";
+import mockCostflow from "@/assets/mock-costflow.jpg";
+import mockSalesops from "@/assets/mock-salesops.jpg";
+import mockAilaunch from "@/assets/mock-ailaunch.jpg";
 import {
   ArrowRight,
   Cable,
@@ -50,15 +57,15 @@ const painPoints = [
 ];
 
 const capabilities = [
-  { icon: Cable, title: "工程集成服務", items: ["弱電與網路工程", "光纖建置", "監控與門禁系統", "資料中心基礎工程支援", "廠區資訊系統整合", "工程專案協調與協力廠商整合"] },
-  { icon: BrainCircuit, title: "AI 系統整合", items: ["企業流程訪談與盤點", "AI 助理與內部知識庫", "LINE / Google Workspace / API / n8n 串接", "自動化週報與管理儀表板", "客製化企業系統開發"] },
-  { icon: Boxes, title: "Aegis Business Apps", items: ["Aegis CostFlow：工程報價與成本分析平台", "Aegis SalesOps：業務管理與 AI 週報系統", "Aegis AI Launch：企業 AI 導入與流程自動化服務", "可依產業需求擴充模組"] },
+  { icon: Cable, title: "工程集成服務", image: bannerEngineering, items: ["弱電與網路工程", "光纖建置", "監控與門禁系統", "資料中心基礎工程支援", "廠區資訊系統整合", "工程專案協調與協力廠商整合"] },
+  { icon: BrainCircuit, title: "AI 系統整合", image: bannerAi, items: ["企業流程訪談與盤點", "AI 助理與內部知識庫", "LINE / Google Workspace / API / n8n 串接", "自動化週報與管理儀表板", "客製化企業系統開發"] },
+  { icon: Boxes, title: "Aegis Business Apps", image: bannerApps, items: ["Aegis CostFlow：工程報價與成本分析平台", "Aegis SalesOps：業務管理與 AI 週報系統", "Aegis AI Launch：企業 AI 導入與流程自動化服務", "可依產業需求擴充模組"] },
 ];
 
 const products = [
-  { name: "Aegis CostFlow", tagline: "工程報價與成本分析平台", desc: "協助工程公司整理材料、人工、外包、報價版本、專案毛利與 AI 成本提醒，降低 Excel 重工，提高報價速度與成本掌握度。", icon: FileSpreadsheet, to: "/costflow" as const },
-  { name: "Aegis SalesOps", tagline: "業務管理與 AI 週報系統", desc: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓業務管理更即時、更透明。", icon: MessagesSquare, to: "/salesops" as const },
-  { name: "Aegis AI Launch", tagline: "企業 AI 導入與流程自動化服務", desc: "協助企業從流程盤點、資料整理、AI 助理設計到自動化串接，真正把 AI 導入日常工作。", icon: Network, to: "/ai-launch" as const },
+  { name: "Aegis CostFlow", tagline: "工程報價與成本分析平台", desc: "協助工程公司整理材料、人工、外包、報價版本、專案毛利與 AI 成本提醒，降低 Excel 重工，提高報價速度與成本掌握度。", icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
+  { name: "Aegis SalesOps", tagline: "業務管理與 AI 週報系統", desc: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓業務管理更即時、更透明。", icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
+  { name: "Aegis AI Launch", tagline: "企業 AI 導入與流程自動化服務", desc: "協助企業從流程盤點、資料整理、AI 助理設計到自動化串接，真正把 AI 導入日常工作。", icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
 ];
 
 const audiences = [
@@ -83,32 +90,47 @@ function Home() {
       <SiteNav />
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative overflow-hidden">
-          <div className="container-x py-20 md:py-28">
-            <div className="max-w-4xl">
-              <span className="eyebrow"><span className="dot" /> Aegis Power Integrations Co., Ltd.</span>
-              <h1 className="mt-6 text-4xl md:text-6xl leading-[1.1]">
-                宏鼎集成
-                <span className="text-muted-foreground"> ｜ </span>
-                <br className="hidden md:block" />
-                AI 時代的
-                <span className="relative inline-block">
-                  <span className="relative z-10">工程與企業系統</span>
-                  <span className="absolute inset-x-0 -bottom-1 h-3 -z-0 bg-gold/70 rounded-sm" />
-                </span>
-                整合夥伴
-              </h1>
-              <p className="mt-7 text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                結合工程現場經驗、企業流程系統與 AI 自動化技術，協助工程公司、製造業、科技廠供應鏈與中小企業，
-                從現場工程、報價成本、專案管理到營運決策，建立可落地、可管理、可擴充的數位化能力。
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢 <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/costflow" className="btn btn-ghost">了解 Aegis 產品線</Link>
+        <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-background to-surface/30">
+          <div className="container-x py-16 md:py-24">
+            <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <span className="eyebrow"><span className="dot" /> Aegis Power Integrations Co., Ltd.</span>
+                <h1 className="mt-6 text-4xl md:text-5xl xl:text-6xl leading-[1.1]">
+                  宏鼎集成
+                  <span className="text-muted-foreground"> ｜ </span>
+                  <br className="hidden md:block" />
+                  AI 時代的
+                  <span className="relative inline-block">
+                    <span className="relative z-10">工程與企業系統</span>
+                    <span className="absolute inset-x-0 -bottom-1 h-3 -z-0 bg-gold/70 rounded-sm" />
+                  </span>
+                  整合夥伴
+                </h1>
+                <p className="mt-7 text-lg text-muted-foreground leading-relaxed">
+                  結合工程現場經驗、企業流程系統與 AI 自動化技術，協助工程公司、製造業、科技廠供應鏈與中小企業，
+                  從現場工程、報價成本、專案管理到營運決策，建立可落地、可管理、可擴充的數位化能力。
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <Link to="/demo" className="btn btn-primary">預約諮詢 <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="/costflow" className="btn btn-ghost">了解 Aegis 產品線</Link>
+                </div>
+              </div>
+
+              <div className="relative">
+                <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
+                <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+                  <img
+                    src={heroMain}
+                    alt="工程集成、AI 系統整合與企業管理 Dashboard 視覺"
+                    width={1600}
+                    height={1200}
+                    className="w-full h-auto object-cover aspect-[4/3]"
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="mt-14 grid gap-5 md:grid-cols-3">
+            <div className="mt-16 grid gap-5 md:grid-cols-3">
               {heroServices.map(({ icon: Icon, title, desc, to }) => (
                 <Link key={title} to={to} className="panel p-7 hover:shadow-lift transition-shadow group">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-ink text-ink-foreground">
@@ -165,20 +187,26 @@ function Home() {
               </p>
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {capabilities.map(({ icon: Icon, title, items }) => (
-                <div key={title} className="panel p-7 flex flex-col">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-ink text-ink-foreground">
-                    <Icon className="h-5 w-5" />
+              {capabilities.map(({ icon: Icon, title, image, items }) => (
+                <div key={title} className="panel flex flex-col overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-ink">
+                    <img src={image} alt={`${title} 視覺`} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                    <div className="absolute left-5 bottom-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-ink-foreground shadow-lift">
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-xl">{title}</h3>
-                  <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-                    {items.map((it) => (
-                      <li key={it} className="flex gap-2 leading-relaxed">
-                        <span className="mt-2 h-1 w-1 rounded-full bg-gold shrink-0" />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="p-7 flex-1 flex flex-col">
+                    <h3 className="text-xl">{title}</h3>
+                    <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
+                      {items.map((it) => (
+                        <li key={it} className="flex gap-2 leading-relaxed">
+                          <span className="mt-2 h-1 w-1 rounded-full bg-gold shrink-0" />
+                          <span>{it}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
@@ -195,20 +223,25 @@ function Home() {
                 從工程報價、業務管理到企業 AI 導入，協助企業以模組化方式逐步建立自己的數位營運系統。
               </p>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {products.map(({ name, tagline, desc, icon: Icon, to }) => (
-                <Link key={name} to={to} className="panel-lift p-7 flex flex-col group">
-                  <div className="flex items-center gap-3">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold text-gold-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="tag">Product</span>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {products.map(({ name, tagline, desc, icon: Icon, image, to }) => (
+                <Link key={name} to={to} className="panel-lift flex flex-col group overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-ink">
+                    <img src={image} alt={`${name} 產品介面示意`} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
-                  <h3 className="mt-5 text-xl">{name}</h3>
-                  <div className="mt-1 text-sm font-medium text-foreground">{tagline}</div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-                  <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
-                    產品詳情 <ArrowRight className="h-3.5 w-3.5" />
+                  <div className="p-7 flex-1 flex flex-col">
+                    <div className="flex items-center gap-3">
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold text-gold-foreground">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="tag">Product</span>
+                    </div>
+                    <h3 className="mt-5 text-xl">{name}</h3>
+                    <div className="mt-1 text-sm font-medium text-foreground">{tagline}</div>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
+                    <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                      產品詳情 <ArrowRight className="h-3.5 w-3.5" />
+                    </div>
                   </div>
                 </Link>
               ))}

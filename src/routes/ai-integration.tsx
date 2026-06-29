@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import bannerAi from "@/assets/banner-ai.jpg";
 import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Settings2, Workflow } from "lucide-react";
 
 export const Route = createFileRoute("/ai-integration")({
@@ -31,15 +32,29 @@ function AiIntegration() {
       <SiteNav />
       <main className="flex-1">
         <section className="py-20">
-          <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> AI 系統整合</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">AI 系統整合服務</h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              宏鼎集成協助企業從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。
-            </p>
-            <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
-              我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。
-            </p>
+          <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div>
+              <span className="eyebrow"><span className="dot" /> AI 系統整合</span>
+              <h1 className="mt-6 text-4xl md:text-5xl">AI 系統整合服務</h1>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                宏鼎集成協助企業從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。
+              </p>
+              <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
+                我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。
+              </p>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+                <img
+                  src={bannerAi}
+                  alt="AI 系統整合與資料節點視覺"
+                  width={1600}
+                  height={912}
+                  className="w-full h-auto object-cover aspect-[16/10]"
+                />
+              </div>
+            </div>
           </div>
         </section>
 

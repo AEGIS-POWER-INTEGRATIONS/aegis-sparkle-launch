@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import bannerEngineering from "@/assets/banner-engineering.jpg";
 import { ArrowRight, Cable, Camera, HardHat, Network, Radio, ServerCog } from "lucide-react";
 
 export const Route = createFileRoute("/engineering")({
@@ -31,12 +32,26 @@ function Engineering() {
       <SiteNav />
       <main className="flex-1">
         <section className="py-20">
-          <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> 工程集成</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">工程集成服務</h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              宏鼎集成以工程現場經驗為基礎，提供弱電、光纖、資料中心、監控與門禁等系統整合服務，協助企業建立穩定、安全、可長期維護的基礎建設。
-            </p>
+          <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div>
+              <span className="eyebrow"><span className="dot" /> 工程集成</span>
+              <h1 className="mt-6 text-4xl md:text-5xl">工程集成服務</h1>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                宏鼎集成以工程現場經驗為基礎，提供弱電、光纖、資料中心、監控與門禁等系統整合服務，協助企業建立穩定、安全、可長期維護的基礎建設。
+              </p>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+                <img
+                  src={bannerEngineering}
+                  alt="資料中心與弱電工程現場視覺"
+                  width={1600}
+                  height={912}
+                  className="w-full h-auto object-cover aspect-[16/10]"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
