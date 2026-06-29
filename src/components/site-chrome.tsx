@@ -2,17 +2,22 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
 
-function Brand() {
+function Brand({ size = "md" }: { size?: "md" | "lg" }) {
+  const imgCls = size === "lg" ? "h-14 w-14 md:h-16 md:w-16" : "h-11 w-11 md:h-12 md:w-12";
+  const titleCls = size === "lg" ? "text-xl md:text-2xl" : "text-[17px] md:text-[19px]";
+  const subCls = size === "lg" ? "text-[11px] md:text-xs" : "text-[10px] md:text-[11px]";
   return (
-    <Link to="/" className="flex items-center gap-3">
+    <Link to="/" className="flex items-center gap-4">
       <img
         src={logoAsset.url}
         alt="宏鼎集成 Aegis Power Integrations"
-        className="h-10 w-10 object-contain"
+        className={`${imgCls} object-contain shrink-0`}
       />
       <div className="leading-tight">
-        <div className="text-[15px] font-semibold tracking-tight">宏鼎集成</div>
-        <div className="text-[10px] text-muted-foreground tracking-wider">AEGIS POWER INTEGRATIONS</div>
+        <div className={`${titleCls} font-semibold tracking-tight text-foreground`}>宏鼎集成</div>
+        <div className={`${subCls} text-muted-foreground tracking-[0.14em] font-medium mt-0.5`}>
+          AEGIS POWER INTEGRATIONS
+        </div>
       </div>
     </Link>
   );
