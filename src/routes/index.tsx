@@ -1,15 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { ArrowRight, Check, FileSpreadsheet, BrainCircuit, BarChart3, Sparkles, Boxes, MessagesSquare, Zap, Radio, Cable, Camera, Network, Briefcase } from "lucide-react";
+import {
+  ArrowRight, Check, Cpu, HardHat, LayoutDashboard, FileSpreadsheet,
+  MessagesSquare, Workflow, Database, BrainCircuit, Network, Building2,
+  Factory, ServerCog, Cable, Briefcase, ShieldCheck, Boxes, Wrench,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aegis Business Apps｜AI 模組化企業系統平台" },
-      { name: "description", content: "把客製系統經驗，產品化成可線上銷售的企業 App。工程成本、業務管理、AI 導入，三套標準化模組。" },
-      { property: "og:title", content: "Aegis Business Apps｜AI 模組化企業系統平台" },
-      { property: "og:description", content: "工程成本、業務管理、AI 助理，三套標準化模組讓企業 30 天內導入。" },
+      { title: "宏鼎集成｜AI 時代的工程與企業系統整合夥伴" },
+      { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. 提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統，協助企業建立可落地的數位化能力。" },
+      { property: "og:title", content: "宏鼎集成｜AI 時代的工程與企業系統整合夥伴" },
+      { property: "og:description", content: "結合工程現場經驗、企業流程系統與 AI 自動化技術，從報價、成本、專案管理到營運決策一站式整合。" },
+      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/" },
     ],
+    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/" }],
   }),
   component: Home,
 });
@@ -23,77 +29,49 @@ function Home() {
         <section className="relative overflow-hidden">
           <div className="container-x grid gap-14 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
             <div className="flex flex-col justify-center">
-              <span className="eyebrow self-start"><span className="dot" /> AI 時代的模組化企業系統平台</span>
+              <span className="eyebrow self-start"><span className="dot" /> Aegis Power Integrations Co., Ltd.</span>
               <h1 className="mt-6 text-5xl leading-[1.1] md:text-6xl">
-                把客製系統經驗，
+                宏鼎集成
                 <br />
                 <span className="relative inline-block">
-                  產品化成可訂閱的
+                  AI 時代的工程與
                   <span className="absolute inset-x-0 -bottom-1 h-3 -z-10 bg-gold/70 rounded-sm" />
                 </span>
                 <br />
-                企業 App。
+                企業系統整合夥伴。
               </h1>
               <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-                Aegis Business Apps 協助工程公司與中小企業快速建立報價成本、業務管理、AI 助理與營運儀表板，不再從零開始開發。
+                結合工程現場經驗、企業流程系統與 AI 自動化技術，協助工程公司、製造業與中小企業，從報價、成本、專案管理到營運決策，快速建立可落地的數位化能力。
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/demo" className="btn btn-primary">
-                  預約 Demo <ArrowRight className="h-4 w-4" />
+                  預約諮詢 <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+                <Link to="/costflow" className="btn btn-ghost">了解 Aegis 產品線</Link>
               </div>
-              <p className="mt-6 text-sm text-muted-foreground">
-                由 <span className="font-semibold text-foreground">宏點科技</span> ／ <span className="font-semibold text-foreground">宏鼎集成</span> 團隊打造，整合多年企業系統開發與工程資訊化導入經驗。
-              </p>
-              <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-4 text-sm sm:grid-cols-4">
-                {[
-                  ["工程成本決策", "CostFlow"],
-                  ["CRM 與業務追蹤", "SalesOps"],
-                  ["AI 週報與儀表板", "AI Launch"],
-                  ["Excel 一鍵匯入", "Modules"],
-                ].map(([label, sub]) => (
-                  <div key={label}>
-                    <dt className="font-semibold">{label}</dt>
-                    <dd className="text-muted-foreground text-xs mt-0.5">{sub}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
 
-            {/* Hero panel — dashboard mock */}
+            {/* Hero panel — three core services */}
             <div className="relative">
               <div className="panel-lift overflow-hidden">
                 <div className="flex items-center justify-between border-b border-border px-5 py-3 bg-surface/60">
-                  <strong className="text-sm">Aegis CostFlow · Dashboard</strong>
-                  <div className="flex gap-1.5">
-                    <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/30" />
-                  </div>
+                  <strong className="text-sm">三大核心服務</strong>
+                  <span className="text-xs text-muted-foreground tracking-wider">CORE SERVICES</span>
                 </div>
-                <div className="grid grid-cols-2 gap-3 p-5">
+                <div className="divide-y divide-border">
                   {[
-                    ["18.6%", "預估專案毛利", "text-emerald-600"],
-                    ["42", "待確認材料項", ""],
-                    ["3.2M", "本月報價金額", ""],
-                    ["7", "AI 成本提醒", "text-amber-600"],
-                  ].map(([v, l, c]) => (
-                    <div key={l} className="rounded-lg border border-border bg-surface/50 p-4">
-                      <div className={`text-2xl font-bold tracking-tight ${c}`}>{v}</div>
-                      <div className="text-xs text-muted-foreground mt-1">{l}</div>
-                    </div>
-                  ))}
-                </div>
-                <div className="border-t border-border px-5 py-4 space-y-2.5 bg-surface/30">
-                  {[
-                    ["Excel 成本表匯入", "已完成", "bg-emerald-100 text-emerald-700"],
-                    ["材料 / 人工 / 外包分類", "AI 分析中", "bg-amber-100 text-amber-700"],
-                    ["毛利與報價版本產生", "可輸出", "bg-slate-100 text-slate-700"],
-                  ].map(([t, s, c]) => (
-                    <div key={t} className="flex items-center justify-between text-sm">
-                      <span className="flex items-center gap-2"><Check className="h-4 w-4 text-muted-foreground" />{t}</span>
-                      <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${c}`}>{s}</span>
+                    { icon: HardHat, t: "工程集成服務", d: "半導體廠房、資料中心、弱電、光纖、監控、門禁與現場系統整合。" },
+                    { icon: BrainCircuit, t: "AI 系統導入", d: "協助企業盤點流程、整理資料、建立 AI 助理與自動化工作流。" },
+                    { icon: LayoutDashboard, t: "企業管理系統", d: "以 Aegis Business Apps 建立報價、CRM、成本、庫存與營運儀表板。" },
+                  ].map(({ icon: Icon, t, d }) => (
+                    <div key={t} className="flex gap-4 p-5">
+                      <div className="grid h-11 w-11 flex-none place-items-center rounded-lg bg-ink text-ink-foreground">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div>
+                        <h3 className="text-base font-semibold">{t}</h3>
+                        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{d}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -103,79 +81,93 @@ function Home() {
           </div>
         </section>
 
-        {/* PAIN */}
+        {/* PAIN POINTS */}
         <section className="py-20 bg-surface/40 border-y border-border/60">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 為什麼企業 AI 用不起來</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">企業最卡的不是沒有系統，<br />而是系統太難落地。</h2>
+              <span className="eyebrow"><span className="dot" /> 我們解決的問題</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">
+                我們解決的不是單一軟體問題，<br />而是企業營運流程問題。
+              </h2>
               <p className="mt-4 text-muted-foreground">
-                我們把常見流程拆成可導入、可複製、可訂閱的模組，讓老闆先解決最痛的營運問題，再逐步擴充。
+                企業真正的瓶頸，常常不在「沒有系統」，而是流程之間沒有銜接、資料沒有沉澱、AI 沒有真正進入工作日常。
               </p>
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {[
-                { n: "01", t: "Excel 滿天飛", d: "報價、成本、客戶、專案資料分散在不同檔案，版本混亂，主管很難即時掌握。", icon: FileSpreadsheet },
-                { n: "02", t: "每次都像重新開發", d: "傳統客製系統導入期長、範圍難控、維護成本高，最後常常變成雙方都痛苦。", icon: Boxes },
-                { n: "03", t: "AI 用不起來", d: "員工不知道怎麼用 AI，資料也沒整理好，最後只停留在聊天工具，沒有進入流程。", icon: BrainCircuit },
-              ].map(({ n, t, d, icon: Icon }) => (
-                <div key={n} className="panel p-7 flex flex-col gap-4">
-                  <div className="flex items-center justify-between">
-                    <span className="num-badge">{n}</span>
-                    <Icon className="h-5 w-5 text-muted-foreground" />
-                  </div>
-                  <h3 className="text-xl">{t}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{d}</p>
+                { icon: FileSpreadsheet, t: "報價靠 Excel", d: "成本與毛利分散在多份檔案，主管難以即時掌握真實獲利。" },
+                { icon: MessagesSquare, t: "業務紀錄分散", d: "拜訪紀錄散落在 LINE、表單、紙本與口頭回報，資料無法沉澱。" },
+                { icon: Wrench, t: "工程專案缺乏整合", d: "進度、成本、人力、請款各自為政，難以建立統一視角。" },
+                { icon: Boxes, t: "傳統 ERP 太重", d: "中小企業想導入系統，但既有 ERP 太慢、太貴、太複雜。" },
+                { icon: BrainCircuit, t: "AI 工具用不起來", d: "工具很多，但缺乏可落地的導入流程與企業內部資料整合。" },
+                { icon: ShieldCheck, t: "資料治理缺位", d: "資料散落各部門，缺少權限與標準，難以做進一步的分析與決策。" },
+              ].map(({ icon: Icon, t, d }) => (
+                <div key={t} className="panel p-6">
+                  <Icon className="h-5 w-5 text-muted-foreground" />
+                  <h3 className="mt-4 text-lg">{t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{d}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* BAND */}
-        <section className="bg-ink text-ink-foreground">
-          <div className="container-x grid grid-cols-2 gap-6 py-10 md:grid-cols-4">
-            {[
-              ["3", "大產品入口"],
-              ["30天", "快速導入節奏"],
-              ["SaaS", "訂閱制營收模型"],
-              ["AI", "報表與決策輔助"],
-            ].map(([n, l]) => (
-              <div key={l} className="text-center md:text-left">
-                <div className="text-3xl font-bold text-gold">{n}</div>
-                <div className="text-sm text-ink-foreground/70 mt-1">{l}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* AUDIENCE — 適合對象 */}
+        {/* THREE CAPABILITIES */}
         <section className="py-24">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 適合對象</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">為工程公司與業務團隊設計，<br />不是給軟體公司用的通用工具。</h2>
+              <span className="eyebrow"><span className="dot" /> 三大服務能力</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">從工程現場到企業流程，一站式整合。</h2>
               <p className="mt-4 text-muted-foreground">
-                我們服務的對象有共同特徵：用 Excel 撐起報價與成本、靠主管追業務進度、想用 AI 卻不知道從哪開始。下列產業最能在 30 天內看到導入成效。
+                宏鼎集成以三條服務線串接企業數位化關鍵環節，由顧問、系統與工程團隊協同交付。
               </p>
             </div>
 
-            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
               {[
-                { icon: Zap, t: "機電工程公司", d: "整合材料、人工、外包成本，追蹤每案毛利的工程團隊。" },
-                { icon: Radio, t: "弱電工程公司", d: "報價項目繁雜、版本變動頻繁、需快速產出 PDF 報價單。" },
-                { icon: Cable, t: "光纖工程公司", d: "材料單價波動大，希望系統即時提醒成本異常與遺漏項目。" },
-                { icon: Camera, t: "監控工程公司", d: "案件多、零組件雜，需把報價與成本資料標準化、可交接。" },
-                { icon: Network, t: "系統整合商", d: "跨廠牌、跨方案的成本管理，希望把工程 Know-how 系統化。" },
-                { icon: Briefcase, t: "中小企業業務團隊", d: "業務行蹤分散、客戶進度斷線，需要 LINE 回報與 AI 週報。" },
-              ].map(({ icon: Icon, t, d }) => (
-                <div key={t} className="panel p-6 flex gap-4">
-                  <div className="grid h-11 w-11 flex-none place-items-center rounded-lg bg-surface-2 text-ink">
-                    <Icon className="h-5 w-5" />
+                {
+                  icon: HardHat, title: "工程集成服務", to: "/engineering" as const,
+                  items: [
+                    "弱電與網路工程",
+                    "光纖與資料中心基礎建置",
+                    "監控、門禁與廠區系統整合",
+                    "工程專案管理與協力廠商整合",
+                  ],
+                },
+                {
+                  icon: Cpu, title: "AI 系統整合", to: "/ai-integration" as const,
+                  items: [
+                    "企業流程盤點",
+                    "AI 助理設計",
+                    "n8n / API / LINE / Google Workspace 串接",
+                    "自動化報表與決策儀表板",
+                    "內部資料整合與知識庫建置",
+                  ],
+                },
+                {
+                  icon: LayoutDashboard, title: "Aegis Business Apps", to: "/costflow" as const,
+                  items: [
+                    "Aegis CostFlow 工程成本分析",
+                    "Aegis SalesOps 業務管理",
+                    "Aegis AI Launch 企業 AI 導入",
+                    "可依產業需求客製模組",
+                  ],
+                },
+              ].map(({ icon: Icon, title, to, items }) => (
+                <div key={title} className="panel p-7 flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <div className="grid h-11 w-11 place-items-center rounded-lg bg-ink text-ink-foreground">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-xl">{title}</h3>
                   </div>
-                  <div>
-                    <h3 className="text-base font-semibold">{t}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{d}</p>
+                  <ul className="space-y-2 text-sm">
+                    {items.map((b) => (
+                      <li key={b} className="flex gap-2"><Check className="h-4 w-4 mt-0.5 text-gold flex-none" />{b}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-2">
+                    <Link to={to} className="btn btn-ghost w-full">了解更多 <ArrowRight className="h-4 w-4" /></Link>
                   </div>
                 </div>
               ))}
@@ -183,14 +175,14 @@ function Home() {
           </div>
         </section>
 
-        {/* PRODUCTS */}
-        <section id="products" className="py-24 bg-surface/40 border-y border-border/60">
+        {/* AEGIS PRODUCT LINE */}
+        <section className="py-24 bg-surface/40 border-y border-border/60">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 三套標準化產品</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">先從最有痛點的場景開始產品化。</h2>
+              <span className="eyebrow"><span className="dot" /> Aegis Business Apps 產品線</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">宏鼎集成旗下模組化企業系統。</h2>
               <p className="mt-4 text-muted-foreground">
-                第一階段不做大而全 ERP，而是用三個標準化產品切入工程、業務與 AI 導入。
+                三套標準化產品，協助企業快速啟動報價、業務與 AI 導入流程，可獨立使用，也能模組化組合。
               </p>
             </div>
 
@@ -198,21 +190,24 @@ function Home() {
               {[
                 {
                   to: "/costflow" as const, tag: "主推產品", name: "Aegis CostFlow",
-                  desc: "工程專案成本分析、報價版本、毛利試算與 AI 成本提醒。",
-                  bullets: ["材料／人工／外包成本管理", "Excel 匯入與報價單輸出", "老闆儀表板與異常提醒"],
-                  icon: BarChart3, featured: true,
+                  slogan: "工程報價與成本分析平台",
+                  desc: "協助工程公司快速整理材料、人工、外包、專案毛利與報價資料，降低 Excel 重工，提高報價速度與成本掌握度。",
+                  cta: "查看 CostFlow",
+                  icon: FileSpreadsheet, featured: true,
                 },
                 {
                   to: "/salesops" as const, tag: "業務團隊", name: "Aegis SalesOps",
-                  desc: "客戶拜訪、LINE 回報、語音日誌、CRM 與 AI 週報。",
-                  bullets: ["業務打卡與拜訪紀錄", "語音轉文字與週報整理", "主管追蹤與客戶進度"],
+                  slogan: "業務管理與 AI 週報系統",
+                  desc: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與業務追蹤，讓業務管理更即時、更透明。",
+                  cta: "查看 SalesOps",
                   icon: MessagesSquare,
                 },
                 {
                   to: "/ai-launch" as const, tag: "顧問導入", name: "Aegis AI Launch",
-                  desc: "企業 AI 流程盤點、AI 助理設計、資料整理與教育訓練。",
-                  bullets: ["流程診斷與導入藍圖", "AI 助理與自動化設計", "員工教育訓練與落地追蹤"],
-                  icon: Sparkles,
+                  slogan: "企業 AI 導入與流程自動化服務",
+                  desc: "協助企業從流程盤點、資料整理、AI 助理設計到自動化串接，真正把 AI 導入日常工作。",
+                  cta: "查看 AI Launch",
+                  icon: Workflow,
                 },
               ].map((p) => (
                 <div key={p.name} className={`panel p-7 flex flex-col gap-5 ${p.featured ? "ring-2 ring-gold" : ""}`}>
@@ -222,16 +217,12 @@ function Home() {
                   </div>
                   <div>
                     <h3 className="text-2xl">{p.name}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+                    <p className="mt-1 text-sm font-medium text-foreground/80">{p.slogan}</p>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
-                  <ul className="space-y-2 text-sm">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-2"><Check className="h-4 w-4 mt-0.5 text-gold flex-none" />{b}</li>
-                    ))}
-                  </ul>
                   <div className="mt-auto pt-2">
                     <Link to={p.to} className={p.featured ? "btn btn-primary w-full" : "btn btn-ghost w-full"}>
-                      看產品 <ArrowRight className="h-4 w-4" />
+                      {p.cta} <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
                 </div>
@@ -240,57 +231,79 @@ function Home() {
           </div>
         </section>
 
-        {/* PROCESS */}
-        <section id="process" className="py-24 bg-surface/40 border-y border-border/60">
-          <div className="container-x grid gap-12 lg:grid-cols-2">
-            <div>
-              <span className="eyebrow"><span className="dot" /> 導入流程</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">從試用到導入，<br />建立可複製的成交流程。</h2>
+        {/* TARGET AUDIENCE */}
+        <section className="py-24">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 適合合作的企業</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">為工程、製造與中小企業設計。</h2>
               <p className="mt-4 text-muted-foreground">
-                小方案可以線上試用，中高單價則透過 Demo 與顧問診斷成交。既能產品化，又保留 B2B 必要的信任建立。
+                我們服務的對象普遍面對流程數位化與 AI 導入的轉型壓力，需要兼具工程現場理解與企業系統能力的夥伴。
               </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
-              </div>
             </div>
 
-            <ol className="relative space-y-5 border-l-2 border-dashed border-border pl-7">
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                ["產品頁導流", "透過痛點、功能、案例與價格，讓客戶快速理解是否適合。"],
-                ["免費試用／預約 Demo", "低價方案走試用，高價方案走顧問診斷與 Demo。"],
-                ["資料匯入與導入設定", "協助客戶整理 Excel、設定欄位、建立範例資料與操作流程。"],
-                ["訂閱續約與加值擴充", "從單一痛點切入，再加購 AI、LINE、BI、ERP 串接等模組。"],
-              ].map(([t, d], i) => (
-                <li key={t} className="relative">
-                  <span className="absolute -left-[37px] grid h-7 w-7 place-items-center rounded-full bg-ink text-ink-foreground text-xs font-mono font-semibold">
-                    {i + 1}
-                  </span>
-                  <div className="panel p-5">
-                    <h3 className="text-lg">{t}</h3>
-                    <p className="mt-1.5 text-sm text-muted-foreground">{d}</p>
+                { icon: HardHat, t: "工程公司" },
+                { icon: Factory, t: "製造業" },
+                { icon: Cpu, t: "半導體與科技廠供應鏈" },
+                { icon: ServerCog, t: "資料中心與弱電工程團隊" },
+                { icon: Briefcase, t: "會計師、顧問與企業服務通路" },
+                { icon: Building2, t: "想導入 AI 與輕量 ERP 的中小企業" },
+              ].map(({ icon: Icon, t }) => (
+                <div key={t} className="panel p-6 flex items-center gap-4">
+                  <div className="grid h-11 w-11 flex-none place-items-center rounded-lg bg-surface-2 text-ink">
+                    <Icon className="h-5 w-5" />
                   </div>
+                  <h3 className="text-base font-semibold">{t}</h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* WHY US */}
+        <section className="py-24 bg-surface/40 border-y border-border/60">
+          <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <span className="eyebrow"><span className="dot" /> 為什麼選擇宏鼎集成</span>
+              <h2 className="mt-5 text-3xl md:text-4xl">同時懂工程現場，<br />也懂企業流程。</h2>
+              <p className="mt-4 text-muted-foreground">
+                我們不是只寫系統的軟體公司，也不是只接案的工程廠商。宏鼎集成以整合角度，協助企業逐步建立自己的數位營運能力。
+              </p>
+            </div>
+            <ol className="grid gap-4 sm:grid-cols-2">
+              {[
+                ["01", "懂工程現場，不只是寫系統", "理解工地、廠區與專案的真實節奏與限制。"],
+                ["02", "懂中小企業流程", "不做過度複雜的系統，從關鍵流程切入。"],
+                ["03", "一站式服務", "從顧問、導入、系統開發到工程整合可一條龍。"],
+                ["04", "模組化導入", "以模組分階段上線，降低導入成本與時間。"],
+              ].map(([n, t, d]) => (
+                <li key={n} className="panel p-6">
+                  <span className="num-badge">{n}</span>
+                  <h3 className="mt-4 text-lg">{t}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{d}</p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        {/* CTA */}
+        {/* FINAL CTA */}
         <section className="py-24">
           <div className="container-x">
             <div className="panel-lift relative overflow-hidden p-10 md:p-14 text-center">
               <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-gold/30 blur-3xl" />
-              <span className="eyebrow"><span className="dot" /> 從一套系統開始</span>
+              <span className="eyebrow"><span className="dot" /> 開始你的數位化旅程</span>
               <h2 className="mt-5 text-3xl md:text-4xl max-w-3xl mx-auto">
-                先用一套可落地的系統，開始累積訂閱收入。
+                想讓你的工程、業務與營運流程開始 AI 化嗎？
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
-                第一階段先主推 Aegis CostFlow，用工程公司成本與報價痛點切入，再擴充成 AI 模組化企業系統平台。
+                從一個流程開始，我們協助你盤點、設計、導入，逐步建立企業自己的數位營運系統。
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary">預約 Demo</Link>
-                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+                <Link to="/demo" className="btn btn-primary">預約初步諮詢</Link>
+                <Link to="/contact" className="btn btn-ghost">聯絡我們</Link>
               </div>
             </div>
           </div>
