@@ -8,9 +8,9 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
-      { title: "預約 Demo｜Aegis Business Apps" },
+      { title: "預約諮詢｜Aegis Business Apps" },
       { name: "description", content: "預約 Aegis Business Apps 產品 Demo 與 AI 導入諮詢。顧問會在 1 個工作日內回覆。" },
-      { property: "og:title", content: "預約 Demo｜Aegis Business Apps" },
+      { property: "og:title", content: "預約諮詢｜Aegis Business Apps" },
       { property: "og:description", content: "顧問依照產業、團隊規模與目前使用的工具，提出最適合的導入方案。" },
     ],
   }),
@@ -87,7 +87,7 @@ function Demo() {
         <section className="py-20">
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> Book a Demo</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">預約 Demo，<br className="hidden md:block" />讓顧問建議最適合先導入的方案。</h1>
+            <h1 className="mt-6 text-4xl md:text-5xl">預約諮詢，<br className="hidden md:block" />讓顧問建議最適合先導入的方案。</h1>
             <p className="mt-5 text-lg text-muted-foreground">
               填寫下方表單後，顧問將於 <span className="font-semibold text-foreground">1 個工作日內</span> 與您聯繫，安排 30 分鐘的線上 Demo 與導入評估。
             </p>
