@@ -22,7 +22,10 @@ function CostFlow() {
         <section className="py-20 lg:py-28">
           <div className="container-x grid gap-14 lg:grid-cols-[1.05fr_0.95fr] items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> Aegis CostFlow · 主推產品</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="tag">宏鼎集成旗下 Aegis Business Apps 產品線</span>
+              </div>
+              <span className="eyebrow mt-3"><span className="dot" /> Aegis CostFlow</span>
               <h1 className="mt-6 text-4xl md:text-5xl leading-[1.15]">
                 工程報價、材料成本、人工成本與專案毛利，<span className="text-gold">一套系統</span>掌握。
               </h1>

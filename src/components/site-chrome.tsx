@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Mail, MapPin, Phone } from "lucide-react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
 
 function Brand() {
@@ -58,35 +59,64 @@ export function SiteNav() {
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border bg-surface/60">
-      <div className="container-x grid gap-10 py-12 md:grid-cols-4">
-        <div className="md:col-span-2">
+      <div className="container-x grid gap-10 py-14 md:grid-cols-12">
+        <div className="md:col-span-5">
           <Brand />
+          <p className="mt-4 text-sm font-semibold">
+            宏鼎集成股份有限公司
+          </p>
+          <p className="text-xs text-muted-foreground tracking-wider">
+            Aegis Power Integrations Co., Ltd.
+          </p>
           <p className="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
-            宏鼎集成股份有限公司｜Aegis Power Integrations Co., Ltd.<br />
             AI 時代的工程與企業系統整合夥伴，提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統。
           </p>
         </div>
-        <div className="text-sm">
+
+        <div className="text-sm md:col-span-2">
           <div className="font-semibold mb-3">服務</div>
           <ul className="space-y-2 text-muted-foreground">
             <li><Link to="/engineering" className="hover:text-foreground">工程集成</Link></li>
             <li><Link to="/ai-integration" className="hover:text-foreground">AI 系統整合</Link></li>
             <li><Link to="/costflow" className="hover:text-foreground">Aegis 產品線</Link></li>
+            <li><Link to="/pricing" className="hover:text-foreground">價格方案</Link></li>
           </ul>
         </div>
-        <div className="text-sm">
+
+        <div className="text-sm md:col-span-2">
           <div className="font-semibold mb-3">公司</div>
           <ul className="space-y-2 text-muted-foreground">
             <li><Link to="/about" className="hover:text-foreground">關於宏鼎</Link></li>
-            <li><Link to="/pricing" className="hover:text-foreground">價格方案</Link></li>
             <li><Link to="/contact" className="hover:text-foreground">聯絡我們</Link></li>
+            <li><Link to="/demo" className="hover:text-foreground">預約諮詢</Link></li>
+          </ul>
+        </div>
+
+        <div className="text-sm md:col-span-3">
+          <div className="font-semibold mb-3">聯絡資訊</div>
+          <ul className="space-y-3 text-muted-foreground">
+            <li className="flex gap-2">
+              <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
+              <span>台中市西區台灣大道二段2號20樓</span>
+            </li>
+            <li className="flex gap-2">
+              <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
+              <a href="mailto:jtianfalcon@gmail.com" className="hover:text-foreground break-all">
+                jtianfalcon@gmail.com
+              </a>
+            </li>
+            <li className="flex gap-2">
+              <Phone className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
+              <span>歡迎透過表單預約諮詢</span>
+            </li>
           </ul>
         </div>
       </div>
+
       <div className="border-t border-border/60">
         <div className="container-x py-5 text-xs text-muted-foreground flex flex-wrap justify-between gap-2">
-          <span>© {new Date().getFullYear()} 宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. All rights reserved.</span>
-          <span>工程集成 · AI 系統整合 · 企業管理系統</span>
+          <span>© 2026 宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. All rights reserved.</span>
+          <span>工程集成｜AI 系統整合｜企業管理系統導入</span>
         </div>
       </div>
     </footer>

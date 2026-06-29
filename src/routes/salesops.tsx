@@ -22,7 +22,10 @@ function SalesOps() {
         <section className="py-20 lg:py-28">
           <div className="container-x grid gap-14 lg:grid-cols-[1.05fr_0.95fr] items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> Aegis SalesOps</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="tag">宏鼎集成旗下 Aegis Business Apps 產品線</span>
+              </div>
+              <span className="eyebrow mt-3"><span className="dot" /> Aegis SalesOps</span>
               <h1 className="mt-6 text-4xl md:text-5xl leading-[1.15]">
                 讓業務拜訪、客戶追蹤與主管週報，<span className="text-gold">變得自動化</span>。
               </h1>

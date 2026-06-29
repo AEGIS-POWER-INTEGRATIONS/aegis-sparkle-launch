@@ -1,14 +1,23 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { ArrowRight, Building2, Layers, Mail } from "lucide-react";
+import {
+  Building2,
+  MapPin,
+  Mail,
+  Layers,
+  Users,
+  ArrowRight,
+  CheckCircle2,
+} from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "聯絡我們｜宏鼎集成股份有限公司" },
-      { name: "description", content: "聯絡宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd.，預約工程集成、AI 系統整合與企業管理系統的初步諮詢。" },
+      { name: "description", content: "聯絡宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. — 台中市西區台灣大道二段2號20樓。預約工程集成、AI 系統整合與 Aegis Business Apps 企業管理系統的初步諮詢。" },
       { property: "og:title", content: "聯絡我們｜宏鼎集成" },
-      { property: "og:description", content: "預約工程集成、AI 系統整合與企業管理系統諮詢。" },
+      { property: "og:description", content: "預約工程集成、AI 系統整合與企業管理系統諮詢。台中市西區台灣大道二段2號20樓。" },
       { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/contact" },
     ],
     links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/contact" }],
@@ -16,59 +25,223 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+const infoCards = [
+  {
+    icon: Building2,
+    label: "公司名稱",
+    primary: "宏鼎集成股份有限公司",
+    secondary: "Aegis Power Integrations Co., Ltd.",
+  },
+  {
+    icon: MapPin,
+    label: "公司地址",
+    primary: "台中市西區台灣大道二段2號20樓",
+    secondary: "鄰近台中市中心商務區",
+  },
+  {
+    icon: Mail,
+    label: "聯絡信箱",
+    primary: "jtianfalcon@gmail.com",
+    secondary: "1 個工作日內回覆",
+    href: "mailto:jtianfalcon@gmail.com",
+  },
+  {
+    icon: Layers,
+    label: "服務範圍",
+    primary: "工程集成｜AI 系統整合",
+    secondary: "Aegis Business Apps｜企業管理系統導入",
+  },
+  {
+    icon: Users,
+    label: "服務對象",
+    primary: "工程公司、製造業、科技廠供應鏈",
+    secondary: "資料中心、弱電工程團隊、中小企業、會計師與顧問通路",
+  },
+];
+
+const services = [
+  "工程集成服務",
+  "AI 系統整合",
+  "Aegis CostFlow",
+  "Aegis SalesOps",
+  "Aegis AI Launch",
+  "企業管理系統導入",
+  "其他合作洽談",
+];
+
 function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <SiteNav />
       <main className="flex-1">
+        {/* Hero */}
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> Contact</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">聯絡我們</h1>
+            <span className="eyebrow"><span className="dot" /> 聯絡我們</span>
+            <h1 className="mt-6 text-4xl md:text-5xl">聯絡宏鼎集成</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              無論您是想評估工程整合、導入 AI 系統，或是希望以模組化方式建立企業管理系統，歡迎與宏鼎集成聯繫，我們將安排顧問與您進行初步諮詢。
+              無論您是想評估工程整合、導入 AI 系統，或希望以模組化方式建立企業管理系統，歡迎與宏鼎集成聯繫。
+              我們將依照您的產業、流程與導入需求，安排初步諮詢。
             </p>
           </div>
         </section>
 
+        {/* Info cards */}
+        <section className="pb-16">
+          <div className="container-x">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {infoCards.map(({ icon: Icon, label, primary, secondary, href }) => (
+                <div key={label} className="panel p-6">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-ink-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div className="mt-4 text-xs font-semibold tracking-widest text-muted-foreground uppercase">{label}</div>
+                  {href ? (
+                    <a href={href} className="mt-1 block text-base font-semibold hover:text-foreground break-all">
+                      {primary}
+                    </a>
+                  ) : (
+                    <div className="mt-1 text-base font-semibold leading-snug">{primary}</div>
+                  )}
+                  <div className="mt-1 text-sm text-muted-foreground leading-relaxed">{secondary}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Map */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 公司位置</span>
+              <h2 className="mt-4 text-3xl md:text-4xl">公司位置</h2>
+            </div>
+            <div className="mt-8 panel overflow-hidden">
+              <iframe
+                title="宏鼎集成公司位置 — 台中市西區台灣大道二段2號20樓"
+                src="https://www.google.com/maps?q=%E5%8F%B0%E4%B8%AD%E5%B8%82%E8%A5%BF%E5%8D%80%E5%8F%B0%E7%81%A3%E5%A4%A7%E9%81%93%E4%BA%8C%E6%AE%B52%E8%99%9F20%E6%A8%93&output=embed"
+                width="100%"
+                height="360"
+                style={{ border: 0, display: "block" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-3xl">
+              宏鼎集成位於台中市西區台灣大道二段，鄰近台中市中心商務區，
+              可作為企業諮詢、系統導入討論與合作洽談據點。
+            </p>
+          </div>
+        </section>
+
+        {/* Inquiry form */}
         <section className="pb-24">
-          <div className="container-x grid gap-6 lg:grid-cols-[1fr_1fr]">
-            <div className="panel p-8 space-y-6">
-              <div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground"><Building2 className="h-4 w-4" /> 公司名稱</div>
-                <div className="mt-1 text-lg font-semibold">宏鼎集成股份有限公司</div>
-                <div className="text-sm text-muted-foreground">Aegis Power Integrations Co., Ltd.</div>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground"><Layers className="h-4 w-4" /> 服務範圍</div>
-                <ul className="mt-2 space-y-1 text-sm">
-                  <li>· 工程集成（弱電、光纖、資料中心、監控與門禁）</li>
-                  <li>· AI 系統整合（流程盤點、AI 助理、自動化串接）</li>
-                  <li>· 企業管理系統導入（Aegis Business Apps 產品線）</li>
-                </ul>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground"><Mail className="h-4 w-4" /> 聯絡方式</div>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  請透過「預約諮詢」表單留下您的聯絡方式與需求，顧問會在 1 個工作日內回覆。
+          <div className="container-x">
+            <div className="panel-lift p-8 md:p-12">
+              <div className="max-w-2xl">
+                <span className="eyebrow"><span className="dot" /> 預約諮詢</span>
+                <h2 className="mt-4 text-3xl md:text-4xl">預約諮詢</h2>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  填寫以下資訊，宏鼎集成顧問將於 1 個工作日內與您聯繫，提供初步建議與後續規劃。
                 </p>
               </div>
-            </div>
 
-            <div className="panel-lift p-8 flex flex-col">
-              <h2 className="text-2xl">預約諮詢</h2>
-              <p className="mt-3 text-sm text-muted-foreground">
-                提供您的公司、聯絡方式與想了解的服務，我們會由對應顧問與您聯繫，提供初步建議與後續規劃。
-              </p>
-              <div className="mt-auto pt-8 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">前往預約諮詢表單 <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/pricing" className="btn btn-ghost">查看價格方案</Link>
-              </div>
+              {submitted ? (
+                <div className="mt-10 panel p-8 flex items-start gap-4">
+                  <CheckCircle2 className="h-6 w-6 text-gold shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-semibold">已收到您的諮詢需求</h3>
+                    <p className="mt-2 text-muted-foreground leading-relaxed">
+                      感謝您的填寫，宏鼎集成將盡快與您聯繫。
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={onSubmit} className="mt-10 grid gap-5 md:grid-cols-2">
+                  <Field label="姓名" name="name" required />
+                  <Field label="公司名稱" name="company" required />
+                  <Field label="職稱" name="title" />
+                  <Field label="電話" name="phone" type="tel" />
+                  <Field label="Email" name="email" type="email" required className="md:col-span-2" />
+
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium mb-2">想了解的服務</label>
+                    <select
+                      name="service"
+                      required
+                      defaultValue=""
+                      className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+                    >
+                      <option value="" disabled>請選擇服務項目</option>
+                      {services.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium mb-2">需求說明</label>
+                    <textarea
+                      name="message"
+                      rows={5}
+                      placeholder="請簡述目前的流程現況、痛點，或希望了解的服務範圍。"
+                      className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 resize-y"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2 flex flex-wrap gap-3 pt-2">
+                    <button type="submit" className="btn btn-primary">
+                      送出諮詢需求 <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <a href="mailto:jtianfalcon@gmail.com" className="btn btn-ghost">
+                      改用 Email 聯繫
+                    </a>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </section>
       </main>
       <SiteFooter />
+    </div>
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+  className = "",
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <label htmlFor={name} className="block text-sm font-medium mb-2">
+        {label}{required && <span className="text-gold ml-1">*</span>}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+      />
     </div>
   );
 }

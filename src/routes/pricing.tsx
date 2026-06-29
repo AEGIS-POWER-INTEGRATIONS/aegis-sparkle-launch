@@ -47,10 +47,11 @@ function Pricing() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> Pricing</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">輕量化企業管理系統，<br />依規模分階段導入。</h1>
-            <p className="mt-5 text-lg text-muted-foreground">
-              實際費用依導入範圍、使用人數、資料串接與客製需求評估。以下為 Aegis Business Apps 訂閱方案的建議起價，另附一次性導入服務費。
+            <span className="eyebrow"><span className="dot" /> 價格方案</span>
+            <h1 className="mt-6 text-4xl md:text-5xl">價格方案</h1>
+            <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+              宏鼎集成提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統導入服務。
+              實際費用將依導入範圍、使用人數、資料串接、客製需求與服務內容評估。
             </p>
           </div>
         </section>
@@ -159,9 +160,20 @@ function Pricing() {
               ))}
             </div>
 
-            <p className="mt-8 text-sm text-muted-foreground max-w-3xl">
+            <p className="mt-8 text-sm text-muted-foreground max-w-3xl leading-relaxed">
               ※ 導入服務費為一次性支付；訂閱方案另外計算。實際報價依公司規模、流程複雜度、資料量、所需串接系統與訓練場次調整。簽約前提供書面估價單。
             </p>
+
+            <div className="mt-8 panel-lift p-6 md:p-8 max-w-4xl">
+              <div className="flex flex-col md:flex-row md:items-start gap-4">
+                <span className="tag shrink-0">服務範圍說明</span>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  以上價格主要適用於 Aegis Business Apps 與 AI 系統整合導入。
+                  <strong className="text-foreground"> 工程集成服務</strong>
+                  將依現場條件、施工範圍、設備規格、工期與協力廠商需求另行報價。
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </main>
