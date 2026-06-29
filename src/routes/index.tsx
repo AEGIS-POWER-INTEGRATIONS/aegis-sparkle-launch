@@ -95,7 +95,10 @@ function Home() {
             <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div>
                 <span className="eyebrow"><span className="dot" /> Aegis Power Integrations Co., Ltd.</span>
-                <h1 className="mt-6 text-4xl md:text-5xl xl:text-6xl leading-[1.1]">
+                <div className="mt-5 text-sm md:text-base font-semibold tracking-wide text-foreground/80">
+                  宏鼎集成股份有限公司
+                </div>
+                <h1 className="mt-3 text-4xl md:text-5xl xl:text-6xl leading-[1.1]">
                   宏鼎集成
                   <span className="text-muted-foreground"> ｜ </span>
                   <br className="hidden md:block" />
