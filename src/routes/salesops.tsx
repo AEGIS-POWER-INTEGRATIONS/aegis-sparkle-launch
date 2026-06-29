@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import mockSalesops from "@/assets/mock-salesops.jpg";
 import { MapPin, Mic, BrainCircuit, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/salesops")({
@@ -38,21 +39,17 @@ function SalesOps() {
               </div>
             </div>
 
-            <div className="panel-lift p-6 space-y-3">
-              {[
-                { who: "業務 · 阿凱", text: "剛拜訪 A 客戶，採購已批，等財務簽核。週四回訪。", time: "14:32", tag: "拜訪" },
-                { who: "AI 助理", text: "已整理本週 12 筆拜訪：3 件成交機會 / 2 件需主管支援。", time: "週五 09:00", tag: "週報", gold: true },
-                { who: "業務 · 小婷", text: "語音回報已轉文字：報價單已送出，金額 NT$ 480,000。", time: "11:08", tag: "語音" },
-              ].map((m, i) => (
-                <div key={i} className={`rounded-xl border p-4 ${m.gold ? "border-gold/50 bg-gold/10" : "border-border bg-surface/50"}`}>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold">{m.who}</span>
-                    <span className="text-muted-foreground">{m.time}</span>
-                  </div>
-                  <p className="mt-2 text-sm">{m.text}</p>
-                  <span className="mt-2 inline-block text-xs rounded-full bg-background border border-border px-2 py-0.5 text-muted-foreground">#{m.tag}</span>
-                </div>
-              ))}
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
+                <img
+                  src={mockSalesops}
+                  alt="Aegis SalesOps CRM 與業務管理 Dashboard 介面示意"
+                  width={1408}
+                  height={1008}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>

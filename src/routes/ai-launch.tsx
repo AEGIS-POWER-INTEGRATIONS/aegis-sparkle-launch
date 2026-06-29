@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import mockAilaunch from "@/assets/mock-ailaunch.jpg";
 import { Search, Puzzle, Rocket, Check } from "lucide-react";
 
 export const Route = createFileRoute("/ai-launch")({
@@ -20,20 +21,34 @@ function AILaunch() {
       <SiteNav />
       <main className="flex-1">
         <section className="py-20 lg:py-28">
-          <div className="container-x max-w-3xl">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="tag">宏鼎集成旗下 Aegis Business Apps 產品線</span>
+          <div className="container-x grid gap-14 lg:grid-cols-[1.05fr_0.95fr] items-center">
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="tag">宏鼎集成旗下 Aegis Business Apps 產品線</span>
+              </div>
+              <span className="eyebrow mt-3"><span className="dot" /> Aegis AI Launch</span>
+              <h1 className="mt-6 text-4xl md:text-5xl leading-[1.15]">
+                不是教你玩 AI，而是把 AI <span className="text-gold">放進企業流程裡</span>。
+              </h1>
+              <p className="mt-6 text-lg text-muted-foreground">
+                協助企業完成流程盤點、資料整理、AI 助理設計、自動化串接、權限控管與員工訓練，讓 AI 真正落地。
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
+                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+              </div>
             </div>
-            <span className="eyebrow mt-3"><span className="dot" /> Aegis AI Launch</span>
-            <h1 className="mt-6 text-4xl md:text-5xl leading-[1.15]">
-              不是教你玩 AI，而是把 AI <span className="text-gold">放進企業流程裡</span>。
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              協助企業完成流程盤點、資料整理、AI 助理設計、自動化串接、權限控管與員工訓練，讓 AI 真正落地。
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
-              <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
+                <img
+                  src={mockAilaunch}
+                  alt="Aegis AI Launch 流程自動化 Dashboard 介面示意"
+                  width={1408}
+                  height={1008}
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>

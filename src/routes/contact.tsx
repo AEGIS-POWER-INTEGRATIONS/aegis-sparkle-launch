@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import contactMeeting from "@/assets/contact-meeting.jpg";
 import {
   Building2,
   MapPin,
@@ -83,13 +84,27 @@ function Contact() {
       <main className="flex-1">
         {/* Hero */}
         <section className="py-20">
-          <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> 聯絡我們</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">聯絡宏鼎集成</h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              無論您是想評估工程整合、導入 AI 系統，或希望以模組化方式建立企業管理系統，歡迎與宏鼎集成聯繫。
-              我們將依照您的產業、流程與導入需求，安排初步諮詢。
-            </p>
+          <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+            <div>
+              <span className="eyebrow"><span className="dot" /> 聯絡我們</span>
+              <h1 className="mt-6 text-4xl md:text-5xl">聯絡宏鼎集成</h1>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                無論您是想評估工程整合、導入 AI 系統，或希望以模組化方式建立企業管理系統，歡迎與宏鼎集成聯繫。
+                我們將依照您的產業、流程與導入需求，安排初步諮詢。
+              </p>
+            </div>
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+                <img
+                  src={contactMeeting}
+                  alt="企業諮詢與系統導入會議視覺"
+                  width={1408}
+                  height={912}
+                  className="w-full h-auto object-cover aspect-[16/10]"
+                />
+              </div>
+            </div>
           </div>
         </section>
 

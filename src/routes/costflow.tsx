@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import mockCostflow from "@/assets/mock-costflow.jpg";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 export const Route = createFileRoute("/costflow")({
@@ -38,27 +39,21 @@ function CostFlow() {
               </div>
             </div>
 
-            <div className="panel-lift p-6">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">Project · 機電工程報價單 v3</div>
-              <div className="space-y-2.5">
-                {[
-                  ["材料成本", "NT$ 1,840,000", "62%"],
-                  ["人工成本", "NT$ 520,000", "18%"],
-                  ["外包費用", "NT$ 360,000", "12%"],
-                  ["管理 + 利潤", "NT$ 230,000", "8%"],
-                ].map(([k, v, p]) => (
-                  <div key={k}>
-                    <div className="flex justify-between text-sm"><span className="text-muted-foreground">{k}</span><span className="font-medium">{v}</span></div>
-                    <div className="mt-1 h-1.5 rounded-full bg-muted overflow-hidden">
-                      <div className="h-full bg-ink" style={{ width: p }} />
-                    </div>
-                  </div>
-                ))}
+            <div className="relative">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-transparent blur-2xl" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
+                <img
+                  src={mockCostflow}
+                  alt="Aegis CostFlow 工程成本分析 Dashboard 介面示意"
+                  width={1408}
+                  height={1008}
+                  className="w-full h-auto object-cover"
+                />
               </div>
-              <div className="mt-5 rounded-lg bg-gold/15 border border-gold/40 p-4 flex gap-3">
-                <AlertTriangle className="h-5 w-5 text-amber-700 flex-none mt-0.5" />
+              <div className="mt-4 panel p-4 flex gap-3 items-start">
+                <AlertTriangle className="h-5 w-5 text-gold flex-none mt-0.5" />
                 <div className="text-sm">
-                  <div className="font-semibold">AI 成本提醒</div>
+                  <div className="font-semibold">AI 成本提醒範例</div>
                   <div className="text-muted-foreground mt-0.5">材料 #M-2031 單價較歷史均價高 24%，建議重新詢價。</div>
                 </div>
               </div>
