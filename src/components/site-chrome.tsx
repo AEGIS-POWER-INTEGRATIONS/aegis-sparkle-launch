@@ -36,7 +36,7 @@ const navItems = [
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-16 items-center justify-between gap-6">
+      <div className="container-x flex h-20 md:h-24 items-center justify-between gap-6">
         <Brand />
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
