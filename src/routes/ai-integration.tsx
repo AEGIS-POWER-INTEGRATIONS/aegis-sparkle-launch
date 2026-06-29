@@ -32,11 +32,42 @@ function AiIntegration() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> AI Integration</span>
+            <span className="eyebrow"><span className="dot" /> AI 系統整合</span>
             <h1 className="mt-6 text-4xl md:text-5xl">AI 系統整合服務</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               宏鼎集成協助企業從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。
             </p>
+            <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
+              我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。
+            </p>
+          </div>
+        </section>
+
+        {/* 常見導入情境 */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 常見導入情境</span>
+              <h2 className="mt-4 text-3xl md:text-4xl">常見導入情境</h2>
+              <p className="mt-3 text-muted-foreground">
+                以下是宏鼎集成在企業端最常協助導入的 AI 與系統整合場景。
+              </p>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                "報價與成本流程數位化",
+                "業務拜訪與 CRM 管理",
+                "LINE 回報與自動週報",
+                "庫存、採購、請款與專案資料整合",
+                "企業內部 AI 助理與知識庫",
+                "Google Workspace、n8n、API、自動化報表串接",
+              ].map((s) => (
+                <div key={s} className="panel p-5 flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
+                  <span className="text-[15px] font-medium">{s}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

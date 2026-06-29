@@ -32,7 +32,7 @@ function Engineering() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> Engineering Integration</span>
+            <span className="eyebrow"><span className="dot" /> 工程集成</span>
             <h1 className="mt-6 text-4xl md:text-5xl">工程集成服務</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               宏鼎集成以工程現場經驗為基礎，提供弱電、光纖、資料中心、監控與門禁等系統整合服務，協助企業建立穩定、安全、可長期維護的基礎建設。
@@ -72,6 +72,63 @@ function Engineering() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 適合場域 */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 適合場域</span>
+              <h2 className="mt-4 text-3xl md:text-4xl">適合場域</h2>
+              <p className="mt-3 text-muted-foreground">
+                從辦公室到廠區、資料中心與營運據點，宏鼎集成的工程能力可彈性配合不同產業與規模。
+              </p>
+            </div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                "辦公室與企業總部",
+                "工廠與廠區",
+                "資料中心",
+                "科技廠供應鏈",
+                "倉儲與營運據點",
+                "需要弱電、光纖、監控、門禁與資訊整合的企業",
+              ].map((s) => (
+                <div key={s} className="panel p-5 flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
+                  <span className="text-[15px] font-medium">{s}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 服務特色 */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> 服務特色</span>
+              <h2 className="mt-4 text-3xl md:text-4xl">服務特色</h2>
+              <p className="mt-3 text-muted-foreground">
+                務實的工程思維，搭配宏鼎集成的系統與 AI 能力，讓工程不只完工，也能延伸到後續管理。
+              </p>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {[
+                { t: "以現場需求為基礎，不做過度包裝", d: "從業主實際使用情境與既有條件出發，提出可落地、可維運的工程規劃。" },
+                { t: "可協調工程、系統與協力廠商", d: "由宏鼎統籌整體進度與規格，降低業主與多家廠商溝通的負擔。" },
+                { t: "重視規劃、施工、驗收與後續維運", d: "從前期規劃到驗收與後續維護，建立可長期合作的工程交付品質。" },
+                { t: "可結合 AI 系統與企業管理平台", d: "工程資料可進一步串接 Aegis Business Apps 與 AI 系統，讓現場與管理流程連動。" },
+              ].map((f, i) => (
+                <div key={f.t} className="panel p-7 flex gap-5">
+                  <div className="num-badge shrink-0">0{i + 1}</div>
+                  <div>
+                    <h3 className="text-lg">{f.t}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.d}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -21,7 +21,10 @@ function AILaunch() {
       <main className="flex-1">
         <section className="py-20 lg:py-28">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> Aegis AI Launch</span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="tag">宏鼎集成旗下 Aegis Business Apps 產品線</span>
+            </div>
+            <span className="eyebrow mt-3"><span className="dot" /> Aegis AI Launch</span>
             <h1 className="mt-6 text-4xl md:text-5xl leading-[1.15]">
               不是教你玩 AI，而是把 AI <span className="text-gold">放進企業流程裡</span>。
             </h1>
