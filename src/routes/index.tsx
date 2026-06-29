@@ -1,5 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import heroMain from "@/assets/hero-main.jpg";
+import bannerEngineering from "@/assets/banner-engineering.jpg";
+import bannerAi from "@/assets/banner-ai.jpg";
+import bannerApps from "@/assets/banner-apps.jpg";
+import mockCostflow from "@/assets/mock-costflow.jpg";
+import mockSalesops from "@/assets/mock-salesops.jpg";
+import mockAilaunch from "@/assets/mock-ailaunch.jpg";
 import {
   ArrowRight,
   Cable,
@@ -50,15 +57,15 @@ const painPoints = [
 ];
 
 const capabilities = [
-  { icon: Cable, title: "工程集成服務", items: ["弱電與網路工程", "光纖建置", "監控與門禁系統", "資料中心基礎工程支援", "廠區資訊系統整合", "工程專案協調與協力廠商整合"] },
-  { icon: BrainCircuit, title: "AI 系統整合", items: ["企業流程訪談與盤點", "AI 助理與內部知識庫", "LINE / Google Workspace / API / n8n 串接", "自動化週報與管理儀表板", "客製化企業系統開發"] },
-  { icon: Boxes, title: "Aegis Business Apps", items: ["Aegis CostFlow：工程報價與成本分析平台", "Aegis SalesOps：業務管理與 AI 週報系統", "Aegis AI Launch：企業 AI 導入與流程自動化服務", "可依產業需求擴充模組"] },
+  { icon: Cable, title: "工程集成服務", image: bannerEngineering, items: ["弱電與網路工程", "光纖建置", "監控與門禁系統", "資料中心基礎工程支援", "廠區資訊系統整合", "工程專案協調與協力廠商整合"] },
+  { icon: BrainCircuit, title: "AI 系統整合", image: bannerAi, items: ["企業流程訪談與盤點", "AI 助理與內部知識庫", "LINE / Google Workspace / API / n8n 串接", "自動化週報與管理儀表板", "客製化企業系統開發"] },
+  { icon: Boxes, title: "Aegis Business Apps", image: bannerApps, items: ["Aegis CostFlow：工程報價與成本分析平台", "Aegis SalesOps：業務管理與 AI 週報系統", "Aegis AI Launch：企業 AI 導入與流程自動化服務", "可依產業需求擴充模組"] },
 ];
 
 const products = [
-  { name: "Aegis CostFlow", tagline: "工程報價與成本分析平台", desc: "協助工程公司整理材料、人工、外包、報價版本、專案毛利與 AI 成本提醒，降低 Excel 重工，提高報價速度與成本掌握度。", icon: FileSpreadsheet, to: "/costflow" as const },
-  { name: "Aegis SalesOps", tagline: "業務管理與 AI 週報系統", desc: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓業務管理更即時、更透明。", icon: MessagesSquare, to: "/salesops" as const },
-  { name: "Aegis AI Launch", tagline: "企業 AI 導入與流程自動化服務", desc: "協助企業從流程盤點、資料整理、AI 助理設計到自動化串接，真正把 AI 導入日常工作。", icon: Network, to: "/ai-launch" as const },
+  { name: "Aegis CostFlow", tagline: "工程報價與成本分析平台", desc: "協助工程公司整理材料、人工、外包、報價版本、專案毛利與 AI 成本提醒，降低 Excel 重工，提高報價速度與成本掌握度。", icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
+  { name: "Aegis SalesOps", tagline: "業務管理與 AI 週報系統", desc: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓業務管理更即時、更透明。", icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
+  { name: "Aegis AI Launch", tagline: "企業 AI 導入與流程自動化服務", desc: "協助企業從流程盤點、資料整理、AI 助理設計到自動化串接，真正把 AI 導入日常工作。", icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
 ];
 
 const audiences = [
