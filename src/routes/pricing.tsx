@@ -5,36 +5,38 @@ import { Check, Sparkles } from "lucide-react";
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "價格方案｜Aegis Business Apps" },
-      { name: "description", content: "Aegis Business Apps 訂閱方案與導入服務價格。先用小方案驗證，再逐步擴充成企業系統。" },
-      { property: "og:title", content: "價格方案｜Aegis Business Apps" },
-      { property: "og:description", content: "Starter / Pro / Business 三種方案，依使用人數、資料量與導入深度調整。" },
+      { title: "價格方案｜宏鼎集成 Aegis Business Apps" },
+      { name: "description", content: "宏鼎集成 Aegis Business Apps 提供 Starter、Pro 與 Business 三種訂閱方案，依使用人數、資料串接與客製需求評估。" },
+      { property: "og:title", content: "價格方案｜宏鼎集成" },
+      { property: "og:description", content: "Starter / Pro / Business 三種方案，搭配導入服務費，協助企業逐步建立系統能力。" },
+      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/pricing" },
     ],
+    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/pricing" }],
   }),
   component: Pricing,
 });
 
 const plans = [
   {
-    name: "Starter", title: "小團隊試用",
+    name: "Starter", title: "單一流程導入",
     price: "NT$5,000", suffix: "/ 月起",
-    desc: "適合先把單一流程數位化的小型團隊。",
-    features: ["基本專案／客戶管理", "Excel 匯入", "基本報表", "Email 支援"],
+    desc: "適合單一流程數位化、初期導入。",
+    features: ["單一模組權限", "Excel 匯入與標準範本", "基本報表", "Email 支援"],
     cta: "申請試用", variant: "ghost" as const,
   },
   {
-    name: "Pro｜建議主推", title: "中小企業成長版",
+    name: "Pro", title: "中小企業正式導入",
     price: "NT$15,000", suffix: "/ 月起",
-    desc: "適合需要成本、業務、專案與 AI 報表的企業。",
+    desc: "適合中小企業正式導入 CRM、報價、成本或業務管理。",
     features: ["完整模組權限", "AI 提醒與週報", "主管儀表板", "導入顧問支援"],
-    cta: "預約 Demo", variant: "primary" as const, featured: true,
+    cta: "預約諮詢", variant: "primary" as const, featured: true,
   },
   {
-    name: "Business", title: "企業導入版",
+    name: "Business", title: "企業多部門導入",
     price: "專案報價", suffix: "",
-    desc: "適合多部門、多據點、需要串接既有系統的企業。",
+    desc: "適合多部門、多據點、需要串接既有系統或客製流程的企業。",
     features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "SLA 與資安規範"],
-    cta: "預約 Demo", variant: "ghost" as const,
+    cta: "預約諮詢", variant: "ghost" as const,
   },
 ];
 
@@ -46,12 +48,13 @@ function Pricing() {
         <section className="py-20">
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> Pricing</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">先用小方案驗證，再逐步擴充成企業系統。</h1>
+            <h1 className="mt-6 text-4xl md:text-5xl">輕量化企業管理系統，<br />依規模分階段導入。</h1>
             <p className="mt-5 text-lg text-muted-foreground">
-              價格可依使用人數、資料量、導入深度與串接需求調整。以下為網站第一版建議價格，可再依市場測試微調。
+              實際費用依導入範圍、使用人數、資料串接與客製需求評估。以下為 Aegis Business Apps 訂閱方案的建議起價，另附一次性導入服務費。
             </p>
           </div>
         </section>
+
 
         <section className="pb-24">
           <div className="container-x grid gap-6 lg:grid-cols-3">

@@ -11,10 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CostflowRouteImport } from './routes/costflow'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BuildquestRouteImport } from './routes/buildquest'
 import { Route as AiLaunchRouteImport } from './routes/ai-launch'
+import { Route as AiIntegrationRouteImport } from './routes/ai-integration'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuildquestIndexRouteImport } from './routes/buildquest.index'
 import { Route as BuildquestQuestsRouteImport } from './routes/buildquest.quests'
@@ -37,6 +41,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EngineeringRoute = EngineeringRouteImport.update({
+  id: '/engineering',
+  path: '/engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
@@ -47,6 +56,11 @@ const CostflowRoute = CostflowRouteImport.update({
   path: '/costflow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuildquestRoute = BuildquestRouteImport.update({
   id: '/buildquest',
   path: '/buildquest',
@@ -55,6 +69,16 @@ const BuildquestRoute = BuildquestRouteImport.update({
 const AiLaunchRoute = AiLaunchRouteImport.update({
   id: '/ai-launch',
   path: '/ai-launch',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiIntegrationRoute = AiIntegrationRouteImport.update({
+  id: '/ai-integration',
+  path: '/ai-integration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -115,10 +139,14 @@ const BuildquestQuestIdRoute = BuildquestQuestIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
   '/buildquest': typeof BuildquestRouteWithChildren
+  '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
@@ -134,9 +162,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
+  '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
@@ -153,10 +185,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
   '/buildquest': typeof BuildquestRouteWithChildren
+  '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
@@ -174,10 +210,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/ai-integration'
     | '/ai-launch'
     | '/buildquest'
+    | '/contact'
     | '/costflow'
     | '/demo'
+    | '/engineering'
     | '/pricing'
     | '/salesops'
     | '/buildquest/admin'
@@ -193,9 +233,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/ai-integration'
     | '/ai-launch'
+    | '/contact'
     | '/costflow'
     | '/demo'
+    | '/engineering'
     | '/pricing'
     | '/salesops'
     | '/buildquest/admin'
@@ -211,10 +255,14 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/ai-integration'
     | '/ai-launch'
     | '/buildquest'
+    | '/contact'
     | '/costflow'
     | '/demo'
+    | '/engineering'
     | '/pricing'
     | '/salesops'
     | '/buildquest/admin'
@@ -231,10 +279,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AiIntegrationRoute: typeof AiIntegrationRoute
   AiLaunchRoute: typeof AiLaunchRoute
   BuildquestRoute: typeof BuildquestRouteWithChildren
+  ContactRoute: typeof ContactRoute
   CostflowRoute: typeof CostflowRoute
   DemoRoute: typeof DemoRoute
+  EngineeringRoute: typeof EngineeringRoute
   PricingRoute: typeof PricingRoute
   SalesopsRoute: typeof SalesopsRoute
 }
@@ -255,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/engineering': {
+      id: '/engineering'
+      path: '/engineering'
+      fullPath: '/engineering'
+      preLoaderRoute: typeof EngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo': {
       id: '/demo'
       path: '/demo'
@@ -269,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CostflowRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buildquest': {
       id: '/buildquest'
       path: '/buildquest'
@@ -281,6 +347,20 @@ declare module '@tanstack/react-router' {
       path: '/ai-launch'
       fullPath: '/ai-launch'
       preLoaderRoute: typeof AiLaunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-integration': {
+      id: '/ai-integration'
+      path: '/ai-integration'
+      fullPath: '/ai-integration'
+      preLoaderRoute: typeof AiIntegrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -395,10 +475,14 @@ const BuildquestRouteWithChildren = BuildquestRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AiIntegrationRoute: AiIntegrationRoute,
   AiLaunchRoute: AiLaunchRoute,
   BuildquestRoute: BuildquestRouteWithChildren,
+  ContactRoute: ContactRoute,
   CostflowRoute: CostflowRoute,
   DemoRoute: DemoRoute,
+  EngineeringRoute: EngineeringRoute,
   PricingRoute: PricingRoute,
   SalesopsRoute: SalesopsRoute,
 }
