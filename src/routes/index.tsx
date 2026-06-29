@@ -187,20 +187,26 @@ function Home() {
               </p>
             </div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {capabilities.map(({ icon: Icon, title, items }) => (
-                <div key={title} className="panel p-7 flex flex-col">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-ink text-ink-foreground">
-                    <Icon className="h-5 w-5" />
+              {capabilities.map(({ icon: Icon, title, image, items }) => (
+                <div key={title} className="panel flex flex-col overflow-hidden">
+                  <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-ink">
+                    <img src={image} alt={`${title} 視覺`} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                    <div className="absolute left-5 bottom-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-ink-foreground shadow-lift">
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                  <h3 className="mt-5 text-xl">{title}</h3>
-                  <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-                    {items.map((it) => (
-                      <li key={it} className="flex gap-2 leading-relaxed">
-                        <span className="mt-2 h-1 w-1 rounded-full bg-gold shrink-0" />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="p-7 flex-1 flex flex-col">
+                    <h3 className="text-xl">{title}</h3>
+                    <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
+                      {items.map((it) => (
+                        <li key={it} className="flex gap-2 leading-relaxed">
+                          <span className="mt-2 h-1 w-1 rounded-full bg-gold shrink-0" />
+                          <span>{it}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))}
             </div>
@@ -217,20 +223,25 @@ function Home() {
                 從工程報價、業務管理到企業 AI 導入，協助企業以模組化方式逐步建立自己的數位營運系統。
               </p>
             </div>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {products.map(({ name, tagline, desc, icon: Icon, to }) => (
-                <Link key={name} to={to} className="panel-lift p-7 flex flex-col group">
-                  <div className="flex items-center gap-3">
-                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold text-gold-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="tag">Product</span>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {products.map(({ name, tagline, desc, icon: Icon, image, to }) => (
+                <Link key={name} to={to} className="panel-lift flex flex-col group overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-ink">
+                    <img src={image} alt={`${name} 產品介面示意`} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                   </div>
-                  <h3 className="mt-5 text-xl">{name}</h3>
-                  <div className="mt-1 text-sm font-medium text-foreground">{tagline}</div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
-                  <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
-                    產品詳情 <ArrowRight className="h-3.5 w-3.5" />
+                  <div className="p-7 flex-1 flex flex-col">
+                    <div className="flex items-center gap-3">
+                      <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gold text-gold-foreground">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="tag">Product</span>
+                    </div>
+                    <h3 className="mt-5 text-xl">{name}</h3>
+                    <div className="mt-1 text-sm font-medium text-foreground">{tagline}</div>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed flex-1">{desc}</p>
+                    <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
+                      產品詳情 <ArrowRight className="h-3.5 w-3.5" />
+                    </div>
                   </div>
                 </Link>
               ))}
