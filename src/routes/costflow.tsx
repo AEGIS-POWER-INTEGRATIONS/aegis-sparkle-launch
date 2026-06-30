@@ -127,6 +127,20 @@ function CostFlow() {
               </p>
             </div>
 
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {[
+                { src: reportsAsset.url, alt: "工程報價與成本分析報表" },
+                { src: deskAsset.url, alt: "企業營運數據分析" },
+              ].map((it) => (
+                <figure key={it.alt} className="panel overflow-hidden">
+                  <div className="relative aspect-[16/10] bg-ink overflow-hidden">
+                    <img src={it.src} alt={it.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                  </div>
+                </figure>
+              ))}
+            </div>
+
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
               <ol className="space-y-5">
                 {[
