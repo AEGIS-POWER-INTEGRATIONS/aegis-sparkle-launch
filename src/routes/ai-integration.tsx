@@ -46,14 +46,15 @@ function AiIntegration() {
             </div>
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
-              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                 <img
                   src={bannerAi}
-                  alt="AI 系統整合與資料節點視覺"
+                  alt="AI 系統整合與資料流程視覺"
                   width={1600}
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
+                <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/40 to-transparent" />
               </div>
             </div>
           </div>
