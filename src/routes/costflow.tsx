@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import mockCostflow from "@/assets/mock-costflow.jpg";
+import reportsAsset from "@/assets/costflow-reports-charts.webp.asset.json";
+import deskAsset from "@/assets/costflow-analytics-desk.webp.asset.json";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 export const Route = createFileRoute("/costflow")({
