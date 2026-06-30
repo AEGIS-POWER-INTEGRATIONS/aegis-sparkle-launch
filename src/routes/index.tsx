@@ -1,12 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import heroMain from "@/assets/hero-main.jpg";
-import bannerEngineering from "@/assets/banner-engineering.jpg";
-import bannerAi from "@/assets/banner-ai.jpg";
-import bannerApps from "@/assets/banner-apps.jpg";
+import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
+import engineeringAsset from "@/assets/engineering-fiber-technician.webp.asset.json";
+import aiAsset from "@/assets/ai-integration-tech-interface.webp.asset.json";
+import appsAsset from "@/assets/business-dashboard-monitor.webp.asset.json";
 import mockCostflow from "@/assets/mock-costflow.jpg";
 import mockSalesops from "@/assets/mock-salesops.jpg";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
+const heroMain = heroAsset.url;
+const bannerEngineering = engineeringAsset.url;
+const bannerAi = aiAsset.url;
+const bannerApps = appsAsset.url;
 import {
   ArrowRight,
   Cable,
