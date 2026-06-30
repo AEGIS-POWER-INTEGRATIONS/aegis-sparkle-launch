@@ -27,6 +27,7 @@ const navItems = [
   { to: "/", label: "首頁" },
   { to: "/about", label: "關於宏鼎" },
   { to: "/engineering", label: "工程集成" },
+  { to: "/energy-experience", label: "能源工程經驗" },
   { to: "/ai-integration", label: "AI 系統整合" },
   { to: "/costflow", label: "Aegis 產品線" },
   { to: "/pricing", label: "價格方案" },

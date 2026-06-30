@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as EngineeringRouteImport } from './routes/engineering'
+import { Route as EnergyExperienceRouteImport } from './routes/energy-experience'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CostflowRouteImport } from './routes/costflow'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -44,6 +45,11 @@ const PricingRoute = PricingRouteImport.update({
 const EngineeringRoute = EngineeringRouteImport.update({
   id: '/engineering',
   path: '/engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnergyExperienceRoute = EnergyExperienceRouteImport.update({
+  id: '/energy-experience',
+  path: '/energy-experience',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoRoute = DemoRouteImport.update({
@@ -146,6 +152,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/salesops': typeof SalesopsRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/costflow'
     | '/demo'
+    | '/energy-experience'
     | '/engineering'
     | '/pricing'
     | '/salesops'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/costflow'
     | '/demo'
+    | '/energy-experience'
     | '/engineering'
     | '/pricing'
     | '/salesops'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/costflow'
     | '/demo'
+    | '/energy-experience'
     | '/engineering'
     | '/pricing'
     | '/salesops'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CostflowRoute: typeof CostflowRoute
   DemoRoute: typeof DemoRoute
+  EnergyExperienceRoute: typeof EnergyExperienceRoute
   EngineeringRoute: typeof EngineeringRoute
   PricingRoute: typeof PricingRoute
   SalesopsRoute: typeof SalesopsRoute
@@ -312,6 +325,13 @@ declare module '@tanstack/react-router' {
       path: '/engineering'
       fullPath: '/engineering'
       preLoaderRoute: typeof EngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/energy-experience': {
+      id: '/energy-experience'
+      path: '/energy-experience'
+      fullPath: '/energy-experience'
+      preLoaderRoute: typeof EnergyExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo': {
@@ -482,6 +502,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CostflowRoute: CostflowRoute,
   DemoRoute: DemoRoute,
+  EnergyExperienceRoute: EnergyExperienceRoute,
   EngineeringRoute: EngineeringRoute,
   PricingRoute: PricingRoute,
   SalesopsRoute: SalesopsRoute,
