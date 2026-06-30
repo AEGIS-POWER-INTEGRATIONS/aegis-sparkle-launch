@@ -125,14 +125,15 @@ function Home() {
 
               <div className="relative">
                 <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
-                <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
+                <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                   <img
                     src={heroMain}
-                    alt="工程集成、AI 系統整合與企業管理 Dashboard 視覺"
+                    alt="宏鼎集成工程與 AI 系統整合主視覺"
                     width={1600}
-                    height={1200}
-                    className="w-full h-auto object-cover aspect-[4/3]"
+                    height={1067}
+                    className="w-full h-auto object-cover aspect-[3/2]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-ink/70 via-ink/20 to-transparent" />
                 </div>
               </div>
             </div>
