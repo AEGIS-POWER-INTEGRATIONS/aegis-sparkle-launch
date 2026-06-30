@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import mockSalesops from "@/assets/mock-salesops.jpg";
+import mockSalesopsAsset from "@/assets/business-dashboard-monitor.webp.asset.json";
+const mockSalesops = mockSalesopsAsset.url;
 import { MapPin, Mic, BrainCircuit, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/salesops")({
@@ -44,7 +45,7 @@ function SalesOps() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                 <img
                   src={mockSalesops}
-                  alt="Aegis SalesOps CRM 與業務管理 Dashboard 介面示意"
+                  alt="業務管理與 CRM 儀表板"
                   width={1408}
                   height={1008}
                   className="w-full h-auto object-cover"

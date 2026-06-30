@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import bannerEngineering from "@/assets/banner-engineering.jpg";
+import heroEngAsset from "@/assets/engineering-fiber-technician.webp.asset.json";
+import serverRackAsset from "@/assets/engineering-server-rack.webp.asset.json";
+import fiberPanelAsset from "@/assets/engineering-fiber-panel.webp.asset.json";
+import camerasAsset from "@/assets/engineering-security-cameras.webp.asset.json";
+const bannerEngineering = heroEngAsset.url;
 import { ArrowRight, Cable, Camera, HardHat, Network, Radio, ServerCog } from "lucide-react";
 
 export const Route = createFileRoute("/engineering")({
@@ -45,7 +49,7 @@ function Engineering() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
                 <img
                   src={bannerEngineering}
-                  alt="資料中心與弱電工程現場視覺"
+                  alt="光纖與弱電工程施工情境"
                   width={1600}
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
@@ -68,6 +72,26 @@ function Engineering() {
             ))}
           </div>
         </section>
+
+        {/* 工程現場視覺 */}
+        <section className="pb-24">
+          <div className="container-x grid gap-5 md:grid-cols-3">
+            {[
+              { src: serverRackAsset.url, alt: "資料中心機櫃與網路設備", label: "資料中心 / 機房基礎建置" },
+              { src: fiberPanelAsset.url, alt: "光纖配線與網路基礎設施", label: "光纖配線 / 弱電整合" },
+              { src: camerasAsset.url, alt: "監控與門禁系統整合", label: "監控 / 門禁 / 廠區安全" },
+            ].map((it) => (
+              <figure key={it.label} className="panel overflow-hidden">
+                <div className="relative aspect-[4/3] bg-ink overflow-hidden">
+                  <img src={it.src} alt={it.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
+                </div>
+                <figcaption className="p-5 text-sm font-semibold">{it.label}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
 
         <section className="pb-24">
           <div className="container-x">

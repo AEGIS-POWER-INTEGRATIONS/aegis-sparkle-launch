@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import mockCostflow from "@/assets/mock-costflow.jpg";
+import reportsAsset from "@/assets/costflow-reports-charts.webp.asset.json";
+import deskAsset from "@/assets/costflow-analytics-desk.webp.asset.json";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 export const Route = createFileRoute("/costflow")({
@@ -123,6 +125,20 @@ function CostFlow() {
               <p className="mt-4 text-muted-foreground">
                 以下情境取自典型的 30 人規模機電工程公司，導入 CostFlow 後第一個專案的真實操作節奏。
               </p>
+            </div>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {[
+                { src: reportsAsset.url, alt: "工程報價與成本分析報表" },
+                { src: deskAsset.url, alt: "企業營運數據分析" },
+              ].map((it) => (
+                <figure key={it.alt} className="panel overflow-hidden">
+                  <div className="relative aspect-[16/10] bg-ink overflow-hidden">
+                    <img src={it.src} alt={it.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                  </div>
+                </figure>
+              ))}
             </div>
 
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
