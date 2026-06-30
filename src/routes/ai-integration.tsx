@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import bannerAi from "@/assets/banner-ai.jpg";
+import bannerAiAsset from "@/assets/ai-integration-tech-interface.webp.asset.json";
+const bannerAi = bannerAiAsset.url;
 import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Settings2, Workflow } from "lucide-react";
 
 export const Route = createFileRoute("/ai-integration")({
