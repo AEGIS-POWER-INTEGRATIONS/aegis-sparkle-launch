@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import mockSalesops from "@/assets/mock-salesops.jpg";
+import mockSalesopsAsset from "@/assets/business-dashboard-monitor.webp.asset.json";
+const mockSalesops = mockSalesopsAsset.url;
 import { MapPin, Mic, BrainCircuit, MessageSquare } from "lucide-react";
 
 export const Route = createFileRoute("/salesops")({
