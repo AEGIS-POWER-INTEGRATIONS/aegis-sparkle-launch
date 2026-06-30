@@ -49,7 +49,7 @@ function Engineering() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
                 <img
                   src={bannerEngineering}
-                  alt="資料中心與弱電工程現場視覺"
+                  alt="光纖與弱電工程施工情境"
                   width={1600}
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
