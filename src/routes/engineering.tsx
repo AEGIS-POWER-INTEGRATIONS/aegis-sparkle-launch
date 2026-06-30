@@ -1,6 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import bannerEngineering from "@/assets/banner-engineering.jpg";
+import heroEngAsset from "@/assets/engineering-fiber-technician.webp.asset.json";
+import serverRackAsset from "@/assets/engineering-server-rack.webp.asset.json";
+import fiberPanelAsset from "@/assets/engineering-fiber-panel.webp.asset.json";
+import camerasAsset from "@/assets/engineering-security-cameras.webp.asset.json";
+const bannerEngineering = heroEngAsset.url;
 import { ArrowRight, Cable, Camera, HardHat, Network, Radio, ServerCog } from "lucide-react";
 
 export const Route = createFileRoute("/engineering")({
