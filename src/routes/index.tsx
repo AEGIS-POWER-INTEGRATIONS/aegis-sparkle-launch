@@ -73,16 +73,18 @@ const products = [
 ];
 
 const audiences = [
-  { icon: HardHat, label: "工程公司" },
-  { icon: Factory, label: "製造業" },
+  { icon: HardHat, label: "工程公司與系統整合商" },
+  { icon: Factory, label: "製造業與工廠營運團隊" },
   { icon: Cpu, label: "半導體與科技廠供應鏈" },
   { icon: Server, label: "資料中心與弱電工程團隊" },
+  { icon: Wrench, label: "能源與機電工程業者" },
+  { icon: Sparkles, label: "太陽光電與儲能系統相關團隊" },
   { icon: Briefcase, label: "會計師、顧問與企業服務通路" },
   { icon: Building2, label: "想導入 AI 與輕量化企業管理系統的中小企業" },
 ];
 
 const whyUs = [
-  { icon: Wrench, title: "懂工程現場，不只是寫系統", desc: "團隊長期接觸弱電、光纖、監控與資料中心專案，理解現場的真實作業節奏。" },
+  { icon: Wrench, title: "懂工程現場，不只是寫系統", desc: "核心工程團隊具備能源、機電、弱電、光纖、監控與資料中心相關工程經驗，能從現場施工、系統整合到 AI 導入一起思考。" },
   { icon: ShieldCheck, title: "懂中小企業流程，不做過度複雜的系統", desc: "聚焦最關鍵的報價、成本、業務與專案流程，先解決真正會痛的問題。" },
   { icon: GitBranch, title: "顧問、工程、系統、AI 一站式整合", desc: "從流程盤點、工程協調到系統與 AI 導入，由同一團隊負責，降低溝通成本。" },
   { icon: Layers3, title: "以模組化方式導入，降低成本與時間", desc: "分階段上線，先讓核心流程跑起來，再依企業成熟度擴充模組。" },
