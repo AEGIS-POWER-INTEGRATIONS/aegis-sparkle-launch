@@ -86,7 +86,7 @@ function Demo() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> Book a Demo</span>
+            <span className="eyebrow"><span className="dot" /> 預約諮詢</span>
             <h1 className="mt-6 text-4xl md:text-5xl">預約諮詢，<br className="hidden md:block" />讓顧問建議最適合先導入的方案。</h1>
             <p className="mt-5 text-lg text-muted-foreground">
               填寫下方表單後，顧問將於 <span className="font-semibold text-foreground">1 個工作日內</span> 與您聯繫，安排 30 分鐘的線上 Demo 與導入評估。

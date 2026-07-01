@@ -82,7 +82,7 @@ function CostFlow() {
         <section className="py-24">
           <div className="container-x grid gap-10 lg:grid-cols-2">
             <div>
-              <span className="eyebrow"><span className="dot" /> Who is it for</span>
+              <span className="eyebrow"><span className="dot" /> 服務對象</span>
               <h2 className="mt-5 text-3xl">適合這些企業</h2>
               <ul className="mt-6 space-y-3">
                 {[
