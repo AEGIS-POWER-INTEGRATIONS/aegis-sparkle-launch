@@ -113,9 +113,9 @@ function Pricing() {
           <div className="container-x">
             <div className="max-w-2xl">
               <span className="eyebrow"><span className="dot" /> 導入服務費</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">一次性導入服務，<br />讓系統真正貼合你的流程。</h2>
+              <h2 className="mt-5 text-3xl md:text-4xl">導入服務費</h2>
               <p className="mt-4 text-muted-foreground">
-                訂閱費用涵蓋平台使用權與更新；以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。
+                從流程盤點到上線陪跑，協助系統真正落地。以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。
               </p>
             </div>
 
