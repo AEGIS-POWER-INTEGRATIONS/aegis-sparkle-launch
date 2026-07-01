@@ -47,45 +47,47 @@
 :root {
   --radius: 0.75rem;
 
-  /* Warm cream + deep navy + amber gold */
-  --background: oklch(0.985 0.008 85);
-  --foreground: oklch(0.21 0.035 260);
+  /* Deep navy + tech blue + cool gray */
+  --background: oklch(0.985 0.005 240);
+  --foreground: oklch(0.19 0.04 260);
 
-  --surface: oklch(0.97 0.012 85);
-  --surface-2: oklch(0.945 0.018 85);
+  --surface: oklch(0.97 0.008 240);
+  --surface-2: oklch(0.94 0.012 240);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.035 260);
+  --card-foreground: oklch(0.19 0.04 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.035 260);
+  --popover-foreground: oklch(0.19 0.04 260);
 
-  /* Deep navy ink */
-  --ink: oklch(0.21 0.035 260);
-  --ink-foreground: oklch(0.97 0.012 85);
+  /* Deep navy #0B1F3A */
+  --ink: oklch(0.23 0.06 258);
+  --ink-foreground: oklch(0.985 0.005 240);
 
-  --primary: oklch(0.21 0.035 260);
-  --primary-foreground: oklch(0.985 0.008 85);
+  /* Tech blue #2563EB primary */
+  --primary: oklch(0.55 0.22 258);
+  --primary-foreground: oklch(0.99 0.005 240);
 
-  --secondary: oklch(0.94 0.014 85);
-  --secondary-foreground: oklch(0.21 0.035 260);
+  --secondary: oklch(0.95 0.012 240);
+  --secondary-foreground: oklch(0.23 0.06 258);
 
-  --muted: oklch(0.945 0.014 85);
-  --muted-foreground: oklch(0.46 0.025 260);
+  --muted: oklch(0.95 0.01 240);
+  --muted-foreground: oklch(0.5 0.03 250);
 
-  --accent: oklch(0.93 0.04 75);
-  --accent-foreground: oklch(0.21 0.035 260);
+  --accent: oklch(0.72 0.15 235);
+  --accent-foreground: oklch(0.19 0.04 260);
 
-  /* Warm amber gold accent */
-  --gold: oklch(0.78 0.16 75);
-  --gold-foreground: oklch(0.21 0.035 260);
+  /* Low-key gold accent (use sparingly) */
+  --gold: oklch(0.75 0.13 85);
+  --gold-foreground: oklch(0.19 0.04 260);
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: oklch(0.89 0.018 85);
-  --input: oklch(0.89 0.018 85);
-  --ring: oklch(0.78 0.16 75);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.9 0.01 240);
+  --ring: oklch(0.55 0.22 258);
 }
+
 
 .dark {
   --background: oklch(0.18 0.03 260);
@@ -127,10 +129,11 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     background-image:
-      radial-gradient(800px 400px at 85% -10%, oklch(0.78 0.16 75 / 0.12), transparent 70%),
-      radial-gradient(700px 380px at -10% 8%, oklch(0.21 0.035 260 / 0.05), transparent 70%);
+      radial-gradient(800px 400px at 85% -10%, oklch(0.55 0.22 258 / 0.08), transparent 70%),
+      radial-gradient(700px 380px at -10% 8%, oklch(0.23 0.06 258 / 0.06), transparent 70%);
     background-attachment: fixed;
   }
+
 
   h1, h2, h3, h4 {
     letter-spacing: -0.02em;
@@ -138,9 +141,10 @@
   }
 
   ::selection {
-    background: var(--gold);
-    color: var(--gold-foreground);
+    background: var(--primary);
+    color: var(--primary-foreground);
   }
+
 }
 
 @layer components {
@@ -166,8 +170,8 @@
   }
   .eyebrow .dot {
     width: 6px; height: 6px; border-radius: 999px;
-    background: var(--gold);
-    box-shadow: 0 0 0 4px oklch(0.78 0.16 75 / 0.18);
+    background: var(--primary);
+    box-shadow: 0 0 0 4px oklch(0.55 0.22 258 / 0.18);
   }
 
   .btn {
@@ -185,16 +189,18 @@
     white-space: nowrap;
   }
   .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+  .btn-primary:hover { background: oklch(0.65 0.19 235); border-color: oklch(0.65 0.19 235); }
+  .btn-gold {
     background: var(--ink);
     color: var(--ink-foreground);
     border-color: var(--ink);
   }
-  .btn-primary:hover { background: oklch(0.27 0.04 260); }
-  .btn-gold {
-    background: var(--gold);
-    color: var(--gold-foreground);
-  }
-  .btn-gold:hover { filter: brightness(0.95); }
+  .btn-gold:hover { background: oklch(0.3 0.06 258); }
+
   .btn-ghost {
     background: transparent;
     color: var(--foreground);
@@ -221,11 +227,12 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold-foreground);
-    background: var(--gold);
+    color: var(--primary-foreground);
+    background: var(--primary);
     padding: 0.25rem 0.55rem;
     border-radius: 999px;
   }
+
 
   .num-badge {
     display: inline-flex;
