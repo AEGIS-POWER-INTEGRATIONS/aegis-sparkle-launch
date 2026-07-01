@@ -48,10 +48,10 @@ function Pricing() {
         <section className="py-20">
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> 價格方案</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">價格方案</h1>
+            <h1 className="mt-6 text-4xl md:text-5xl">系統導入與訂閱方案</h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              宏鼎集成提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統導入服務。
-              實際費用將依導入範圍、使用人數、資料串接、客製需求與服務內容評估。
+              以下方案主要適用於 Aegis Business Apps、AI 系統整合與企業流程數位化導入。
+              工程集成與能源機電工程將依現場條件、施工範圍、設備規格與工期另行評估報價。
             </p>
           </div>
         </section>
