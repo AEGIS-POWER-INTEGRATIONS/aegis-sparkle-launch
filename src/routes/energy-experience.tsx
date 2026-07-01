@@ -107,16 +107,22 @@ function EnergyExperience() {
               alt="能源與機電工程經驗"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/75 to-ink/90" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(to right, rgba(5,15,30,0.90), rgba(5,15,30,0.55))",
+              }}
+            />
           </div>
           <div className="relative container-x py-24 md:py-32 text-ink-foreground">
-            <span className="eyebrow text-ink-foreground/80">
+            <span className="eyebrow !bg-ink/50 !border-white/20">
               <span className="dot bg-gold" /> 核心工程團隊經驗
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl text-ink-foreground">
               能源與機電工程經驗
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-foreground/85">
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-foreground/95">
               宏鼎集成核心工程團隊具備大型太陽光電、儲能系統、機電工程與現場施工管理經驗。團隊成員過往參與多項屋頂型光電、水面型光電、工業區儲能與大型能源案場，累積從工程規劃、機電整合、施工協調到現場安全管理的完整實務能力。
             </p>
           </div>
