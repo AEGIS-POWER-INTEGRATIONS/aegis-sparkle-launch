@@ -170,8 +170,8 @@
   }
   .eyebrow .dot {
     width: 6px; height: 6px; border-radius: 999px;
-    background: var(--gold);
-    box-shadow: 0 0 0 4px oklch(0.78 0.16 75 / 0.18);
+    background: var(--primary);
+    box-shadow: 0 0 0 4px oklch(0.55 0.22 258 / 0.18);
   }
 
   .btn {
@@ -189,16 +189,18 @@
     white-space: nowrap;
   }
   .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+  }
+  .btn-primary:hover { background: oklch(0.65 0.19 235); border-color: oklch(0.65 0.19 235); }
+  .btn-gold {
     background: var(--ink);
     color: var(--ink-foreground);
     border-color: var(--ink);
   }
-  .btn-primary:hover { background: oklch(0.27 0.04 260); }
-  .btn-gold {
-    background: var(--gold);
-    color: var(--gold-foreground);
-  }
-  .btn-gold:hover { filter: brightness(0.95); }
+  .btn-gold:hover { background: oklch(0.3 0.06 258); }
+
   .btn-ghost {
     background: transparent;
     color: var(--foreground);
