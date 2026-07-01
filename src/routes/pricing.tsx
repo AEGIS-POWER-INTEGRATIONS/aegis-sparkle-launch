@@ -176,6 +176,44 @@ function Pricing() {
             </div>
           </div>
         </section>
+
+        {/* FAQ */}
+        <section className="py-20">
+          <div className="container-x max-w-4xl">
+            <span className="eyebrow"><span className="dot" /> 常見問題</span>
+            <h2 className="mt-5 text-3xl md:text-4xl">價格與導入常見問題</h2>
+
+            <div className="mt-10 grid gap-4">
+              {[
+                {
+                  q: "訂閱費與導入費有什麼不同？",
+                  a: "訂閱費為系統使用、維護與版本更新費用；導入費為一次性的流程訪談、欄位設定、資料整理、教育訓練與上線輔導費用。",
+                },
+                {
+                  q: "可以只先導入單一流程嗎？",
+                  a: "可以。建議從報價、成本、CRM、業務週報或專案管理其中一個流程開始，再逐步擴充。",
+                },
+                {
+                  q: "可以串接既有 ERP 或 Excel 嗎？",
+                  a: "可以依需求評估。常見方式包含 Excel / CSV 匯入、API、Webhook 或資料庫同步。",
+                },
+                {
+                  q: "導入大約需要多久？",
+                  a: "標準導入通常 2–4 週可上線第一階段功能；若涉及多部門、歷史資料搬遷或系統串接，時程將依需求另行評估。",
+                },
+                {
+                  q: "工程集成服務如何報價？",
+                  a: "工程集成、能源與機電工程服務將依現場條件、施工範圍、設備規格、工期、人力與協力廠商需求另行評估。",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="panel p-6">
+                  <h3 className="text-base font-semibold">{item.q}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>
