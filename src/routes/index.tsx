@@ -96,26 +96,20 @@ function Home() {
       <SiteNav />
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-background to-surface/30">
-          <div className="container-x py-16 md:py-24">
+        <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-background to-surface/40">
+          <div className="container-x pt-16 pb-14 md:pt-24 md:pb-20">
             <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div>
-                <span className="eyebrow"><span className="dot" /> Aegis Power Integrations Co., Ltd.</span>
+                <span className="eyebrow"><span className="dot" /> AEGIS POWER INTEGRATIONS</span>
                 <div className="mt-5 text-sm md:text-base font-semibold tracking-wide text-foreground/80">
                   宏鼎集成股份有限公司
                 </div>
-                <h1 className="mt-3 text-4xl md:text-5xl xl:text-6xl leading-[1.1]">
-                  宏鼎集成
-                  <span className="text-muted-foreground"> ｜ </span>
-                  <br className="hidden md:block" />
-                  AI 時代的
-                  <span className="relative inline-block">
-                    <span className="relative z-10">工程與企業系統</span>
-                    <span className="absolute inset-x-0 -bottom-1 h-3 -z-0 bg-gold/70 rounded-sm" />
-                  </span>
-                  整合夥伴
+                <h1 className="mt-4 text-[2.1rem] leading-[1.18] md:text-5xl md:leading-[1.12] xl:text-[3.4rem] xl:leading-[1.1]">
+                  <span className="whitespace-nowrap">宏鼎集成｜AI 時代的</span>
+                  <br />
+                  <span className="text-primary">工程與企業系統整合夥伴</span>
                 </h1>
-                <p className="mt-7 text-lg text-muted-foreground leading-relaxed">
+                <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-xl">
                   結合工程現場經驗、企業流程系統與 AI 自動化技術，協助工程公司、製造業、科技廠供應鏈與中小企業，
                   從現場工程、報價成本、專案管理到營運決策，建立可落地、可管理、可擴充的數位化能力。
                 </p>
@@ -123,11 +117,26 @@ function Home() {
                   <Link to="/demo" className="btn btn-primary">預約諮詢 <ArrowRight className="h-4 w-4" /></Link>
                   <Link to="/costflow" className="btn btn-ghost">了解 Aegis 產品線</Link>
                 </div>
+
+                <div className="mt-10 grid grid-cols-3 gap-6 max-w-md border-t border-border pt-6">
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">EPC+</div>
+                    <div className="text-xs text-muted-foreground mt-1 tracking-wide">工程整合思維</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">AI</div>
+                    <div className="text-xs text-muted-foreground mt-1 tracking-wide">流程自動化</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">SaaS</div>
+                    <div className="text-xs text-muted-foreground mt-1 tracking-wide">模組化系統</div>
+                  </div>
+                </div>
               </div>
 
               <div className="relative">
-                <div className="absolute -inset-6 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
-                <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
+                <div className="absolute -inset-6 rounded-2xl bg-gradient-to-br from-primary/15 via-transparent to-transparent blur-2xl" />
+                <div className="relative overflow-hidden rounded-lg border border-border shadow-lift bg-ink">
                   <img
                     src={heroMain}
                     alt="宏鼎集成工程與 AI 系統整合主視覺"
@@ -135,20 +144,26 @@ function Home() {
                     height={1067}
                     className="w-full h-auto object-cover aspect-[3/2]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-ink/70 via-ink/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/30 to-transparent" />
+                  <div className="absolute left-5 bottom-5 right-5 flex items-end justify-between text-ink-foreground">
+                    <div>
+                      <div className="text-[10px] tracking-[0.24em] font-semibold opacity-70">ENGINEERING × AI × SYSTEMS</div>
+                      <div className="mt-1 text-sm font-semibold">工程集成 · AI 系統整合 · 企業管理系統</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-16 grid gap-5 md:grid-cols-3">
+            <div className="mt-14 grid gap-4 md:grid-cols-3">
               {heroServices.map(({ icon: Icon, title, desc, to }) => (
-                <Link key={title} to={to} className="panel p-7 hover:shadow-lift transition-shadow group">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg bg-ink text-ink-foreground">
+                <Link key={title} to={to} className="panel p-6 hover:border-primary/40 hover:shadow-lift transition-all group">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="mt-5 text-xl">{title}</h3>
+                  <h3 className="mt-5 text-lg">{title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-                  <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-foreground group-hover:gap-2 transition-all">
+                  <div className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
                     了解更多 <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </Link>
