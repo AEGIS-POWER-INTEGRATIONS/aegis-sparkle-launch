@@ -20,22 +20,22 @@ const plans = [
   {
     name: "Starter", title: "單一流程導入",
     price: "NT$5,000", suffix: "/ 月起",
-    desc: "適合單一流程數位化、初期導入。",
-    features: ["單一模組權限", "Excel 匯入與標準範本", "基本報表", "Email 支援"],
+    desc: "適合單一流程數位化與初期試用，例如報價表單、客戶資料、簡易報表或單一部門流程。",
+    features: ["單一產品 / 單一流程模組", "標準欄位與範本", "Excel / CSV 匯入", "基本報表與權限設定", "Email 支援"],
     cta: "申請試用", variant: "ghost" as const,
   },
   {
     name: "Pro", title: "中小企業正式導入",
     price: "NT$15,000", suffix: "/ 月起",
-    desc: "適合中小企業正式導入 CRM、報價、成本或業務管理。",
-    features: ["完整模組權限", "AI 提醒與週報", "主管儀表板", "導入顧問支援"],
+    desc: "適合中小企業正式導入 CRM、報價、成本、業務管理或 AI 週報系統。建議作為正式導入 Aegis CostFlow、SalesOps 或 AI 週報系統的起始方案。",
+    features: ["多流程模組權限", "AI 提醒與自動週報", "主管儀表板", "欄位與報表設定", "導入顧問支援"],
     cta: "預約諮詢", variant: "primary" as const, featured: true,
   },
   {
     name: "Business", title: "企業多部門導入",
     price: "專案報價", suffix: "",
     desc: "適合多部門、多據點、需要串接既有系統或客製流程的企業。",
-    features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "SLA 與資安規範"],
+    features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "專案級支援與資安需求評估"],
     cta: "預約諮詢", variant: "ghost" as const,
   },
 ];
@@ -48,10 +48,10 @@ function Pricing() {
         <section className="py-20">
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> 價格方案</span>
-            <h1 className="mt-6 text-4xl md:text-5xl">價格方案</h1>
+            <h1 className="mt-6 text-4xl md:text-5xl">系統導入與訂閱方案</h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              宏鼎集成提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統導入服務。
-              實際費用將依導入範圍、使用人數、資料串接、客製需求與服務內容評估。
+              以下方案主要適用於 Aegis Business Apps、AI 系統整合與企業流程數位化導入。
+              工程集成與能源機電工程將依現場條件、施工範圍、設備規格與工期另行評估報價。
             </p>
           </div>
         </section>
@@ -113,9 +113,9 @@ function Pricing() {
           <div className="container-x">
             <div className="max-w-2xl">
               <span className="eyebrow"><span className="dot" /> 導入服務費</span>
-              <h2 className="mt-5 text-3xl md:text-4xl">一次性導入服務，<br />讓系統真正貼合你的流程。</h2>
+              <h2 className="mt-5 text-3xl md:text-4xl">導入服務費</h2>
               <p className="mt-4 text-muted-foreground">
-                訂閱費用涵蓋平台使用權與更新；以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。
+                從流程盤點到上線陪跑，協助系統真正落地。以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。
               </p>
             </div>
 
@@ -139,7 +139,7 @@ function Pricing() {
                 {
                   name: "系統串接", price: "另行報價", suffix: "",
                   desc: "依需求串接 LINE、CRM、ERP、BI 等。",
-                  items: ["LINE Notify / OA", "ERP 雙向同步", "BI 報表整合", "API / Webhook 客製"],
+                  items: ["LINE 官方帳號 / Messaging API", "ERP 雙向同步", "BI 報表整合", "API / Webhook 客製"],
                 },
               ].map((p) => (
                 <div key={p.name} className={`panel p-6 flex flex-col gap-4 ${p.featured ? "ring-2 ring-gold" : ""}`}>
@@ -173,6 +173,44 @@ function Pricing() {
                   將依現場條件、施工範圍、設備規格、工期與協力廠商需求另行報價。
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-20">
+          <div className="container-x max-w-4xl">
+            <span className="eyebrow"><span className="dot" /> 常見問題</span>
+            <h2 className="mt-5 text-3xl md:text-4xl">價格與導入常見問題</h2>
+
+            <div className="mt-10 grid gap-4">
+              {[
+                {
+                  q: "訂閱費與導入費有什麼不同？",
+                  a: "訂閱費為系統使用、維護與版本更新費用；導入費為一次性的流程訪談、欄位設定、資料整理、教育訓練與上線輔導費用。",
+                },
+                {
+                  q: "可以只先導入單一流程嗎？",
+                  a: "可以。建議從報價、成本、CRM、業務週報或專案管理其中一個流程開始，再逐步擴充。",
+                },
+                {
+                  q: "可以串接既有 ERP 或 Excel 嗎？",
+                  a: "可以依需求評估。常見方式包含 Excel / CSV 匯入、API、Webhook 或資料庫同步。",
+                },
+                {
+                  q: "導入大約需要多久？",
+                  a: "標準導入通常 2–4 週可上線第一階段功能；若涉及多部門、歷史資料搬遷或系統串接，時程將依需求另行評估。",
+                },
+                {
+                  q: "工程集成服務如何報價？",
+                  a: "工程集成、能源與機電工程服務將依現場條件、施工範圍、設備規格、工期、人力與協力廠商需求另行評估。",
+                },
+              ].map((item, idx) => (
+                <div key={idx} className="panel p-6">
+                  <h3 className="text-base font-semibold">{item.q}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
