@@ -121,9 +121,9 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-border/60">
-        <div className="container-x py-5 text-xs text-muted-foreground flex flex-wrap justify-between gap-2">
+        <div className="container-x py-5 text-xs text-muted-foreground flex flex-col gap-1.5 md:flex-row md:justify-between md:items-center">
           <span>© 2026 宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. All rights reserved.</span>
-          <span>工程集成｜AI 系統整合｜企業管理系統導入</span>
+          <span>工程集成｜能源與機電工程經驗｜AI 系統整合｜企業管理系統導入</span>
         </div>
       </div>
     </footer>
