@@ -139,7 +139,7 @@ function Pricing() {
                 {
                   name: "系統串接", price: "另行報價", suffix: "",
                   desc: "依需求串接 LINE、CRM、ERP、BI 等。",
-                  items: ["LINE Notify / OA", "ERP 雙向同步", "BI 報表整合", "API / Webhook 客製"],
+                  items: ["LINE 官方帳號 / Messaging API", "ERP 雙向同步", "BI 報表整合", "API / Webhook 客製"],
                 },
               ].map((p) => (
                 <div key={p.name} className={`panel p-6 flex flex-col gap-4 ${p.featured ? "ring-2 ring-gold" : ""}`}>
