@@ -176,7 +176,7 @@ function Home() {
         <section className="py-20 bg-surface/40 border-y border-border">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Challenges</span>
+              <span className="eyebrow"><span className="dot" /> 營運痛點</span>
               <h2 className="mt-4 text-3xl md:text-4xl">我們協助企業解決營運流程斷裂的問題</h2>
               <p className="mt-3 text-muted-foreground">
                 從報價、成本到 AI 導入，宏鼎集成聚焦中小企業與工程公司最常見的四個營運斷點。
@@ -205,7 +205,7 @@ function Home() {
         <section className="py-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Capabilities</span>
+              <span className="eyebrow"><span className="dot" /> 核心能力</span>
               <h2 className="mt-4 text-3xl md:text-4xl">三大服務能力</h2>
               <p className="mt-3 text-muted-foreground">
                 工程集成、AI 系統整合與模組化企業系統，三條主軸覆蓋企業數位化的核心需求。
@@ -242,7 +242,7 @@ function Home() {
         <section className="py-20 bg-surface/40 border-y border-border">
           <div className="container-x">
             <div className="max-w-3xl">
-              <span className="eyebrow"><span className="dot" /> Products</span>
+              <span className="eyebrow"><span className="dot" /> 產品線</span>
               <h2 className="mt-4 text-3xl md:text-4xl">宏鼎集成旗下 Aegis Business Apps 產品線</h2>
               <p className="mt-3 text-muted-foreground leading-relaxed">
                 從工程報價、業務管理到企業 AI 導入，協助企業以模組化方式逐步建立自己的數位營運系統。
@@ -278,7 +278,7 @@ function Home() {
         <section className="py-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Who we serve</span>
+              <span className="eyebrow"><span className="dot" /> 服務對象</span>
               <h2 className="mt-4 text-3xl md:text-4xl">適合合作的企業</h2>
               <p className="mt-3 text-muted-foreground">
                 從現場工程到企業總部，宏鼎集成的服務涵蓋以下領域。
@@ -301,7 +301,7 @@ function Home() {
         <section className="py-20 bg-surface/40 border-y border-border">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Why us</span>
+              <span className="eyebrow"><span className="dot" /> 為什麼選擇宏鼎</span>
               <h2 className="mt-4 text-3xl md:text-4xl">為什麼選擇宏鼎集成</h2>
               <p className="mt-3 text-muted-foreground">
                 結合工程實務、系統開發與 AI 導入經驗，提供務實、可落地的整合服務。
