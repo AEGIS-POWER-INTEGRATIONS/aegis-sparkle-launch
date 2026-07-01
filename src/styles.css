@@ -227,11 +227,12 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold-foreground);
-    background: var(--gold);
+    color: var(--primary-foreground);
+    background: var(--primary);
     padding: 0.25rem 0.55rem;
     border-radius: 999px;
   }
+
 
   .num-badge {
     display: inline-flex;
