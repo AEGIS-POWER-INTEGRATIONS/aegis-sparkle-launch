@@ -141,9 +141,10 @@
   }
 
   ::selection {
-    background: var(--gold);
-    color: var(--gold-foreground);
+    background: var(--primary);
+    color: var(--primary-foreground);
   }
+
 }
 
 @layer components {
