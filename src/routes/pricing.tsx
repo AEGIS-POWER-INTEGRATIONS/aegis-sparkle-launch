@@ -20,22 +20,22 @@ const plans = [
   {
     name: "Starter", title: "單一流程導入",
     price: "NT$5,000", suffix: "/ 月起",
-    desc: "適合單一流程數位化、初期導入。",
-    features: ["單一模組權限", "Excel 匯入與標準範本", "基本報表", "Email 支援"],
+    desc: "適合單一流程數位化與初期試用，例如報價表單、客戶資料、簡易報表或單一部門流程。",
+    features: ["單一產品 / 單一流程模組", "標準欄位與範本", "Excel / CSV 匯入", "基本報表與權限設定", "Email 支援"],
     cta: "申請試用", variant: "ghost" as const,
   },
   {
     name: "Pro", title: "中小企業正式導入",
     price: "NT$15,000", suffix: "/ 月起",
-    desc: "適合中小企業正式導入 CRM、報價、成本或業務管理。",
-    features: ["完整模組權限", "AI 提醒與週報", "主管儀表板", "導入顧問支援"],
+    desc: "適合中小企業正式導入 CRM、報價、成本、業務管理或 AI 週報系統。建議作為正式導入 Aegis CostFlow、SalesOps 或 AI 週報系統的起始方案。",
+    features: ["多流程模組權限", "AI 提醒與自動週報", "主管儀表板", "欄位與報表設定", "導入顧問支援"],
     cta: "預約諮詢", variant: "primary" as const, featured: true,
   },
   {
     name: "Business", title: "企業多部門導入",
     price: "專案報價", suffix: "",
     desc: "適合多部門、多據點、需要串接既有系統或客製流程的企業。",
-    features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "SLA 與資安規範"],
+    features: ["客製流程設定", "LINE / CRM / BI 串接", "專屬導入顧問", "專案級支援與資安需求評估"],
     cta: "預約諮詢", variant: "ghost" as const,
   },
 ];
