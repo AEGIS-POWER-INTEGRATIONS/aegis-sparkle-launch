@@ -45,47 +45,47 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 
-  /* Deep navy + tech blue + cool gray */
-  --background: oklch(0.985 0.005 240);
-  --foreground: oklch(0.19 0.04 260);
+  /* Enterprise engineering navy + tech blue + cool gray (Schneider/Delta/CTCI reference) */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.17 0.035 260);
 
-  --surface: oklch(0.97 0.008 240);
-  --surface-2: oklch(0.94 0.012 240);
+  --surface: oklch(0.975 0.006 240);
+  --surface-2: oklch(0.945 0.01 240);
 
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.19 0.04 260);
+  --card-foreground: oklch(0.17 0.035 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.19 0.04 260);
+  --popover-foreground: oklch(0.17 0.035 260);
 
   /* Deep navy #0B1F3A */
-  --ink: oklch(0.23 0.06 258);
+  --ink: oklch(0.2 0.055 258);
   --ink-foreground: oklch(0.985 0.005 240);
 
   /* Tech blue #2563EB primary */
-  --primary: oklch(0.55 0.22 258);
+  --primary: oklch(0.53 0.22 258);
   --primary-foreground: oklch(0.99 0.005 240);
 
   --secondary: oklch(0.95 0.012 240);
-  --secondary-foreground: oklch(0.23 0.06 258);
+  --secondary-foreground: oklch(0.2 0.055 258);
 
-  --muted: oklch(0.95 0.01 240);
-  --muted-foreground: oklch(0.5 0.03 250);
+  --muted: oklch(0.955 0.008 240);
+  --muted-foreground: oklch(0.48 0.028 250);
 
   --accent: oklch(0.72 0.15 235);
-  --accent-foreground: oklch(0.19 0.04 260);
+  --accent-foreground: oklch(0.17 0.035 260);
 
-  /* Low-key gold accent (use sparingly) */
-  --gold: oklch(0.75 0.13 85);
-  --gold-foreground: oklch(0.19 0.04 260);
+  /* Reserved low-key accent — used only for small energy tags, not buttons */
+  --gold: oklch(0.7 0.15 168);
+  --gold-foreground: oklch(0.17 0.035 260);
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: oklch(0.9 0.01 240);
-  --input: oklch(0.9 0.01 240);
-  --ring: oklch(0.55 0.22 258);
+  --border: oklch(0.905 0.008 240);
+  --input: oklch(0.905 0.008 240);
+  --ring: oklch(0.53 0.22 258);
 }
 
 
@@ -129,14 +129,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     background-image:
-      radial-gradient(800px 400px at 85% -10%, oklch(0.55 0.22 258 / 0.08), transparent 70%),
-      radial-gradient(700px 380px at -10% 8%, oklch(0.23 0.06 258 / 0.06), transparent 70%);
+      radial-gradient(900px 500px at 90% -10%, oklch(0.53 0.22 258 / 0.06), transparent 70%),
+      radial-gradient(700px 380px at -10% 0%, oklch(0.2 0.055 258 / 0.05), transparent 70%);
     background-attachment: fixed;
   }
 
 
   h1, h2, h3, h4 {
-    letter-spacing: -0.02em;
+    letter-spacing: -0.022em;
     font-weight: 700;
   }
 
@@ -158,20 +158,20 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--primary);
+    padding: 0.35rem 0.7rem;
+    border: 1px solid oklch(0.53 0.22 258 / 0.28);
+    border-radius: 4px;
+    background: oklch(0.53 0.22 258 / 0.06);
     text-transform: uppercase;
-    color: var(--muted-foreground);
-    padding: 0.4rem 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: var(--card);
   }
   .eyebrow .dot {
-    width: 6px; height: 6px; border-radius: 999px;
+    width: 5px; height: 5px; border-radius: 1px;
     background: var(--primary);
-    box-shadow: 0 0 0 4px oklch(0.55 0.22 258 / 0.18);
+    box-shadow: 0 0 0 3px oklch(0.53 0.22 258 / 0.15);
   }
 
   .btn {
@@ -179,8 +179,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.7rem 1.15rem;
-    border-radius: 0.65rem;
+    padding: 0.75rem 1.2rem;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 0.95rem;
     transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -193,45 +193,64 @@
     color: var(--primary-foreground);
     border-color: var(--primary);
   }
-  .btn-primary:hover { background: oklch(0.65 0.19 235); border-color: oklch(0.65 0.19 235); }
+  .btn-primary:hover { background: oklch(0.45 0.22 258); border-color: oklch(0.45 0.22 258); }
   .btn-gold {
     background: var(--ink);
     color: var(--ink-foreground);
     border-color: var(--ink);
   }
-  .btn-gold:hover { background: oklch(0.3 0.06 258); }
+  .btn-gold:hover { background: oklch(0.26 0.06 258); }
 
   .btn-ghost {
     background: transparent;
     color: var(--foreground);
     border-color: var(--border);
   }
-  .btn-ghost:hover { background: var(--surface-2); }
+  .btn-ghost:hover { background: var(--surface-2); border-color: oklch(0.53 0.22 258 / 0.4); color: var(--primary); }
 
   .panel {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-shadow: var(--shadow-card);
   }
   .panel-lift {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 1.25rem;
+    border-radius: 0.75rem;
     box-shadow: var(--shadow-lift);
   }
 
   .tag {
     display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--primary-foreground);
-    background: var(--primary);
-    padding: 0.25rem 0.55rem;
-    border-radius: 999px;
+    color: var(--primary);
+    background: oklch(0.53 0.22 258 / 0.08);
+    border: 1px solid oklch(0.53 0.22 258 / 0.25);
+    padding: 0.22rem 0.55rem;
+    border-radius: 3px;
   }
+
+  .section-dark {
+    background: linear-gradient(180deg, oklch(0.18 0.05 258) 0%, oklch(0.14 0.045 258) 100%);
+    color: oklch(0.98 0.005 240);
+    position: relative;
+    overflow: hidden;
+  }
+  .section-dark::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 80%);
+  }
+  .section-dark > * { position: relative; }
 
 
   .num-badge {
@@ -239,12 +258,20 @@
     align-items: center;
     justify-content: center;
     width: 2.25rem; height: 2.25rem;
-    border-radius: 0.6rem;
+    border-radius: 3px;
     background: var(--ink);
     color: var(--ink-foreground);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .accent-bar {
+    display: inline-block;
+    width: 40px; height: 3px;
+    background: var(--primary);
+    margin-bottom: 1.1rem;
   }
 }
 

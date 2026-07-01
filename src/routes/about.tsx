@@ -134,7 +134,7 @@ function About() {
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Challenges</span>
+              <span className="eyebrow"><span className="dot" /> 我們解決的問題</span>
               <h2 className="mt-4 text-3xl md:text-4xl">我們解決的問題</h2>
               <p className="mt-3 text-muted-foreground">
                 從工程現場到企業管理，宏鼎集成聚焦四個最常見、也最關鍵的營運斷點。
@@ -163,7 +163,7 @@ function About() {
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Capabilities</span>
+              <span className="eyebrow"><span className="dot" /> 核心能力</span>
               <h2 className="mt-4 text-3xl md:text-4xl">核心能力</h2>
               <p className="mt-3 text-muted-foreground">
                 工程、AI 與企業系統三條主軸，貫穿宏鼎集成所有服務。
@@ -187,7 +187,7 @@ function About() {
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-3xl">
-              <span className="eyebrow"><span className="dot" /> Methodology</span>
+              <span className="eyebrow"><span className="dot" /> 導入方法</span>
               <h2 className="mt-4 text-3xl md:text-4xl">從單一流程開始，逐步建立企業數位營運系統</h2>
               <p className="mt-3 text-muted-foreground">
                 我們以模組化方式分階段導入，降低風險、縮短上線時間，讓企業在每一步都能看見成效。
@@ -214,7 +214,7 @@ function About() {
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> Who we serve</span>
+              <span className="eyebrow"><span className="dot" /> 服務對象</span>
               <h2 className="mt-4 text-3xl md:text-4xl">服務對象</h2>
               <p className="mt-3 text-muted-foreground">
                 從現場工程到企業總部，宏鼎集成的服務涵蓋以下領域。
