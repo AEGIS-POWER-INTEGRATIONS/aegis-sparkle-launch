@@ -4,17 +4,26 @@ import mockSalesopsAsset from "@/assets/business-dashboard-monitor.webp.asset.js
 const mockSalesops = mockSalesopsAsset.url;
 import { MapPin, Mic, BrainCircuit, MessageSquare } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/salesops")({
   head: () => ({
     meta: [
-      { title: "Aegis SalesOps｜AI 業務管理系統" },
-      { name: "description", content: "LINE 回報、語音日誌、CRM 與 AI 週報，讓主管掌握業務進度。" },
-      { property: "og:title", content: "Aegis SalesOps｜AI 業務管理系統" },
+      { title: "Aegis SalesOps｜AI 業務管理與週報系統" },
+      { name: "description", content: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓中小企業與工程公司的業務管理更即時、更透明。" },
+      { name: "keywords", content: "CRM, 業務管理系統, AI 週報, 業務日報, LINE 業務回報, 中小企業 CRM, Aegis SalesOps" },
+      { property: "og:title", content: "Aegis SalesOps｜AI 業務管理與週報系統" },
       { property: "og:description", content: "把業務管理從追人，變成看數據。" },
+      { property: "og:url", content: `${SITE_URL}/salesops` },
+      { property: "og:type", content: "product" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/salesops` }],
   }),
   component: SalesOps,
 });
+
 
 function SalesOps() {
   return (

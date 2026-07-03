@@ -33,19 +33,28 @@ import {
   GitBranch,
 } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "宏鼎集成｜AI 時代的工程與企業系統整合夥伴" },
       { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. 提供工程集成、AI 系統整合與 Aegis Business Apps 模組化企業系統，協助工程公司、製造業、科技廠供應鏈與中小企業建立可落地的數位化營運能力。" },
+      { name: "keywords", content: "宏鼎集成, 工程集成, AI 系統整合, 企業管理系統, 台灣工程公司, 製造業數位化, 中小企業 AI, Aegis Business Apps" },
       { property: "og:title", content: "宏鼎集成｜AI 時代的工程與企業系統整合夥伴" },
       { property: "og:description", content: "結合工程現場經驗、企業流程系統與 AI 自動化技術，從報價、成本、專案管理到營運決策一站式整合。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "640" },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: Home,
 });
+
 
 const heroServices = [
   { icon: Cable, title: "工程集成服務", desc: "半導體與科技廠供應鏈、資料中心、弱電、光纖、監控、門禁與廠區系統整合。", to: "/engineering" as const },

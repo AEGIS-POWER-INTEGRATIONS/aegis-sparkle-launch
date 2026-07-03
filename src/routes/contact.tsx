@@ -12,19 +12,26 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "聯絡我們｜宏鼎集成股份有限公司" },
       { name: "description", content: "聯絡宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. — 台中市西區台灣大道二段2號20樓。預約工程集成、AI 系統整合與 Aegis Business Apps 企業管理系統的初步諮詢。" },
+      { name: "keywords", content: "宏鼎集成 聯絡, 台中工程公司, 系統整合 諮詢, Aegis 聯絡我們" },
       { property: "og:title", content: "聯絡我們｜宏鼎集成" },
       { property: "og:description", content: "預約工程集成、AI 系統整合與企業管理系統諮詢。台中市西區台灣大道二段2號20樓。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/contact" },
+      { property: "og:url", content: `${SITE_URL}/contact` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/contact" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
   }),
   component: Contact,
 });
+
 
 const infoCards = [
   {

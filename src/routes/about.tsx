@@ -18,19 +18,26 @@ import {
   HardHat,
 } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "關於宏鼎｜宏鼎集成股份有限公司" },
-      { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. — AI 時代的工程與企業系統整合夥伴，結合工程集成、AI 系統開發與企業流程數位化，協助企業從現場工程到 AI 自動化建立可管理、可擴充的營運能力。" },
+      { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. — AI 時代的工程與企業系統整合夥伴，結合工程集成、AI 系統整合與企業管理系統，服務台灣工程公司、製造業與中小企業。" },
+      { name: "keywords", content: "宏鼎集成, Aegis Power Integrations, 公司簡介, 工程科技公司, 台灣系統整合商" },
       { property: "og:title", content: "關於宏鼎｜宏鼎集成股份有限公司" },
       { property: "og:description", content: "AI 時代的工程與企業系統整合夥伴。工程集成、AI 系統整合、模組化企業系統。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/about" },
+      { property: "og:url", content: `${SITE_URL}/about` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/about" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
   }),
   component: About,
 });
+
 
 const problems = [
   {

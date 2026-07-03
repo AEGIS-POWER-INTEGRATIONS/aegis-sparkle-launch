@@ -3,17 +3,26 @@ import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
 import { Search, Puzzle, Rocket, Check } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/ai-launch")({
   head: () => ({
     meta: [
-      { title: "Aegis AI Launch｜企業 AI 導入服務" },
-      { name: "description", content: "協助企業完成流程診斷、AI 助理設計、資料整理與員工訓練，讓 AI 真正落地。" },
+      { title: "Aegis AI Launch｜企業 AI 導入與流程自動化服務" },
+      { name: "description", content: "協助台灣中小企業與製造業完成流程診斷、AI 助理設計、資料整理與員工訓練，讓 AI 真正落地日常營運。" },
+      { name: "keywords", content: "企業 AI 導入, 流程自動化, AI 顧問, AI 助理設計, 中小企業 AI, Aegis AI Launch" },
       { property: "og:title", content: "Aegis AI Launch｜企業 AI 導入服務" },
       { property: "og:description", content: "不是教你玩 AI，而是把 AI 放進企業流程裡。" },
+      { property: "og:url", content: `${SITE_URL}/ai-launch` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/ai-launch` }],
   }),
   component: AILaunch,
 });
+
 
 function AILaunch() {
   return (

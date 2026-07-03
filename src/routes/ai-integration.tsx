@@ -4,19 +4,26 @@ import bannerAiAsset from "@/assets/ai-integration-tech-interface.webp.asset.jso
 const bannerAi = bannerAiAsset.url;
 import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Settings2, Workflow } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/ai-integration")({
   head: () => ({
     meta: [
       { title: "AI 系統整合服務｜宏鼎集成" },
-      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助企業真正把 AI 導入日常營運。" },
+      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助台灣中小企業、製造業與工程公司真正把 AI 導入日常營運。" },
+      { name: "keywords", content: "AI 系統整合, 企業流程自動化, AI 助理, 工業 AI, 流程數位化, 中小企業 AI 導入, 製造業 AI" },
       { property: "og:title", content: "AI 系統整合服務｜宏鼎集成" },
       { property: "og:description", content: "企業流程數位化、AI 助理、自動化與儀表板一站式導入。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/ai-integration" },
+      { property: "og:url", content: `${SITE_URL}/ai-integration` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/ai-integration" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/ai-integration` }],
   }),
   component: AiIntegration,
 });
+
 
 const services = [
   { icon: Settings2, t: "企業流程訪談與盤點", d: "由顧問訪談現場與管理層，盤點報價、成本、客戶、專案等關鍵流程。" },
