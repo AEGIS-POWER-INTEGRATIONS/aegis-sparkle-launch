@@ -5,17 +5,26 @@ import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
       { title: "預約諮詢｜Aegis Business Apps" },
-      { name: "description", content: "預約 Aegis Business Apps 產品 Demo 與 AI 導入諮詢。顧問會在 1 個工作日內回覆。" },
+      { name: "description", content: "預約 Aegis Business Apps 產品 Demo 與 AI 導入諮詢。顧問會在 1 個工作日內回覆，服務台灣工程公司、製造業與中小企業。" },
+      { name: "keywords", content: "預約諮詢, 產品 Demo, 企業系統導入, AI 顧問, Aegis Demo" },
       { property: "og:title", content: "預約諮詢｜Aegis Business Apps" },
       { property: "og:description", content: "顧問依照產業、團隊規模與目前使用的工具，提出最適合的導入方案。" },
+      { property: "og:url", content: `${SITE_URL}/demo` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/demo` }],
   }),
   component: Demo,
 });
+
 
 const schema = z.object({
   name: z.string().trim().min(1, "請輸入姓名").max(100),

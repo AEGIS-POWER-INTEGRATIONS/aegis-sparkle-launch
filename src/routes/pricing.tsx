@@ -2,19 +2,26 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Check, Sparkles } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
       { title: "價格方案｜宏鼎集成 Aegis Business Apps" },
       { name: "description", content: "宏鼎集成 Aegis Business Apps 提供 Starter、Pro 與 Business 三種訂閱方案，依使用人數、資料串接與客製需求評估。" },
+      { name: "keywords", content: "Aegis 價格方案, 企業管理系統費用, CRM 方案, 工程管理系統訂閱, SaaS 方案, 中小企業系統導入" },
       { property: "og:title", content: "價格方案｜宏鼎集成" },
       { property: "og:description", content: "Starter / Pro / Business 三種方案，搭配導入服務費，協助企業逐步建立系統能力。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/pricing" },
+      { property: "og:url", content: `${SITE_URL}/pricing` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/pricing" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
   }),
   component: Pricing,
 });
+
 
 const plans = [
   {

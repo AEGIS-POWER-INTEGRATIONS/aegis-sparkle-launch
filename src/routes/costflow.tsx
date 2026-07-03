@@ -5,17 +5,26 @@ import reportsAsset from "@/assets/costflow-reports-charts.webp.asset.json";
 import deskAsset from "@/assets/costflow-analytics-desk.webp.asset.json";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/costflow")({
   head: () => ({
     meta: [
-      { title: "Aegis CostFlow｜工程成本分析平台" },
+      { title: "Aegis CostFlow｜工程報價與成本分析平台" },
       { name: "description", content: "工程公司專用的成本、報價、毛利與專案決策平台。把 Excel 報價轉成可追蹤、可分析、可決策的成本系統。" },
-      { property: "og:title", content: "Aegis CostFlow｜工程成本分析平台" },
+      { name: "keywords", content: "工程報價系統, 工程成本分析, 專案毛利, 工程管理系統, Aegis CostFlow, 台灣工程公司" },
+      { property: "og:title", content: "Aegis CostFlow｜工程報價與成本分析平台" },
       { property: "og:description", content: "材料、人工、外包、毛利一套管理。AI 成本提醒，避免接到越做越賠的案子。" },
+      { property: "og:url", content: `${SITE_URL}/costflow` },
+      { property: "og:type", content: "product" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/costflow` }],
   }),
   component: CostFlow,
 });
+
 
 function CostFlow() {
   return (

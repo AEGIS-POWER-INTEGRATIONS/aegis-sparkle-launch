@@ -16,28 +16,19 @@ export const Route = createFileRoute("/energy-experience")({
   head: () => ({
     meta: [
       { title: "能源與機電工程經驗｜宏鼎集成" },
-      {
-        name: "description",
-        content:
-          "宏鼎集成核心工程團隊具備大型太陽光電、儲能系統、機電工程與現場施工管理經驗，涵蓋屋頂型光電、水面型光電與工業區儲能等領域。",
-      },
+      { name: "description", content: "宏鼎集成核心工程團隊具備大型太陽光電、儲能系統、機電工程與現場施工管理經驗，涵蓋屋頂型光電、水面型光電與工業區儲能等領域。" },
+      { name: "keywords", content: "太陽光電, 儲能系統, 機電工程, 能源工程, 屋頂型光電, 水面型光電, 工業區儲能, 台灣能源工程" },
       { property: "og:title", content: "能源與機電工程經驗｜宏鼎集成" },
-      {
-        property: "og:description",
-        content: "核心工程團隊過往參與之能源與機電工程經驗。",
-      },
-      {
-        property: "og:url",
-        content: "https://aegis-sparkle-launch.lovable.app/energy-experience",
-      },
-      { property: "og:image", content: s66.url },
+      { property: "og:description", content: "核心工程團隊過往參與之能源與機電工程經驗。" },
+      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/energy-experience" },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: `https://aegis-sparkle-launch.lovable.app${s66.url}` },
+      { name: "twitter:image", content: `https://aegis-sparkle-launch.lovable.app${s66.url}` },
     ],
     links: [
-      {
-        rel: "canonical",
-        href: "https://aegis-sparkle-launch.lovable.app/energy-experience",
-      },
+      { rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/energy-experience" },
     ],
+
   }),
   component: EnergyExperience,
 });

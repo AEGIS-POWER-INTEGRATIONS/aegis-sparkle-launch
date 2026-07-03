@@ -7,19 +7,26 @@ import camerasAsset from "@/assets/engineering-security-cameras.webp.asset.json"
 const bannerEngineering = heroEngAsset.url;
 import { ArrowRight, Cable, Camera, HardHat, Network, Radio, ServerCog } from "lucide-react";
 
+import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 export const Route = createFileRoute("/engineering")({
   head: () => ({
     meta: [
       { title: "工程集成服務｜宏鼎集成" },
-      { name: "description", content: "宏鼎集成提供弱電與網路工程、光纖建置、資料中心基礎工程支援、監控與門禁系統與廠區資訊系統整合。" },
+      { name: "description", content: "宏鼎集成提供弱電與網路工程、光纖建置、資料中心基礎工程支援、監控與門禁系統與廠區資訊系統整合，服務台灣工程公司、製造業與科技廠供應鏈。" },
+      { name: "keywords", content: "工程集成, 弱電工程, 光纖建置, 資料中心, 監控門禁, 廠區系統整合, 台灣工程公司, 科技廠供應鏈" },
       { property: "og:title", content: "工程集成服務｜宏鼎集成" },
       { property: "og:description", content: "結合工程現場經驗與系統整合能力的工程服務團隊。" },
-      { property: "og:url", content: "https://aegis-sparkle-launch.lovable.app/engineering" },
+      { property: "og:url", content: `${SITE_URL}/engineering` },
+      { property: "og:type", content: "website" },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: "https://aegis-sparkle-launch.lovable.app/engineering" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/engineering` }],
   }),
   component: Engineering,
 });
+
 
 const services = [
   { icon: Radio, t: "弱電與網路工程", d: "辦公室、廠區、營運據點的弱電佈線、網路建置與整體規劃。" },
