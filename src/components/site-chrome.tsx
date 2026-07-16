@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
 import { L, useLang } from "@/lib/i18n";
+
 
 function Brand({ size = "md" }: { size?: "md" | "lg" }) {
   const imgCls =
