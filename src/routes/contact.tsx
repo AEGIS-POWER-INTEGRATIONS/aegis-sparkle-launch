@@ -6,11 +6,14 @@ import {
   Building2,
   MapPin,
   Mail,
+  Phone,
   Layers,
   Users,
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import { SITE } from "@/lib/site-config";
+
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { L, useLang, useT } from "@/lib/i18n";
