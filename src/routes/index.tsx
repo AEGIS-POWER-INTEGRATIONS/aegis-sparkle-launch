@@ -70,20 +70,20 @@ type Card = { icon: React.ComponentType<{ className?: string }>; en: string; zh:
 
 const trustPillars: { label: Bi; sub: Bi }[] = [
   {
-    label: { zh: "工程現場執行能力", en: "Field-Delivery Capability" },
-    sub: { zh: "跨工程與系統的實務整合經驗", en: "Cross-discipline engineering & systems experience" },
+    label: { zh: "工程現場執行", en: "Engineering Site Execution" },
+    sub: { zh: "以現場實務為核心的工程交付能力", en: "Field-first engineering delivery capability" },
   },
   {
-    label: { zh: "專案管理與每日回報", en: "Project Management & Daily Reporting" },
-    sub: { zh: "以透明度與可追溯性交付專案", en: "Delivered with transparency and traceability" },
+    label: { zh: "專案管理與每日回報", en: "Project Management and Daily Reporting" },
+    sub: { zh: "以透明度與可追溯性推進專案", en: "Delivered with transparency and traceability" },
   },
   {
-    label: { zh: "台灣在地服務", en: "Local Service in Taiwan" },
-    sub: { zh: "以台中為基地，服務全台與 APAC 客戶", en: "Based in Taichung, serving Taiwan and APAC" },
+    label: { zh: "跨工程與系統整合", en: "Cross-Disciplinary Engineering and System Integration" },
+    sub: { zh: "整合機電、弱電、光纖、IT 與 OT", en: "MEP, ELV, fiber, IT and OT integration" },
   },
   {
-    label: { zh: "彈性合作與長期維運", en: "Flexible Engagement & Long-Term Ops" },
-    sub: { zh: "支援專案制、月費顧問或分階段導入", en: "Project, retainer or phased-adoption models" },
+    label: { zh: "台灣在地服務與長期支援", en: "Taiwan-Based Service and Ongoing Support" },
+    sub: { zh: "支援安排依個別專案範圍為準", en: "Support arrangements subject to project scope" },
   },
 ];
 
@@ -122,9 +122,9 @@ const products = [
 
 const whyUs: Card[] = [
   { icon: Wrench, en: "Engineering Experience", zh: "工程實務經驗", desc: { zh: "核心團隊具備能源、機電、弱電、光纖、資料中心等現場工程經驗。", en: "Core team with hands-on experience in energy, MEP, ELV, fiber and data center engineering." } },
-  { icon: ClipboardCheck, en: "Professional Project Management", zh: "專業專案管理", desc: { zh: "以國際標準專案管理方法交付，從設計審查到驗收全流程掌控。", en: "International standard project management from design review through acceptance." } },
+  { icon: ClipboardCheck, en: "Professional Project Management", zh: "專業專案管理", desc: { zh: "以標準化的專案管理流程，進行範圍、進度、風險與驗收管理。", en: "Standardized project management covering scope, schedule, risk and acceptance." } },
   { icon: Layers3, en: "Enterprise Integration", zh: "企業級系統整合", desc: { zh: "跨工程、IT、OT 與企業應用系統的整合能力，一站式落地。", en: "One-stop integration across engineering, IT, OT and enterprise applications." } },
-  { icon: Clock, en: "Fast Response", zh: "快速回應", desc: { zh: "專屬窗口、清晰 SLA 與工程備援機制，確保專案關鍵時刻不掉線。", en: "Dedicated contact, clear SLAs and engineering redundancy to keep critical moments online." } },
+  { icon: Clock, en: "Responsive Support", zh: "回應與支援", desc: { zh: "依專案需求設置溝通窗口、回應機制與必要支援安排。", en: "Communication channels, response mechanisms and support arrangements set per project needs." } },
   { icon: Rocket, en: "Scalable Solutions", zh: "可擴展方案", desc: { zh: "模組化架構讓系統與服務可隨企業成長逐步擴充。", en: "Modular architecture that scales systems and services as your business grows." } },
 ];
 
@@ -395,8 +395,8 @@ function Home() {
               eyebrow="Experience"
               titleZh="專案經驗"
               titleEn="Project Experience"
-              descZh="以下為 AEGIS POWER INTEGRATIONS 團隊參與的代表性專案類型，客戶名稱依合約保密。"
-              descEn="Representative project categories delivered by our team. Client names remain confidential per contract."
+              descZh="以下為核心團隊曾參與或目前可提供的專案類型，實際承攬主體、執行範圍及合作內容依個別專案為準。"
+              descEn="The following are project categories the core team has participated in or can currently provide. Actual contracting entity, execution scope and cooperation terms are subject to each individual project."
             />
             <div className="mt-14 grid gap-6 md:grid-cols-2">
               {projects.map((p) => (
