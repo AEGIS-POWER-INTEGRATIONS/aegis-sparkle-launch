@@ -53,7 +53,8 @@ function InsightNotFound() {
 }
 
 function InsightDetail() {
-  const { insight } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { insight: Insight };
+  const insight = data.insight;
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);
 

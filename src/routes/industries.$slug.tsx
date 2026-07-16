@@ -53,7 +53,8 @@ function IndustryNotFound() {
 }
 
 function IndustryDetail() {
-  const { industry } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { industry: Industry };
+  const industry = data.industry;
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);
 
