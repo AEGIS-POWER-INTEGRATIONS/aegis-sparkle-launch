@@ -324,6 +324,12 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/company-profile" className="hover:text-foreground">
+                <L zh="公司簡介" en="Company Profile" />
+              </Link>
+            </li>
+
+            <li>
               <Link to="/contact" className="hover:text-foreground">
                 <L zh="聯絡我們" en="Contact" />
               </Link>
