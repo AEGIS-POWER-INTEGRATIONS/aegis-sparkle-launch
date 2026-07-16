@@ -128,7 +128,7 @@ export function SiteNav() {
             <Link
               key={n.to}
               to={n.to}
-              className="hover:text-foreground transition-colors"
+              className="whitespace-nowrap hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
