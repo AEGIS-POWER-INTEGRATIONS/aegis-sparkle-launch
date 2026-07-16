@@ -70,20 +70,20 @@ type Card = { icon: React.ComponentType<{ className?: string }>; en: string; zh:
 
 const trustPillars: { label: Bi; sub: Bi }[] = [
   {
-    label: { zh: "工程現場執行能力", en: "Field-Delivery Capability" },
-    sub: { zh: "跨工程與系統的實務整合經驗", en: "Cross-discipline engineering & systems experience" },
+    label: { zh: "工程現場執行", en: "Engineering Site Execution" },
+    sub: { zh: "以現場實務為核心的工程交付能力", en: "Field-first engineering delivery capability" },
   },
   {
-    label: { zh: "專案管理與每日回報", en: "Project Management & Daily Reporting" },
-    sub: { zh: "以透明度與可追溯性交付專案", en: "Delivered with transparency and traceability" },
+    label: { zh: "專案管理與每日回報", en: "Project Management and Daily Reporting" },
+    sub: { zh: "以透明度與可追溯性推進專案", en: "Delivered with transparency and traceability" },
   },
   {
-    label: { zh: "台灣在地服務", en: "Local Service in Taiwan" },
-    sub: { zh: "以台中為基地，服務全台與 APAC 客戶", en: "Based in Taichung, serving Taiwan and APAC" },
+    label: { zh: "跨工程與系統整合", en: "Cross-Disciplinary Engineering and System Integration" },
+    sub: { zh: "整合機電、弱電、光纖、IT 與 OT", en: "MEP, ELV, fiber, IT and OT integration" },
   },
   {
-    label: { zh: "彈性合作與長期維運", en: "Flexible Engagement & Long-Term Ops" },
-    sub: { zh: "支援專案制、月費顧問或分階段導入", en: "Project, retainer or phased-adoption models" },
+    label: { zh: "台灣在地服務與長期支援", en: "Taiwan-Based Service and Ongoing Support" },
+    sub: { zh: "支援安排依個別專案範圍為準", en: "Support arrangements subject to project scope" },
   },
 ];
 
