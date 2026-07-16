@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { INSIGHTS, CATEGORY_LABEL, getInsight } from "@/lib/insights";
+import { INSIGHTS, CATEGORY_LABEL, getInsight, type Insight } from "@/lib/insights";
 import { L, useLang } from "@/lib/i18n";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/insights/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { insight: Insight } => {
     const insight = getInsight(params.slug);
     if (!insight) throw notFound();
     return { insight };
