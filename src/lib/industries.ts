@@ -27,7 +27,7 @@ export const INDUSTRIES: Industry[] = [
     hero: { zh: "從無塵室基礎工程、廠務網路，到供應鏈與品質資料的 AI 化，AEGIS 協助半導體客戶在嚴苛環境下維持穩定與可追溯的營運。", en: "From cleanroom infrastructure and facility networks to AI-enabled supply chain and quality data, AEGIS supports semiconductor customers with reliable, traceable operations under demanding conditions." },
     challenges: [
       { zh: "嚴格的品質、良率與可追溯性要求", en: "Strict quality, yield and traceability requirements" },
-      { zh: "24/7 高可用性與零中斷需求", en: "24/7 high-availability with zero-downtime expectations" },
+      { zh: "高可用性與極低中斷容忍度的營運要求", en: "High-availability operations with very low downtime tolerance" },
       { zh: "多廠區、多供應商跨系統資訊落差", en: "Data gaps across multi-site, multi-vendor systems" },
       { zh: "工程變更頻繁、文件與版本管理複雜", en: "Frequent engineering changes with complex document and version control" },
     ],
