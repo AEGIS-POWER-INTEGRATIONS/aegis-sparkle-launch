@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
 import { L, useLang } from "@/lib/i18n";
+
 
 function Brand({ size = "md" }: { size?: "md" | "lg" }) {
   const imgCls =
@@ -77,9 +79,26 @@ function LangSwitcher({ className = "" }: { className?: string }) {
 }
 
 export function SiteNav() {
+  const [open, setOpen] = useState(false);
+
+  // Close menu on Escape and lock body scroll while open.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-20 md:h-24 items-center justify-between gap-6">
+      <div className="container-x flex h-20 md:h-24 items-center justify-between gap-4">
         <Brand />
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
@@ -97,15 +116,66 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <LangSwitcher />
-          <Link to="/contact" className="btn btn-primary">
-            <L zh="聯絡我們" en="Contact Us" />
-          </Link>
+          <div className="hidden lg:flex items-center gap-3">
+            <LangSwitcher />
+            <Link to="/contact" className="btn btn-primary">
+              <L zh="聯絡我們" en="Contact Us" />
+            </Link>
+          </div>
+          <button
+            type="button"
+            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div
+          id="mobile-nav"
+          className="lg:hidden border-t border-border/60 bg-background/95 backdrop-blur"
+        >
+          <div className="container-x py-4 flex flex-col gap-1">
+            <nav className="flex flex-col divide-y divide-border/50">
+              {navItems.map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-base font-medium text-foreground/90 hover:text-foreground"
+                  activeProps={{ className: "py-3 text-base font-semibold text-foreground" }}
+                  activeOptions={{ exact: n.to === "/" }}
+                >
+                  <L zh={n.zh} en={n.en} />
+                </Link>
+              ))}
+            </nav>
+            <div className="mt-4 flex items-center justify-between gap-4 pt-4 border-t border-border/60">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                <L zh="語言" en="Language" />
+              </div>
+              <LangSwitcher className="text-sm" />
+            </div>
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="btn btn-primary mt-4 w-full justify-center"
+            >
+              <L zh="聯絡我們" en="Contact Us" />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
+
 
 export function SiteFooter() {
   return (
