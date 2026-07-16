@@ -202,32 +202,36 @@ export function SiteFooter() {
             <li className="flex gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
               <span>
-                <L
-                  zh="台中市西區台灣大道二段2號20樓"
-                  en="20F, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung, Taiwan"
-                />
+                <L zh={SITE.address.zh} en={SITE.address.en} />
               </span>
             </li>
             <li className="flex gap-2">
-              <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
-              <a
-                href="mailto:johnny@aegispowerapi.com"
-                className="hover:text-foreground break-all"
-              >
-                johnny@aegispowerapi.com
+              <Phone className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
+              <a href={`tel:${SITE.phone}`} className="hover:text-foreground">
+                {SITE.phoneDisplay}
               </a>
             </li>
             <li className="flex gap-2">
               <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
               <a
-                href="mailto:sales@aegispowerapi.com"
+                href={`mailto:${SITE.emails.general}`}
                 className="hover:text-foreground break-all"
               >
-                sales@aegispowerapi.com
+                {SITE.emails.general}
+              </a>
+            </li>
+            <li className="flex gap-2">
+              <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
+              <a
+                href={`mailto:${SITE.emails.sales}`}
+                className="hover:text-foreground break-all"
+              >
+                {SITE.emails.sales}
               </a>
             </li>
           </ul>
         </div>
+
 
         <div className="text-sm md:col-span-2">
           <div className="font-semibold mb-3">
