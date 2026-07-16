@@ -1,13 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { L } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/seo";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy｜Aegis Power Integrations" },
-      { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations 隱私權政策。" },
-      { property: "og:title", content: "Privacy Policy｜Aegis Power Integrations" },
+      { title: "隱私權政策｜AEGIS POWER INTEGRATIONS｜Privacy Policy" },
+      { name: "description", content: "AEGIS POWER INTEGRATIONS 宏鼎集成股份有限公司 個人資料與隱私權保護政策。Privacy policy for AEGIS POWER INTEGRATIONS Co., Ltd." },
+      { property: "og:title", content: "Privacy Policy | AEGIS POWER INTEGRATIONS" },
       { property: "og:url", content: `${SITE_URL}/privacy` },
       { property: "og:type", content: "website" },
     ],
@@ -24,45 +25,86 @@ function PrivacyPage() {
         <section className="py-20 md:py-28">
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> Legal</span>
-            <h1 className="mt-5 text-4xl md:text-5xl font-bold tracking-tight">Privacy Policy</h1>
-            <p className="mt-3 text-sm text-muted-foreground tracking-widest uppercase">隱私權政策</p>
+            <h1 className="mt-5 text-4xl md:text-5xl font-bold tracking-tight">
+              <L zh="隱私權政策" en="Privacy Policy" />
+            </h1>
+            <p className="mt-3 text-sm text-muted-foreground tracking-widest uppercase">
+              <L zh="Privacy Policy" en="隱私權政策" />
+            </p>
 
-            <div className="prose prose-sm mt-10 max-w-none text-muted-foreground leading-relaxed space-y-6">
+            <div className="mt-10 space-y-6 text-muted-foreground leading-relaxed text-sm">
               <p>
-                本頁由宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd.（以下簡稱「本公司」）維護，
-                說明本公司在網站與服務過程中，如何蒐集、使用與保護您的個人資料。
+                <L
+                  zh="本頁由宏鼎集成股份有限公司 AEGIS POWER INTEGRATIONS Co., Ltd.（以下簡稱「本公司」）維護，說明本網站及本公司於商業合作中處理個人資料之基本原則。"
+                  en="This page is maintained by AEGIS POWER INTEGRATIONS Co., Ltd. (hereinafter 'the Company') and describes how the Company processes personal data on this website and in commercial engagements."
+                />
               </p>
 
-              <h2 className="text-foreground text-lg font-semibold mt-8">1. Information We Collect｜蒐集資訊</h2>
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="1. 蒐集之個人資料" en="1. Personal Data We Collect" />
+              </h2>
               <p>
-                當您填寫諮詢表單或與本公司聯繫時，我們可能會蒐集姓名、公司、職稱、電話、Email
-                與需求說明等資訊，用於後續聯繫、報價與服務洽談。
+                <L
+                  zh="當您透過本網站聯絡我們或預約諮詢時，本公司可能蒐集姓名、公司名稱、職稱、電話、Email 及您所描述之需求。"
+                  en="When you contact us or book a consultation through this website, we may collect your name, company, job title, phone, email and the requirements you describe."
+                />
               </p>
 
-              <h2 className="text-foreground text-lg font-semibold mt-8">2. Use of Information｜資料用途</h2>
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="2. 資料使用目的" en="2. Purpose of Use" />
+              </h2>
               <p>
-                本公司僅將您的資料用於服務諮詢、專案評估、報價與後續合作，
-                不會將您的個人資料出售或提供予無關第三方。
+                <L
+                  zh="所蒐集之資料僅用於回應您的諮詢、規劃合作方案、後續服務追蹤與必要之商業往來，不會於未經同意下轉售或提供給第三方。"
+                  en="Data collected is used solely to respond to your inquiry, plan cooperation, provide follow-up service and conduct necessary business communications. It will not be sold or transferred to third parties without consent."
+                />
               </p>
 
-              <h2 className="text-foreground text-lg font-semibold mt-8">3. Data Protection｜資料保護</h2>
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="3. 資料保存與保護" en="3. Retention & Protection" />
+              </h2>
               <p>
-                本公司採取合理的技術與管理措施保護您的個人資料，
-                包括存取控制、傳輸加密與定期檢視。
+                <L
+                  zh="本公司採取合理之管理與技術措施保護您的個人資料，防止未經授權之存取、修改或洩漏。"
+                  en="The Company applies reasonable administrative and technical measures to protect personal data against unauthorized access, alteration or disclosure."
+                />
               </p>
 
-              <h2 className="text-foreground text-lg font-semibold mt-8">4. Cookies｜Cookie 使用</h2>
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="4. Cookie 與網站分析" en="4. Cookies & Analytics" />
+              </h2>
               <p>
-                本網站可能使用必要之 Cookie 以提供基本服務與流量分析，您可透過瀏覽器設定管理 Cookie。
+                <L
+                  zh="本網站可能使用 Cookie 或第三方分析工具（例如 Google Analytics）以了解網站使用狀況並優化服務體驗。"
+                  en="This website may use cookies and third-party analytics (e.g. Google Analytics) to understand usage and improve the service experience."
+                />
               </p>
 
-              <h2 className="text-foreground text-lg font-semibold mt-8">5. Contact｜聯絡方式</h2>
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="5. 使用者權利" en="5. Your Rights" />
+              </h2>
               <p>
-                如對本政策有任何疑問，請透過 <a href="mailto:johnny@aegispowerapi.com" className="text-primary hover:underline">johnny@aegispowerapi.com</a> 與本公司聯繫。
+                <L
+                  zh="您可隨時來信要求查詢、更正或刪除本公司所持有之個人資料，請寄至 johnny@aegispowerapi.com。"
+                  en="You may request access, correction or deletion of personal data we hold by emailing johnny@aegispowerapi.com."
+                />
+              </p>
+
+              <h2 className="text-foreground text-lg font-semibold mt-8">
+                <L zh="6. 政策更新" en="6. Policy Updates" />
+              </h2>
+              <p>
+                <L
+                  zh="本政策得因法令、業務或技術變更調整，最新版本以本網站公告為準。"
+                  en="This policy may be updated to reflect legal, business or technical changes. The latest version on this website prevails."
+                />
               </p>
 
               <p className="text-xs mt-10">
-                本政策為一般性說明，最終法律版本以本公司公告或雙方合約為準。
+                <L
+                  zh="本政策為一般性說明，最終法律版本以本公司公告或雙方合約為準。"
+                  en="This policy is a general summary; the final legal version follows the Company's announcements or executed contracts."
+                />
               </p>
             </div>
           </div>
