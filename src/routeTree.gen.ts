@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -37,6 +38,11 @@ import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalesopsRoute = SalesopsRouteImport.update({
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/salesops'
+    | '/sitemap.xml'
     | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
@@ -274,6 +284,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/salesops'
+    | '/sitemap.xml'
     | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
@@ -300,6 +311,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/salesops'
+    | '/sitemap.xml'
     | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
@@ -327,6 +339,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesopsRoute: typeof SalesopsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -337,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/salesops': {
@@ -547,6 +567,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SalesopsRoute: SalesopsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
