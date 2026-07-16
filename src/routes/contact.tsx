@@ -78,7 +78,7 @@ const infoCards: {
     icon: Mail,
     label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
     primary: { zh: "johnny@aegispowerapi.com", en: "johnny@aegispowerapi.com" },
-    secondary: { zh: "1 個工作日內回覆", en: "Reply within 1 business day" },
+    secondary: { zh: "原則上 1–2 個工作日內回覆", en: "Reply within 1–2 business days" },
     href: "mailto:johnny@aegispowerapi.com",
   },
   {
@@ -103,13 +103,37 @@ const infoCards: {
 ];
 
 const services: Bi[] = [
-  { zh: "工程集成服務", en: "Engineering Integration" },
+  { zh: "工程服務", en: "Engineering Services" },
+  { zh: "資料中心與光纖工程", en: "Data Center & Fiber Engineering" },
+  { zh: "弱電與網路整合", en: "ELV & Network Integration" },
+  { zh: "能源與機電工程", en: "Energy & MEP Engineering" },
   { zh: "AI 系統整合", en: "AI System Integration" },
-  { zh: "Aegis CostFlow", en: "Aegis CostFlow" },
-  { zh: "Aegis SalesOps", en: "Aegis SalesOps" },
-  { zh: "Aegis AI Launch", en: "Aegis AI Launch" },
-  { zh: "企業管理系統導入", en: "Enterprise system rollout" },
-  { zh: "其他合作洽談", en: "Other partnerships" },
+  { zh: "企業流程顧問", en: "Enterprise Workflow Advisory" },
+  { zh: "企業應用（CostFlow / SalesOps / AI Launch）", en: "Business Applications (CostFlow / SalesOps / AI Launch)" },
+  { zh: "專案合作", en: "Project Partnership" },
+  { zh: "其他", en: "Other" },
+];
+
+const companySizes: Bi[] = [
+  { zh: "1–20 人", en: "1–20 employees" },
+  { zh: "21–100 人", en: "21–100 employees" },
+  { zh: "101–500 人", en: "101–500 employees" },
+  { zh: "500+ 人", en: "500+ employees" },
+];
+
+const timelines: Bi[] = [
+  { zh: "1 個月內", en: "Within 1 month" },
+  { zh: "1–3 個月", en: "1–3 months" },
+  { zh: "3–6 個月", en: "3–6 months" },
+  { zh: "6 個月以上或評估中", en: "6+ months or evaluating" },
+];
+
+const budgets: Bi[] = [
+  { zh: "尚未確定", en: "Not yet decided" },
+  { zh: "低於 NT$ 50 萬", en: "Under NT$ 500K" },
+  { zh: "NT$ 50–200 萬", en: "NT$ 500K – 2M" },
+  { zh: "NT$ 200–1000 萬", en: "NT$ 2M – 10M" },
+  { zh: "NT$ 1000 萬以上", en: "NT$ 10M+" },
 ];
 
 function Contact() {
