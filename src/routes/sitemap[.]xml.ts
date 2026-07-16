@@ -9,6 +9,8 @@ interface SitemapEntry {
   priority?: string;
 }
 
+const LASTMOD = "2026-07-16";
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
@@ -16,6 +18,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/company-profile", changefreq: "monthly", priority: "0.8" },
+
           { path: "/engineering", changefreq: "monthly", priority: "0.9" },
           { path: "/energy-experience", changefreq: "monthly", priority: "0.7" },
           { path: "/ai-integration", changefreq: "monthly", priority: "0.9" },
