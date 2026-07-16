@@ -60,6 +60,7 @@ const navItems = [
   { to: "/ai-integration", zh: "AI 系統整合", en: "AI Integration" },
   { to: "/industries", zh: "產業解決方案", en: "Industry Solutions" },
   { to: "/costflow", zh: "企業應用", en: "Business Apps" },
+  { to: "/knowledge", zh: "知識中心", en: "Knowledge Center" },
   { to: "/insights", zh: "案例與觀點", en: "Insights & Stories" },
   { to: "/pricing", zh: "價格方案", en: "Pricing" },
   { to: "/contact", zh: "聯絡我們", en: "Contact" },
