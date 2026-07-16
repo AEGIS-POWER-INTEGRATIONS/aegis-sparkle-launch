@@ -122,9 +122,9 @@ const products = [
 
 const whyUs: Card[] = [
   { icon: Wrench, en: "Engineering Experience", zh: "工程實務經驗", desc: { zh: "核心團隊具備能源、機電、弱電、光纖、資料中心等現場工程經驗。", en: "Core team with hands-on experience in energy, MEP, ELV, fiber and data center engineering." } },
-  { icon: ClipboardCheck, en: "Professional Project Management", zh: "專業專案管理", desc: { zh: "以國際標準專案管理方法交付，從設計審查到驗收全流程掌控。", en: "International standard project management from design review through acceptance." } },
+  { icon: ClipboardCheck, en: "Professional Project Management", zh: "專業專案管理", desc: { zh: "以標準化的專案管理流程，進行範圍、進度、風險與驗收管理。", en: "Standardized project management covering scope, schedule, risk and acceptance." } },
   { icon: Layers3, en: "Enterprise Integration", zh: "企業級系統整合", desc: { zh: "跨工程、IT、OT 與企業應用系統的整合能力，一站式落地。", en: "One-stop integration across engineering, IT, OT and enterprise applications." } },
-  { icon: Clock, en: "Fast Response", zh: "快速回應", desc: { zh: "專屬窗口、清晰 SLA 與工程備援機制，確保專案關鍵時刻不掉線。", en: "Dedicated contact, clear SLAs and engineering redundancy to keep critical moments online." } },
+  { icon: Clock, en: "Responsive Support", zh: "回應與支援", desc: { zh: "依專案需求設置溝通窗口、回應機制與必要支援安排。", en: "Communication channels, response mechanisms and support arrangements set per project needs." } },
   { icon: Rocket, en: "Scalable Solutions", zh: "可擴展方案", desc: { zh: "模組化架構讓系統與服務可隨企業成長逐步擴充。", en: "Modular architecture that scales systems and services as your business grows." } },
 ];
 
