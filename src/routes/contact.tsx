@@ -40,7 +40,8 @@ export const Route = createFileRoute("/contact")({
           name: "宏鼎集成股份有限公司",
           alternateName: "Aegis Power Integrations Co., Ltd.",
           url: `${SITE_URL}/`,
-          email: "johnny@aegispowerapi.com",
+          email: SITE.emails.general,
+          telephone: SITE.phone,
           address: {
             "@type": "PostalAddress",
             streetAddress: "台灣大道二段2號20樓",
@@ -52,6 +53,7 @@ export const Route = createFileRoute("/contact")({
         }),
       },
     ],
+
   }),
   component: Contact,
 });
