@@ -183,17 +183,18 @@ function Home() {
                   </>
                 ) : (
                   <>
-                    工程整合 × AI 導入 × <br />
+                    宏鼎集成｜工程整合 × AI 導入 × <br />
                     <span className="text-[oklch(0.85_0.12_235)]">企業數位轉型</span>
                   </>
                 )}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
                 <L
-                  zh="AEGIS POWER INTEGRATIONS 專注於工程整合、資料中心與產業應用，並結合 AI、流程自動化及企業系統，協助客戶提升專案執行效率與營運管理能力。"
-                  en="Enterprise-grade engineering integration and AI systems for semiconductor fabs, data centers, manufacturers and enterprise customers across Taiwan and APAC."
+                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）專注於工程整合、資料中心與產業應用，並結合 AI、流程自動化及企業系統，協助客戶提升專案執行效率與營運管理能力。"
+                  en="Aegis Power Integrations Co., Ltd. delivers enterprise-grade engineering integration and AI systems for semiconductor fabs, data centers, manufacturers and enterprise customers across Taiwan and APAC."
                 />
               </p>
+
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link to="/contact" className="btn btn-primary">
                   <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
