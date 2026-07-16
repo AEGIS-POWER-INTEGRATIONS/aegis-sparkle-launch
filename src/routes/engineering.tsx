@@ -73,7 +73,7 @@ function Engineering() {
                 <div className="grid h-11 w-11 place-items-center rounded-lg bg-ink text-ink-foreground">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 text-lg">{t}</h3>
+                <h2 className="mt-4 text-lg font-semibold">{t}</h2>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{d}</p>
               </div>
             ))}

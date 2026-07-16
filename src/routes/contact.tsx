@@ -203,8 +203,9 @@ function Contact() {
                   <Field label="Email" name="email" type="email" required className="md:col-span-2" />
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">想了解的服務</label>
+                    <label htmlFor="service" className="block text-sm font-medium mb-2">想了解的服務</label>
                     <select
+                      id="service"
                       name="service"
                       required
                       defaultValue=""
@@ -218,8 +219,9 @@ function Contact() {
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">需求說明</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">需求說明</label>
                     <textarea
+                      id="message"
                       name="message"
                       rows={5}
                       placeholder="請簡述目前的流程現況、痛點，或希望了解的服務範圍。"
