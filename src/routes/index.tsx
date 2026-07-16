@@ -395,8 +395,8 @@ function Home() {
               eyebrow="Experience"
               titleZh="專案經驗"
               titleEn="Project Experience"
-              descZh="以下為 AEGIS POWER INTEGRATIONS 團隊參與的代表性專案類型，客戶名稱依合約保密。"
-              descEn="Representative project categories delivered by our team. Client names remain confidential per contract."
+              descZh="以下為核心團隊曾參與或目前可提供的專案類型，實際承攬主體、執行範圍及合作內容依個別專案為準。"
+              descEn="The following are project categories the core team has participated in or can currently provide. Actual contracting entity, execution scope and cooperation terms are subject to each individual project."
             />
             <div className="mt-14 grid gap-6 md:grid-cols-2">
               {projects.map((p) => (
