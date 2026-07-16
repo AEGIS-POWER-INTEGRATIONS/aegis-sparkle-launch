@@ -31,10 +31,10 @@ function Brand({ size = "md" }: { size?: "md" | "lg" }) {
     >
       <img
         src={logoAsset.url}
-        alt=""
-        aria-hidden="true"
+        alt="宏鼎集成 AEGIS POWER INTEGRATIONS 標誌"
         className={`${imgCls} object-contain shrink-0 block`}
       />
+
       <span className="flex flex-col justify-center min-w-0">
         <span
           className={`${titleCls} font-bold tracking-tight text-foreground`}
