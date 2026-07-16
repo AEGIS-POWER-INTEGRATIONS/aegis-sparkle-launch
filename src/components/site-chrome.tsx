@@ -8,36 +8,47 @@ import { SITE } from "@/lib/site-config";
 
 
 function Brand({ size = "md" }: { size?: "md" | "lg" }) {
+  // Icon sizes: mobile 32px, desktop 40px (lg variant used in footer bumps up).
   const imgCls =
-    size === "lg" ? "h-12 w-12 md:h-14 md:w-14" : "h-10 w-10 md:h-11 md:w-11";
+    size === "lg"
+      ? "h-11 w-11 md:h-12 md:w-12"
+      : "h-8 w-8 md:h-10 md:w-10";
+  // Chinese title: bold, tight line-height per spec.
   const titleCls =
     size === "lg"
-      ? "text-[19px] md:text-[22px] leading-none"
-      : "text-[16px] md:text-[18px] leading-none";
+      ? "text-[19px] md:text-[22px]"
+      : "text-[16px] md:text-[18px]";
+  // English subtitle: medium weight, ~0.06em tracking.
   const subCls =
     size === "lg"
-      ? "text-[10.5px] md:text-[11.5px] leading-none"
-      : "text-[9.5px] md:text-[10.5px] leading-none";
-  const gapCls = size === "lg" ? "gap-3.5" : "gap-3";
+      ? "text-[10px] md:text-[11px]"
+      : "text-[9px] md:text-[10px]";
   return (
-    <Link to="/" className={`flex items-center ${gapCls} shrink-0`}>
+    <Link
+      to="/"
+      className="flex items-center gap-[10px] md:gap-3 shrink-0 leading-none"
+      aria-label="宏鼎集成 Aegis Power Integrations"
+    >
       <img
         src={logoAsset.url}
-        alt="宏鼎集成 Aegis Power Integrations"
+        alt=""
+        aria-hidden="true"
         className={`${imgCls} object-contain shrink-0 block`}
       />
-      <div className="flex flex-col justify-center min-w-0">
+      <span className="flex flex-col justify-center min-w-0">
         <span
-          className={`${titleCls} font-semibold tracking-tight text-foreground`}
+          className={`${titleCls} font-bold tracking-tight text-foreground`}
+          style={{ lineHeight: 1.05 }}
         >
           宏鼎集成
         </span>
         <span
-          className={`${subCls} text-muted-foreground tracking-[0.18em] font-medium uppercase mt-1.5`}
+          className={`${subCls} text-muted-foreground font-medium uppercase mt-[3px] whitespace-nowrap`}
+          style={{ letterSpacing: "0.06em", lineHeight: 1.1 }}
         >
           AEGIS POWER INTEGRATIONS
         </span>
-      </div>
+      </span>
     </Link>
   );
 }
@@ -109,7 +120,7 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-20 md:h-24 items-center justify-between gap-4">
+      <div className="container-x flex h-[72px] md:h-[76px] items-center justify-between gap-4">
         <Brand />
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
@@ -117,7 +128,7 @@ export function SiteNav() {
             <Link
               key={n.to}
               to={n.to}
-              className="hover:text-foreground transition-colors"
+              className="whitespace-nowrap hover:text-foreground transition-colors"
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
