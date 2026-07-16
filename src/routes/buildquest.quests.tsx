@@ -4,6 +4,14 @@ import { MOCK_PLAYER, QUESTS } from "@/lib/buildquest/mock";
 import { ChapterBadge, DifficultyDots } from "@/components/buildquest/shared";
 
 export const Route = createFileRoute("/buildquest/quests")({
+  head: () => ({
+    meta: [
+      { title: "任務列表｜BuildQuest AI 工程管理訓練 — 宏鼎集成" },
+      { name: "description", content: "BuildQuest 任務列表：教學、現場、談判與 Boss 關卡，涵蓋工程進度、成本、品質、工安、包商與業主等實戰情境。" },
+      { property: "og:title", content: "任務列表｜BuildQuest AI 工程管理訓練" },
+      { property: "og:description", content: "選擇教學、現場、談判或 Boss 關卡，開始工程管理修煉。" },
+    ],
+  }),
   component: QuestList,
 });
 
