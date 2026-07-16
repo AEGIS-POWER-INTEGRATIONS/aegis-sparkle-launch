@@ -76,9 +76,17 @@ const infoCards: {
   {
     icon: MapPin,
     label: { zh: "公司地址", en: "Address" },
-    primary: { zh: "台中市西區台灣大道二段2號20樓", en: "20F, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung, Taiwan" },
+    primary: { zh: "台中市西區台灣大道二段2號20樓", en: "20F., No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan" },
     secondary: { zh: "鄰近台中市中心商務區", en: "Near Taichung central business district" },
   },
+  {
+    icon: Phone,
+    label: { zh: "聯絡電話", en: "Phone" },
+    primary: { zh: SITE.phoneDisplay, en: SITE.phoneDisplay },
+    secondary: { zh: "週一至週五 09:00–18:00", en: "Mon–Fri, 09:00–18:00 (Taipei time)" },
+    href: `tel:${SITE.phone}`,
+  },
+
   {
     icon: Mail,
     label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
