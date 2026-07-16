@@ -1,11 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin } from "lucide-react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
+import { L, useLang } from "@/lib/i18n";
 
 function Brand({ size = "md" }: { size?: "md" | "lg" }) {
-  const imgCls = size === "lg" ? "h-14 w-14 md:h-16 md:w-16" : "h-11 w-11 md:h-12 md:w-12";
-  const titleCls = size === "lg" ? "text-xl md:text-2xl" : "text-[17px] md:text-[19px]";
-  const subCls = size === "lg" ? "text-[11px] md:text-xs" : "text-[10px] md:text-[11px]";
+  const imgCls =
+    size === "lg" ? "h-14 w-14 md:h-16 md:w-16" : "h-11 w-11 md:h-12 md:w-12";
+  const titleCls =
+    size === "lg" ? "text-xl md:text-2xl" : "text-[17px] md:text-[19px]";
+  const subCls =
+    size === "lg" ? "text-[11px] md:text-xs" : "text-[10px] md:text-[11px]";
   return (
     <Link to="/" className="flex items-center gap-4">
       <img
@@ -14,7 +18,9 @@ function Brand({ size = "md" }: { size?: "md" | "lg" }) {
         className={`${imgCls} object-contain shrink-0`}
       />
       <div className="leading-tight">
-        <div className={`${titleCls} font-semibold tracking-tight text-foreground`}>宏鼎集成</div>
+        <div className={`${titleCls} font-semibold tracking-tight text-foreground`}>
+          宏鼎集成
+        </div>
         <div className={`${subCls} text-muted-foreground tracking-[0.14em] font-medium mt-0.5`}>
           AEGIS POWER INTEGRATIONS
         </div>
@@ -24,15 +30,50 @@ function Brand({ size = "md" }: { size?: "md" | "lg" }) {
 }
 
 const navItems = [
-  { to: "/", label: "首頁" },
-  { to: "/about", label: "關於宏鼎" },
-  { to: "/engineering", label: "工程集成" },
-  { to: "/energy-experience", label: "工程經驗" },
-  { to: "/ai-integration", label: "AI 系統整合" },
-  { to: "/costflow", label: "Aegis 產品線" },
-  { to: "/pricing", label: "價格方案" },
-  { to: "/contact", label: "聯絡我們" },
+  { to: "/", zh: "首頁", en: "Home" },
+  { to: "/about", zh: "關於我們", en: "About" },
+  { to: "/engineering", zh: "工程服務", en: "Engineering" },
+  { to: "/ai-integration", zh: "AI 系統整合", en: "AI Integration" },
+  { to: "/costflow", zh: "企業應用", en: "Business Apps" },
+  { to: "/energy-experience", zh: "專案經驗", en: "Project Experience" },
+  { to: "/pricing", zh: "價格方案", en: "Pricing" },
+  { to: "/contact", zh: "聯絡我們", en: "Contact" },
 ] as const;
+
+function LangSwitcher({ className = "" }: { className?: string }) {
+  const { lang, setLang } = useLang();
+  const btn =
+    "px-1.5 py-0.5 rounded-sm transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary";
+  const active = "text-foreground font-semibold";
+  const idle = "text-muted-foreground hover:text-foreground";
+  return (
+    <div
+      className={`flex items-center gap-0.5 text-xs font-medium ${className}`}
+      role="group"
+      aria-label="Language switcher"
+    >
+      <button
+        type="button"
+        onClick={() => setLang("zh-TW")}
+        aria-pressed={lang === "zh-TW"}
+        aria-label="切換為繁體中文"
+        className={`${btn} ${lang === "zh-TW" ? active : idle}`}
+      >
+        中文
+      </button>
+      <span className="text-muted-foreground/40" aria-hidden="true">|</span>
+      <button
+        type="button"
+        onClick={() => setLang("en")}
+        aria-pressed={lang === "en"}
+        aria-label="Switch to English"
+        className={`${btn} ${lang === "en" ? active : idle}`}
+      >
+        EN
+      </button>
+    </div>
+  );
+}
 
 export function SiteNav() {
   return (
@@ -49,13 +90,16 @@ export function SiteNav() {
               activeProps={{ className: "text-foreground" }}
               activeOptions={{ exact: n.to === "/" }}
             >
-              {n.label}
+              <L zh={n.zh} en={n.en} />
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Link to="/contact" className="btn btn-primary">Contact Us</Link>
+        <div className="flex items-center gap-3">
+          <LangSwitcher />
+          <Link to="/contact" className="btn btn-primary">
+            <L zh="聯絡我們" en="Contact Us" />
+          </Link>
         </div>
       </div>
     </header>
@@ -75,25 +119,37 @@ export function SiteFooter() {
             AEGIS POWER INTEGRATIONS CO., LTD.
           </p>
           <p className="mt-4 text-sm text-muted-foreground max-w-md leading-relaxed">
-            Engineering × AI × Digital Transformation. Enterprise integration
-            partner for semiconductor, data center, manufacturing and enterprise
-            customers.
+            <L
+              zh="工程整合 × AI 導入 × 企業數位轉型。為半導體、資料中心、製造業與企業客戶提供整合服務。"
+              en="Engineering × AI × Digital Transformation. Enterprise integration partner for semiconductor, data center, manufacturing and enterprise customers."
+            />
           </p>
 
           <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
-              <span>台中市西區台灣大道二段2號20樓</span>
+              <span>
+                <L
+                  zh="台中市西區台灣大道二段2號20樓"
+                  en="20F, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung, Taiwan"
+                />
+              </span>
             </li>
             <li className="flex gap-2">
               <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
-              <a href="mailto:johnny@aegispowerapi.com" className="hover:text-foreground break-all">
+              <a
+                href="mailto:johnny@aegispowerapi.com"
+                className="hover:text-foreground break-all"
+              >
                 johnny@aegispowerapi.com
               </a>
             </li>
             <li className="flex gap-2">
               <Mail className="h-4 w-4 mt-0.5 shrink-0 text-foreground/70" />
-              <a href="mailto:sales@aegispowerapi.com" className="hover:text-foreground break-all">
+              <a
+                href="mailto:sales@aegispowerapi.com"
+                className="hover:text-foreground break-all"
+              >
                 sales@aegispowerapi.com
               </a>
             </li>
@@ -101,36 +157,84 @@ export function SiteFooter() {
         </div>
 
         <div className="text-sm md:col-span-2">
-          <div className="font-semibold mb-3">Engineering</div>
+          <div className="font-semibold mb-3">
+            <L zh="工程服務" en="Engineering" />
+          </div>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/engineering" className="hover:text-foreground">Engineering Integration</Link></li>
-            <li><Link to="/energy-experience" className="hover:text-foreground">Project Experience</Link></li>
+            <li>
+              <Link to="/engineering" className="hover:text-foreground">
+                <L zh="工程集成服務" en="Engineering Integration" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/energy-experience" className="hover:text-foreground">
+                <L zh="專案經驗" en="Project Experience" />
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div className="text-sm md:col-span-2">
-          <div className="font-semibold mb-3">AI Integration</div>
+          <div className="font-semibold mb-3">
+            <L zh="AI 系統整合" en="AI Integration" />
+          </div>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/ai-integration" className="hover:text-foreground">AI System Integration</Link></li>
-            <li><Link to="/ai-launch" className="hover:text-foreground">Aegis AI Launch</Link></li>
+            <li>
+              <Link to="/ai-integration" className="hover:text-foreground">
+                <L zh="AI 系統整合" en="AI System Integration" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/ai-launch" className="hover:text-foreground">
+                Aegis AI Launch
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div className="text-sm md:col-span-2">
-          <div className="font-semibold mb-3">Business Applications</div>
+          <div className="font-semibold mb-3">
+            <L zh="企業應用" en="Business Applications" />
+          </div>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/costflow" className="hover:text-foreground">Aegis CostFlow</Link></li>
-            <li><Link to="/salesops" className="hover:text-foreground">Aegis SalesOps</Link></li>
-            <li><Link to="/pricing" className="hover:text-foreground">Pricing</Link></li>
+            <li>
+              <Link to="/costflow" className="hover:text-foreground">
+                Aegis CostFlow
+              </Link>
+            </li>
+            <li>
+              <Link to="/salesops" className="hover:text-foreground">
+                Aegis SalesOps
+              </Link>
+            </li>
+            <li>
+              <Link to="/pricing" className="hover:text-foreground">
+                <L zh="價格方案" en="Pricing" />
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div className="text-sm md:col-span-2">
-          <div className="font-semibold mb-3">Company</div>
+          <div className="font-semibold mb-3">
+            <L zh="關於我們" en="Company" />
+          </div>
           <ul className="space-y-2 text-muted-foreground">
-            <li><Link to="/about" className="hover:text-foreground">About</Link></li>
-            <li><Link to="/contact" className="hover:text-foreground">Contact</Link></li>
-            <li><Link to="/demo" className="hover:text-foreground">Book Consultation</Link></li>
+            <li>
+              <Link to="/about" className="hover:text-foreground">
+                <L zh="關於宏鼎" en="About" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-foreground">
+                <L zh="聯絡我們" en="Contact" />
+              </Link>
+            </li>
+            <li>
+              <Link to="/demo" className="hover:text-foreground">
+                <L zh="預約諮詢" en="Book Consultation" />
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -138,12 +242,25 @@ export function SiteFooter() {
       <div className="border-t border-border/60">
         <div className="container-x py-6 text-xs text-muted-foreground flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-1.5">
-            <span>© 2026 宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. All rights reserved.</span>
-            <span>Engineering Integration｜AI System Integration｜Enterprise Applications</span>
+            <span>
+              © 2026 宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd.{" "}
+              <L zh="版權所有。" en="All rights reserved." />
+            </span>
+            <span>
+              <L
+                zh="工程整合｜AI 系統整合｜企業應用"
+                en="Engineering Integration｜AI System Integration｜Enterprise Applications"
+              />
+            </span>
           </div>
-          <div className="flex gap-5">
-            <Link to="/privacy" className="hover:text-foreground">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-foreground">Terms</Link>
+          <div className="flex gap-5 items-center">
+            <Link to="/privacy" className="hover:text-foreground">
+              <L zh="隱私權政策" en="Privacy Policy" />
+            </Link>
+            <Link to="/terms" className="hover:text-foreground">
+              <L zh="使用條款" en="Terms" />
+            </Link>
+            <LangSwitcher />
           </div>
         </div>
       </div>
