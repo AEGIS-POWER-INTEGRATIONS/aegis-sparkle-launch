@@ -44,16 +44,18 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "宏鼎集成｜工程整合、AI 導入與企業數位轉型｜AEGIS POWER INTEGRATIONS" },
-      { name: "description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）位於台中,提供資料中心、半導體與科技廠工程、弱電光纖、機電整合、AI 系統整合及企業數位轉型服務。" },
-      { name: "keywords", content: "宏鼎集成, 宏鼎集成股份有限公司, AEGIS POWER INTEGRATIONS, engineering integration, AI system integration, semiconductor engineering, data center, structured cabling, fiber optic, enterprise AI, 工程集成, AI 系統整合, 半導體, 資料中心, 企業管理系統" },
+      { name: "description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）位於台中，提供資料中心、半導體與科技廠工程、弱電光纖、機電整合、AI 系統整合、企業管理系統及數位轉型服務。" },
+      { name: "keywords", content: "宏鼎集成, 宏鼎集成股份有限公司, AEGIS POWER INTEGRATIONS, 工程整合, 工程集成, 資料中心工程, 弱電工程, 光纖工程, 機電工程, 半導體工程, AI 系統整合, 企業數位轉型, ERP 系統, CRM 系統, BI 商業智慧, 台中工程公司" },
       { property: "og:title", content: "宏鼎集成｜工程整合、AI 導入與企業數位轉型" },
-      { property: "og:description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）｜工程整合、資料中心、AI 導入與企業數位應用服務。" },
+      { property: "og:description", content: "宏鼎集成股份有限公司結合工程現場、資料中心、弱電光纖、企業系統與 AI 技術，協助企業提升工程執行及營運管理效率。" },
+      { property: "og:site_name", content: "宏鼎集成｜AEGIS POWER INTEGRATIONS" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "640" },
-      { name: "twitter:title", content: "宏鼎集成｜工程整合、AI 導入與企業數位轉型" },
+      { name: "twitter:title", content: "宏鼎集成｜工程整合與 AI 系統整合" },
+      { name: "twitter:description", content: "宏鼎集成股份有限公司提供資料中心、工程整合、AI 導入及企業數位轉型服務。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
 
