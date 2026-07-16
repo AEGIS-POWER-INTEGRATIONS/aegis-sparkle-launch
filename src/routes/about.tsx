@@ -114,8 +114,9 @@ function About() {
           <div className="container-x max-w-4xl">
             <span className="eyebrow"><span className="dot" /> <L zh="關於我們" en="About Us" /></span>
             <h1 className="mt-6 text-4xl md:text-5xl">
-              <L zh="關於 AEGIS POWER INTEGRATIONS" en="About AEGIS POWER INTEGRATIONS" />
+              <L zh="關於宏鼎集成股份有限公司" en="About AEGIS POWER INTEGRATIONS" />
             </h1>
+
             <p className="mt-3 text-sm text-muted-foreground tracking-wider">
               宏鼎集成股份有限公司 · Aegis Power Integrations Co., Ltd.
             </p>
