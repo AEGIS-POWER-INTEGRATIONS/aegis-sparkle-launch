@@ -25,13 +25,15 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "宏鼎集成股份有限公司｜關於我們｜AEGIS POWER INTEGRATIONS" },
-      { name: "description", content: "認識宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）。我們以工程事業為核心,結合資料中心、弱電光纖、機電整合、AI 導入與企業流程數位化服務。" },
-      { name: "keywords", content: "宏鼎集成, 宏鼎集成股份有限公司, Aegis Power Integrations, 公司簡介, 工程科技公司, 台灣系統整合商" },
+      { name: "description", content: "認識宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）。我們以工程服務為核心，結合資料中心、弱電光纖、機電整合、AI 導入及企業流程數位化服務。" },
+      { name: "keywords", content: "宏鼎集成, 宏鼎集成股份有限公司, AEGIS POWER INTEGRATIONS, 公司簡介, 台中工程公司, 工程整合公司, AI 系統整合公司" },
       { property: "og:title", content: "宏鼎集成股份有限公司｜關於我們" },
       { property: "og:description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）— 工程整合、AI 系統整合與企業數位化的整合型夥伴。" },
       { property: "og:url", content: `${SITE_URL}/about` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "宏鼎集成股份有限公司｜關於我們" },
+      { name: "twitter:description", content: "工程整合、AI 系統整合與企業數位化的整合型夥伴。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/about` }],

@@ -22,12 +22,14 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "聯絡宏鼎集成｜工程整合與 AI 導入諮詢" },
-      { name: "description", content: "聯絡宏鼎集成股份有限公司。服務項目包含工程整合、資料中心與弱電光纖工程、AI 系統整合及企業管理系統導入。公司位於台中市西區。" },
+      { name: "description", content: "聯絡宏鼎集成股份有限公司，洽詢資料中心、弱電光纖、機電工程、工程整合、AI 系統整合、ERP、CRM 與企業數位轉型服務。" },
       { property: "og:title", content: "聯絡宏鼎集成｜工程整合與 AI 導入諮詢" },
       { property: "og:description", content: "聯絡宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）— 工程整合、AI 系統整合與企業應用導入諮詢。" },
       { property: "og:url", content: `${SITE_URL}/contact` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "聯絡宏鼎集成｜工程整合與 AI 導入諮詢" },
+      { name: "twitter:description", content: "洽詢資料中心、工程整合、AI 系統整合與企業數位轉型服務。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
 
@@ -171,7 +173,7 @@ function Contact() {
             <div>
               <span className="eyebrow"><span className="dot" /> <L zh="聯絡我們" en="Contact Us" /></span>
               <h1 className="mt-6 text-4xl md:text-5xl">
-                <L zh="聯絡 AEGIS POWER INTEGRATIONS" en="Contact AEGIS POWER INTEGRATIONS" />
+                <L zh="聯絡宏鼎集成股份有限公司" en="Contact AEGIS POWER INTEGRATIONS" />
               </h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 <L

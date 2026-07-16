@@ -33,13 +33,15 @@ const FAQ_ITEMS: { q: Bi; a: Bi }[] = [
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "價格方案｜AEGIS POWER INTEGRATIONS｜Pricing" },
-      { name: "description", content: "AEGIS POWER INTEGRATIONS Aegis Business Apps 提供 Starter、Pro 與 Business 三種訂閱方案。Pricing for Aegis Business Apps: Starter, Pro and Business plans." },
-      { property: "og:title", content: "Pricing | AEGIS POWER INTEGRATIONS" },
-      { property: "og:description", content: "Starter / Pro / Business plans plus rollout services." },
+      { title: "宏鼎集成服務方案｜工程整合、AI 導入與企業系統" },
+      { name: "description", content: "查看宏鼎集成股份有限公司的工程整合、AI 導入、企業管理系統、流程自動化及顧問服務方案。實際價格依導入範圍與企業需求評估。" },
+      { property: "og:title", content: "宏鼎集成服務方案｜工程整合、AI 導入與企業系統" },
+      { property: "og:description", content: "工程整合、AI 導入、企業管理系統與流程自動化方案，價格依範圍與需求評估。" },
       { property: "og:url", content: `${SITE_URL}/pricing` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:title", content: "宏鼎集成服務方案" },
+      { name: "twitter:description", content: "工程整合、AI 導入、企業管理系統與流程自動化。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
