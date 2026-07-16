@@ -68,26 +68,22 @@ const heroBg = heroAsset.url;
 type Bi = { zh: string; en: string };
 type Card = { icon: React.ComponentType<{ className?: string }>; en: string; zh: string; desc: Bi };
 
-const metrics: { value: string; label: Bi; sub: Bi }[] = [
+const trustPillars: { label: Bi; sub: Bi }[] = [
   {
-    value: "15+",
-    label: { zh: "年工程經驗", en: "Years of Engineering Experience" },
-    sub: { zh: "能源、機電、弱電、資料中心", en: "Energy · Mechanical · ELV · Data Center" },
+    label: { zh: "工程現場執行能力", en: "Field-Delivery Capability" },
+    sub: { zh: "跨工程與系統的實務整合經驗", en: "Cross-discipline engineering & systems experience" },
   },
   {
-    value: "200+",
-    label: { zh: "已交付專案", en: "Projects Delivered" },
-    sub: { zh: "工程整合與系統導入案場", en: "Integration & system deployment sites" },
+    label: { zh: "專案管理與每日回報", en: "Project Management & Daily Reporting" },
+    sub: { zh: "以透明度與可追溯性交付專案", en: "Delivered with transparency and traceability" },
   },
   {
-    value: "6",
-    label: { zh: "服務產業", en: "Industries Served" },
-    sub: { zh: "半導體 · 資料中心 · 製造業", en: "Semiconductor · Data Center · Manufacturing" },
+    label: { zh: "台灣在地服務", en: "Local Service in Taiwan" },
+    sub: { zh: "以台中為基地，服務全台與 APAC 客戶", en: "Based in Taichung, serving Taiwan and APAC" },
   },
   {
-    value: "24/7",
-    label: { zh: "企業級支援", en: "Enterprise Support" },
-    sub: { zh: "專案窗口與工程支援", en: "Dedicated PM & engineering support" },
+    label: { zh: "彈性合作與長期維運", en: "Flexible Engagement & Long-Term Ops" },
+    sub: { zh: "支援專案制、月費顧問或分階段導入", en: "Project, retainer or phased-adoption models" },
   },
 ];
 
@@ -211,15 +207,14 @@ function Home() {
           </div>
         </section>
 
-        {/* Trust metrics */}
+        {/* Trust pillars — qualitative capabilities (no unverified metrics) */}
         <section className="border-b border-border bg-background">
           <div className="container-x py-14 md:py-16">
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {metrics.map((m) => (
+              {trustPillars.map((m) => (
                 <div key={m.label.en} className="border-l-2 border-primary pl-5">
-                  <div className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">{m.value}</div>
-                  <div className="mt-3 text-sm font-semibold text-foreground">{t(m.label)}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">{t(m.sub)}</div>
+                  <div className="text-base md:text-lg font-semibold tracking-tight text-foreground leading-snug">{t(m.label)}</div>
+                  <div className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(m.sub)}</div>
                 </div>
               ))}
             </div>
