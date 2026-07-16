@@ -34,8 +34,9 @@ const navItems = [
   { to: "/about", zh: "關於我們", en: "About" },
   { to: "/engineering", zh: "工程服務", en: "Engineering" },
   { to: "/ai-integration", zh: "AI 系統整合", en: "AI Integration" },
+  { to: "/industries", zh: "產業解決方案", en: "Industry Solutions" },
   { to: "/costflow", zh: "企業應用", en: "Business Apps" },
-  { to: "/energy-experience", zh: "專案經驗", en: "Project Experience" },
+  { to: "/insights", zh: "洞見與案例", en: "Insights" },
   { to: "/pricing", zh: "價格方案", en: "Pricing" },
   { to: "/contact", zh: "聯絡我們", en: "Contact" },
 ] as const;

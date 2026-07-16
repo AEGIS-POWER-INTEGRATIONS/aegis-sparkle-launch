@@ -14,6 +14,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as InsightsRouteImport } from './routes/insights'
+import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as EnergyExperienceRouteImport } from './routes/energy-experience'
 import { Route as DemoRouteImport } from './routes/demo'
@@ -24,7 +26,11 @@ import { Route as AiLaunchRouteImport } from './routes/ai-launch'
 import { Route as AiIntegrationRouteImport } from './routes/ai-integration'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
 import { Route as BuildquestIndexRouteImport } from './routes/buildquest.index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
+import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
 import { Route as BuildquestQuestsRouteImport } from './routes/buildquest.quests'
 import { Route as BuildquestProfileRouteImport } from './routes/buildquest.profile'
 import { Route as BuildquestKnowledgeRouteImport } from './routes/buildquest.knowledge'
@@ -58,6 +64,16 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsRoute = InsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EngineeringRoute = EngineeringRouteImport.update({
@@ -110,10 +126,30 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => InsightsRoute,
+} as any)
+const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => IndustriesRoute,
+} as any)
 const BuildquestIndexRoute = BuildquestIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => BuildquestRoute,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => InsightsRoute,
+} as any)
+const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => IndustriesRoute,
 } as any)
 const BuildquestQuestsRoute = BuildquestQuestsRouteImport.update({
   id: '/quests',
@@ -172,6 +208,8 @@ export interface FileRoutesByFullPath {
   '/demo': typeof DemoRoute
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
+  '/industries': typeof IndustriesRouteWithChildren
+  '/insights': typeof InsightsRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
@@ -184,7 +222,11 @@ export interface FileRoutesByFullPath {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest/': typeof BuildquestIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
@@ -210,7 +252,11 @@ export interface FileRoutesByTo {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest': typeof BuildquestIndexRoute
+  '/industries': typeof IndustriesIndexRoute
+  '/insights': typeof InsightsIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
@@ -226,6 +272,8 @@ export interface FileRoutesById {
   '/demo': typeof DemoRoute
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
+  '/industries': typeof IndustriesRouteWithChildren
+  '/insights': typeof InsightsRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
@@ -238,7 +286,11 @@ export interface FileRoutesById {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/industries/$slug': typeof IndustriesSlugRoute
+  '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest/': typeof BuildquestIndexRoute
+  '/industries/': typeof IndustriesIndexRoute
+  '/insights/': typeof InsightsIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
 }
@@ -255,6 +307,8 @@ export interface FileRouteTypes {
     | '/demo'
     | '/energy-experience'
     | '/engineering'
+    | '/industries'
+    | '/insights'
     | '/pricing'
     | '/privacy'
     | '/salesops'
@@ -267,7 +321,11 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/industries/$slug'
+    | '/insights/$slug'
     | '/buildquest/'
+    | '/industries/'
+    | '/insights/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -293,7 +351,11 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/industries/$slug'
+    | '/insights/$slug'
     | '/buildquest'
+    | '/industries'
+    | '/insights'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
   id:
@@ -308,6 +370,8 @@ export interface FileRouteTypes {
     | '/demo'
     | '/energy-experience'
     | '/engineering'
+    | '/industries'
+    | '/insights'
     | '/pricing'
     | '/privacy'
     | '/salesops'
@@ -320,7 +384,11 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/industries/$slug'
+    | '/insights/$slug'
     | '/buildquest/'
+    | '/industries/'
+    | '/insights/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
   fileRoutesById: FileRoutesById
@@ -336,6 +404,8 @@ export interface RootRouteChildren {
   DemoRoute: typeof DemoRoute
   EnergyExperienceRoute: typeof EnergyExperienceRoute
   EngineeringRoute: typeof EngineeringRoute
+  IndustriesRoute: typeof IndustriesRouteWithChildren
+  InsightsRoute: typeof InsightsRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesopsRoute: typeof SalesopsRoute
@@ -378,6 +448,20 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights': {
+      id: '/insights'
+      path: '/insights'
+      fullPath: '/insights'
+      preLoaderRoute: typeof InsightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/engineering': {
@@ -450,12 +534,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/insights/': {
+      id: '/insights/'
+      path: '/'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof InsightsRoute
+    }
+    '/industries/': {
+      id: '/industries/'
+      path: '/'
+      fullPath: '/industries/'
+      preLoaderRoute: typeof IndustriesIndexRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
     '/buildquest/': {
       id: '/buildquest/'
       path: '/'
       fullPath: '/buildquest/'
       preLoaderRoute: typeof BuildquestIndexRouteImport
       parentRoute: typeof BuildquestRoute
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof InsightsRoute
+    }
+    '/industries/$slug': {
+      id: '/industries/$slug'
+      path: '/$slug'
+      fullPath: '/industries/$slug'
+      preLoaderRoute: typeof IndustriesSlugRouteImport
+      parentRoute: typeof IndustriesRoute
     }
     '/buildquest/quests': {
       id: '/buildquest/quests'
@@ -553,6 +665,34 @@ const BuildquestRouteWithChildren = BuildquestRoute._addFileChildren(
   BuildquestRouteChildren,
 )
 
+interface IndustriesRouteChildren {
+  IndustriesSlugRoute: typeof IndustriesSlugRoute
+  IndustriesIndexRoute: typeof IndustriesIndexRoute
+}
+
+const IndustriesRouteChildren: IndustriesRouteChildren = {
+  IndustriesSlugRoute: IndustriesSlugRoute,
+  IndustriesIndexRoute: IndustriesIndexRoute,
+}
+
+const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
+  IndustriesRouteChildren,
+)
+
+interface InsightsRouteChildren {
+  InsightsSlugRoute: typeof InsightsSlugRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
+}
+
+const InsightsRouteChildren: InsightsRouteChildren = {
+  InsightsSlugRoute: InsightsSlugRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
+}
+
+const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
+  InsightsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -564,6 +704,8 @@ const rootRouteChildren: RootRouteChildren = {
   DemoRoute: DemoRoute,
   EnergyExperienceRoute: EnergyExperienceRoute,
   EngineeringRoute: EngineeringRoute,
+  IndustriesRoute: IndustriesRouteWithChildren,
+  InsightsRoute: InsightsRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SalesopsRoute: SalesopsRoute,
