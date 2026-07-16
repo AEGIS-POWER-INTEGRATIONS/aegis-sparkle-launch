@@ -9,25 +9,34 @@ import { SITE } from "@/lib/site-config";
 
 function Brand({ size = "md" }: { size?: "md" | "lg" }) {
   const imgCls =
-    size === "lg" ? "h-14 w-14 md:h-16 md:w-16" : "h-11 w-11 md:h-12 md:w-12";
+    size === "lg" ? "h-12 w-12 md:h-14 md:w-14" : "h-10 w-10 md:h-11 md:w-11";
   const titleCls =
-    size === "lg" ? "text-xl md:text-2xl" : "text-[17px] md:text-[19px]";
+    size === "lg"
+      ? "text-[19px] md:text-[22px] leading-none"
+      : "text-[16px] md:text-[18px] leading-none";
   const subCls =
-    size === "lg" ? "text-[11px] md:text-xs" : "text-[10px] md:text-[11px]";
+    size === "lg"
+      ? "text-[10.5px] md:text-[11.5px] leading-none"
+      : "text-[9.5px] md:text-[10.5px] leading-none";
+  const gapCls = size === "lg" ? "gap-3.5" : "gap-3";
   return (
-    <Link to="/" className="flex items-center gap-4">
+    <Link to="/" className={`flex items-center ${gapCls} shrink-0`}>
       <img
         src={logoAsset.url}
         alt="宏鼎集成 Aegis Power Integrations"
-        className={`${imgCls} object-contain shrink-0`}
+        className={`${imgCls} object-contain shrink-0 block`}
       />
-      <div className="leading-tight">
-        <div className={`${titleCls} font-semibold tracking-tight text-foreground`}>
+      <div className="flex flex-col justify-center min-w-0">
+        <span
+          className={`${titleCls} font-semibold tracking-tight text-foreground`}
+        >
           宏鼎集成
-        </div>
-        <div className={`${subCls} text-muted-foreground tracking-[0.14em] font-medium mt-0.5`}>
+        </span>
+        <span
+          className={`${subCls} text-muted-foreground tracking-[0.18em] font-medium uppercase mt-1.5`}
+        >
           AEGIS POWER INTEGRATIONS
-        </div>
+        </span>
       </div>
     </Link>
   );
