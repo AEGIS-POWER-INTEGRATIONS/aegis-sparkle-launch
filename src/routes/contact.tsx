@@ -48,10 +48,17 @@ const infoCards = [
   },
   {
     icon: Mail,
-    label: "聯絡信箱",
-    primary: "jtianfalcon@gmail.com",
+    label: "General & Partnerships",
+    primary: "johnny@aegispowerapi.com",
     secondary: "1 個工作日內回覆",
-    href: "mailto:jtianfalcon@gmail.com",
+    href: "mailto:johnny@aegispowerapi.com",
+  },
+  {
+    icon: Mail,
+    label: "Sales & RFQ",
+    primary: "sales@aegispowerapi.com",
+    secondary: "業務洽詢與報價需求",
+    href: "mailto:sales@aegispowerapi.com",
   },
   {
     icon: Layers,
