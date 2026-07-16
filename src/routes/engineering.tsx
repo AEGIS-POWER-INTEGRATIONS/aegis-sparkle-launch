@@ -23,6 +23,23 @@ export const Route = createFileRoute("/engineering")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/engineering` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Engineering Integration",
+          provider: {
+            "@type": "Organization",
+            name: "宏鼎集成股份有限公司",
+            url: `${SITE_URL}/`,
+          },
+          areaServed: "TW",
+          description: "結構化佈線、光纖建置、電氣整合、機電協調、資料中心工程支援與監控門禁系統整合。",
+        }),
+      },
+    ],
   }),
   component: Engineering,
 });

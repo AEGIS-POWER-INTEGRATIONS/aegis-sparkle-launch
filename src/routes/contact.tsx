@@ -28,6 +28,27 @@ export const Route = createFileRoute("/contact")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "宏鼎集成股份有限公司",
+          alternateName: "Aegis Power Integrations Co., Ltd.",
+          url: `${SITE_URL}/`,
+          email: "johnny@aegispowerapi.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "台灣大道二段2號20樓",
+            addressLocality: "西區",
+            addressRegion: "台中市",
+            addressCountry: "TW",
+          },
+          areaServed: "TW",
+        }),
+      },
+    ],
   }),
   component: Contact,
 });

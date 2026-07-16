@@ -1,0 +1,29 @@
+# 宏鼎集成 Aegis Power Integrations
+
+> Engineering × AI × Digital Transformation. Enterprise engineering
+> integration and AI systems partner for semiconductor, data center,
+> manufacturing and enterprise customers in Taiwan and APAC.
+
+宏鼎集成股份有限公司 (Aegis Power Integrations Co., Ltd.) delivers
+structured cabling, fiber optic, electrical and mechanical integration,
+project management, and enterprise AI system integration, together with
+the Aegis Business Apps product line (CostFlow, SalesOps, AI Launch).
+
+## Pages
+
+- [Home](/): Company overview, services, industries and capabilities.
+- [About](/about): Company background, mission and team.
+- [Engineering Integration](/engineering): Structured cabling, fiber, electrical, mechanical, PM and decommission services.
+- [Project Experience](/energy-experience): Energy, mechanical and engineering project experience.
+- [AI System Integration](/ai-integration): Workflow automation, AI agent, CRM, ERP, BI, enterprise AI.
+- [Aegis CostFlow](/costflow): Engineering quotation and cost analytics platform.
+- [Aegis SalesOps](/salesops): Sales management and AI weekly report system.
+- [Aegis AI Launch](/ai-launch): Enterprise AI adoption service.
+- [Pricing](/pricing): Subscription and implementation plans.
+- [Contact](/contact): Company contact information and inquiry form.
+- [Book Consultation](/demo): Book an initial consultation.
+
+## Optional
+
+- [Privacy Policy](/privacy): Privacy policy.
+- [Terms of Service](/terms): Terms of service.
