@@ -39,6 +39,7 @@ import { Route as BuildquestHallRouteImport } from './routes/buildquest.hall'
 import { Route as BuildquestClassSelectRouteImport } from './routes/buildquest.class-select'
 import { Route as BuildquestAdminQuestsRouteImport } from './routes/buildquest.admin-quests'
 import { Route as BuildquestAdminRouteImport } from './routes/buildquest.admin'
+import { Route as KnowledgeCategoryIndexRouteImport } from './routes/knowledge.$category.index'
 import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
 import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
 
@@ -192,6 +193,11 @@ const BuildquestAdminRoute = BuildquestAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => BuildquestRoute,
 } as any)
+const KnowledgeCategoryIndexRoute = KnowledgeCategoryIndexRouteImport.update({
+  id: '/knowledge/$category/',
+  path: '/knowledge/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuildquestResultIdRoute = BuildquestResultIdRouteImport.update({
   id: '/result/$id',
   path: '/result/$id',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/knowledge/': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -267,6 +274,7 @@ export interface FileRoutesByTo {
   '/knowledge': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/knowledge/$category': typeof KnowledgeCategoryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -302,6 +310,7 @@ export interface FileRoutesById {
   '/knowledge/': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -338,6 +347,7 @@ export interface FileRouteTypes {
     | '/knowledge/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/knowledge/$category/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -369,6 +379,7 @@ export interface FileRouteTypes {
     | '/knowledge'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/knowledge/$category'
   id:
     | '__root__'
     | '/'
@@ -403,6 +414,7 @@ export interface FileRouteTypes {
     | '/knowledge/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/knowledge/$category/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -424,6 +436,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   KnowledgeIndexRoute: typeof KnowledgeIndexRoute
+  KnowledgeCategoryIndexRoute: typeof KnowledgeCategoryIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -638,6 +651,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildquestAdminRouteImport
       parentRoute: typeof BuildquestRoute
     }
+    '/knowledge/$category/': {
+      id: '/knowledge/$category/'
+      path: '/knowledge/$category'
+      fullPath: '/knowledge/$category/'
+      preLoaderRoute: typeof KnowledgeCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buildquest/result/$id': {
       id: '/buildquest/result/$id'
       path: '/result/$id'
@@ -732,6 +752,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   KnowledgeIndexRoute: KnowledgeIndexRoute,
+  KnowledgeCategoryIndexRoute: KnowledgeCategoryIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
