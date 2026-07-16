@@ -9,7 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SalesopsRouteImport } from './routes/salesops'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as EnergyExperienceRouteImport } from './routes/energy-experience'
@@ -32,9 +34,19 @@ import { Route as BuildquestAdminRouteImport } from './routes/buildquest.admin'
 import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
 import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SalesopsRoute = SalesopsRouteImport.update({
   id: '/salesops',
   path: '/salesops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -155,7 +167,9 @@ export interface FileRoutesByFullPath {
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
   '/buildquest/class-select': typeof BuildquestClassSelectRoute
@@ -178,7 +192,9 @@ export interface FileRoutesByTo {
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
   '/buildquest/class-select': typeof BuildquestClassSelectRoute
@@ -203,7 +219,9 @@ export interface FileRoutesById {
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
+  '/terms': typeof TermsRoute
   '/buildquest/admin': typeof BuildquestAdminRoute
   '/buildquest/admin-quests': typeof BuildquestAdminQuestsRoute
   '/buildquest/class-select': typeof BuildquestClassSelectRoute
@@ -229,7 +247,9 @@ export interface FileRouteTypes {
     | '/energy-experience'
     | '/engineering'
     | '/pricing'
+    | '/privacy'
     | '/salesops'
+    | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
     | '/buildquest/class-select'
@@ -252,7 +272,9 @@ export interface FileRouteTypes {
     | '/energy-experience'
     | '/engineering'
     | '/pricing'
+    | '/privacy'
     | '/salesops'
+    | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
     | '/buildquest/class-select'
@@ -276,7 +298,9 @@ export interface FileRouteTypes {
     | '/energy-experience'
     | '/engineering'
     | '/pricing'
+    | '/privacy'
     | '/salesops'
+    | '/terms'
     | '/buildquest/admin'
     | '/buildquest/admin-quests'
     | '/buildquest/class-select'
@@ -301,16 +325,32 @@ export interface RootRouteChildren {
   EnergyExperienceRoute: typeof EnergyExperienceRoute
   EngineeringRoute: typeof EngineeringRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
   SalesopsRoute: typeof SalesopsRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/salesops': {
       id: '/salesops'
       path: '/salesops'
       fullPath: '/salesops'
       preLoaderRoute: typeof SalesopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -505,18 +545,10 @@ const rootRouteChildren: RootRouteChildren = {
   EnergyExperienceRoute: EnergyExperienceRoute,
   EngineeringRoute: EngineeringRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
   SalesopsRoute: SalesopsRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

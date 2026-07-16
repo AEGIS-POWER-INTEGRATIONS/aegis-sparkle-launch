@@ -48,10 +48,17 @@ const infoCards = [
   },
   {
     icon: Mail,
-    label: "聯絡信箱",
-    primary: "jtianfalcon@gmail.com",
+    label: "General & Partnerships",
+    primary: "johnny@aegispowerapi.com",
     secondary: "1 個工作日內回覆",
-    href: "mailto:jtianfalcon@gmail.com",
+    href: "mailto:johnny@aegispowerapi.com",
+  },
+  {
+    icon: Mail,
+    label: "Sales & RFQ",
+    primary: "sales@aegispowerapi.com",
+    secondary: "業務洽詢與報價需求",
+    href: "mailto:sales@aegispowerapi.com",
   },
   {
     icon: Layers,
@@ -224,7 +231,7 @@ function Contact() {
                     <button type="submit" className="btn btn-primary">
                       送出諮詢需求 <ArrowRight className="h-4 w-4" />
                     </button>
-                    <a href="mailto:jtianfalcon@gmail.com" className="btn btn-ghost">
+                    <a href="mailto:johnny@aegispowerapi.com" className="btn btn-ghost">
                       改用 Email 聯繫
                     </a>
                   </div>

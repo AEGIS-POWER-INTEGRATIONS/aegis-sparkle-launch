@@ -1,64 +1,69 @@
-## 範圍確認
+# Premium Corporate Redesign — AEGIS POWER INTEGRATIONS
 
-這是一個**全新的獨立 Web App**，與目前的 Aegis Business Apps 行銷網站是不同產品。我會在同一個專案中以新路由群 `/buildquest/*` 建立，與現有官網並存，避免破壞既有頁面。若你希望另開新專案，告訴我即可改成獨立 App。
+Positioning: **60% Engineering Company / 40% AI System Integration**. Target audience: NTT, Google, semiconductor fabs, EPC contractors, enterprise IT. Reference bar: Siemens / Schneider Electric / Honeywell / Cisco / Dell — restrained, corporate, technology-forward. Keep existing brand colors (deep navy, graphite, cool white, tech blue), logo, and Traditional Chinese primary language with English secondary.
 
-第一版全部使用 mock data（TypeScript 型別 + 假資料 store），保留未來可換成 AI API / Lovable Cloud 的資料結構。
+## Design system refinements (`src/styles.css`, chrome)
 
-## 視覺設計方向
+- Tighten type scale: display for hero (clamp 2.75–4.25rem), refined H2/H3 rhythm, generous letter-spacing on eyebrows and uppercase labels.
+- Corporate spacing: wider section padding (`py-24 md:py-32`), 12-column grid, larger container max-width (1280px).
+- Motion: subtle fade/slide-in on scroll via `framer-motion` (already common). No showy animations — enterprise restraint.
+- Icons: Lucide, thin stroke, uniform 20/24 sizing in rounded neutral tiles (no gold-heavy accents on every card).
+- Buttons: refine `btn-primary` (deep navy) + `btn-outline` (border, ghost hover). Consistent 44px height.
+- Cards: hairline borders, soft elevation on hover only, no gradient fills.
+- Site nav: keep sticky, add faint bottom border on scroll; refine active state to underline accent.
+- Footer: fix the run-on line (already done), reorganize into 4 columns (Engineering / AI Integration / Business Applications / Company) + legal row with Privacy & Terms links.
 
-- **基調**：深色科技背景（深藍 #0B1020 / 深紫 #1A1230），現代企業 SaaS 卡片式 UI 為主體（60%）
-- **RPG 元素**（25%）：等級徽章、EXP 進度條、稱號膠囊、能力雷達、任務卡、Boss 標記、像素感點綴 icon（不過度像素化）
-- **指揮中心感**（15%）：HUD 風格資訊條、發光描邊、青綠/金色強調光
-- **字體**：標題 Orbitron / Rajdhani 風格 + 內文 Noto Sans TC；不使用任何受版權保護的遊戲名稱或素材
-- 響應式：桌機 3 欄、平板 2 欄、手機單欄堆疊
+## Home page (`src/routes/index.tsx`) — full rebuild of sections
 
-## 路由與頁面（10 個）
+1. **Hero**
+   - Headline: `Engineering × AI × Digital Transformation`
+   - Sub: enterprise-grade integration partner for semiconductor, data center, and enterprise customers.
+   - CTAs: `Contact Us` → `/contact`, `View Services` → `/engineering`.
+   - Background: existing fiber hero image with dark gradient overlay for legibility.
 
-```
-src/routes/buildquest/
-  index.tsx            登入頁（mock 登入即進入）
-  class-select.tsx     工程角色選擇（6 職業卡）
-  hall.tsx             工程任務大廳（玩家 HUD + 推薦關卡）
-  quests.tsx           關卡列表（10 關 + 篩選/狀態）
-  quest.$id.tsx        AI 情境對話訓練（三欄式）
-  result.$id.tsx       任務結果（評級 + 七維分數 + 建議）
-  profile.tsx          個人工程能力值（雷達圖 + 紀錄）
-  admin.tsx            專案主管後台（員工/排行/弱項）
-  admin.quests.tsx     關卡管理（CRUD UI，mock）
-  knowledge.tsx        工程知識庫（SOP/範本分類）
-```
+2. **Trust Metrics** — 4 stat cards (years of engineering experience, projects delivered, industries served, enterprise integrations). Use placeholder-friendly figures ("15+", "200+", "6", "24/7").
 
-共用：`src/components/buildquest/`（PlayerHUD、QuestCard、StatBar、RadarChart、DialogBubble、RpgButton、ClassBadge…）；`src/lib/buildquest/mock.ts` 集中放型別與 mock data。
+3. **Industries We Serve** — 6-card grid: Semiconductor, Data Centers, Manufacturing, Commercial Buildings, Energy & ESG, Enterprise AI. Each with icon + short EN/ZH description.
 
-## 資料結構（為未來 AI / 後台預留）
+4. **Engineering Services** — 6 cards: Structured Cabling, Fiber Optic Installation, Electrical Integration, Mechanical Coordination, Project Management, Decommission Services.
 
-```ts
-type EngineerClass = 'commander' | 'knight' | 'cost-mage' | 'qa-judge' | 'coordinator' | 'client-liaison';
-type SkillKey = 'progress' | 'cost' | 'quality' | 'safety' | 'subcontractor' | 'client' | 'documentation';
+5. **AI Integration** — 6 cards: Workflow Automation, AI Agent, CRM, ERP, Business Intelligence, Enterprise AI.
 
-interface Player { id; name; classId; level; exp; expToNext; title; stats: Record<SkillKey, number>; completedQuests: string[] }
-interface Quest { id; name; chapter; type; purpose; aiPersona; winCondition; failCondition; rubric: Record<SkillKey, number>; turns; enabled }
-interface DialogTurn { role: 'ai' | 'player' | 'system'; text; choices?: { id; text; deltas: Partial<Record<SkillKey, number>> }[] }
-interface QuestRun { id; questId; playerId; turns: DialogTurn[]; scores: Record<SkillKey, number>; total; grade: 'S'|'A'|'B'|'C'|'D'; expGained; titleGained?; aiAdvice; nextRecommend; createdAt }
-interface Employee { id; name; classId; level; runs: number; avgScore; weakestQuestId }
-```
+6. **Business Applications** — product cards for Aegis CostFlow, Aegis SalesOps, Aegis AI Launch (existing routes), with concise value props.
 
-AI 對話頁第一版用「選項式情境分支」+ 預設文字輸入欄（送出後 mock 回應）；切到真 AI 時只需替換 `runAiTurn(questId, history)` 一個函式。
+7. **Why Choose Us** — 5 items: Engineering Experience, Professional PM, Enterprise Integration, Fast Response, Scalable Solutions.
 
-## 六職業 / 十關卡
+8. **Project Experience** — 4–6 anonymized case cards (industry / scope / outcome), no client names. Uses existing engineering imagery.
 
-依需求逐字建立卡片內容、訓練目的、AI 角色名稱、評分權重（七大能力）、Boss 標記（變更追加魔王、業主會議 Boss 戰）。
+9. **CTA band** — final "Contact Us / Book a Consultation" strip before footer.
 
-## 導覽整合
+## Contact page (`src/routes/contact.tsx`)
 
-- 現有官網（`/`, `/costflow` 等）不動。
-- 在站頭新增「BuildQuest」入口連到 `/buildquest`。
-- BuildQuest 內部使用自己的深色 Shell（含 PlayerHUD），與官網 Chrome 分離。
+- Swap Gmail for enterprise placeholders:
+  - `johnny@aegispowerapi.com` (general / partnerships)
+  - `sales@aegispowerapi.com` (sales / RFQ)
+- Update in contact cards, form fallback link, footer contact block (`site-chrome.tsx`).
 
-## 不做（第一版）
+## Footer (`site-chrome.tsx`)
 
-- 真實 AI 串接、真實登入/資料庫、PDF 報告下載（按鈕保留但顯示 toast）、關卡管理頁的實際持久化（僅 UI + local state）。
+Columns: Engineering / AI Integration / Business Applications / Company (About, Contact) + legal row (Privacy Policy, Terms). Create placeholder routes:
+- `src/routes/privacy.tsx`
+- `src/routes/terms.tsx`
 
-## 交付確認
+## SEO & performance
 
-確認後我會一次建立：型別 + mock data、共用元件、10 個路由頁、深色 RPG 樣式 token（加到 `src/styles.css`）、官網入口連結。需要的話再加上能力雷達圖（用純 SVG，免額外依賴）。
+- Ensure canonical uses production domain (`https://aegispowerapi.com`) via `src/lib/seo.ts`.
+- Tighten meta titles/descriptions on home to match new positioning (Engineering × AI).
+- Add `loading="lazy"` and explicit `width`/`height` on below-the-fold images.
+- Preload hero image via root `head().links` for LCP.
+
+## Out of scope
+
+- No changes to BuildQuest sub-app, Aegis product deep pages beyond copy alignment, or backend.
+- No new brand palette — refinement only within existing tokens.
+
+## Tech notes
+
+- Framer Motion already available; use `motion.div` with `whileInView` for subtle reveals.
+- Reuse existing image assets under `src/assets/`.
+- All copy remains bilingual (ZH primary + EN secondary label where applicable), matching current site tone.
