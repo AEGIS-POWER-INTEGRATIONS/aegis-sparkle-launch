@@ -20,6 +20,23 @@ export const Route = createFileRoute("/ai-integration")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/ai-integration` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "AI System Integration",
+          provider: {
+            "@type": "Organization",
+            name: "宏鼎集成股份有限公司",
+            url: `${SITE_URL}/`,
+          },
+          areaServed: "TW",
+          description: "流程盤點、AI 助理與知識庫、CRM/ERP 串接、自動化工作流、商業智慧儀表板與企業 AI 導入。",
+        }),
+      },
+    ],
   }),
   component: AiIntegration,
 });

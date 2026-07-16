@@ -2,6 +2,15 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 
 export const Route = createFileRoute("/buildquest/")({
+  head: () => ({
+    meta: [
+      { title: "BuildQuest｜AI 工程管理訓練模擬器 — 宏鼎集成" },
+      { name: "description", content: "BuildQuest 是宏鼎集成打造的 AI 工程管理訓練平台，透過情境化任務與 AI 評估，模擬進度、成本、品質、工安與談判等實戰決策。" },
+      { property: "og:title", content: "BuildQuest｜AI 工程管理訓練模擬器" },
+      { property: "og:description", content: "以 RPG 任務化情境訓練工程主管、PM、估價與品管的判斷力，內建 AI 即時回饋。" },
+      { property: "og:type", content: "website" },
+    ],
+  }),
   component: Login,
 });
 

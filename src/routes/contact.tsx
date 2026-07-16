@@ -28,6 +28,27 @@ export const Route = createFileRoute("/contact")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "宏鼎集成股份有限公司",
+          alternateName: "Aegis Power Integrations Co., Ltd.",
+          url: `${SITE_URL}/`,
+          email: "johnny@aegispowerapi.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "台灣大道二段2號20樓",
+            addressLocality: "西區",
+            addressRegion: "台中市",
+            addressCountry: "TW",
+          },
+          areaServed: "TW",
+        }),
+      },
+    ],
   }),
   component: Contact,
 });
@@ -203,8 +224,9 @@ function Contact() {
                   <Field label="Email" name="email" type="email" required className="md:col-span-2" />
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">想了解的服務</label>
+                    <label htmlFor="service" className="block text-sm font-medium mb-2">想了解的服務</label>
                     <select
+                      id="service"
                       name="service"
                       required
                       defaultValue=""
@@ -218,8 +240,9 @@ function Contact() {
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium mb-2">需求說明</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">需求說明</label>
                     <textarea
+                      id="message"
                       name="message"
                       rows={5}
                       placeholder="請簡述目前的流程現況、痛點，或希望了解的服務範圍。"
