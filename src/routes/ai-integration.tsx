@@ -5,15 +5,15 @@ const bannerAi = bannerAiAsset.url;
 import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Settings2, Workflow } from "lucide-react";
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { L, useLang, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/ai-integration")({
   head: () => ({
     meta: [
-      { title: "AI 系統整合服務｜宏鼎集成" },
-      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助台灣中小企業、製造業與工程公司真正把 AI 導入日常營運。" },
-      { name: "keywords", content: "AI 系統整合, 企業流程自動化, AI 助理, 工業 AI, 流程數位化, 中小企業 AI 導入, 製造業 AI" },
-      { property: "og:title", content: "AI 系統整合服務｜宏鼎集成" },
-      { property: "og:description", content: "企業流程數位化、AI 助理、自動化與儀表板一站式導入。" },
+      { title: "AI 系統整合服務｜AEGIS POWER INTEGRATIONS｜AI System Integration" },
+      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助企業真正把 AI 導入日常營運。AI adoption from process discovery to assistants, automation and dashboards." },
+      { property: "og:title", content: "AI System Integration | AEGIS POWER INTEGRATIONS" },
+      { property: "og:description", content: "End-to-end AI adoption for real business workflows." },
       { property: "og:url", content: `${SITE_URL}/ai-integration` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
@@ -29,11 +29,12 @@ export const Route = createFileRoute("/ai-integration")({
           serviceType: "AI System Integration",
           provider: {
             "@type": "Organization",
-            name: "宏鼎集成股份有限公司",
+            name: "AEGIS POWER INTEGRATIONS",
+            alternateName: "宏鼎集成股份有限公司",
             url: `${SITE_URL}/`,
           },
           areaServed: "TW",
-          description: "流程盤點、AI 助理與知識庫、CRM/ERP 串接、自動化工作流、商業智慧儀表板與企業 AI 導入。",
+          description: "Process discovery, AI assistants and knowledge bases, CRM/ERP integration, automation workflows, BI dashboards and enterprise AI adoption.",
         }),
       },
     ],
@@ -41,17 +42,31 @@ export const Route = createFileRoute("/ai-integration")({
   component: AiIntegration,
 });
 
+type Bi = { zh: string; en: string };
 
-const services = [
-  { icon: Settings2, t: "企業流程訪談與盤點", d: "由顧問訪談現場與管理層，盤點報價、成本、客戶、專案等關鍵流程。" },
-  { icon: Workflow, t: "流程數位化", d: "將報價、成本、CRM、庫存、專案流程逐步系統化與標準化。" },
-  { icon: BrainCircuit, t: "AI 助理與知識庫", d: "建置內部 AI 助理與企業知識庫，讓員工可快速查詢與決策。" },
-  { icon: MessagesSquare, t: "自動化串接", d: "LINE、Google Workspace、API、n8n 等工具串接與工作流自動化。" },
-  { icon: FileBarChart, t: "管理儀表板與週報", d: "依角色設計儀表板與自動週報，主管可即時掌握營運狀態。" },
-  { icon: Database, t: "客製化企業系統開發", d: "依產業特性與既有系統，提供模組化或客製化開發服務。" },
+const services: { icon: React.ComponentType<{ className?: string }>; t: Bi; d: Bi }[] = [
+  { icon: Settings2, t: { zh: "企業流程訪談與盤點", en: "Process Interview & Discovery" }, d: { zh: "由顧問訪談現場與管理層，盤點報價、成本、客戶、專案等關鍵流程。", en: "Consultants interview field and management to map quotation, cost, customer and project workflows." } },
+  { icon: Workflow, t: { zh: "流程數位化", en: "Workflow Digitalization" }, d: { zh: "將報價、成本、CRM、庫存、專案流程逐步系統化與標準化。", en: "Progressively systematize and standardize quotation, cost, CRM, inventory and project workflows." } },
+  { icon: BrainCircuit, t: { zh: "AI 助理與知識庫", en: "AI Assistants & Knowledge Base" }, d: { zh: "建置內部 AI 助理與企業知識庫，讓員工可快速查詢與決策。", en: "Deploy internal AI assistants and knowledge bases so staff can query and decide faster." } },
+  { icon: MessagesSquare, t: { zh: "自動化串接", en: "Automation Integration" }, d: { zh: "LINE、Google Workspace、API、n8n 等工具串接與工作流自動化。", en: "LINE, Google Workspace, APIs, n8n and workflow automation integrations." } },
+  { icon: FileBarChart, t: { zh: "管理儀表板與週報", en: "Dashboards & Weekly Reports" }, d: { zh: "依角色設計儀表板與自動週報，主管可即時掌握營運狀態。", en: "Role-based dashboards and automated weekly reports for real-time management visibility." } },
+  { icon: Database, t: { zh: "客製化企業系統開發", en: "Custom Enterprise Systems" }, d: { zh: "依產業特性與既有系統，提供模組化或客製化開發服務。", en: "Modular or fully custom development to fit your industry and existing systems." } },
+];
+
+const scenarios: Bi[] = [
+  { zh: "報價與成本流程數位化", en: "Quotation and cost workflow digitalization" },
+  { zh: "業務拜訪與 CRM 管理", en: "Sales visits and CRM management" },
+  { zh: "LINE 回報與自動週報", en: "LINE reporting and automated weekly reports" },
+  { zh: "庫存、採購、請款與專案資料整合", en: "Inventory, procurement, billing and project data integration" },
+  { zh: "企業內部 AI 助理與知識庫", en: "Internal AI assistants and knowledge bases" },
+  { zh: "Google Workspace、n8n、API、自動化報表串接", en: "Google Workspace, n8n, API and automated reporting integration" },
 ];
 
 function AiIntegration() {
+  const { isEn } = useLang();
+  const t = useT();
+  const tr = (b: Bi) => (isEn ? b.en : b.zh);
+
   return (
     <div className="min-h-screen flex flex-col">
       <SiteNav />
@@ -59,13 +74,19 @@ function AiIntegration() {
         <section className="py-20">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> AI 系統整合</span>
-              <h1 className="mt-6 text-4xl md:text-5xl">AI 系統整合服務</h1>
+              <span className="eyebrow"><span className="dot" /> <L zh="AI 系統整合" en="AI Integration" /></span>
+              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="AI 系統整合服務" en="AI System Integration" /></h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                宏鼎集成協助企業從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。
+                <L
+                  zh="從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。"
+                  en="From process discovery and data integration to AI assistants and automation — embedding AI into daily workflows for sustainable digital operations."
+                />
               </p>
               <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
-                我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。
+                <L
+                  zh="我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。"
+                  en="We don't just teach AI tools — we embed AI into your actual workflows."
+                />
               </p>
             </div>
             <div className="relative">
@@ -73,7 +94,7 @@ function AiIntegration() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                 <img
                   src={bannerAi}
-                  alt="AI 系統整合與資料流程視覺"
+                  alt={t({ zh: "AI 系統整合與資料流程視覺", en: "AI system integration and data workflow visual" })}
                   width={1600}
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
@@ -84,28 +105,24 @@ function AiIntegration() {
           </div>
         </section>
 
-        {/* 常見導入情境 */}
+        {/* Common scenarios */}
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 常見導入情境</span>
-              <h2 className="mt-4 text-3xl md:text-4xl">常見導入情境</h2>
+              <span className="eyebrow"><span className="dot" /> <L zh="常見導入情境" en="Common Scenarios" /></span>
+              <h2 className="mt-4 text-3xl md:text-4xl"><L zh="常見導入情境" en="Common Adoption Scenarios" /></h2>
               <p className="mt-3 text-muted-foreground">
-                以下是宏鼎集成在企業端最常協助導入的 AI 與系統整合場景。
+                <L
+                  zh="以下是我們在企業端最常協助導入的 AI 與系統整合場景。"
+                  en="The AI and system integration scenarios we most commonly deliver."
+                />
               </p>
             </div>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                "報價與成本流程數位化",
-                "業務拜訪與 CRM 管理",
-                "LINE 回報與自動週報",
-                "庫存、採購、請款與專案資料整合",
-                "企業內部 AI 助理與知識庫",
-                "Google Workspace、n8n、API、自動化報表串接",
-              ].map((s) => (
-                <div key={s} className="panel p-5 flex items-center gap-3">
+              {scenarios.map((s) => (
+                <div key={s.en} className="panel p-5 flex items-center gap-3">
                   <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0" />
-                  <span className="text-[15px] font-medium">{s}</span>
+                  <span className="text-[15px] font-medium">{tr(s)}</span>
                 </div>
               ))}
             </div>
@@ -114,13 +131,13 @@ function AiIntegration() {
 
         <section className="pb-24">
           <div className="container-x grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map(({ icon: Icon, t, d }) => (
-              <div key={t} className="panel p-6">
+            {services.map(({ icon: Icon, t: ttl, d }) => (
+              <div key={ttl.en} className="panel p-6">
                 <div className="grid h-11 w-11 place-items-center rounded-lg bg-ink text-ink-foreground">
                   <Icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-4 text-lg">{t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{d}</p>
+                <h3 className="mt-4 text-lg">{tr(ttl)}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{tr(d)}</p>
               </div>
             ))}
           </div>
@@ -129,18 +146,18 @@ function AiIntegration() {
         <section className="pb-24">
           <div className="container-x">
             <div className="panel p-8 md:p-10">
-              <h2 className="text-2xl md:text-3xl">導入流程</h2>
+              <h2 className="text-2xl md:text-3xl"><L zh="導入流程" en="Adoption Process" /></h2>
               <div className="mt-6 grid gap-5 md:grid-cols-4">
                 {[
-                  ["01", "流程盤點", "訪談現場與主管，盤點關鍵流程與資料來源。"],
-                  ["02", "藍圖設計", "提出系統與 AI 導入藍圖，明確範圍與順序。"],
-                  ["03", "建置與串接", "建立系統、AI 助理與自動化工作流。"],
-                  ["04", "教育與優化", "教育訓練與導入後追蹤，持續優化流程。"],
-                ].map(([n, t, d]) => (
-                  <div key={n}>
-                    <span className="num-badge">{n}</span>
-                    <h3 className="mt-3 text-base font-semibold">{t}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+                  { n: "01", t: { zh: "流程盤點", en: "Process Discovery" }, d: { zh: "訪談現場與主管，盤點關鍵流程與資料來源。", en: "Interview field and managers; map key workflows and data sources." } },
+                  { n: "02", t: { zh: "藍圖設計", en: "Blueprint Design" }, d: { zh: "提出系統與 AI 導入藍圖，明確範圍與順序。", en: "Present a system and AI adoption blueprint with clear scope and sequencing." } },
+                  { n: "03", t: { zh: "建置與串接", en: "Build & Integrate" }, d: { zh: "建立系統、AI 助理與自動化工作流。", en: "Build systems, AI assistants and automation workflows." } },
+                  { n: "04", t: { zh: "教育與優化", en: "Training & Optimization" }, d: { zh: "教育訓練與導入後追蹤，持續優化流程。", en: "Training and post-launch follow-up for continuous improvement." } },
+                ].map((s) => (
+                  <div key={s.n}>
+                    <span className="num-badge">{s.n}</span>
+                    <h3 className="mt-3 text-base font-semibold">{tr(s.t)}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{tr(s.d)}</p>
                   </div>
                 ))}
               </div>
@@ -151,13 +168,18 @@ function AiIntegration() {
         <section className="pb-24">
           <div className="container-x">
             <div className="panel-lift p-10 md:p-12 text-center">
-              <h2 className="text-2xl md:text-3xl">想開始導入 AI 嗎？</h2>
+              <h2 className="text-2xl md:text-3xl">
+                <L zh="想開始導入 AI 嗎？" en="Ready to start with AI?" />
+              </h2>
               <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-                從一個流程開始，我們協助你盤點、設計、導入，逐步建立企業自己的 AI 與自動化能力。
+                <L
+                  zh="從一個流程開始，我們協助你盤點、設計、導入，逐步建立企業自己的 AI 與自動化能力。"
+                  en="Start with one workflow — we help you discover, design and deploy your own AI and automation capabilities."
+                />
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢 <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/ai-launch" className="btn btn-ghost">了解 Aegis AI Launch</Link>
+                <Link to="/demo" className="btn btn-primary"><L zh="預約諮詢" en="Book Consultation" /> <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/ai-launch" className="btn btn-ghost"><L zh="了解 Aegis AI Launch" en="Explore Aegis AI Launch" /></Link>
               </div>
             </div>
           </div>

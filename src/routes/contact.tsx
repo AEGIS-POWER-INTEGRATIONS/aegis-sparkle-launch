@@ -13,15 +13,15 @@ import {
 } from "lucide-react";
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { L, useLang, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "聯絡我們｜宏鼎集成股份有限公司" },
-      { name: "description", content: "聯絡宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd. — 台中市西區台灣大道二段2號20樓。預約工程集成、AI 系統整合與 Aegis Business Apps 企業管理系統的初步諮詢。" },
-      { name: "keywords", content: "宏鼎集成 聯絡, 台中工程公司, 系統整合 諮詢, Aegis 聯絡我們" },
-      { property: "og:title", content: "聯絡我們｜宏鼎集成" },
-      { property: "og:description", content: "預約工程集成、AI 系統整合與企業管理系統諮詢。台中市西區台灣大道二段2號20樓。" },
+      { title: "聯絡我們｜AEGIS POWER INTEGRATIONS" },
+      { name: "description", content: "聯絡 AEGIS POWER INTEGRATIONS 宏鼎集成 — 台中市西區台灣大道二段2號20樓。預約工程集成、AI 系統整合與 Aegis Business Apps 企業管理系統的初步諮詢。Contact AEGIS POWER INTEGRATIONS for engineering integration and AI adoption." },
+      { property: "og:title", content: "Contact | AEGIS POWER INTEGRATIONS" },
+      { property: "og:description", content: "Book a consultation for engineering integration, AI system integration and enterprise applications." },
       { property: "og:url", content: `${SITE_URL}/contact` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
@@ -53,60 +53,70 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
+type Bi = { zh: string; en: string };
 
-const infoCards = [
+const infoCards: {
+  icon: React.ComponentType<{ className?: string }>;
+  label: Bi;
+  primary: Bi;
+  secondary: Bi;
+  href?: string;
+}[] = [
   {
     icon: Building2,
-    label: "公司名稱",
-    primary: "宏鼎集成股份有限公司",
-    secondary: "Aegis Power Integrations Co., Ltd.",
+    label: { zh: "公司名稱", en: "Company" },
+    primary: { zh: "宏鼎集成股份有限公司", en: "Aegis Power Integrations Co., Ltd." },
+    secondary: { zh: "Aegis Power Integrations Co., Ltd.", en: "宏鼎集成股份有限公司" },
   },
   {
     icon: MapPin,
-    label: "公司地址",
-    primary: "台中市西區台灣大道二段2號20樓",
-    secondary: "鄰近台中市中心商務區",
+    label: { zh: "公司地址", en: "Address" },
+    primary: { zh: "台中市西區台灣大道二段2號20樓", en: "20F, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung, Taiwan" },
+    secondary: { zh: "鄰近台中市中心商務區", en: "Near Taichung central business district" },
   },
   {
     icon: Mail,
-    label: "General & Partnerships",
-    primary: "johnny@aegispowerapi.com",
-    secondary: "1 個工作日內回覆",
+    label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
+    primary: { zh: "johnny@aegispowerapi.com", en: "johnny@aegispowerapi.com" },
+    secondary: { zh: "1 個工作日內回覆", en: "Reply within 1 business day" },
     href: "mailto:johnny@aegispowerapi.com",
   },
   {
     icon: Mail,
-    label: "Sales & RFQ",
-    primary: "sales@aegispowerapi.com",
-    secondary: "業務洽詢與報價需求",
+    label: { zh: "業務與報價", en: "Sales & RFQ" },
+    primary: { zh: "sales@aegispowerapi.com", en: "sales@aegispowerapi.com" },
+    secondary: { zh: "業務洽詢與報價需求", en: "Sales inquiries and RFQs" },
     href: "mailto:sales@aegispowerapi.com",
   },
   {
     icon: Layers,
-    label: "服務範圍",
-    primary: "工程集成｜AI 系統整合",
-    secondary: "Aegis Business Apps｜企業管理系統導入",
+    label: { zh: "服務範圍", en: "Services" },
+    primary: { zh: "工程集成｜AI 系統整合", en: "Engineering Integration｜AI Integration" },
+    secondary: { zh: "Aegis Business Apps｜企業管理系統導入", en: "Aegis Business Apps｜Enterprise system rollout" },
   },
   {
     icon: Users,
-    label: "服務對象",
-    primary: "工程公司、製造業、科技廠供應鏈",
-    secondary: "資料中心、弱電工程團隊、中小企業、會計師與顧問通路",
+    label: { zh: "服務對象", en: "Who We Serve" },
+    primary: { zh: "工程公司、製造業、科技廠供應鏈", en: "Engineering firms, manufacturers, tech supply chains" },
+    secondary: { zh: "資料中心、弱電工程團隊、中小企業、會計師與顧問通路", en: "Data centers, ELV teams, SMBs, accountants and consulting channels" },
   },
 ];
 
-const services = [
-  "工程集成服務",
-  "AI 系統整合",
-  "Aegis CostFlow",
-  "Aegis SalesOps",
-  "Aegis AI Launch",
-  "企業管理系統導入",
-  "其他合作洽談",
+const services: Bi[] = [
+  { zh: "工程集成服務", en: "Engineering Integration" },
+  { zh: "AI 系統整合", en: "AI System Integration" },
+  { zh: "Aegis CostFlow", en: "Aegis CostFlow" },
+  { zh: "Aegis SalesOps", en: "Aegis SalesOps" },
+  { zh: "Aegis AI Launch", en: "Aegis AI Launch" },
+  { zh: "企業管理系統導入", en: "Enterprise system rollout" },
+  { zh: "其他合作洽談", en: "Other partnerships" },
 ];
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const { isEn } = useLang();
+  const t = useT();
+  const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -121,11 +131,15 @@ function Contact() {
         <section className="py-20">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> 聯絡我們</span>
-              <h1 className="mt-6 text-4xl md:text-5xl">聯絡宏鼎集成</h1>
+              <span className="eyebrow"><span className="dot" /> <L zh="聯絡我們" en="Contact Us" /></span>
+              <h1 className="mt-6 text-4xl md:text-5xl">
+                <L zh="聯絡 AEGIS POWER INTEGRATIONS" en="Contact AEGIS POWER INTEGRATIONS" />
+              </h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                無論您是想評估工程整合、導入 AI 系統，或希望以模組化方式建立企業管理系統，歡迎與宏鼎集成聯繫。
-                我們將依照您的產業、流程與導入需求，安排初步諮詢。
+                <L
+                  zh="無論您是想評估工程整合、導入 AI 系統，或希望以模組化方式建立企業管理系統，歡迎與我們聯繫。我們將依照您的產業、流程與導入需求，安排初步諮詢。"
+                  en="Whether you're evaluating engineering integration, adopting AI systems, or building a modular enterprise management system, we're glad to connect. We'll arrange an initial consultation based on your industry, workflow and adoption needs."
+                />
               </p>
             </div>
             <div className="relative">
@@ -133,7 +147,7 @@ function Contact() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift">
                 <img
                   src={contactMeeting}
-                  alt="企業諮詢與系統導入會議視覺"
+                  alt={t({ zh: "企業諮詢與系統導入會議視覺", en: "Enterprise consultation and system rollout meeting" })}
                   width={1408}
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
@@ -148,19 +162,19 @@ function Contact() {
           <div className="container-x">
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {infoCards.map(({ icon: Icon, label, primary, secondary, href }) => (
-                <div key={label} className="panel p-6">
+                <div key={label.en} className="panel p-6">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-ink text-ink-foreground">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div className="mt-4 text-xs font-semibold tracking-widest text-muted-foreground uppercase">{label}</div>
+                  <div className="mt-4 text-xs font-semibold tracking-widest text-muted-foreground uppercase">{tr(label)}</div>
                   {href ? (
                     <a href={href} className="mt-1 block text-base font-semibold hover:text-foreground break-all">
-                      {primary}
+                      {tr(primary)}
                     </a>
                   ) : (
-                    <div className="mt-1 text-base font-semibold leading-snug">{primary}</div>
+                    <div className="mt-1 text-base font-semibold leading-snug">{tr(primary)}</div>
                   )}
-                  <div className="mt-1 text-sm text-muted-foreground leading-relaxed">{secondary}</div>
+                  <div className="mt-1 text-sm text-muted-foreground leading-relaxed">{tr(secondary)}</div>
                 </div>
               ))}
             </div>
@@ -171,12 +185,12 @@ function Contact() {
         <section className="pb-20">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 公司位置</span>
-              <h2 className="mt-4 text-3xl md:text-4xl">公司位置</h2>
+              <span className="eyebrow"><span className="dot" /> <L zh="公司位置" en="Our Location" /></span>
+              <h2 className="mt-4 text-3xl md:text-4xl"><L zh="公司位置" en="Our Location" /></h2>
             </div>
             <div className="mt-8 panel overflow-hidden">
               <iframe
-                title="宏鼎集成公司位置 — 台中市西區台灣大道二段2號20樓"
+                title={t({ zh: "AEGIS POWER INTEGRATIONS 公司位置 — 台中市西區台灣大道二段2號20樓", en: "AEGIS POWER INTEGRATIONS office location — Taichung, Taiwan" })}
                 src="https://www.google.com/maps?q=%E5%8F%B0%E4%B8%AD%E5%B8%82%E8%A5%BF%E5%8D%80%E5%8F%B0%E7%81%A3%E5%A4%A7%E9%81%93%E4%BA%8C%E6%AE%B52%E8%99%9F20%E6%A8%93&output=embed"
                 width="100%"
                 height="360"
@@ -187,8 +201,10 @@ function Contact() {
               />
             </div>
             <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-3xl">
-              宏鼎集成位於台中市西區台灣大道二段，鄰近台中市中心商務區，
-              可作為企業諮詢、系統導入討論與合作洽談據點。
+              <L
+                zh="我們位於台中市西區台灣大道二段，鄰近台中市中心商務區，可作為企業諮詢、系統導入討論與合作洽談據點。"
+                en="Our office in Taichung's central business district is available for consultation, system rollout discussions and partnership meetings."
+              />
             </p>
           </div>
         </section>
@@ -198,10 +214,13 @@ function Contact() {
           <div className="container-x">
             <div className="panel-lift p-8 md:p-12">
               <div className="max-w-2xl">
-                <span className="eyebrow"><span className="dot" /> 預約諮詢</span>
-                <h2 className="mt-4 text-3xl md:text-4xl">預約諮詢</h2>
+                <span className="eyebrow"><span className="dot" /> <L zh="預約諮詢" en="Book Consultation" /></span>
+                <h2 className="mt-4 text-3xl md:text-4xl"><L zh="預約諮詢" en="Book a Consultation" /></h2>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  填寫以下資訊，宏鼎集成顧問將於 1 個工作日內與您聯繫，提供初步建議與後續規劃。
+                  <L
+                    zh="填寫以下資訊，我們的顧問將於 1 個工作日內與您聯繫，提供初步建議與後續規劃。"
+                    en="Fill in the form below and one of our consultants will contact you within 1 business day with initial recommendations and next steps."
+                  />
                 </p>
               </div>
 
@@ -209,22 +228,29 @@ function Contact() {
                 <div className="mt-10 panel p-8 flex items-start gap-4">
                   <CheckCircle2 className="h-6 w-6 text-gold shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-semibold">已收到您的諮詢需求</h3>
+                    <h3 className="text-xl font-semibold">
+                      <L zh="已收到您的諮詢需求" en="We've received your inquiry" />
+                    </h3>
                     <p className="mt-2 text-muted-foreground leading-relaxed">
-                      感謝您的填寫，宏鼎集成將盡快與您聯繫。
+                      <L
+                        zh="感謝您的填寫，我們將盡快與您聯繫。"
+                        en="Thank you — we will reach out to you shortly."
+                      />
                     </p>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="mt-10 grid gap-5 md:grid-cols-2">
-                  <Field label="姓名" name="name" required />
-                  <Field label="公司名稱" name="company" required />
-                  <Field label="職稱" name="title" />
-                  <Field label="電話" name="phone" type="tel" />
-                  <Field label="Email" name="email" type="email" required className="md:col-span-2" />
+                  <Field label={t({ zh: "姓名", en: "Name" })} name="name" required />
+                  <Field label={t({ zh: "公司名稱", en: "Company" })} name="company" required />
+                  <Field label={t({ zh: "職稱", en: "Job title" })} name="title" />
+                  <Field label={t({ zh: "電話", en: "Phone" })} name="phone" type="tel" />
+                  <Field label={t({ zh: "Email", en: "Email" })} name="email" type="email" required className="md:col-span-2" />
 
                   <div className="md:col-span-2">
-                    <label htmlFor="service" className="block text-sm font-medium mb-2">想了解的服務</label>
+                    <label htmlFor="service" className="block text-sm font-medium mb-2">
+                      <L zh="想了解的服務" en="Service of interest" />
+                    </label>
                     <select
                       id="service"
                       name="service"
@@ -232,30 +258,32 @@ function Contact() {
                       defaultValue=""
                       className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
                     >
-                      <option value="" disabled>請選擇服務項目</option>
+                      <option value="" disabled>{t({ zh: "請選擇服務項目", en: "Please select a service" })}</option>
                       {services.map((s) => (
-                        <option key={s} value={s}>{s}</option>
+                        <option key={s.en} value={s.en}>{tr(s)}</option>
                       ))}
                     </select>
                   </div>
 
                   <div className="md:col-span-2">
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">需求說明</label>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+                      <L zh="需求說明" en="Message" />
+                    </label>
                     <textarea
                       id="message"
                       name="message"
                       rows={5}
-                      placeholder="請簡述目前的流程現況、痛點，或希望了解的服務範圍。"
+                      placeholder={t({ zh: "請簡述目前的流程現況、痛點，或希望了解的服務範圍。", en: "Briefly describe your current workflow, pain points, or the services you'd like to learn about." })}
                       className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 resize-y"
                     />
                   </div>
 
                   <div className="md:col-span-2 flex flex-wrap gap-3 pt-2">
                     <button type="submit" className="btn btn-primary">
-                      送出諮詢需求 <ArrowRight className="h-4 w-4" />
+                      <L zh="送出諮詢需求" en="Submit inquiry" /> <ArrowRight className="h-4 w-4" />
                     </button>
                     <a href="mailto:johnny@aegispowerapi.com" className="btn btn-ghost">
-                      改用 Email 聯繫
+                      <L zh="改用 Email 聯繫" en="Email us instead" />
                     </a>
                   </div>
                 </form>
