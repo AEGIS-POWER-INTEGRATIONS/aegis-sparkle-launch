@@ -231,7 +231,7 @@ function Contact() {
                     <button type="submit" className="btn btn-primary">
                       送出諮詢需求 <ArrowRight className="h-4 w-4" />
                     </button>
-                    <a href="mailto:jtianfalcon@gmail.com" className="btn btn-ghost">
+                    <a href="mailto:johnny@aegispowerapi.com" className="btn btn-ghost">
                       改用 Email 聯繫
                     </a>
                   </div>
