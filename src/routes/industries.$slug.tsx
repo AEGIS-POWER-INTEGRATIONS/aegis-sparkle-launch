@@ -1,12 +1,12 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { INDUSTRIES, getIndustry } from "@/lib/industries";
+import { INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
 import { L, useLang } from "@/lib/i18n";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 
 export const Route = createFileRoute("/industries/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { industry: Industry } => {
     const industry = getIndustry(params.slug);
     if (!industry) throw notFound();
     return { industry };
