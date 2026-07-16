@@ -21,6 +21,7 @@ import { Route as EnergyExperienceRouteImport } from './routes/energy-experience
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CostflowRouteImport } from './routes/costflow'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyProfileRouteImport } from './routes/company-profile'
 import { Route as BuildquestRouteImport } from './routes/buildquest'
 import { Route as AiLaunchRouteImport } from './routes/ai-launch'
 import { Route as AiIntegrationRouteImport } from './routes/ai-integration'
@@ -102,6 +103,11 @@ const CostflowRoute = CostflowRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyProfileRoute = CompanyProfileRouteImport.update({
+  id: '/company-profile',
+  path: '/company-profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuildquestRoute = BuildquestRouteImport.update({
@@ -221,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
   '/buildquest': typeof BuildquestRouteWithChildren
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
@@ -256,6 +263,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
@@ -291,6 +299,7 @@ export interface FileRoutesById {
   '/ai-integration': typeof AiIntegrationRoute
   '/ai-launch': typeof AiLaunchRoute
   '/buildquest': typeof BuildquestRouteWithChildren
+  '/company-profile': typeof CompanyProfileRoute
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
@@ -329,6 +338,7 @@ export interface FileRouteTypes {
     | '/ai-integration'
     | '/ai-launch'
     | '/buildquest'
+    | '/company-profile'
     | '/contact'
     | '/costflow'
     | '/demo'
@@ -364,6 +374,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/ai-integration'
     | '/ai-launch'
+    | '/company-profile'
     | '/contact'
     | '/costflow'
     | '/demo'
@@ -398,6 +409,7 @@ export interface FileRouteTypes {
     | '/ai-integration'
     | '/ai-launch'
     | '/buildquest'
+    | '/company-profile'
     | '/contact'
     | '/costflow'
     | '/demo'
@@ -435,6 +447,7 @@ export interface RootRouteChildren {
   AiIntegrationRoute: typeof AiIntegrationRoute
   AiLaunchRoute: typeof AiLaunchRoute
   BuildquestRoute: typeof BuildquestRouteWithChildren
+  CompanyProfileRoute: typeof CompanyProfileRoute
   ContactRoute: typeof ContactRoute
   CostflowRoute: typeof CostflowRoute
   DemoRoute: typeof DemoRoute
@@ -536,6 +549,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company-profile': {
+      id: '/company-profile'
+      path: '/company-profile'
+      fullPath: '/company-profile'
+      preLoaderRoute: typeof CompanyProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buildquest': {
@@ -759,6 +779,7 @@ const rootRouteChildren: RootRouteChildren = {
   AiIntegrationRoute: AiIntegrationRoute,
   AiLaunchRoute: AiLaunchRoute,
   BuildquestRoute: BuildquestRouteWithChildren,
+  CompanyProfileRoute: CompanyProfileRoute,
   ContactRoute: ContactRoute,
   CostflowRoute: CostflowRoute,
   DemoRoute: DemoRoute,

@@ -9,6 +9,8 @@ interface SitemapEntry {
   priority?: string;
 }
 
+const LASTMOD = "2026-07-16";
+
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
@@ -16,6 +18,8 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
+          { path: "/company-profile", changefreq: "monthly", priority: "0.8" },
+
           { path: "/engineering", changefreq: "monthly", priority: "0.9" },
           { path: "/energy-experience", changefreq: "monthly", priority: "0.7" },
           { path: "/ai-integration", changefreq: "monthly", priority: "0.9" },
@@ -47,7 +51,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/ai-launch", changefreq: "monthly", priority: "0.8" },
           { path: "/pricing", changefreq: "monthly", priority: "0.8" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
-          { path: "/demo", changefreq: "monthly", priority: "0.6" },
           { path: "/privacy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms", changefreq: "yearly", priority: "0.3" },
         ];
@@ -56,6 +59,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <lastmod>${LASTMOD}</lastmod>`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
@@ -63,6 +67,7 @@ export const Route = createFileRoute("/sitemap.xml")({
             .filter(Boolean)
             .join("\n"),
         );
+
 
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,

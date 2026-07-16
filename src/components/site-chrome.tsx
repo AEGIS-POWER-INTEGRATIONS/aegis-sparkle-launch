@@ -31,10 +31,10 @@ function Brand({ size = "md" }: { size?: "md" | "lg" }) {
     >
       <img
         src={logoAsset.url}
-        alt=""
-        aria-hidden="true"
+        alt="宏鼎集成 AEGIS POWER INTEGRATIONS 標誌"
         className={`${imgCls} object-contain shrink-0 block`}
       />
+
       <span className="flex flex-col justify-center min-w-0">
         <span
           className={`${titleCls} font-bold tracking-tight text-foreground`}
@@ -323,6 +323,12 @@ export function SiteFooter() {
                 <L zh="關於宏鼎" en="About" />
               </Link>
             </li>
+            <li>
+              <Link to="/company-profile" className="hover:text-foreground">
+                <L zh="公司簡介" en="Company Profile" />
+              </Link>
+            </li>
+
             <li>
               <Link to="/contact" className="hover:text-foreground">
                 <L zh="聯絡我們" en="Contact" />

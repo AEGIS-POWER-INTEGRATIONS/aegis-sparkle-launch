@@ -14,6 +14,7 @@ export const Route = createFileRoute("/demo")({
       { title: "預約諮詢｜AEGIS POWER INTEGRATIONS" },
       { name: "description", content: "預約 AEGIS POWER INTEGRATIONS 顧問，安排工程整合、AI 系統整合與企業應用（CostFlow / SalesOps / AI Launch）導入評估。原則上 1–2 個工作日內回覆。" },
       { name: "keywords", content: "預約諮詢, 產品 Demo, 企業系統導入, AI 顧問, Aegis Demo" },
+      { name: "robots", content: "noindex, follow" },
       { property: "og:title", content: "預約諮詢｜AEGIS POWER INTEGRATIONS" },
       { property: "og:description", content: "顧問依照產業、團隊規模與目前使用的工具，提出最適合的導入方案。原則上 1–2 個工作日內回覆。" },
       { property: "og:url", content: `${SITE_URL}/demo` },
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/demo")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
+
     links: [{ rel: "canonical", href: `${SITE_URL}/demo` }],
   }),
   component: Demo,

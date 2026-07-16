@@ -43,18 +43,20 @@ import { L, useLang } from "@/lib/i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AEGIS POWER INTEGRATIONS｜工程整合、AI 導入與企業數位轉型" },
-      { name: "description", content: "提供資料中心、產業工程、系統整合、AI 導入、流程自動化及企業數位應用服務，協助企業提升專案執行與營運效率。AEGIS POWER INTEGRATIONS | Engineering & AI Integration for enterprise clients." },
-      { name: "keywords", content: "engineering integration, AI system integration, semiconductor engineering, data center, structured cabling, fiber optic, enterprise AI, workflow automation, 宏鼎集成, 工程集成, AI 系統整合, 半導體, 資料中心, 企業管理系統" },
-      { property: "og:title", content: "AEGIS POWER INTEGRATIONS｜工程整合、AI 導入與企業數位轉型" },
-      { property: "og:description", content: "工程整合、資料中心、AI 導入與企業數位應用服務。Engineering integration, data center services, AI implementation and enterprise digital solutions." },
+      { title: "宏鼎集成｜工程整合、AI 導入與企業數位轉型｜AEGIS POWER INTEGRATIONS" },
+      { name: "description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）位於台中,提供資料中心、半導體與科技廠工程、弱電光纖、機電整合、AI 系統整合及企業數位轉型服務。" },
+      { name: "keywords", content: "宏鼎集成, 宏鼎集成股份有限公司, AEGIS POWER INTEGRATIONS, engineering integration, AI system integration, semiconductor engineering, data center, structured cabling, fiber optic, enterprise AI, 工程集成, AI 系統整合, 半導體, 資料中心, 企業管理系統" },
+      { property: "og:title", content: "宏鼎集成｜工程整合、AI 導入與企業數位轉型" },
+      { property: "og:description", content: "宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）｜工程整合、資料中心、AI 導入與企業數位應用服務。" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "640" },
+      { name: "twitter:title", content: "宏鼎集成｜工程整合、AI 導入與企業數位轉型" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
+
     links: [
       { rel: "canonical", href: `${SITE_URL}/` },
       { rel: "preload", as: "image", href: heroAsset.url, fetchpriority: "high" } as never,
@@ -181,17 +183,18 @@ function Home() {
                   </>
                 ) : (
                   <>
-                    工程整合 × AI 導入 × <br />
+                    宏鼎集成｜工程整合 × AI 導入 × <br />
                     <span className="text-[oklch(0.85_0.12_235)]">企業數位轉型</span>
                   </>
                 )}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
                 <L
-                  zh="AEGIS POWER INTEGRATIONS 專注於工程整合、資料中心與產業應用，並結合 AI、流程自動化及企業系統，協助客戶提升專案執行效率與營運管理能力。"
-                  en="Enterprise-grade engineering integration and AI systems for semiconductor fabs, data centers, manufacturers and enterprise customers across Taiwan and APAC."
+                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）專注於工程整合、資料中心與產業應用，並結合 AI、流程自動化及企業系統，協助客戶提升專案執行效率與營運管理能力。"
+                  en="Aegis Power Integrations Co., Ltd. delivers enterprise-grade engineering integration and AI systems for semiconductor fabs, data centers, manufacturers and enterprise customers across Taiwan and APAC."
                 />
               </p>
+
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link to="/contact" className="btn btn-primary">
                   <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />

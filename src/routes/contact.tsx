@@ -21,15 +21,16 @@ import { L, useLang, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "聯絡我們｜AEGIS POWER INTEGRATIONS" },
-      { name: "description", content: "聯絡 AEGIS POWER INTEGRATIONS 宏鼎集成 — 台中市西區台灣大道二段2號20樓。預約工程集成、AI 系統整合與 Aegis Business Apps 企業管理系統的初步諮詢。Contact AEGIS POWER INTEGRATIONS for engineering integration and AI adoption." },
-      { property: "og:title", content: "Contact | AEGIS POWER INTEGRATIONS" },
-      { property: "og:description", content: "Book a consultation for engineering integration, AI system integration and enterprise applications." },
+      { title: "聯絡宏鼎集成｜工程整合與 AI 導入諮詢" },
+      { name: "description", content: "聯絡宏鼎集成股份有限公司。服務項目包含工程整合、資料中心與弱電光纖工程、AI 系統整合及企業管理系統導入。公司位於台中市西區。" },
+      { property: "og:title", content: "聯絡宏鼎集成｜工程整合與 AI 導入諮詢" },
+      { property: "og:description", content: "聯絡宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）— 工程整合、AI 系統整合與企業應用導入諮詢。" },
       { property: "og:url", content: `${SITE_URL}/contact` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
+
     links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
     scripts: [
       {

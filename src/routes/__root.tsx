@@ -116,12 +116,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "宏鼎集成股份有限公司",
-          alternateName: "Aegis Power Integrations Co., Ltd.",
-          url: "https://aegispowerapi.com",
-          description:
-            "Engineering integration, AI system integration and enterprise digital applications for industrial and corporate clients in Taiwan and APAC.",
-          areaServed: "TW",
+          "@id": "https://aegispowerapi.com/#organization",
+          name: "宏鼎集成",
+          legalName: "宏鼎集成股份有限公司",
+          alternateName: [
+            "AEGIS POWER INTEGRATIONS",
+            "Aegis Power Integrations Co., Ltd.",
+          ],
+          url: "https://aegispowerapi.com/",
+          logo: "https://aegispowerapi.com/__l5e/assets-v1/ac05f61c-af8a-40fd-985b-4b747d757366/api-logo.png",
+          email: [
+            "johnny@aegispowerapi.com",
+            "sales@aegispowerapi.com",
+          ],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "台灣大道二段2號20樓",
+            addressLocality: "西區",
+            addressRegion: "台中市",
+            addressCountry: "TW",
+          },
+          areaServed: { "@type": "Country", name: "Taiwan" },
           knowsAbout: [
             "Engineering Integration",
             "AI System Integration",
@@ -130,6 +145,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             "Data Centers",
             "Energy & Mechanical Engineering",
           ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://aegispowerapi.com/#website",
+          url: "https://aegispowerapi.com/",
+          name: "宏鼎集成",
+          alternateName: "AEGIS POWER INTEGRATIONS",
+          publisher: { "@id": "https://aegispowerapi.com/#organization" },
+          inLanguage: ["zh-Hant-TW", "en"],
         }),
       },
     ],
@@ -143,7 +171,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="zh-Hant">
+    <html lang="zh-Hant-TW">
+
       <head>
         <HeadContent />
       </head>
