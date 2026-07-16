@@ -392,3 +392,43 @@ function Field({
     </div>
   );
 }
+
+function Select({
+  id,
+  name,
+  label,
+  placeholder,
+  options,
+  tr,
+  required,
+  className = "",
+}: {
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  options: Bi[];
+  tr: (b: Bi) => string;
+  required?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <label htmlFor={id} className="block text-sm font-medium mb-2">
+        {label}{required && <span className="text-gold ml-1">*</span>}
+      </label>
+      <select
+        id={id}
+        name={name}
+        required={required}
+        defaultValue=""
+        className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+      >
+        <option value="" disabled>{placeholder}</option>
+        {options.map((o) => (
+          <option key={o.en} value={o.en}>{tr(o)}</option>
+        ))}
+      </select>
+    </div>
+  );
+}
