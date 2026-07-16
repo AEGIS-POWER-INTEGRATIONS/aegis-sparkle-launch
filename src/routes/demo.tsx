@@ -83,7 +83,7 @@ function Demo() {
     });
     setSubmitting(false);
     if (error) {
-      setServerError("送出失敗，請稍後再試，或來信至 hello@aegis.app");
+      setServerError("送出失敗，請稍後再試，或來信至 sales@aegispowerapi.com");
       return;
     }
     setSubmitted(true);
@@ -127,7 +127,7 @@ function Demo() {
                 </div>
               </div>
               <div className="text-sm text-muted-foreground">
-                也可以直接來信：<a href="mailto:hello@aegis.app" className="text-foreground font-medium underline underline-offset-4">hello@aegis.app</a>
+                也可以直接來信：<a href="mailto:sales@aegispowerapi.com" className="text-foreground font-medium underline underline-offset-4">sales@aegispowerapi.com</a>
               </div>
             </div>
 

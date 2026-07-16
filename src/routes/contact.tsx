@@ -78,7 +78,7 @@ const infoCards: {
     icon: Mail,
     label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
     primary: { zh: "johnny@aegispowerapi.com", en: "johnny@aegispowerapi.com" },
-    secondary: { zh: "1 個工作日內回覆", en: "Reply within 1 business day" },
+    secondary: { zh: "原則上 1–2 個工作日內回覆", en: "Reply within 1–2 business days" },
     href: "mailto:johnny@aegispowerapi.com",
   },
   {
@@ -103,13 +103,37 @@ const infoCards: {
 ];
 
 const services: Bi[] = [
-  { zh: "工程集成服務", en: "Engineering Integration" },
+  { zh: "工程服務", en: "Engineering Services" },
+  { zh: "資料中心與光纖工程", en: "Data Center & Fiber Engineering" },
+  { zh: "弱電與網路整合", en: "ELV & Network Integration" },
+  { zh: "能源與機電工程", en: "Energy & MEP Engineering" },
   { zh: "AI 系統整合", en: "AI System Integration" },
-  { zh: "Aegis CostFlow", en: "Aegis CostFlow" },
-  { zh: "Aegis SalesOps", en: "Aegis SalesOps" },
-  { zh: "Aegis AI Launch", en: "Aegis AI Launch" },
-  { zh: "企業管理系統導入", en: "Enterprise system rollout" },
-  { zh: "其他合作洽談", en: "Other partnerships" },
+  { zh: "企業流程顧問", en: "Enterprise Workflow Advisory" },
+  { zh: "企業應用（CostFlow / SalesOps / AI Launch）", en: "Business Applications (CostFlow / SalesOps / AI Launch)" },
+  { zh: "專案合作", en: "Project Partnership" },
+  { zh: "其他", en: "Other" },
+];
+
+const companySizes: Bi[] = [
+  { zh: "1–20 人", en: "1–20 employees" },
+  { zh: "21–100 人", en: "21–100 employees" },
+  { zh: "101–500 人", en: "101–500 employees" },
+  { zh: "500+ 人", en: "500+ employees" },
+];
+
+const timelines: Bi[] = [
+  { zh: "1 個月內", en: "Within 1 month" },
+  { zh: "1–3 個月", en: "1–3 months" },
+  { zh: "3–6 個月", en: "3–6 months" },
+  { zh: "6 個月以上或評估中", en: "6+ months or evaluating" },
+];
+
+const budgets: Bi[] = [
+  { zh: "尚未確定", en: "Not yet decided" },
+  { zh: "低於 NT$ 50 萬", en: "Under NT$ 500K" },
+  { zh: "NT$ 50–200 萬", en: "NT$ 500K – 2M" },
+  { zh: "NT$ 200–1000 萬", en: "NT$ 2M – 10M" },
+  { zh: "NT$ 1000 萬以上", en: "NT$ 10M+" },
 ];
 
 function Contact() {
@@ -218,8 +242,8 @@ function Contact() {
                 <h2 className="mt-4 text-3xl md:text-4xl"><L zh="預約諮詢" en="Book a Consultation" /></h2>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
                   <L
-                    zh="填寫以下資訊，我們的顧問將於 1 個工作日內與您聯繫，提供初步建議與後續規劃。"
-                    en="Fill in the form below and one of our consultants will contact you within 1 business day with initial recommendations and next steps."
+                    zh="填寫以下資訊，我們將由相關人員與您聯繫，提供初步建議與後續規劃。原則上將於 1–2 個工作日內回覆。"
+                    en="Fill in the form below and a member of our team will contact you with initial recommendations and next steps. We aim to reply within 1–2 business days."
                   />
                 </p>
               </div>
@@ -233,8 +257,8 @@ function Contact() {
                     </h3>
                     <p className="mt-2 text-muted-foreground leading-relaxed">
                       <L
-                        zh="感謝您的填寫，我們將盡快與您聯繫。"
-                        en="Thank you — we will reach out to you shortly."
+                        zh="感謝您的來信，我們已收到您的需求，將由相關人員進一步與您聯絡。"
+                        en="Thank you. Your inquiry has been received, and a member of our team will contact you."
                       />
                     </p>
                   </div>
@@ -247,42 +271,85 @@ function Contact() {
                   <Field label={t({ zh: "電話", en: "Phone" })} name="phone" type="tel" />
                   <Field label={t({ zh: "Email", en: "Email" })} name="email" type="email" required className="md:col-span-2" />
 
-                  <div className="md:col-span-2">
-                    <label htmlFor="service" className="block text-sm font-medium mb-2">
-                      <L zh="想了解的服務" en="Service of interest" />
-                    </label>
-                    <select
-                      id="service"
-                      name="service"
-                      required
-                      defaultValue=""
-                      className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
-                    >
-                      <option value="" disabled>{t({ zh: "請選擇服務項目", en: "Please select a service" })}</option>
-                      {services.map((s) => (
-                        <option key={s.en} value={s.en}>{tr(s)}</option>
-                      ))}
-                    </select>
-                  </div>
+                  <Select
+                    id="service"
+                    name="service"
+                    required
+                    label={t({ zh: "有興趣的服務", en: "Service of interest" })}
+                    placeholder={t({ zh: "請選擇服務項目", en: "Please select a service" })}
+                    options={services}
+                    tr={tr}
+                    className="md:col-span-2"
+                  />
+
+                  <Select
+                    id="company_size"
+                    name="company_size"
+                    label={t({ zh: "公司規模", en: "Company size" })}
+                    placeholder={t({ zh: "請選擇公司規模", en: "Select company size" })}
+                    options={companySizes}
+                    tr={tr}
+                  />
+
+                  <Select
+                    id="timeline"
+                    name="timeline"
+                    label={t({ zh: "預計導入時間", en: "Expected timeline" })}
+                    placeholder={t({ zh: "請選擇時間", en: "Select a timeline" })}
+                    options={timelines}
+                    tr={tr}
+                  />
+
+                  <Field
+                    label={t({ zh: "目前使用的系統（選填）", en: "Systems currently in use (optional)" })}
+                    name="current_systems"
+                    className="md:col-span-2"
+                  />
+
+                  <Select
+                    id="budget"
+                    name="budget"
+                    label={t({ zh: "預算區間（選填）", en: "Budget range (optional)" })}
+                    placeholder={t({ zh: "請選擇預算區間", en: "Select a range" })}
+                    options={budgets}
+                    tr={tr}
+                    className="md:col-span-2"
+                  />
 
                   <div className="md:col-span-2">
-                    <label htmlFor="message" className="block text-sm font-medium mb-2">
-                      <L zh="需求說明" en="Message" />
+                    <label htmlFor="problem" className="block text-sm font-medium mb-2">
+                      <L zh="希望改善的問題 / 補充說明" en="Pain points or notes" />
                     </label>
                     <textarea
-                      id="message"
-                      name="message"
+                      id="problem"
+                      name="problem"
                       rows={5}
                       placeholder={t({ zh: "請簡述目前的流程現況、痛點，或希望了解的服務範圍。", en: "Briefly describe your current workflow, pain points, or the services you'd like to learn about." })}
                       className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 resize-y"
                     />
                   </div>
 
+                  <div className="md:col-span-2 flex items-start gap-3 rounded-lg border border-border bg-surface/40 p-4">
+                    <input
+                      id="consent"
+                      name="consent"
+                      type="checkbox"
+                      required
+                      className="mt-1 h-4 w-4 accent-primary"
+                    />
+                    <label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
+                      <L
+                        zh={<>我同意依<a href="/privacy" className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>提供上述資料，供本公司聯絡與需求評估使用。</>}
+                        en={<>I consent to AEGIS POWER INTEGRATIONS using the information above to contact me, in accordance with the <a href="/privacy" className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>.</>}
+                      />
+                    </label>
+                  </div>
+
                   <div className="md:col-span-2 flex flex-wrap gap-3 pt-2">
                     <button type="submit" className="btn btn-primary">
                       <L zh="送出諮詢需求" en="Submit inquiry" /> <ArrowRight className="h-4 w-4" />
                     </button>
-                    <a href="mailto:johnny@aegispowerapi.com" className="btn btn-ghost">
+                    <a href="mailto:sales@aegispowerapi.com" className="btn btn-ghost">
                       <L zh="改用 Email 聯繫" en="Email us instead" />
                     </a>
                   </div>
@@ -322,6 +389,46 @@ function Field({
         required={required}
         className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
       />
+    </div>
+  );
+}
+
+function Select({
+  id,
+  name,
+  label,
+  placeholder,
+  options,
+  tr,
+  required,
+  className = "",
+}: {
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  options: Bi[];
+  tr: (b: Bi) => string;
+  required?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={className}>
+      <label htmlFor={id} className="block text-sm font-medium mb-2">
+        {label}{required && <span className="text-gold ml-1">*</span>}
+      </label>
+      <select
+        id={id}
+        name={name}
+        required={required}
+        defaultValue=""
+        className="w-full rounded-lg border border-input bg-card px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50"
+      >
+        <option value="" disabled>{placeholder}</option>
+        {options.map((o) => (
+          <option key={o.en} value={o.en}>{tr(o)}</option>
+        ))}
+      </select>
     </div>
   );
 }
