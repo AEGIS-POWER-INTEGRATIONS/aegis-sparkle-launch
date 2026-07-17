@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "8r_Aj_GTimjEbblZu-3P5dnQ1VVIZlsclWnH2J_abR4" },
       { title: "AEGIS POWER INTEGRATIONS｜工程整合、AI 導入與企業數位轉型" },
       { name: "description", content: "宏鼎集成股份有限公司 Aegis Power Integrations Co., Ltd.｜提供資料中心、產業工程、系統整合、AI 導入、流程自動化及企業數位應用服務，協助企業提升專案執行與營運效率。" },
       { name: "keywords", content: "宏鼎集成, Aegis Power Integrations, 工程集成, 系統整合, AI 系統整合, 企業管理系統, 工程報價系統, 業務管理系統, CRM, 弱電工程, 光纖建置, 資料中心, 能源機電工程, 太陽光電, 儲能系統, 台灣工程公司, 製造業數位化, 中小企業 AI, Aegis CostFlow, Aegis SalesOps" },
