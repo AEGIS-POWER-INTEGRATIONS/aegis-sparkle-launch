@@ -210,7 +210,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border bg-surface/60">
       <div className="container-x grid gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Brand size="lg" />
+          <Brand variant="footer" />
           <p className="mt-5 text-base font-semibold text-foreground">
             宏鼎集成股份有限公司
           </p>
