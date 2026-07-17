@@ -133,6 +133,48 @@ function KnowledgeIndex() {
         </div>
       </section>
 
+      {/* Prompt library + AI tips entry cards (above 知識分類) */}
+      {!q.trim() && !activeTag && (
+        <section className="py-14 md:py-16 border-b border-border/60">
+          <div className="container-x">
+            <div className="grid gap-6 md:grid-cols-2">
+              <Link
+                to="/knowledge/prompts"
+                className="panel p-8 flex flex-col gap-4 hover:border-primary/40 transition-colors group"
+              >
+                <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">
+                  Business Prompt Library
+                </div>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                  企業 AI 提示詞庫
+                </h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  提供網站建置、系統規劃與企業管理等可直接使用的實務提示詞，含變數說明、使用步驟與注意事項。
+                </p>
+                <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                  探索提示詞 <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+              <Link
+                to="/knowledge/ai-tips"
+                className="panel p-8 flex flex-col gap-4 hover:border-primary/40 transition-colors group"
+              >
+                <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">
+                  AI Tips
+                </div>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">AI 使用技巧</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  分享生成式 AI、辦公應用、企業管理、網站系統與資訊安全等實務使用方法，適合企業內部培訓與流程建立。
+                </p>
+                <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
+                  查看使用技巧 <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Categories overview */}
       {!q.trim() && !activeTag && (
         <section className="py-16 md:py-20 border-b border-border/60">
