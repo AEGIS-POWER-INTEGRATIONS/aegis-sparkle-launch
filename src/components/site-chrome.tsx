@@ -2,48 +2,52 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
+import markAsset from "@/assets/api-mark.png.asset.json";
 import { L, useLang } from "@/lib/i18n";
 import { SITE } from "@/lib/site-config";
 
 
 
-function Brand({ size = "md" }: { size?: "md" | "lg" }) {
-  // Icon sizes: mobile 32px, desktop 40px (lg variant used in footer bumps up).
-  const imgCls =
-    size === "lg"
-      ? "h-11 w-11 md:h-12 md:w-12"
-      : "h-8 w-8 md:h-10 md:w-10";
-  // Chinese title: bold, tight line-height per spec.
-  const titleCls =
-    size === "lg"
-      ? "text-[19px] md:text-[22px]"
-      : "text-[16px] md:text-[18px]";
-  // English subtitle: medium weight, ~0.06em tracking.
-  const subCls =
-    size === "lg"
-      ? "text-[10px] md:text-[11px]"
-      : "text-[9px] md:text-[10px]";
+function Brand({ variant = "header" }: { variant?: "header" | "footer" }) {
+  if (variant === "footer") {
+    // Footer keeps the full company logo, ~200px wide.
+    return (
+      <Link
+        to="/"
+        className="inline-flex items-center shrink-0"
+        aria-label="宏鼎集成 Aegis Power Integrations"
+      >
+        <img
+          src={logoAsset.url}
+          alt="宏鼎集成 AEGIS POWER INTEGRATIONS 標誌"
+          className="w-[180px] md:w-[200px] h-auto object-contain block"
+        />
+      </Link>
+    );
+  }
+
+  // Header: tightly-cropped API mark + wordmark.
   return (
     <Link
       to="/"
-      className="flex items-center gap-[10px] md:gap-3 shrink-0 leading-none"
+      className="flex items-center gap-3 md:gap-3.5 shrink-0 leading-none"
       aria-label="宏鼎集成 Aegis Power Integrations"
     >
       <img
-        src={logoAsset.url}
+        src={markAsset.url}
         alt="宏鼎集成 AEGIS POWER INTEGRATIONS 標誌"
-        className={`${imgCls} object-contain shrink-0 block`}
+        className="h-[42px] w-[42px] md:h-[50px] md:w-[50px] object-contain shrink-0 block"
       />
 
       <span className="flex flex-col justify-center min-w-0">
         <span
-          className={`${titleCls} font-bold tracking-tight text-foreground`}
+          className="text-[18px] md:text-[22px] font-bold tracking-tight text-foreground"
           style={{ lineHeight: 1.05 }}
         >
           宏鼎集成
         </span>
         <span
-          className={`${subCls} text-muted-foreground font-medium uppercase mt-[3px] whitespace-nowrap`}
+          className="text-[10px] md:text-[11px] text-muted-foreground font-medium uppercase mt-[3px] whitespace-nowrap"
           style={{ letterSpacing: "0.06em", lineHeight: 1.1 }}
         >
           AEGIS POWER INTEGRATIONS
@@ -52,6 +56,7 @@ function Brand({ size = "md" }: { size?: "md" | "lg" }) {
     </Link>
   );
 }
+
 
 const navItems = [
   { to: "/", zh: "首頁", en: "Home" },
@@ -121,10 +126,10 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-[72px] md:h-[76px] items-center justify-between gap-4">
+      <div className="container-x flex h-[84px] md:h-[88px] items-center justify-between gap-4">
         <Brand />
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground xl:flex">
           {navItems.map((n) => (
             <Link
               key={n.to}
@@ -139,7 +144,7 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <LangSwitcher />
             <Link to="/contact" className="btn btn-primary">
               <L zh="聯絡我們" en="Contact Us" />
@@ -147,7 +152,7 @@ export function SiteNav() {
           </div>
           <button
             type="button"
-            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
+            className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -162,8 +167,9 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-t border-border/60 bg-background/95 backdrop-blur"
+          className="xl:hidden border-t border-border/60 bg-background/95 backdrop-blur"
         >
+
           <div className="container-x py-4 flex flex-col gap-1">
             <nav className="flex flex-col divide-y divide-border/50">
               {navItems.map((n) => (
@@ -205,7 +211,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border bg-surface/60">
       <div className="container-x grid gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Brand size="lg" />
+          <Brand variant="footer" />
           <p className="mt-5 text-base font-semibold text-foreground">
             宏鼎集成股份有限公司
           </p>
