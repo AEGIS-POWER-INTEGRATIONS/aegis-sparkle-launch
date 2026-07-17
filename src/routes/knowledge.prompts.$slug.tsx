@@ -3,12 +3,12 @@ import { useState } from "react";
 import { ArrowRight, Check, Copy, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import {
-  PROMPTS,
   PROMPT_CATEGORY_LABEL,
   PROMPT_DIFFICULTY_LABEL,
   PROMPT_AUDIENCE_LABEL,
   getPrompt,
   getRelatedPrompts,
+  type Prompt,
 } from "@/lib/prompts";
 import { SITE } from "@/lib/site-config";
 
