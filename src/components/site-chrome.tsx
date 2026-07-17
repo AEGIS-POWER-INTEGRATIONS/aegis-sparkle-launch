@@ -126,10 +126,10 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-[72px] md:h-[76px] items-center justify-between gap-4">
+      <div className="container-x flex h-[84px] md:h-[88px] items-center justify-between gap-4">
         <Brand />
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground lg:flex">
+        <nav className="hidden items-center gap-6 text-sm font-medium text-muted-foreground xl:flex">
           {navItems.map((n) => (
             <Link
               key={n.to}
@@ -144,7 +144,7 @@ export function SiteNav() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <LangSwitcher />
             <Link to="/contact" className="btn btn-primary">
               <L zh="聯絡我們" en="Contact Us" />
@@ -152,7 +152,7 @@ export function SiteNav() {
           </div>
           <button
             type="button"
-            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
+            className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -167,8 +167,9 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
-          className="lg:hidden border-t border-border/60 bg-background/95 backdrop-blur"
+          className="xl:hidden border-t border-border/60 bg-background/95 backdrop-blur"
         >
+
           <div className="container-x py-4 flex flex-col gap-1">
             <nav className="flex flex-col divide-y divide-border/50">
               {navItems.map((n) => (
