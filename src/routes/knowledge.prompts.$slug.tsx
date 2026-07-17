@@ -74,7 +74,7 @@ export const Route = createFileRoute("/knowledge/prompts/$slug")({
 });
 
 function PromptDetail() {
-  const { prompt } = Route.useLoaderData();
+  const { prompt } = Route.useLoaderData() as { prompt: Prompt };
   const related = getRelatedPrompts(prompt);
   const url = `${SITE.domain}/knowledge/prompts/${prompt.slug}`;
   const [copied, setCopied] = useState(false);
@@ -291,5 +291,3 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-// Suppress unused-import lint noise when PROMPTS not used at runtime.
-void PROMPTS;

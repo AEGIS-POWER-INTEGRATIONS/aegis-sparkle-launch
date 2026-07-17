@@ -6,8 +6,9 @@ import {
   AI_TIP_AUDIENCE_LABEL,
   getAiTip,
   getRelatedAiTips,
+  type AiTip,
 } from "@/lib/ai-tips";
-import { getPrompt, PROMPT_CATEGORY_LABEL } from "@/lib/prompts";
+import { getPrompt, PROMPT_CATEGORY_LABEL, type Prompt } from "@/lib/prompts";
 import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/knowledge/ai-tips/$slug")({
@@ -72,11 +73,11 @@ export const Route = createFileRoute("/knowledge/ai-tips/$slug")({
 });
 
 function TipDetail() {
-  const { tip } = Route.useLoaderData();
+  const { tip } = Route.useLoaderData() as { tip: AiTip };
   const related = getRelatedAiTips(tip);
-  const relatedPrompts = tip.relatedPromptSlugs
+  const relatedPrompts: Prompt[] = tip.relatedPromptSlugs
     .map((s) => getPrompt(s))
-    .filter((x): x is NonNullable<ReturnType<typeof getPrompt>> => Boolean(x));
+    .filter((x): x is Prompt => Boolean(x));
   const url = `${SITE.domain}/knowledge/ai-tips/${tip.slug}`;
 
   async function shareLink() {
