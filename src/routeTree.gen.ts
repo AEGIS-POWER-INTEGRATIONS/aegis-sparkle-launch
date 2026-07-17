@@ -40,7 +40,11 @@ import { Route as BuildquestHallRouteImport } from './routes/buildquest.hall'
 import { Route as BuildquestClassSelectRouteImport } from './routes/buildquest.class-select'
 import { Route as BuildquestAdminQuestsRouteImport } from './routes/buildquest.admin-quests'
 import { Route as BuildquestAdminRouteImport } from './routes/buildquest.admin'
+import { Route as KnowledgePromptsIndexRouteImport } from './routes/knowledge.prompts.index'
+import { Route as KnowledgeAiTipsIndexRouteImport } from './routes/knowledge.ai-tips.index'
 import { Route as KnowledgeCategoryIndexRouteImport } from './routes/knowledge.$category.index'
+import { Route as KnowledgePromptsSlugRouteImport } from './routes/knowledge.prompts.$slug'
+import { Route as KnowledgeAiTipsSlugRouteImport } from './routes/knowledge.ai-tips.$slug'
 import { Route as KnowledgeCategorySlugRouteImport } from './routes/knowledge.$category.$slug'
 import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
 import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
@@ -200,9 +204,29 @@ const BuildquestAdminRoute = BuildquestAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => BuildquestRoute,
 } as any)
+const KnowledgePromptsIndexRoute = KnowledgePromptsIndexRouteImport.update({
+  id: '/knowledge/prompts/',
+  path: '/knowledge/prompts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeAiTipsIndexRoute = KnowledgeAiTipsIndexRouteImport.update({
+  id: '/knowledge/ai-tips/',
+  path: '/knowledge/ai-tips/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const KnowledgeCategoryIndexRoute = KnowledgeCategoryIndexRouteImport.update({
   id: '/knowledge/$category/',
   path: '/knowledge/$category/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgePromptsSlugRoute = KnowledgePromptsSlugRouteImport.update({
+  id: '/knowledge/prompts/$slug',
+  path: '/knowledge/prompts/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeAiTipsSlugRoute = KnowledgeAiTipsSlugRouteImport.update({
+  id: '/knowledge/ai-tips/$slug',
+  path: '/knowledge/ai-tips/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const KnowledgeCategorySlugRoute = KnowledgeCategorySlugRouteImport.update({
@@ -256,7 +280,11 @@ export interface FileRoutesByFullPath {
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
+  '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
+  '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
+  '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
+  '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -290,7 +318,11 @@ export interface FileRoutesByTo {
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
+  '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
+  '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
   '/knowledge/$category': typeof KnowledgeCategoryIndexRoute
+  '/knowledge/ai-tips': typeof KnowledgeAiTipsIndexRoute
+  '/knowledge/prompts': typeof KnowledgePromptsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -328,7 +360,11 @@ export interface FileRoutesById {
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
+  '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
+  '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
+  '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
+  '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -367,7 +403,11 @@ export interface FileRouteTypes {
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
     | '/knowledge/$category/$slug'
+    | '/knowledge/ai-tips/$slug'
+    | '/knowledge/prompts/$slug'
     | '/knowledge/$category/'
+    | '/knowledge/ai-tips/'
+    | '/knowledge/prompts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -401,7 +441,11 @@ export interface FileRouteTypes {
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
     | '/knowledge/$category/$slug'
+    | '/knowledge/ai-tips/$slug'
+    | '/knowledge/prompts/$slug'
     | '/knowledge/$category'
+    | '/knowledge/ai-tips'
+    | '/knowledge/prompts'
   id:
     | '__root__'
     | '/'
@@ -438,7 +482,11 @@ export interface FileRouteTypes {
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
     | '/knowledge/$category/$slug'
+    | '/knowledge/ai-tips/$slug'
+    | '/knowledge/prompts/$slug'
     | '/knowledge/$category/'
+    | '/knowledge/ai-tips/'
+    | '/knowledge/prompts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -462,7 +510,11 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   KnowledgeIndexRoute: typeof KnowledgeIndexRoute
   KnowledgeCategorySlugRoute: typeof KnowledgeCategorySlugRoute
+  KnowledgeAiTipsSlugRoute: typeof KnowledgeAiTipsSlugRoute
+  KnowledgePromptsSlugRoute: typeof KnowledgePromptsSlugRoute
   KnowledgeCategoryIndexRoute: typeof KnowledgeCategoryIndexRoute
+  KnowledgeAiTipsIndexRoute: typeof KnowledgeAiTipsIndexRoute
+  KnowledgePromptsIndexRoute: typeof KnowledgePromptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -684,11 +736,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildquestAdminRouteImport
       parentRoute: typeof BuildquestRoute
     }
+    '/knowledge/prompts/': {
+      id: '/knowledge/prompts/'
+      path: '/knowledge/prompts'
+      fullPath: '/knowledge/prompts/'
+      preLoaderRoute: typeof KnowledgePromptsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge/ai-tips/': {
+      id: '/knowledge/ai-tips/'
+      path: '/knowledge/ai-tips'
+      fullPath: '/knowledge/ai-tips/'
+      preLoaderRoute: typeof KnowledgeAiTipsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/knowledge/$category/': {
       id: '/knowledge/$category/'
       path: '/knowledge/$category'
       fullPath: '/knowledge/$category/'
       preLoaderRoute: typeof KnowledgeCategoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge/prompts/$slug': {
+      id: '/knowledge/prompts/$slug'
+      path: '/knowledge/prompts/$slug'
+      fullPath: '/knowledge/prompts/$slug'
+      preLoaderRoute: typeof KnowledgePromptsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge/ai-tips/$slug': {
+      id: '/knowledge/ai-tips/$slug'
+      path: '/knowledge/ai-tips/$slug'
+      fullPath: '/knowledge/ai-tips/$slug'
+      preLoaderRoute: typeof KnowledgeAiTipsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/knowledge/$category/$slug': {
@@ -794,7 +874,11 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   KnowledgeIndexRoute: KnowledgeIndexRoute,
   KnowledgeCategorySlugRoute: KnowledgeCategorySlugRoute,
+  KnowledgeAiTipsSlugRoute: KnowledgeAiTipsSlugRoute,
+  KnowledgePromptsSlugRoute: KnowledgePromptsSlugRoute,
   KnowledgeCategoryIndexRoute: KnowledgeCategoryIndexRoute,
+  KnowledgeAiTipsIndexRoute: KnowledgeAiTipsIndexRoute,
+  KnowledgePromptsIndexRoute: KnowledgePromptsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
