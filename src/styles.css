@@ -149,10 +149,11 @@
 
 @layer components {
   .container-x {
-    max-width: 1180px;
+    max-width: 1300px;
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
+
 
   .eyebrow {
     display: inline-flex;
