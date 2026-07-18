@@ -34,6 +34,19 @@ export const Route = createFileRoute("/knowledge/")({
       { name: "twitter:title", content: "Knowledge Center — AEGIS POWER INTEGRATIONS" },
     ],
     links: [{ rel: "canonical", href: `${SITE.domain}/knowledge` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
+            { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
+          ],
+        }),
+      },
+    ],
   }),
   component: KnowledgeIndex,
 });
@@ -68,7 +81,20 @@ function KnowledgeIndex() {
       {/* Hero */}
       <section className="border-b border-border/60 bg-surface/40">
         <div className="container-x py-16 md:py-24">
-          <div className="text-xs font-semibold tracking-widest uppercase text-primary">
+          <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
+            <ol className="flex flex-wrap items-center gap-1.5">
+              <li>
+                <Link to="/" className="hover:text-foreground">
+                  <L zh="首頁" en="Home" />
+                </Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li className="text-foreground/80">
+                <L zh="知識中心" en="Knowledge Center" />
+              </li>
+            </ol>
+          </nav>
+          <div className="mt-6 text-xs font-semibold tracking-widest uppercase text-primary">
             <L zh="知識中心" en="Knowledge Center" />
           </div>
           <h1 className="mt-4 text-4xl md:text-6xl font-semibold tracking-tight leading-[1.1] max-w-4xl">
