@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalesopsRouteImport } from './routes/salesops'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as EngineeringRouteImport } from './routes/engineering'
@@ -72,6 +73,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -140,9 +146,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const KnowledgeIndexRoute = KnowledgeIndexRouteImport.update({
-  id: '/knowledge/',
-  path: '/knowledge/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const InsightsIndexRoute = InsightsIndexRouteImport.update({
   id: '/',
@@ -205,34 +211,34 @@ const BuildquestAdminRoute = BuildquestAdminRouteImport.update({
   getParentRoute: () => BuildquestRoute,
 } as any)
 const KnowledgePromptsIndexRoute = KnowledgePromptsIndexRouteImport.update({
-  id: '/knowledge/prompts/',
-  path: '/knowledge/prompts/',
-  getParentRoute: () => rootRouteImport,
+  id: '/prompts/',
+  path: '/prompts/',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const KnowledgeAiTipsIndexRoute = KnowledgeAiTipsIndexRouteImport.update({
-  id: '/knowledge/ai-tips/',
-  path: '/knowledge/ai-tips/',
-  getParentRoute: () => rootRouteImport,
+  id: '/ai-tips/',
+  path: '/ai-tips/',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const KnowledgeCategoryIndexRoute = KnowledgeCategoryIndexRouteImport.update({
-  id: '/knowledge/$category/',
-  path: '/knowledge/$category/',
-  getParentRoute: () => rootRouteImport,
+  id: '/$category/',
+  path: '/$category/',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const KnowledgePromptsSlugRoute = KnowledgePromptsSlugRouteImport.update({
-  id: '/knowledge/prompts/$slug',
-  path: '/knowledge/prompts/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/prompts/$slug',
+  path: '/prompts/$slug',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const KnowledgeAiTipsSlugRoute = KnowledgeAiTipsSlugRouteImport.update({
-  id: '/knowledge/ai-tips/$slug',
-  path: '/knowledge/ai-tips/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/ai-tips/$slug',
+  path: '/ai-tips/$slug',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const KnowledgeCategorySlugRoute = KnowledgeCategorySlugRouteImport.update({
-  id: '/knowledge/$category/$slug',
-  path: '/knowledge/$category/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/$category/$slug',
+  path: '/$category/$slug',
+  getParentRoute: () => KnowledgeRoute,
 } as any)
 const BuildquestResultIdRoute = BuildquestResultIdRouteImport.update({
   id: '/result/$id',
@@ -259,6 +265,7 @@ export interface FileRoutesByFullPath {
   '/engineering': typeof EngineeringRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/insights': typeof InsightsRouteWithChildren
+  '/knowledge': typeof KnowledgeRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
@@ -339,6 +346,7 @@ export interface FileRoutesById {
   '/engineering': typeof EngineeringRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/insights': typeof InsightsRouteWithChildren
+  '/knowledge': typeof KnowledgeRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/salesops': typeof SalesopsRoute
@@ -382,6 +390,7 @@ export interface FileRouteTypes {
     | '/engineering'
     | '/industries'
     | '/insights'
+    | '/knowledge'
     | '/pricing'
     | '/privacy'
     | '/salesops'
@@ -461,6 +470,7 @@ export interface FileRouteTypes {
     | '/engineering'
     | '/industries'
     | '/insights'
+    | '/knowledge'
     | '/pricing'
     | '/privacy'
     | '/salesops'
@@ -503,18 +513,12 @@ export interface RootRouteChildren {
   EngineeringRoute: typeof EngineeringRoute
   IndustriesRoute: typeof IndustriesRouteWithChildren
   InsightsRoute: typeof InsightsRouteWithChildren
+  KnowledgeRoute: typeof KnowledgeRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   SalesopsRoute: typeof SalesopsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
-  KnowledgeIndexRoute: typeof KnowledgeIndexRoute
-  KnowledgeCategorySlugRoute: typeof KnowledgeCategorySlugRoute
-  KnowledgeAiTipsSlugRoute: typeof KnowledgeAiTipsSlugRoute
-  KnowledgePromptsSlugRoute: typeof KnowledgePromptsSlugRoute
-  KnowledgeCategoryIndexRoute: typeof KnowledgeCategoryIndexRoute
-  KnowledgeAiTipsIndexRoute: typeof KnowledgeAiTipsIndexRoute
-  KnowledgePromptsIndexRoute: typeof KnowledgePromptsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -552,6 +556,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -647,10 +658,10 @@ declare module '@tanstack/react-router' {
     }
     '/knowledge/': {
       id: '/knowledge/'
-      path: '/knowledge'
+      path: '/'
       fullPath: '/knowledge/'
       preLoaderRoute: typeof KnowledgeIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/insights/': {
       id: '/insights/'
@@ -738,45 +749,45 @@ declare module '@tanstack/react-router' {
     }
     '/knowledge/prompts/': {
       id: '/knowledge/prompts/'
-      path: '/knowledge/prompts'
+      path: '/prompts'
       fullPath: '/knowledge/prompts/'
       preLoaderRoute: typeof KnowledgePromptsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/knowledge/ai-tips/': {
       id: '/knowledge/ai-tips/'
-      path: '/knowledge/ai-tips'
+      path: '/ai-tips'
       fullPath: '/knowledge/ai-tips/'
       preLoaderRoute: typeof KnowledgeAiTipsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/knowledge/$category/': {
       id: '/knowledge/$category/'
-      path: '/knowledge/$category'
+      path: '/$category'
       fullPath: '/knowledge/$category/'
       preLoaderRoute: typeof KnowledgeCategoryIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/knowledge/prompts/$slug': {
       id: '/knowledge/prompts/$slug'
-      path: '/knowledge/prompts/$slug'
+      path: '/prompts/$slug'
       fullPath: '/knowledge/prompts/$slug'
       preLoaderRoute: typeof KnowledgePromptsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/knowledge/ai-tips/$slug': {
       id: '/knowledge/ai-tips/$slug'
-      path: '/knowledge/ai-tips/$slug'
+      path: '/ai-tips/$slug'
       fullPath: '/knowledge/ai-tips/$slug'
       preLoaderRoute: typeof KnowledgeAiTipsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/knowledge/$category/$slug': {
       id: '/knowledge/$category/$slug'
-      path: '/knowledge/$category/$slug'
+      path: '/$category/$slug'
       fullPath: '/knowledge/$category/$slug'
       preLoaderRoute: typeof KnowledgeCategorySlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof KnowledgeRoute
     }
     '/buildquest/result/$id': {
       id: '/buildquest/result/$id'
@@ -853,6 +864,30 @@ const InsightsRouteWithChildren = InsightsRoute._addFileChildren(
   InsightsRouteChildren,
 )
 
+interface KnowledgeRouteChildren {
+  KnowledgeIndexRoute: typeof KnowledgeIndexRoute
+  KnowledgeCategorySlugRoute: typeof KnowledgeCategorySlugRoute
+  KnowledgeAiTipsSlugRoute: typeof KnowledgeAiTipsSlugRoute
+  KnowledgePromptsSlugRoute: typeof KnowledgePromptsSlugRoute
+  KnowledgeCategoryIndexRoute: typeof KnowledgeCategoryIndexRoute
+  KnowledgeAiTipsIndexRoute: typeof KnowledgeAiTipsIndexRoute
+  KnowledgePromptsIndexRoute: typeof KnowledgePromptsIndexRoute
+}
+
+const KnowledgeRouteChildren: KnowledgeRouteChildren = {
+  KnowledgeIndexRoute: KnowledgeIndexRoute,
+  KnowledgeCategorySlugRoute: KnowledgeCategorySlugRoute,
+  KnowledgeAiTipsSlugRoute: KnowledgeAiTipsSlugRoute,
+  KnowledgePromptsSlugRoute: KnowledgePromptsSlugRoute,
+  KnowledgeCategoryIndexRoute: KnowledgeCategoryIndexRoute,
+  KnowledgeAiTipsIndexRoute: KnowledgeAiTipsIndexRoute,
+  KnowledgePromptsIndexRoute: KnowledgePromptsIndexRoute,
+}
+
+const KnowledgeRouteWithChildren = KnowledgeRoute._addFileChildren(
+  KnowledgeRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -867,29 +902,13 @@ const rootRouteChildren: RootRouteChildren = {
   EngineeringRoute: EngineeringRoute,
   IndustriesRoute: IndustriesRouteWithChildren,
   InsightsRoute: InsightsRouteWithChildren,
+  KnowledgeRoute: KnowledgeRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   SalesopsRoute: SalesopsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
-  KnowledgeIndexRoute: KnowledgeIndexRoute,
-  KnowledgeCategorySlugRoute: KnowledgeCategorySlugRoute,
-  KnowledgeAiTipsSlugRoute: KnowledgeAiTipsSlugRoute,
-  KnowledgePromptsSlugRoute: KnowledgePromptsSlugRoute,
-  KnowledgeCategoryIndexRoute: KnowledgeCategoryIndexRoute,
-  KnowledgeAiTipsIndexRoute: KnowledgeAiTipsIndexRoute,
-  KnowledgePromptsIndexRoute: KnowledgePromptsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

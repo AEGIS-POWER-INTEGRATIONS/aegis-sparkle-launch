@@ -34,6 +34,19 @@ export const Route = createFileRoute("/knowledge/")({
       { name: "twitter:title", content: "Knowledge Center — AEGIS POWER INTEGRATIONS" },
     ],
     links: [{ rel: "canonical", href: `${SITE.domain}/knowledge` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
+            { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
+          ],
+        }),
+      },
+    ],
   }),
   component: KnowledgeIndex,
 });
