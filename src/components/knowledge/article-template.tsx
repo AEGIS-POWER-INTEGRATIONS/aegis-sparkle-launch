@@ -363,7 +363,7 @@ export function ArticleTemplate({ article }: { article: KnowledgeArticle }) {
           <div className="container-x">
             <div className="flex items-end justify-between gap-4">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                <L zh="延伸閱讀" en="Related Articles" />
+                <L zh="相關文章" en="Related Articles" />
               </h2>
               <Link
                 to="/knowledge"
