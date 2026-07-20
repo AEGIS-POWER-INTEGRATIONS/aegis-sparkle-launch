@@ -49,6 +49,7 @@ import { Route as KnowledgeAiTipsSlugRouteImport } from './routes/knowledge.ai-t
 import { Route as KnowledgeCategorySlugRouteImport } from './routes/knowledge.$category.$slug'
 import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
 import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -250,6 +251,12 @@ const BuildquestQuestIdRoute = BuildquestQuestIdRouteImport.update({
   path: '/quest/$id',
   getParentRoute: () => BuildquestRoute,
 } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -292,6 +299,7 @@ export interface FileRoutesByFullPath {
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -330,6 +338,7 @@ export interface FileRoutesByTo {
   '/knowledge/$category': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts': typeof KnowledgePromptsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -373,6 +382,7 @@ export interface FileRoutesById {
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -417,6 +427,7 @@ export interface FileRouteTypes {
     | '/knowledge/$category/'
     | '/knowledge/ai-tips/'
     | '/knowledge/prompts/'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -455,6 +466,7 @@ export interface FileRouteTypes {
     | '/knowledge/$category'
     | '/knowledge/ai-tips'
     | '/knowledge/prompts'
+    | '/lovable/email/queue/process'
   id:
     | '__root__'
     | '/'
@@ -497,6 +509,7 @@ export interface FileRouteTypes {
     | '/knowledge/$category/'
     | '/knowledge/ai-tips/'
     | '/knowledge/prompts/'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -519,6 +532,7 @@ export interface RootRouteChildren {
   SalesopsRoute: typeof SalesopsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -803,6 +817,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuildquestQuestIdRouteImport
       parentRoute: typeof BuildquestRoute
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -908,17 +929,8 @@ const rootRouteChildren: RootRouteChildren = {
   SalesopsRoute: SalesopsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
