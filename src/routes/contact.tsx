@@ -93,9 +93,9 @@ const infoCards: {
   {
     icon: Mail,
     label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
-    primary: { zh: "johnny@aegispowerapi.com", en: "johnny@aegispowerapi.com" },
+    primary: { zh: "jtian@aegispowerapi.com", en: "jtian@aegispowerapi.com" },
     secondary: { zh: "原則上 1–2 個工作日內回覆", en: "Reply within 1–2 business days" },
-    href: "mailto:johnny@aegispowerapi.com",
+    href: "mailto:jtian@aegispowerapi.com",
   },
   {
     icon: Mail,

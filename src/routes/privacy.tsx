@@ -85,8 +85,8 @@ function PrivacyPage() {
               </h2>
               <p>
                 <L
-                  zh="您可隨時來信要求查詢、更正或刪除本公司所持有之個人資料，請寄至 johnny@aegispowerapi.com。"
-                  en="You may request access, correction or deletion of personal data we hold by emailing johnny@aegispowerapi.com."
+                  zh="您可隨時來信要求查詢、更正或刪除本公司所持有之個人資料，請寄至 jtian@aegispowerapi.com。"
+                  en="You may request access, correction or deletion of personal data we hold by emailing jtian@aegispowerapi.com."
                 />
               </p>
 
