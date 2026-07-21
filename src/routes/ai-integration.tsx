@@ -10,10 +10,10 @@ import { L, useLang, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/ai-integration")({
   head: () => ({
     meta: [
-      { title: "AI 系統整合服務｜AEGIS POWER INTEGRATIONS｜AI System Integration" },
-      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助企業真正把 AI 導入日常營運。AI adoption from process discovery to assistants, automation and dashboards." },
-      { property: "og:title", content: "AI System Integration | AEGIS POWER INTEGRATIONS" },
-      { property: "og:description", content: "End-to-end AI adoption for real business workflows." },
+      { title: "企業 AI 顧問服務｜宏鼎集成｜Enterprise AI Advisory" },
+      { name: "description", content: "宏鼎集成提供企業 AI 顧問服務：流程盤點、資料治理、工具整合、AI 助理與代理人設計、自動化串接、教育訓練與導入陪跑。我們不是軟體開發商，而是把 AI 放進企業流程的顧問夥伴。Enterprise AI advisory, tool integration, training and adoption coaching — not custom software." },
+      { property: "og:title", content: "Enterprise AI Advisory | AEGIS POWER INTEGRATIONS" },
+      { property: "og:description", content: "AI advisory, tool integration, training and adoption coaching — we embed AI into real business workflows." },
       { property: "og:url", content: `${SITE_URL}/ai-integration` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
@@ -74,18 +74,18 @@ function AiIntegration() {
         <section className="py-20">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> <L zh="AI 系統整合" en="AI Integration" /></span>
-              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="AI 系統整合服務" en="AI System Integration" /></h1>
+              <span className="eyebrow"><span className="dot" /> <L zh="企業 AI 顧問" en="Enterprise AI Advisory" /></span>
+              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="企業 AI 顧問與流程整合" en="Enterprise AI Advisory & Process Integration" /></h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 <L
-                  zh="從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。"
-                  en="From process discovery and data integration to AI assistants and automation — embedding AI into daily workflows for sustainable digital operations."
+                  zh="宏鼎集成是企業的 AI 顧問與整合夥伴，不是軟體開發商，也不是 ERP／SaaS 廠商。我們從企業流程與資料出發，協助盤點、選型、整合現成工具與 AI 模型，並用教育訓練與導入陪跑，讓 AI 真正落到日常工作。"
+                  en="Aegis Power Integrations is your AI advisor and integrator — not a custom software vendor or an ERP/SaaS reseller. We start from your workflows and data, help you assess, select and integrate off-the-shelf tools and AI models, and coach adoption until AI actually lands in daily operations."
                 />
               </p>
               <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
                 <L
-                  zh="我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。"
-                  en="We don't just teach AI tools — we embed AI into your actual workflows."
+                  zh="我們不寫沒人用的系統，只把有用的 AI 放進企業流程。"
+                  en="We don't build software that goes unused — we embed useful AI into real workflows."
                 />
               </p>
             </div>
@@ -99,11 +99,12 @@ function AiIntegration() {
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-ink/25 via-transparent to-transparent" />
               </div>
             </div>
           </div>
         </section>
+
 
         {/* Common scenarios */}
         <section className="pb-20">
@@ -178,8 +179,8 @@ function AiIntegration() {
                 />
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary"><L zh="預約諮詢" en="Book Consultation" /> <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/ai-launch" className="btn btn-ghost"><L zh="了解 Aegis AI Launch" en="Explore Aegis AI Launch" /></Link>
+                <Link to="/contact" className="btn btn-primary"><L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/engineering" className="btn btn-ghost"><L zh="查看工程整合服務" en="View Engineering Services" /></Link>
               </div>
             </div>
           </div>

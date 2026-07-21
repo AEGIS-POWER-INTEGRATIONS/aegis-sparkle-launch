@@ -84,12 +84,18 @@ function Engineering() {
         <section className="py-20">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> <L zh="工程集成" en="Engineering" /></span>
-              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="工程集成服務" en="Engineering Services" /></h1>
+              <span className="eyebrow"><span className="dot" /> <L zh="工程整合｜主力業務" en="Engineering · Core Service" /></span>
+              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="工程集成服務" en="Engineering Integration Services" /></h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 <L
-                  zh="我們以工程現場經驗為基礎，提供弱電、光纖、資料中心、監控與門禁等系統整合服務，協助企業建立穩定、安全、可長期維護的基礎建設。"
-                  en="Grounded in field experience, we deliver ELV, fiber, data center, surveillance and access control integration — building stable, secure and sustainable infrastructure."
+                  zh="工程整合與專案執行是宏鼎集成的核心業務。我們以工程現場實務為基礎，提供弱電、光纖、機電、資料中心、監控與門禁等系統整合服務，從勘查、規劃、施工、驗收到後續維運全程負責，協助業主降低跨廠商協調負擔。"
+                  en="Engineering integration and project execution are our core business. Grounded in field practice, we deliver ELV, fiber, MEP, data center, surveillance and access control integration — owning site survey, planning, execution, acceptance and long-term operations to reduce multi-vendor overhead for the owner."
+                />
+              </p>
+              <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
+                <L
+                  zh="以工程實務為底，讓專案真正交付得出來、維護得下去。"
+                  en="Field-first engineering — projects that actually deliver, and stay maintainable."
                 />
               </p>
             </div>
@@ -228,8 +234,8 @@ function Engineering() {
                 />
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary"><L zh="預約諮詢" en="Book Consultation" /> <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/contact" className="btn btn-ghost"><L zh="聯絡我們" en="Contact Us" /></Link>
+                <Link to="/contact" className="btn btn-primary"><L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/ai-integration" className="btn btn-ghost"><L zh="了解 AI 顧問服務" en="Explore AI Advisory" /></Link>
               </div>
             </div>
           </div>

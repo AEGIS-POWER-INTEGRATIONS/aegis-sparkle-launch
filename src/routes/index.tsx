@@ -177,35 +177,49 @@ function Home() {
                 <span className="h-1.5 w-1.5 rounded-sm bg-white/80" />
                 Aegis Power Integrations
               </span>
-              <h1 className="mt-6 text-[2.4rem] leading-[1.12] md:text-[3.4rem] xl:text-[4rem] xl:leading-[1.08] font-bold tracking-[-0.02em] text-white">
+              <h1 className="mt-6 text-[2.2rem] leading-[1.15] md:text-[3.2rem] xl:text-[3.9rem] xl:leading-[1.08] font-bold tracking-[-0.02em] text-white">
                 {isEn ? (
                   <>
-                    Engineering × AI × <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">Digital Transformation</span>
+                    Engineering-Led Integration,
+                    <br />
+                    <span className="text-[oklch(0.85_0.12_235)]">Powered by AI Advisory</span>
                   </>
                 ) : (
                   <>
-                    宏鼎集成｜工程整合 × AI 導入 × <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">企業數位轉型</span>
+                    以工程實務為核心，
+                    <br />
+                    <span className="text-[oklch(0.85_0.12_235)]">結合 AI 顧問與流程整合</span>
                   </>
                 )}
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
                 <L
-                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）專注於工程整合、資料中心與產業應用，並結合 AI、流程自動化及企業系統，協助客戶提升專案執行效率與營運管理能力。"
-                  en="Aegis Power Integrations Co., Ltd. delivers enterprise-grade engineering integration and AI systems for semiconductor fabs, data centers, manufacturers and enterprise customers across Taiwan and APAC."
+                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）是以工程實務為核心的產業整合服務公司。我們協助企業完成工程整合與專案執行，並結合企業 AI 顧問、流程優化、工具整合、教育訓練與導入陪跑，讓工程與 AI 真正落地在營運現場。"
+                  en="Aegis Power Integrations is an engineering-first integration services firm. We combine on-site engineering delivery with enterprise AI advisory, process optimization, tool integration, training and adoption coaching — so both engineering and AI actually land in your operations."
+                />
+              </p>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
+                <L
+                  zh="我們不是軟體開發商，也不是單純的 ERP／SaaS 廠商。我們是把工程、系統與 AI 整合進企業流程的顧問與執行夥伴。"
+                  en="We are not a custom software vendor or a boxed ERP/SaaS reseller — we are the advisory and execution partner that integrates engineering, systems and AI into your workflows."
                 />
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link to="/contact" className="btn btn-primary">
-                  <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
+                <Link to="/engineering" className="btn btn-primary">
+                  <L zh="工程整合服務" en="Engineering Services" /> <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  to="/engineering"
+                  to="/ai-integration"
                   className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
                 >
-                  <L zh="了解服務" en="View Services" />
+                  <L zh="企業 AI 顧問服務" en="Enterprise AI Advisory" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
+                >
+                  <L zh="聯絡我們" en="Contact Us" />
                 </Link>
               </div>
             </div>
@@ -226,42 +240,15 @@ function Home() {
           </div>
         </section>
 
-        {/* Industries */}
+        {/* Engineering Services — flagship (60% of business) */}
         <section className="py-24 md:py-28">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Industries"
-              titleZh="服務產業"
-              titleEn="Industries We Serve"
-              descZh="從半導體與資料中心的工程現場，到製造業與商辦企業的 AI 系統整合，AEGIS POWER INTEGRATIONS 為多元產業提供落地服務。"
-              descEn="From semiconductor and data center engineering to AI system integration for manufacturers and enterprises — we serve a wide range of industries."
-            />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {industries.map(({ icon: Icon, en, zh, desc }) => (
-                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
-                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
-                    {isEn ? zh : en}
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Engineering Services */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
-          <div className="container-x">
-            <SectionHeader
-              eyebrow="Engineering"
-              titleZh="工程集成服務"
-              titleEn="Engineering Services"
-              descZh="從佈線、光纖、電氣、機電協調到專案管理與設備退役，覆蓋工程集成完整生命週期。"
-              descEn="From cabling and fiber to electrical, MEP coordination, project management and decommissioning — the full engineering integration lifecycle."
+              eyebrow="Engineering · Core Service"
+              titleZh="工程集成服務（主力業務）"
+              titleEn="Engineering Integration (Flagship)"
+              descZh="工程整合與專案執行是宏鼎集成的核心業務，涵蓋弱電、光纖、資料中心、機電協調、監控門禁與廠區資訊整合，從現場勘查、規劃、施工到驗收與後續維運全程負責。"
+              descEn="Engineering integration and project execution are our core business — from ELV, fiber, data centers and MEP coordination to surveillance, access control and facility integration, delivered end-to-end from site survey to acceptance and operations."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {engineeringServices.map(({ icon: Icon, en, zh, desc }, i) => (
@@ -281,22 +268,49 @@ function Home() {
               ))}
             </div>
             <div className="mt-10">
-              <Link to="/engineering" className="btn btn-ghost">
+              <Link to="/engineering" className="btn btn-primary">
                 <L zh="查看工程服務" en="View Engineering Capabilities" /> <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* AI Integration */}
+        {/* Industries */}
+        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Industries"
+              titleZh="服務產業"
+              titleEn="Industries We Serve"
+              descZh="從半導體與資料中心工程現場，到製造業與商辦企業的 AI 顧問與流程整合，宏鼎集成為多元產業提供落地服務。"
+              descEn="From semiconductor and data center engineering to AI advisory and process integration for manufacturers and enterprises — serving a wide range of industries."
+            />
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {industries.map(({ icon: Icon, en, zh, desc }) => (
+                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
+                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
+                    {isEn ? zh : en}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* AI Advisory & Integration (40%) */}
         <section className="py-24 md:py-28">
           <div className="container-x">
             <SectionHeader
-              eyebrow="AI Integration"
-              titleZh="AI 系統整合"
-              titleEn="AI System Integration"
-              descZh="以流程盤點為起點，將自動化、AI 代理、CRM、ERP、BI 與企業 AI 導入串接為可落地的營運能力。"
-              descEn="Starting from process discovery, we integrate automation, AI agents, CRM, ERP, BI and enterprise AI into deployable operational capability."
+              eyebrow="AI Advisory · Second Pillar"
+              titleZh="企業 AI 顧問與流程整合"
+              titleEn="Enterprise AI Advisory & Process Integration"
+              descZh="我們不是軟體開發商，而是 AI 顧問與整合夥伴。從流程盤點、資料治理、工具選型、AI 代理與自動化串接到員工教育訓練與導入陪跑，協助企業把 AI 真正嵌入日常工作流程。"
+              descEn="We are AI advisors and integrators — not software vendors. From process discovery and data governance to tool selection, AI agents, automation, training and adoption coaching, we help you embed AI into daily workflows."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {aiServices.map(({ icon: Icon, en, zh, desc }) => (
@@ -314,11 +328,12 @@ function Home() {
             </div>
             <div className="mt-10">
               <Link to="/ai-integration" className="btn btn-ghost">
-                <L zh="了解 AI 系統整合" en="Explore AI Integration" /> <ArrowRight className="h-4 w-4" />
+                <L zh="了解企業 AI 顧問服務" en="Explore AI Advisory" /> <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </section>
+
 
         {/* Business Applications */}
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
@@ -468,8 +483,8 @@ function Home() {
                   <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
                     <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/demo" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
-                    <L zh="預約諮詢" en="Book a Consultation" />
+                  <Link to="/engineering" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                    <L zh="工程整合服務" en="Engineering Services" />
                   </Link>
                 </div>
               </div>
