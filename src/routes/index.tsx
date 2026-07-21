@@ -302,50 +302,15 @@ function Home() {
           </div>
         </section>
 
-        {/* Engineering Services */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
-          <div className="container-x">
-            <SectionHeader
-              eyebrow="Engineering"
-              titleZh="工程集成服務"
-              titleEn="Engineering Services"
-              descZh="從佈線、光纖、電氣、機電協調到專案管理與設備退役，覆蓋工程集成完整生命週期。"
-              descEn="From cabling and fiber to electrical, MEP coordination, project management and decommissioning — the full engineering integration lifecycle."
-            />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {engineeringServices.map(({ icon: Icon, en, zh, desc }, i) => (
-                <div key={en} className="panel p-7 group">
-                  <div className="flex items-center justify-between">
-                    <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <span className="text-xs font-mono text-muted-foreground tracking-widest">0{i + 1}</span>
-                  </div>
-                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
-                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
-                    {isEn ? zh : en}
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10">
-              <Link to="/engineering" className="btn btn-ghost">
-                <L zh="查看工程服務" en="View Engineering Capabilities" /> <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* AI Integration */}
+        {/* AI Advisory & Integration (40%) */}
         <section className="py-24 md:py-28">
           <div className="container-x">
             <SectionHeader
-              eyebrow="AI Integration"
-              titleZh="AI 系統整合"
-              titleEn="AI System Integration"
-              descZh="以流程盤點為起點，將自動化、AI 代理、CRM、ERP、BI 與企業 AI 導入串接為可落地的營運能力。"
-              descEn="Starting from process discovery, we integrate automation, AI agents, CRM, ERP, BI and enterprise AI into deployable operational capability."
+              eyebrow="AI Advisory · Second Pillar"
+              titleZh="企業 AI 顧問與流程整合"
+              titleEn="Enterprise AI Advisory & Process Integration"
+              descZh="我們不是軟體開發商，而是 AI 顧問與整合夥伴。從流程盤點、資料治理、工具選型、AI 代理與自動化串接到員工教育訓練與導入陪跑，協助企業把 AI 真正嵌入日常工作流程。"
+              descEn="We are AI advisors and integrators — not software vendors. From process discovery and data governance to tool selection, AI agents, automation, training and adoption coaching, we help you embed AI into daily workflows."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {aiServices.map(({ icon: Icon, en, zh, desc }) => (
@@ -363,11 +328,12 @@ function Home() {
             </div>
             <div className="mt-10">
               <Link to="/ai-integration" className="btn btn-ghost">
-                <L zh="了解 AI 系統整合" en="Explore AI Integration" /> <ArrowRight className="h-4 w-4" />
+                <L zh="了解企業 AI 顧問服務" en="Explore AI Advisory" /> <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
         </section>
+
 
         {/* Business Applications */}
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
