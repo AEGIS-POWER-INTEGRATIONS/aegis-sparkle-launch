@@ -83,6 +83,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+  beforeLoad: ({ location }) => {
+    // Internal Lovable email routes handle their own auth; do not redirect them.
+    if (location.pathname.startsWith("/lovable/")) return;
+  },
   head: () => ({
     meta: [
       { charSet: "utf-8" },
