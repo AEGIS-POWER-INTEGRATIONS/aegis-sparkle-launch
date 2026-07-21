@@ -240,15 +240,50 @@ function Home() {
           </div>
         </section>
 
-        {/* Industries */}
+        {/* Engineering Services — flagship (60% of business) */}
         <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Engineering · Core Service"
+              titleZh="工程集成服務（主力業務）"
+              titleEn="Engineering Integration (Flagship)"
+              descZh="工程整合與專案執行是宏鼎集成的核心業務，涵蓋弱電、光纖、資料中心、機電協調、監控門禁與廠區資訊整合，從現場勘查、規劃、施工到驗收與後續維運全程負責。"
+              descEn="Engineering integration and project execution are our core business — from ELV, fiber, data centers and MEP coordination to surveillance, access control and facility integration, delivered end-to-end from site survey to acceptance and operations."
+            />
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {engineeringServices.map(({ icon: Icon, en, zh, desc }, i) => (
+                <div key={en} className="panel p-7 group">
+                  <div className="flex items-center justify-between">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs font-mono text-muted-foreground tracking-widest">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
+                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
+                    {isEn ? zh : en}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <Link to="/engineering" className="btn btn-primary">
+                <L zh="查看工程服務" en="View Engineering Capabilities" /> <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Industries */}
+        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
           <div className="container-x">
             <SectionHeader
               eyebrow="Industries"
               titleZh="服務產業"
               titleEn="Industries We Serve"
-              descZh="從半導體與資料中心的工程現場，到製造業與商辦企業的 AI 系統整合，AEGIS POWER INTEGRATIONS 為多元產業提供落地服務。"
-              descEn="From semiconductor and data center engineering to AI system integration for manufacturers and enterprises — we serve a wide range of industries."
+              descZh="從半導體與資料中心工程現場，到製造業與商辦企業的 AI 顧問與流程整合，宏鼎集成為多元產業提供落地服務。"
+              descEn="From semiconductor and data center engineering to AI advisory and process integration for manufacturers and enterprises — serving a wide range of industries."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {industries.map(({ icon: Icon, en, zh, desc }) => (
