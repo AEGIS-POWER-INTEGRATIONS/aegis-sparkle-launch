@@ -18,7 +18,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "aegis-sparkle-launch"
+const SITE_NAME = "AEGIS POWER INTEGRATIONS"
 const ROOT_DOMAIN = "aegispowerapi.com"
 
 // Sample data for preview mode ONLY (not used in actual email sending).

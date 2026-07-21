@@ -31,7 +31,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "aegis-sparkle-launch"
+const SITE_NAME = "AEGIS POWER INTEGRATIONS"
 const SENDER_DOMAIN = "notify.aegispowerapi.com"
 const ROOT_DOMAIN = "aegispowerapi.com"
 const FROM_DOMAIN = "aegispowerapi.com"
