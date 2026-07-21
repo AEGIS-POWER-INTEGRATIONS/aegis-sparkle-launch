@@ -136,8 +136,8 @@ function CompanyProfile() {
                     <div className="text-muted-foreground">
                       <L zh="一般洽詢" en="General" />
                     </div>
-                    <a href="mailto:johnny@aegispowerapi.com" className="font-medium text-foreground hover:underline">
-                      johnny@aegispowerapi.com
+                    <a href="mailto:jtian@aegispowerapi.com" className="font-medium text-foreground hover:underline">
+                      jtian@aegispowerapi.com
                     </a>
                   </div>
                 </li>

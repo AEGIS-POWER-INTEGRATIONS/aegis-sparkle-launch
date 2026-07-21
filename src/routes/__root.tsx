@@ -128,7 +128,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           url: "https://aegispowerapi.com/",
           logo: "https://aegispowerapi.com/__l5e/assets-v1/ac05f61c-af8a-40fd-985b-4b747d757366/api-logo.png",
           email: [
-            "johnny@aegispowerapi.com",
+            "jtian@aegispowerapi.com",
             "sales@aegispowerapi.com",
           ],
           address: {

@@ -28,7 +28,7 @@ export const SITE = {
   // TODO: replace once company provides official Tax ID.
   taxId: "",
   emails: {
-    general: "johnny@aegispowerapi.com",
+    general: "jtian@aegispowerapi.com",
     sales: "sales@aegispowerapi.com",
   },
   replyWindow: {
