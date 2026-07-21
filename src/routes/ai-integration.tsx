@@ -74,18 +74,18 @@ function AiIntegration() {
         <section className="py-20">
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
-              <span className="eyebrow"><span className="dot" /> <L zh="AI 系統整合" en="AI Integration" /></span>
-              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="AI 系統整合服務" en="AI System Integration" /></h1>
+              <span className="eyebrow"><span className="dot" /> <L zh="企業 AI 顧問" en="Enterprise AI Advisory" /></span>
+              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="企業 AI 顧問與流程整合" en="Enterprise AI Advisory & Process Integration" /></h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 <L
-                  zh="從流程盤點、資料整合、AI 助理建置到自動化串接，逐步把 AI 真正導入日常工作流程，建立可持續迭代的數位營運能力。"
-                  en="From process discovery and data integration to AI assistants and automation — embedding AI into daily workflows for sustainable digital operations."
+                  zh="宏鼎集成是企業的 AI 顧問與整合夥伴，不是軟體開發商，也不是 ERP／SaaS 廠商。我們從企業流程與資料出發，協助盤點、選型、整合現成工具與 AI 模型，並用教育訓練與導入陪跑，讓 AI 真正落到日常工作。"
+                  en="Aegis Power Integrations is your AI advisor and integrator — not a custom software vendor or an ERP/SaaS reseller. We start from your workflows and data, help you assess, select and integrate off-the-shelf tools and AI models, and coach adoption until AI actually lands in daily operations."
                 />
               </p>
               <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
                 <L
-                  zh="我們不是只教企業使用 AI 工具，而是協助企業把 AI 放進實際工作流程。"
-                  en="We don't just teach AI tools — we embed AI into your actual workflows."
+                  zh="我們不寫沒人用的系統，只把有用的 AI 放進企業流程。"
+                  en="We don't build software that goes unused — we embed useful AI into real workflows."
                 />
               </p>
             </div>
@@ -99,11 +99,12 @@ function AiIntegration() {
                   height={912}
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-ink/80 via-ink/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-ink/25 via-transparent to-transparent" />
               </div>
             </div>
           </div>
         </section>
+
 
         {/* Common scenarios */}
         <section className="pb-20">
