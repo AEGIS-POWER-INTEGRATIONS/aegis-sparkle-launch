@@ -483,8 +483,8 @@ function Home() {
                   <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
                     <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/demo" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
-                    <L zh="預約諮詢" en="Book a Consultation" />
+                  <Link to="/engineering" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                    <L zh="工程整合服務" en="Engineering Services" />
                   </Link>
                 </div>
               </div>
