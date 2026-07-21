@@ -10,10 +10,10 @@ import { L, useLang, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/ai-integration")({
   head: () => ({
     meta: [
-      { title: "AI 系統整合服務｜AEGIS POWER INTEGRATIONS｜AI System Integration" },
-      { name: "description", content: "從企業流程訪談與盤點、AI 助理建置、自動化串接到管理儀表板，協助企業真正把 AI 導入日常營運。AI adoption from process discovery to assistants, automation and dashboards." },
-      { property: "og:title", content: "AI System Integration | AEGIS POWER INTEGRATIONS" },
-      { property: "og:description", content: "End-to-end AI adoption for real business workflows." },
+      { title: "企業 AI 顧問服務｜宏鼎集成｜Enterprise AI Advisory" },
+      { name: "description", content: "宏鼎集成提供企業 AI 顧問服務：流程盤點、資料治理、工具整合、AI 助理與代理人設計、自動化串接、教育訓練與導入陪跑。我們不是軟體開發商，而是把 AI 放進企業流程的顧問夥伴。Enterprise AI advisory, tool integration, training and adoption coaching — not custom software." },
+      { property: "og:title", content: "Enterprise AI Advisory | AEGIS POWER INTEGRATIONS" },
+      { property: "og:description", content: "AI advisory, tool integration, training and adoption coaching — we embed AI into real business workflows." },
       { property: "og:url", content: `${SITE_URL}/ai-integration` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
