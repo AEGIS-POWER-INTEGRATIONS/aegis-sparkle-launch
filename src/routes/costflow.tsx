@@ -44,7 +44,7 @@ function CostFlow() {
                 協助工程公司把 Excel 報價與成本資料轉成可追蹤、可分析、可決策的專案成本平台。
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
+                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
                 <Link to="/pricing" className="btn btn-ghost">查看方案</Link>
               </div>
             </div>
@@ -215,8 +215,8 @@ function CostFlow() {
                 CostFlow 不取代你的工程經驗，而是把經驗轉成可管理、可複製、可交接的數據流程。
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
-                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
+                <Link to="/contact" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
           </div>
