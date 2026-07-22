@@ -9,9 +9,9 @@ import { SITE_URL, OG_IMAGE } from "@/lib/seo";
 export const Route = createFileRoute("/insights/")({
   head: () => ({
     meta: [
-      { title: "洞見與客戶案例｜Insights & Success Stories｜AEGIS POWER INTEGRATIONS" },
-      { name: "description", content: "AI 導入、數位轉型、工程管理與企業自動化的實務觀點與匿名客戶案例。Practical insights and anonymized customer success stories on AI, digital transformation, engineering management and automation." },
-      { property: "og:title", content: "Insights & Success Stories | AEGIS POWER INTEGRATIONS" },
+      { title: "產業洞見與應用情境｜Industry Insights & Scenarios｜AEGIS POWER INTEGRATIONS" },
+      { name: "description", content: "AI 導入、數位轉型、工程管理與企業自動化的實務觀點，以及依產業設計的導入情境示例。Practical insights and industry scenario examples on AI, digital transformation, engineering management and automation." },
+      { property: "og:title", content: "Industry Insights & Scenarios | AEGIS POWER INTEGRATIONS" },
       { property: "og:description", content: "Enterprise knowledge center: AI adoption, digital transformation and engineering management." },
       { property: "og:url", content: `${SITE_URL}/insights` },
       { property: "og:type", content: "website" },
@@ -20,12 +20,13 @@ export const Route = createFileRoute("/insights/")({
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/insights` }],
   }),
+
   component: InsightsHub,
 });
 
 const FILTERS: { key: "all" | InsightCategory; zh: string; en: string }[] = [
   { key: "all", zh: "全部", en: "All" },
-  { key: "case-study", zh: "客戶案例", en: "Case Studies" },
+  { key: "case-study", zh: "情境案例", en: "Scenario Examples" },
   { key: "ai-adoption", zh: "AI 導入", en: "AI Adoption" },
   { key: "digital-transformation", zh: "數位轉型", en: "Digital Transformation" },
   { key: "engineering-management", zh: "工程管理", en: "Engineering Management" },
@@ -49,14 +50,21 @@ function InsightsHub() {
             <L zh="企業知識中心" en="Enterprise Knowledge Center" />
           </span>
           <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
-            <L zh="洞見與客戶案例" en="Insights & Success Stories" />
+            <L zh="產業洞見與應用情境" en="Industry Insights & Scenarios" />
           </h1>
           <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
             <L
-              zh="AI 導入、數位轉型、工程管理、企業流程優化與自動化的實務觀點，搭配以產業與挑戰為主軸的匿名客戶案例。"
-              en="Practical viewpoints on AI adoption, digital transformation, engineering management, workflow improvement and automation — alongside anonymized customer stories organized by industry and challenge."
+              zh="AI 導入、數位轉型、工程管理、企業流程優化與自動化的實務觀點，以及依產業與挑戰所設計的導入情境示例。"
+              en="Practical viewpoints on AI adoption, digital transformation, engineering management, workflow improvement and automation — plus scenario examples organized by industry and challenge."
             />
           </p>
+          <div className="mt-6 rounded-lg border border-border/70 bg-muted/40 p-4 text-sm text-muted-foreground leading-relaxed">
+            <L
+              zh="情境案例說明：以下內容係依產業常見流程與痛點所設計的導入情境，相關數據僅供企業評估參考，不代表宏鼎集成既有客戶的實際成果。"
+              en="Scenario disclosure: The following pieces describe implementation scenarios built from typical industry workflows and pain points. Any numbers are for evaluation reference only and do not represent actual results from existing AEGIS customers."
+            />
+          </div>
+
         </div>
 
         <div className="mt-10 flex flex-wrap gap-2">
