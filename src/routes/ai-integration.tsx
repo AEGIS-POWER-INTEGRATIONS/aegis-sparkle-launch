@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import bannerAiAsset from "@/assets/ai-integration-tech-interface.webp.asset.json";
-const bannerAi = bannerAiAsset.url;
 import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Settings2, Workflow } from "lucide-react";
+
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { L, useLang, useT } from "@/lib/i18n";
@@ -91,17 +90,25 @@ function AiIntegration() {
             </div>
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
-              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
-                <img
-                  src={bannerAi}
-                  alt={t({ zh: "AI 系統整合與資料流程視覺", en: "AI system integration and data workflow visual" })}
-                  width={1600}
-                  height={912}
-                  className="w-full h-auto object-cover aspect-[16/10]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-ink/25 via-transparent to-transparent" />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink text-ink-foreground p-8">
+                <div className="text-xs uppercase tracking-widest text-ink-foreground/60">
+                  <L zh="服務情境示意" en="Service concept" />
+                </div>
+                <div className="mt-4 grid gap-3">
+                  {[
+                    { k: "01", zh: "流程盤點與資料治理", en: "Workflow audit & data governance" },
+                    { k: "02", zh: "工具整合與 AI 助理設計", en: "Tool integration & AI assistants" },
+                    { k: "03", zh: "教育訓練與導入陪跑", en: "Training & adoption coaching" },
+                  ].map((it) => (
+                    <div key={it.k} className="rounded-lg bg-ink-foreground/10 p-4 flex gap-3">
+                      <span className="text-xs font-mono text-gold">{it.k}</span>
+                      <span className="text-sm"><L zh={it.zh} en={it.en} /></span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+
           </div>
         </section>
 
