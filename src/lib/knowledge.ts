@@ -310,9 +310,10 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
 
 export function getAllTags(): KnowledgeTag[] {
   const set = new Set<KnowledgeTag>();
-  ARTICLES.forEach((a) => a.tags.forEach((t) => set.add(t)));
+  PUBLISHED_ARTICLES.forEach((a) => a.tags.forEach((t) => set.add(t)));
   return Array.from(set);
 }
+
 
 export function articlePath(a: Pick<KnowledgeArticle, "category" | "slug">): string {
   return `/knowledge/${a.category}/${a.slug}`;
