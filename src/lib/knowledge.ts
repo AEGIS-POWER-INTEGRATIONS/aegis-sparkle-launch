@@ -276,21 +276,27 @@ export const ARTICLES: KnowledgeArticle[] = [
 
 // ── Lookups ────────────────────────────────────────────────────────
 
+/** Public article list — draft stubs are filtered out. */
+export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter((a) => !a.draft);
+
 export function getCategory(slug: string): KnowledgeCategory | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
+/** Draft articles behave as not-found for public visitors. */
 export function getArticle(categorySlug: string, articleSlug: string): KnowledgeArticle | undefined {
-  return ARTICLES.find((a) => a.category === categorySlug && a.slug === articleSlug);
+  const a = ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
+  if (!a || a.draft) return undefined;
+  return a;
 }
 
 export function getArticlesByCategory(categorySlug: string): KnowledgeArticle[] {
-  return ARTICLES.filter((a) => a.category === categorySlug);
+  return PUBLISHED_ARTICLES.filter((a) => a.category === categorySlug);
 }
 
 export function getRelatedArticles(article: KnowledgeArticle, limit = 4): KnowledgeArticle[] {
   const tagSet = new Set(article.tags);
-  const scored = ARTICLES
+  const scored = PUBLISHED_ARTICLES
     .filter((a) => a.slug !== article.slug)
     .map((a) => {
       const shared = a.tags.filter((t) => tagSet.has(t)).length;
@@ -300,6 +306,7 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
     .sort((x, y) => y.score - x.score);
   return scored.slice(0, limit).map((x) => x.a);
 }
+
 
 export function getAllTags(): KnowledgeTag[] {
   const set = new Set<KnowledgeTag>();
