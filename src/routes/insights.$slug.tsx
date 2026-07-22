@@ -78,12 +78,21 @@ function InsightDetail() {
             <h1 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-tight">
               {tr(insight.title)}
             </h1>
+            {isCase && (
+              <div className="mt-5 rounded-lg border border-border/70 bg-muted/40 p-4 text-sm text-muted-foreground leading-relaxed">
+                <L
+                  zh="情境案例說明：本頁內容係依產業常見流程與痛點所設計的導入情境，相關數據僅供企業評估參考，不代表宏鼎集成既有客戶的實際成果。"
+                  en="Scenario disclosure: This page describes an implementation scenario built from typical industry workflows and pain points. Any numbers are for evaluation reference only and do not represent actual results from existing AEGIS customers."
+                />
+              </div>
+            )}
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               {tr(insight.summary)}
             </p>
             <div className="mt-4 text-sm text-muted-foreground">
               {insight.readMinutes} <L zh="分鐘閱讀" en="min read" />
             </div>
+
           </div>
         </section>
 
@@ -104,11 +113,12 @@ function InsightDetail() {
                 )}
                 {insight.outcome && (
                   <ListBlock
-                    label={{ zh: "業務成效", en: "Business Outcome" }}
+                    label={{ zh: "預期改善方向", en: "Expected Outcomes" }}
                     items={insight.outcome}
                     tr={tr}
                   />
                 )}
+
                 {insight.relatedServices && insight.relatedServices.length > 0 && (
                   <div>
                     <SectionLabel label={{ zh: "相關服務", en: "Related Services" }} />
@@ -160,9 +170,10 @@ function InsightDetail() {
               <Link to="/contact" className="btn btn-primary bg-background text-foreground hover:bg-background/90">
                 <L zh="聯絡我們" en="Contact Us" />
               </Link>
-              <Link to="/demo" className="btn btn-outline border-background/40 text-background hover:bg-background/10">
-                <L zh="預約諮詢" en="Book Consultation" />
+              <Link to="/contact" className="btn btn-outline border-background/40 text-background hover:bg-background/10">
+                <L zh="預約需求諮詢" en="Book Consultation" />
               </Link>
+
             </div>
           </div>
         </section>
