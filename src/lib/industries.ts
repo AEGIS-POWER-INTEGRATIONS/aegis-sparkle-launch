@@ -19,12 +19,13 @@ const costflow = { label: { zh: "Aegis CostFlow", en: "Aegis CostFlow" }, to: "/
 const salesops = { label: { zh: "Aegis SalesOps", en: "Aegis SalesOps" }, to: "/salesops" };
 const aiLaunch = { label: { zh: "Aegis AI Launch", en: "Aegis AI Launch" }, to: "/ai-launch" };
 
-export const INDUSTRIES: Industry[] = [
+const RAW_INDUSTRIES: Industry[] = [
   {
     slug: "semiconductor",
     name: { zh: "半導體產業", en: "Semiconductor" },
-    tagline: { zh: "為晶圓廠與封測供應鏈提供高規格的工程整合與資料流自動化。", en: "High-spec engineering integration and data-flow automation for fabs and OSAT supply chains." },
-    hero: { zh: "從無塵室基礎工程、廠務網路，到供應鏈與品質資料的 AI 化，AEGIS 協助半導體客戶在嚴苛環境下維持穩定與可追溯的營運。", en: "From cleanroom infrastructure and facility networks to AI-enabled supply chain and quality data, AEGIS supports semiconductor customers with reliable, traceable operations under demanding conditions." },
+    tagline: { zh: "以半導體供應鏈的工程與資料流角色切入，並非承接晶圓廠自動化整體專案。", en: "Focused on the engineering and data-flow layer of the semiconductor supply chain — we do not claim to take on end-to-end fab automation." },
+    hero: { zh: "宏鼎集成以光纖與弱電工程、廠區網路、工程進度回報、供應商資料整合與報價／成本流程改善的角色，支援半導體供應鏈客戶。", en: "We support semiconductor supply-chain customers with fiber and ELV engineering, site networking, engineering progress reporting, supplier data integration and quotation/cost workflow improvements." },
+
     challenges: [
       { zh: "嚴格的品質、良率與可追溯性要求", en: "Strict quality, yield and traceability requirements" },
       { zh: "高可用性與極低中斷容忍度的營運要求", en: "High-availability operations with very low downtime tolerance" },
@@ -43,11 +44,12 @@ export const INDUSTRIES: Industry[] = [
       { zh: "廠務資料異常偵測與預測性維護", en: "Anomaly detection and predictive maintenance on facility data" },
     ],
     engineeringOpportunities: [
-      { zh: "無塵室與廠務網路 (Fab LAN) 建置與升級", en: "Cleanroom and Fab LAN deployment and upgrades" },
-      { zh: "光纖骨幹、跨棟連線與資料中心支援", en: "Fiber backbone, cross-building links and data-center support" },
-      { zh: "監控、門禁與人員追蹤系統整合", en: "Surveillance, access control and personnel-tracking integration" },
-      { zh: "設備連網 (SECS/GEM 週邊) 與資料匯集", en: "Equipment connectivity (SECS/GEM-adjacent) and data aggregation" },
+      { zh: "半導體供應鏈廠區光纖與弱電工程支援", en: "Fiber and ELV engineering support for semiconductor supply-chain sites" },
+      { zh: "廠區網路、監控與門禁系統整合", en: "Site network, surveillance and access-control integration" },
+      { zh: "工程進度回報與供應商資料整合", en: "Engineering progress reporting and supplier data integration" },
+      { zh: "報價與成本流程數位化改善", en: "Digitalization of quotation and cost workflows" },
     ],
+
     roadmap: [
       { phase: { zh: "階段一 · 現場診斷", en: "Phase 1 · Site Discovery" }, detail: { zh: "工程與資料流盤點，識別關鍵瓶頸與可量測指標。", en: "Engineering and data-flow audit; identify bottlenecks and measurable KPIs." } },
       { phase: { zh: "階段二 · 基礎工程", en: "Phase 2 · Infrastructure" }, detail: { zh: "先完成網路、資料與監控基礎，做為後續 AI 應用的可靠來源。", en: "Establish reliable network, data and monitoring foundations before AI." } },
@@ -256,6 +258,23 @@ export const INDUSTRIES: Industry[] = [
   },
 ];
 
+// Public-facing ordering per positioning: data centers & engineering first, semiconductor last.
+const ORDER = [
+  "data-centers",
+  "epc-engineering",
+  "manufacturing",
+  "energy-esg",
+  "sme-digital",
+  "commercial-buildings",
+  "semiconductor",
+];
+
+export const INDUSTRIES: Industry[] = ORDER
+  .map((slug) => RAW_INDUSTRIES.find((i) => i.slug === slug))
+  .filter((i): i is Industry => Boolean(i))
+  .concat(RAW_INDUSTRIES.filter((i) => !ORDER.includes(i.slug)));
+
 export function getIndustry(slug: string): Industry | undefined {
   return INDUSTRIES.find((i) => i.slug === slug);
 }
+

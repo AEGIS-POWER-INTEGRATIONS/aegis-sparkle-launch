@@ -92,13 +92,15 @@ const trustPillars: { label: Bi; sub: Bi }[] = [
 ];
 
 const industries: Card[] = [
-  { icon: Cpu, en: "Semiconductor", zh: "半導體與科技廠", desc: { zh: "Fab 與供應鏈廠區的弱電、光纖、系統整合與 AI 導入。", en: "ELV, fiber, system integration and AI adoption for fabs and their supply chains." } },
-  { icon: Server, en: "Data Centers", zh: "資料中心", desc: { zh: "資料中心基礎建設、佈線、機櫃與運維系統整合。", en: "Data center infrastructure, cabling, racks and operations system integration." } },
-  { icon: Factory, en: "Manufacturing", zh: "製造業", desc: { zh: "工廠 IT/OT 整合、報價成本、業務與生產流程數位化。", en: "IT/OT integration, quotation, cost and sales/production workflow digitalization." } },
-  { icon: Building2, en: "Commercial Buildings", zh: "商辦與智慧建築", desc: { zh: "弱電、監控、門禁、網路與能源監測系統整合。", en: "ELV, surveillance, access control, network and energy monitoring integration." } },
-  { icon: Leaf, en: "Energy & ESG", zh: "能源與 ESG", desc: { zh: "太陽光電、儲能、機電工程與能源管理平台。", en: "Solar PV, energy storage, MEP engineering and energy management platforms." } },
-  { icon: BrainCircuit, en: "Enterprise AI", zh: "企業 AI", desc: { zh: "為企業建置可落地的 AI 工作流、代理人與知識庫。", en: "Production-ready AI workflows, agents and knowledge bases for enterprises." } },
+  { icon: Server, en: "Data Centers", zh: "資料中心與機房", desc: { zh: "資料中心與機房基礎工程、佈線、機櫃、監控與運維系統整合。", en: "Data-center and server-room infrastructure, cabling, racks, monitoring and operations integration." } },
+  { icon: Wrench, en: "Engineering & EPC", zh: "工程與 EPC", desc: { zh: "光纖弱電、機電協調、工程進度與品質管理，支援 EPC 統包與跨承包商整合。", en: "Fiber & ELV, MEP coordination, schedule and quality management for EPC and multi-contractor integration." } },
+  { icon: Factory, en: "Manufacturing", zh: "製造業", desc: { zh: "工廠 IT/OT 整合、報價成本、業務與生產流程數位化改善。", en: "IT/OT integration, quotation and cost workflows, sales and production digitalization." } },
+  { icon: Leaf, en: "Energy & Environment", zh: "能源與環保", desc: { zh: "太陽光電、儲能、能源計量、ESG 資料與能源管理平台。", en: "Solar PV, storage, metering, ESG data and energy-management platforms." } },
+  { icon: BrainCircuit, en: "SMEs Digital Transformation", zh: "中小企業數位轉型", desc: { zh: "以務實節奏協助中小企業從關鍵流程開始建立可持續的數位能力。", en: "A pragmatic pace of digital adoption for SMEs, starting from critical workflows." } },
+  { icon: Building2, en: "Commercial Buildings & Others", zh: "商業建築及其他產業", desc: { zh: "商辦、園區、商業空間的弱電、監控、網路與能源監測整合。", en: "ELV, surveillance, networking and energy monitoring for offices, campuses and commercial spaces." } },
+  { icon: Cpu, en: "Semiconductor Supply Chain", zh: "半導體供應鏈", desc: { zh: "以光纖弱電、廠區網路、工程進度回報、供應商資料整合的角色參與，不承接晶圓廠自動化整體專案。", en: "Participating at the fiber/ELV, site-network, engineering-progress and supplier-data layer — not end-to-end fab automation." } },
 ];
+
 
 const engineeringServices: Card[] = [
   { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A / Cat 8 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
@@ -119,10 +121,11 @@ const aiServices: Card[] = [
 ];
 
 const products = [
-  { name: "Aegis CostFlow", tagline: { zh: "工程報價與成本分析", en: "Engineering Quotation & Cost Analytics" }, desc: { zh: "工程報價、材料、人工、外包與毛利一體化管理，內建 AI 成本提醒。", en: "Unified management of quotations, materials, labor, subcontracts and margin with AI cost alerts." }, icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
-  { name: "Aegis SalesOps", tagline: { zh: "業務管理與 AI 週報", en: "Sales Management & AI Weekly Reports" }, desc: { zh: "整合 CRM、拜訪紀錄、LINE 回報與 AI 週報，讓業務管理即時透明。", en: "CRM, visit logs, LINE reports and AI weekly summaries for real-time sales visibility." }, icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
-  { name: "Aegis AI Launch", tagline: { zh: "企業 AI 導入服務", en: "Enterprise AI Adoption Service" }, desc: { zh: "從流程盤點、資料整理、AI 助理設計到自動化串接的完整服務。", en: "End-to-end service from process discovery and data prep to AI assistant design and automation." }, icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
+  { name: "Aegis CostFlow", tagline: { zh: "工程報價與成本分析應用模組", en: "Engineering Quotation & Cost Analytics Module" }, desc: { zh: "把工程報價、材料、人工與外包成本整合為可追蹤的資料流，內建 AI 成本提醒。實際功能與費用需經需求訪談確認。", en: "Turns quotation, materials, labor and subcontract costs into a trackable data flow with AI cost alerts. Final scope and cost confirmed after discovery." }, icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
+  { name: "Aegis SalesOps", tagline: { zh: "業務、現場回報與管理資訊整合模組", en: "Sales, Field-Report & Management Info Module" }, desc: { zh: "整合業務拜訪、LINE 回報、CRM 與 AI 週報，讓現場資訊即時進入管理視野。實際功能與費用需經需求訪談確認。", en: "Unifies sales visits, LINE reports, CRM and AI weekly summaries. Final scope and cost confirmed after discovery." }, icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
+  { name: "Aegis AI Launch", tagline: { zh: "企業 AI 導入啟動服務", en: "Enterprise AI Adoption Kickoff" }, desc: { zh: "從流程盤點、資料整理、AI 助理設計到自動化串接的 PoC 導入啟動服務。實際範圍需經需求訪談確認。", en: "PoC kickoff service spanning process discovery, data prep, AI-assistant design and automation. Scope confirmed after discovery." }, icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
 ];
+
 
 const whyUs: Card[] = [
   { icon: Wrench, en: "Engineering Experience", zh: "工程實務經驗", desc: { zh: "核心團隊具備能源、機電、弱電、光纖、資料中心等現場工程經驗。", en: "Core team with hands-on experience in energy, MEP, ELV, fiber and data center engineering." } },
@@ -180,51 +183,46 @@ function Home() {
               <h1 className="mt-6 text-[2.2rem] leading-[1.15] md:text-[3.2rem] xl:text-[3.9rem] xl:leading-[1.08] font-bold tracking-[-0.02em] text-white">
                 {isEn ? (
                   <>
-                    Engineering-Led Integration,
+                    From the engineering floor to enterprise AI,
                     <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">Powered by AI Advisory</span>
+                    <span className="text-[oklch(0.85_0.12_235)]">integrating your workflow end to end</span>
                   </>
                 ) : (
                   <>
-                    以工程實務為核心，
+                    從工程現場到企業 AI 導入，
                     <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">結合 AI 顧問與流程整合</span>
+                    <span className="text-[oklch(0.85_0.12_235)]">協助企業把流程真正整合起來</span>
                   </>
                 )}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
                 <L
-                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）是以工程實務為核心的產業整合服務公司。我們協助企業完成工程整合與專案執行，並結合企業 AI 顧問、流程優化、工具整合、教育訓練與導入陪跑，讓工程與 AI 真正落地在營運現場。"
-                  en="Aegis Power Integrations is an engineering-first integration services firm. We combine on-site engineering delivery with enterprise AI advisory, process optimization, tool integration, training and adoption coaching — so both engineering and AI actually land in your operations."
+                  zh="宏鼎集成提供資料中心、光纖弱電、工程管理與企業 AI 導入顧問服務，從需求盤點、流程改善到實際落地，陪伴企業逐步完成轉型。"
+                  en="Aegis Power Integrations delivers data-center, fiber and ELV engineering, project management and enterprise AI advisory — from discovery and process improvement to on-the-ground rollout, walking alongside your team through the transformation."
                 />
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
                 <L
-                  zh="我們不是軟體開發商，也不是單純的 ERP／SaaS 廠商。我們是把工程、系統與 AI 整合進企業流程的顧問與執行夥伴。"
-                  en="We are not a custom software vendor or a boxed ERP/SaaS reseller — we are the advisory and execution partner that integrates engineering, systems and AI into your workflows."
+                  zh="工程整合是我們的第一主軸，企業 AI 顧問是第二主軸。我們不是純軟體開發公司，也不是低價 SaaS 工具商。"
+                  en="Engineering integration is our first pillar; enterprise AI advisory is our second. We are not a pure software vendor or a low-cost SaaS tool reseller."
                 />
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link to="/engineering" className="btn btn-primary">
-                  <L zh="工程整合服務" en="Engineering Services" /> <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  to="/ai-integration"
-                  className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
-                >
-                  <L zh="企業 AI 顧問服務" en="Enterprise AI Advisory" />
+                <Link to="/contact" className="btn btn-primary">
+                  <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/contact"
                   className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
                 >
-                  <L zh="聯絡我們" en="Contact Us" />
+                  <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                 </Link>
               </div>
             </div>
           </div>
         </section>
+
 
         {/* Trust pillars — qualitative capabilities (no unverified metrics) */}
         <section className="border-b border-border bg-background">
@@ -275,42 +273,15 @@ function Home() {
           </div>
         </section>
 
-        {/* Industries */}
+        {/* AI Advisory (second pillar) — placed right after Engineering */}
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Industries"
-              titleZh="服務產業"
-              titleEn="Industries We Serve"
-              descZh="從半導體與資料中心工程現場，到製造業與商辦企業的 AI 顧問與流程整合，宏鼎集成為多元產業提供落地服務。"
-              descEn="From semiconductor and data center engineering to AI advisory and process integration for manufacturers and enterprises — serving a wide range of industries."
-            />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {industries.map(({ icon: Icon, en, zh, desc }) => (
-                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
-                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
-                    {isEn ? zh : en}
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* AI Advisory & Integration (40%) */}
-        <section className="py-24 md:py-28">
-          <div className="container-x">
-            <SectionHeader
               eyebrow="AI Advisory · Second Pillar"
-              titleZh="企業 AI 顧問與流程整合"
-              titleEn="Enterprise AI Advisory & Process Integration"
-              descZh="我們不是軟體開發商，而是 AI 顧問與整合夥伴。從流程盤點、資料治理、工具選型、AI 代理與自動化串接到員工教育訓練與導入陪跑，協助企業把 AI 真正嵌入日常工作流程。"
-              descEn="We are AI advisors and integrators — not software vendors. From process discovery and data governance to tool selection, AI agents, automation, training and adoption coaching, we help you embed AI into daily workflows."
+              titleZh="企業 AI 顧問與導入服務"
+              titleEn="Enterprise AI Advisory & Implementation"
+              descZh="以顧問先行、導入陪跑的方式，協助企業盤點問題、選擇工具、串接既有系統與 AI 模型，並以教育訓練與陪跑，讓 AI 真正落到日常工作。我們不會要求客戶全面更換既有系統。"
+              descEn="Advisory-first, coaching-alongside — we help you audit problems, select tools, integrate existing systems and AI models, and land AI into daily work through training and hands-on coaching. We do not push wholesale system replacement."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {aiServices.map(({ icon: Icon, en, zh, desc }) => (
@@ -334,17 +305,46 @@ function Home() {
           </div>
         </section>
 
+        {/* Industries */}
+        <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Industries"
+              titleZh="主要服務產業"
+              titleEn="Industries We Serve"
+              descZh="以資料中心與工程現場為核心，延伸至製造業、能源與 ESG、中小企業數位轉型、商業建築等產業。半導體以供應鏈工程與資料流角色參與，不承接晶圓廠自動化整體專案。"
+              descEn="Anchored on data centers and engineering delivery, extending to manufacturing, energy & ESG, SME digital transformation and commercial buildings. In semiconductor we work at the supply-chain engineering and data layer, not end-to-end fab automation."
+            />
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {industries.map(({ icon: Icon, en, zh, desc }) => (
+                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
+                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
+                    {isEn ? zh : en}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
 
         {/* Business Applications */}
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Products"
-              titleZh="Aegis 企業應用"
-              titleEn="Business Applications"
-              descZh="AEGIS POWER INTEGRATIONS 旗下模組化企業應用系列，協助企業從報價、業務到 AI 導入逐步建立自己的數位營運。"
-              descEn="Our modular enterprise application suite helps companies build their own digital operations — from quotation and sales to AI adoption."
+              eyebrow="AI Application Modules · PoC"
+              titleZh="AI 應用模組與 PoC 方案"
+              titleEn="AI Application Modules & PoC Programs"
+              descZh="Aegis CostFlow、SalesOps 與 AI Launch 是我們在企業端常用的 AI 應用模組與 PoC 導入方案，並非已成熟的 SaaS 產品線。實際功能、資料需求與費用皆需經需求訪談後確認。"
+              descEn="CostFlow, SalesOps and AI Launch are the AI application modules and PoC programs we typically deploy — not a packaged SaaS product line. Actual scope, data requirements and cost are confirmed after discovery."
             />
+
             <div className="mt-14 grid gap-6 md:grid-cols-3">
               {products.map(({ name, tagline, desc, icon: Icon, image, to }) => (
                 <Link key={name} to={to} className="panel-lift flex flex-col group overflow-hidden">
@@ -450,7 +450,41 @@ function Home() {
           </div>
         </section>
 
+        {/* Engagement Process */}
+        <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Process"
+              titleZh="合作流程"
+              titleEn="Engagement Process"
+              descZh="從初步需求訪談到導入陪跑，我們以顧問先行、逐步落地的節奏推進，實際範圍與費用皆以書面報價為準。"
+              descEn="From initial needs discovery to hands-on adoption, we move at an advisory-first, stepwise pace — actual scope and pricing are confirmed in writing."
+            />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { n: "01", t: { zh: "需求訪談", en: "Needs Discovery" }, d: { zh: "訪談現場與管理層，釐清問題、目標與導入節奏。", en: "Interview field and management to clarify problems, goals and pace." } },
+                { n: "02", t: { zh: "診斷與建議", en: "Diagnosis & Advice" }, d: { zh: "提供書面問題清單與可行導入方向，判斷應調整流程、串接工具或引入合作廠商。", en: "Deliver written problem list and viable directions — adjust workflow, integrate or bring in partners." } },
+                { n: "03", t: { zh: "PoC 或工程執行", en: "PoC or Engineering" }, d: { zh: "依方向啟動 PoC 導入專案或工程整合執行，逐步驗證與交付。", en: "Kick off a PoC or engineering execution based on the chosen direction." } },
+                { n: "04", t: { zh: "導入陪跑", en: "Adoption Coaching" }, d: { zh: "以教育訓練、月度顧問與後續維運，讓成果真正嵌入日常營運。", en: "Training, monthly advisory and ongoing operations so results actually stick." } },
+              ].map((s) => (
+                <div key={s.n} className="panel p-7">
+                  <span className="num-badge">{s.n}</span>
+                  <h3 className="mt-4 text-lg font-semibold">{t(s.t)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(s.d)}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 text-xs text-muted-foreground">
+              <L
+                zh="※ 宏鼎集成依企業現況、資料完整度、使用人數、串接範圍及導入目標提供正式報價，不以未訪談前的固定價格取代需求評估。"
+                en="※ Formal quotes reflect your current state, data readiness, user count, integration scope and adoption goals — we do not substitute list prices for real scoping."
+              />
+            </p>
+          </div>
+        </section>
+
         {/* Final CTA */}
+
         <section className="py-24 md:py-28">
           <div className="container-x">
             <div className="relative overflow-hidden rounded-lg border border-border bg-ink text-ink-foreground p-10 md:p-16">
@@ -469,24 +503,25 @@ function Home() {
                 </div>
                 <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">
                   <L
-                    zh="準備以企業規模整合工程與 AI？"
-                    en="Ready to integrate engineering and AI at enterprise scale?"
+                    zh="從工程現場開始，或從 AI 流程健檢開始？"
+                    en="Start from the engineering floor, or from an AI workflow check-up?"
                   />
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-white/75 leading-relaxed">
                   <L
-                    zh="預約與 AEGIS POWER INTEGRATIONS 的初步諮詢，我們將協助評估工程範圍、系統整合與 AI 導入路徑。"
-                    en="Book an initial consultation and we will help assess your engineering scope, system integration and AI adoption roadmap."
+                    zh="不論您需要的是工程整合，或想先為既有流程做一次 AI 導入健檢，我們都能從第一次訪談開始，逐步協助落地。"
+                    en="Whether you need engineering integration or want an AI adoption check-up on existing workflows, we start from the first interview and help you land it step by step."
                   />
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
-                    <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
+                    <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/engineering" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
-                    <L zh="工程整合服務" en="Engineering Services" />
+                  <Link to="/contact" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                    <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                   </Link>
                 </div>
+
               </div>
             </div>
           </div>

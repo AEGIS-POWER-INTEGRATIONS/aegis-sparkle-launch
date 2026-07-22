@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { Check, Sparkles } from "lucide-react";
+import { Check, Compass, Users, FlaskConical, Layers } from "lucide-react";
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
@@ -9,39 +9,39 @@ type Bi = { zh: string; en: string };
 
 const FAQ_ITEMS: { q: Bi; a: Bi }[] = [
   {
-    q: { zh: "訂閱費與導入費有什麼不同？", en: "What's the difference between subscription and rollout fees?" },
-    a: { zh: "訂閱費為系統使用、維護與版本更新費用；導入費為一次性的流程訪談、欄位設定、資料整理、教育訓練與上線輔導費用。", en: "Subscription covers software use, maintenance and version updates. Rollout is a one-time fee covering process interviews, field configuration, data preparation, training and go-live support." },
+    q: { zh: "為什麼沒有固定月費或訂閱價格？", en: "Why no fixed monthly subscription price?" },
+    a: { zh: "宏鼎集成以顧問與導入服務為核心，實際費用會依企業規模、部門數、資料完整度、串接範圍與導入目標調整。我們選擇不以未訪談前的固定價格取代需求評估。", en: "We deliver advisory and implementation services. Actual cost depends on company size, departments, data readiness, integration scope and adoption goals — we choose not to replace real scoping with a price tag." },
   },
   {
-    q: { zh: "可以只先導入單一流程嗎？", en: "Can we start with only one workflow?" },
-    a: { zh: "可以。建議從報價、成本、CRM、業務週報或專案管理其中一個流程開始，再逐步擴充。", en: "Yes. We recommend starting with one workflow — quotation, cost, CRM, sales weekly reports or project management — and expanding from there." },
+    q: { zh: "可以只做初步診斷嗎？", en: "Can we start with just a diagnosis?" },
+    a: { zh: "可以。多數企業會先從「初步需求診斷」開始，確認問題與導入方向後，再決定是否進入 PoC 或月度顧問。", en: "Yes. Many clients begin with the Initial Needs Diagnosis, then decide whether to proceed to a PoC or monthly advisory." },
   },
   {
-    q: { zh: "可以串接既有 ERP 或 Excel 嗎？", en: "Can you integrate with existing ERP or Excel?" },
-    a: { zh: "可以依需求評估。常見方式包含 Excel / CSV 匯入、API、Webhook 或資料庫同步。", en: "Yes, evaluated per case. Common approaches include Excel/CSV import, APIs, webhooks or database sync." },
+    q: { zh: "宏鼎集成會全面取代我們既有的 ERP 或系統嗎？", en: "Will you replace our existing ERP or systems?" },
+    a: { zh: "通常不會。我們主張先盤點問題，再判斷應採用既有工具、系統串接、流程調整或引入合作廠商，避免不必要的重建成本。", en: "Usually not. We audit the problem first, then decide whether to keep existing tools, integrate, adjust workflows or bring in a partner — avoiding unnecessary rebuilds." },
   },
   {
-    q: { zh: "導入大約需要多久？", en: "How long does rollout take?" },
-    a: { zh: "標準導入通常 2–4 週可上線第一階段功能；若涉及多部門、歷史資料搬遷或系統串接，時程將依需求另行評估。", en: "A standard rollout goes live in 2–4 weeks for phase one. Multi-department, historical migration or integrations are scoped separately." },
+    q: { zh: "工程整合服務如何報價？", en: "How is engineering integration priced?" },
+    a: { zh: "工程整合、資料中心、光纖與弱電工程依現場條件、施工範圍、設備規格、工期、人力與協力廠商需求另行評估報價。", en: "Engineering integration, data-center, fiber and ELV work is quoted based on site conditions, scope, specs, timeline, manpower and subcontractor needs." },
   },
   {
-    q: { zh: "工程集成服務如何報價？", en: "How is engineering integration priced?" },
-    a: { zh: "工程集成、能源與機電工程服務將依現場條件、施工範圍、設備規格、工期、人力與協力廠商需求另行評估。", en: "Engineering, energy and MEP services are quoted based on site conditions, scope, equipment specs, timeline, manpower and subcontractor requirements." },
+    q: { zh: "有沒有政府補助或導入計畫可以搭配？", en: "Any government grants that can be paired?" },
+    a: { zh: "有。宏鼎集成可協助評估與申請中小企業數位轉型、AI 導入、產業智慧化等政府補助計畫，實際適用資格依主管機關公告為準。", en: "Yes — we can help assess and apply for SMB digital-transformation, AI-adoption and industry-upgrade grants. Eligibility depends on the issuing authority." },
   },
 ];
 
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "宏鼎集成服務方案｜工程整合、AI 導入與企業系統" },
-      { name: "description", content: "查看宏鼎集成股份有限公司的工程整合、AI 導入、企業管理系統、流程自動化及顧問服務方案。實際價格依導入範圍與企業需求評估。" },
-      { property: "og:title", content: "宏鼎集成服務方案｜工程整合、AI 導入與企業系統" },
-      { property: "og:description", content: "工程整合、AI 導入、企業管理系統與流程自動化方案，價格依範圍與需求評估。" },
+      { title: "合作方式｜宏鼎集成｜工程整合與企業 AI 顧問" },
+      { name: "description", content: "宏鼎集成以顧問與導入服務為核心，提供初步需求診斷、月度 AI 顧問、PoC 導入專案與企業整合方案。實際費用依企業現況與導入目標評估報價。" },
+      { property: "og:title", content: "合作方式｜宏鼎集成" },
+      { property: "og:description", content: "初步需求診斷、月度 AI 顧問、PoC 導入專案與企業整合方案，依需求評估報價。" },
       { property: "og:url", content: `${SITE_URL}/pricing` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "宏鼎集成服務方案" },
-      { name: "twitter:description", content: "工程整合、AI 導入、企業管理系統與流程自動化。" },
+      { name: "twitter:title", content: "合作方式｜宏鼎集成" },
+      { name: "twitter:description", content: "顧問、PoC 與企業整合方案，依需求評估報價。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
@@ -64,122 +64,76 @@ export const Route = createFileRoute("/pricing")({
 });
 
 const plans: {
-  name: string;
+  icon: React.ComponentType<{ className?: string }>;
+  code: string;
   title: Bi;
   price: Bi;
-  suffix: Bi;
   desc: Bi;
+  suitable: Bi;
   features: Bi[];
   cta: Bi;
-  variant: "ghost" | "primary";
   featured?: boolean;
 }[] = [
   {
-    name: "Starter",
-    title: { zh: "單一流程導入", en: "Single Workflow" },
-    price: { zh: "NT$5,000", en: "NT$5,000" },
-    suffix: { zh: "/ 月起", en: "/ month, from" },
-    desc: { zh: "適合單一流程數位化與初期試用，例如報價表單、客戶資料、簡易報表或單一部門流程。", en: "For single-workflow digitalization and initial trials — quotation forms, customer data, simple reports or one department." },
+    icon: Compass,
+    code: "Plan 01",
+    title: { zh: "初步需求診斷", en: "Initial Needs Diagnosis" },
+    price: { zh: "依企業規模與訪談範圍報價", en: "Quoted by company size and interview scope" },
+    desc: { zh: "適合尚不確定問題與導入方向的企業，先釐清現況再談導入。", en: "For companies still clarifying their problem and direction before committing to any rollout." },
+    suitable: { zh: "適用對象：想導入 AI 但不確定從哪裡開始的企業。", en: "Suitable for: companies wanting AI but unsure where to start." },
     features: [
-      { zh: "單一產品 / 單一流程模組", en: "One product / one workflow module" },
-      { zh: "標準欄位與範本", en: "Standard fields and templates" },
-      { zh: "Excel / CSV 匯入", en: "Excel / CSV import" },
-      { zh: "基本報表與權限設定", en: "Basic reports and permissions" },
-      { zh: "Email 支援", en: "Email support" },
+      { zh: "需求訪談（1–2 場）", en: "1–2 needs-discovery interviews" },
+      { zh: "現有流程初步盤點", en: "Preliminary workflow audit" },
+      { zh: "問題清單與可行導入方向", en: "Problem list and viable directions" },
+      { zh: "書面診斷建議報告", en: "Written diagnostic recommendation report" },
     ],
-    cta: { zh: "申請試用", en: "Request Trial" },
-    variant: "ghost",
+    cta: { zh: "預約需求諮詢", en: "Book Needs Consultation" },
   },
   {
-    name: "Pro",
-    title: { zh: "中小企業正式導入", en: "SMB Production Rollout" },
-    price: { zh: "NT$15,000", en: "NT$15,000" },
-    suffix: { zh: "/ 月起", en: "/ month, from" },
-    desc: { zh: "適合中小企業正式導入 CRM、報價、成本、業務管理或 AI 週報系統。建議作為正式導入 Aegis CostFlow、SalesOps 或 AI 週報系統的起始方案。", en: "For SMBs deploying CRM, quotation, cost, sales management or AI weekly-report systems in production — the starting plan for Aegis CostFlow, SalesOps or AI reports." },
+    icon: Users,
+    code: "Plan 02",
+    title: { zh: "月度 AI 顧問", en: "Monthly AI Advisory" },
+    price: { zh: "依服務時數、部門數量與顧問範圍報價", en: "Quoted by hours, departments and advisory scope" },
+    desc: { zh: "適合希望持續推動 AI 應用，但內部缺乏專責人員的企業。", en: "For companies committed to advancing AI adoption but lacking a dedicated internal lead." },
+    suitable: { zh: "適用對象：需要長期陪跑、持續優化流程的企業。", en: "Suitable for: companies needing ongoing coaching and process refinement." },
     features: [
-      { zh: "多流程模組權限", en: "Multi-workflow modules & permissions" },
-      { zh: "AI 提醒與自動週報", en: "AI alerts and auto weekly reports" },
-      { zh: "主管儀表板", en: "Management dashboard" },
-      { zh: "欄位與報表設定", en: "Field and report configuration" },
-      { zh: "導入顧問支援", en: "Rollout consultant support" },
+      { zh: "每月固定顧問會議", en: "Fixed monthly advisory meetings" },
+      { zh: "工具選型與流程優化建議", en: "Tool selection and workflow-optimization advice" },
+      { zh: "員工 AI 教育訓練場次", en: "Employee AI training sessions" },
+      { zh: "導入進度追蹤與月度摘要", en: "Adoption tracking and monthly summary" },
     ],
-    cta: { zh: "預約諮詢", en: "Book Consultation" },
-    variant: "primary",
+    cta: { zh: "預約 AI 流程健檢", en: "Book AI Workflow Check-up" },
     featured: true,
   },
   {
-    name: "Business",
-    title: { zh: "企業多部門導入", en: "Enterprise Multi-Department" },
-    price: { zh: "專案報價", en: "Custom Quote" },
-    suffix: { zh: "", en: "" },
-    desc: { zh: "適合多部門、多據點、需要串接既有系統或客製流程的企業。", en: "For enterprises with multiple departments, sites, existing system integration or customized workflows." },
+    icon: FlaskConical,
+    code: "Plan 03",
+    title: { zh: "PoC 導入專案", en: "PoC Implementation Project" },
+    price: { zh: "專案報價", en: "Project-based quote" },
+    desc: { zh: "適合已有明確問題，希望先進行小規模驗證後再擴大導入的企業。", en: "For companies with a defined problem who want a small-scale validation before scaling." },
+    suitable: { zh: "適用對象：問題明確、希望以最小成本驗證成效的企業。", en: "Suitable for: teams with a clear problem seeking minimum-viable validation." },
     features: [
-      { zh: "客製流程設定", en: "Custom workflow configuration" },
-      { zh: "LINE / CRM / BI 串接", en: "LINE / CRM / BI integrations" },
-      { zh: "專屬導入顧問", en: "Dedicated rollout consultant" },
-      { zh: "專案級支援與資安需求評估", en: "Project-grade support and security assessment" },
+      { zh: "需求定義與資料盤點", en: "Requirement definition and data audit" },
+      { zh: "原型建置與可行性驗證", en: "Prototype build and feasibility validation" },
+      { zh: "使用者測試與回饋整理", en: "User testing and feedback consolidation" },
+      { zh: "成效評估與下一階段建議", en: "Outcome review and next-phase recommendation" },
     ],
-    cta: { zh: "預約諮詢", en: "Book Consultation" },
-    variant: "ghost",
-  },
-];
-
-const rolloutPackages: {
-  name: Bi;
-  price: Bi;
-  suffix: Bi;
-  desc: Bi;
-  items: Bi[];
-  featured?: boolean;
-}[] = [
-  {
-    name: { zh: "基礎導入", en: "Basic Rollout" },
-    price: { zh: "NT$50,000", en: "NT$50,000" },
-    suffix: { zh: "起", en: "from" },
-    desc: { zh: "單一產品、單一部門上線。", en: "Single product, single department launch." },
-    items: [
-      { zh: "1 場啟動會議", en: "1 kick-off meeting" },
-      { zh: "Excel 匯入與欄位對應", en: "Excel import and field mapping" },
-      { zh: "標準範本套用", en: "Standard template application" },
-      { zh: "上線教育訓練 1 場", en: "1 go-live training session" },
-    ],
+    cta: { zh: "申請 PoC 評估", en: "Request PoC Assessment" },
   },
   {
-    name: { zh: "標準導入", en: "Standard Rollout" },
-    price: { zh: "NT$120,000", en: "NT$120,000" },
-    suffix: { zh: "起", en: "from" },
-    desc: { zh: "跨部門流程，含主管儀表板設定。", en: "Cross-department workflows with management dashboards." },
-    featured: true,
-    items: [
-      { zh: "2–3 場流程訪談", en: "2–3 process interviews" },
-      { zh: "客製欄位與報表", en: "Custom fields and reports" },
-      { zh: "主管儀表板設定", en: "Management dashboard setup" },
-      { zh: "教育訓練 2 場 + 30 天輔導", en: "2 training sessions + 30 days of guidance" },
+    icon: Layers,
+    code: "Plan 04",
+    title: { zh: "企業整合方案", en: "Enterprise Integration" },
+    price: { zh: "預約顧問評估", en: "Book advisory assessment" },
+    desc: { zh: "適合需要跨部門、跨系統或工程與營運整合的企業。", en: "For enterprises needing cross-department, cross-system or engineering-and-operations integration." },
+    suitable: { zh: "適用對象：多部門、多據點、須整合工程現場與資訊系統的企業。", en: "Suitable for: multi-department, multi-site organizations integrating field and IT." },
+    features: [
+      { zh: "專案管理與流程設計", en: "Project management and workflow design" },
+      { zh: "系統商協調與資料整合", en: "Vendor coordination and data integration" },
+      { zh: "教育訓練與跨部門推廣", en: "Training and cross-team rollout" },
+      { zh: "後續維運與擴充支援", en: "Ongoing operations and expansion support" },
     ],
-  },
-  {
-    name: { zh: "企業導入", en: "Enterprise Rollout" },
-    price: { zh: "NT$300,000", en: "NT$300,000" },
-    suffix: { zh: "起", en: "from" },
-    desc: { zh: "多據點、多角色，含資料治理與權限規劃。", en: "Multi-site, multi-role with data governance and permission design." },
-    items: [
-      { zh: "完整流程診斷", en: "Full workflow diagnosis" },
-      { zh: "權限與資安規範", en: "Permission and security policies" },
-      { zh: "歷史資料搬遷", en: "Historical data migration" },
-      { zh: "90 天導入顧問陪跑", en: "90 days of rollout consulting" },
-    ],
-  },
-  {
-    name: { zh: "系統串接", en: "System Integration" },
-    price: { zh: "另行報價", en: "Custom Quote" },
-    suffix: { zh: "", en: "" },
-    desc: { zh: "依需求串接 LINE、CRM、ERP、BI 等。", en: "Integrations with LINE, CRM, ERP, BI, etc." },
-    items: [
-      { zh: "LINE 官方帳號 / Messaging API", en: "LINE Official Account / Messaging API" },
-      { zh: "ERP 雙向同步", en: "Bi-directional ERP sync" },
-      { zh: "BI 報表整合", en: "BI reporting integration" },
-      { zh: "API / Webhook 客製", en: "Custom APIs / Webhooks" },
-    ],
+    cta: { zh: "預約顧問評估", en: "Book Advisory Assessment" },
   },
 ];
 
@@ -193,132 +147,85 @@ function Pricing() {
       <main className="flex-1">
         <section className="py-20">
           <div className="container-x max-w-3xl">
-            <span className="eyebrow"><span className="dot" /> <L zh="價格方案" en="Pricing" /></span>
+            <span className="eyebrow"><span className="dot" /> <L zh="合作方式" en="How We Work" /></span>
             <h1 className="mt-6 text-4xl md:text-5xl">
-              <L zh="系統導入與訂閱方案" en="System Rollout & Subscription Plans" />
+              <L zh="以顧問與導入服務為核心的合作方式" en="Advisory-first, implementation-anchored engagement" />
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               <L
-                zh="以下方案主要適用於 Aegis Business Apps、AI 系統整合與企業流程數位化導入。工程集成與能源機電工程將依現場條件、施工範圍、設備規格與工期另行評估報價。"
-                en="These plans apply to Aegis Business Apps, AI integration and enterprise workflow digitalization. Engineering, energy and MEP services are quoted separately based on site conditions, scope, equipment specs and timeline."
+                zh="宏鼎集成以工程整合為核心，結合企業 AI 顧問、流程改善、教育訓練、工具選型與導入陪跑，協助企業從現場工程到日常營運逐步完成數位化與 AI 導入。實際費用將依企業現況、資料完整度、使用人數、串接範圍與導入目標評估報價。"
+                en="Aegis Power Integrations is engineering-led, layered with AI advisory, process improvement, training, tool selection and adoption coaching. Final quotes reflect your current state, data readiness, user count, integration scope and adoption goals."
+              />
+            </p>
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+              <L
+                zh="我們不以未訪談前的固定價格取代需求評估；每份正式報價均以書面提供。"
+                en="We do not replace real scoping with pre-interview list prices. Every formal quote is issued in writing."
               />
             </p>
           </div>
         </section>
 
-
         <section className="pb-24">
-          <div className="container-x grid gap-6 lg:grid-cols-3">
-            {plans.map((p) => (
+          <div className="container-x grid gap-6 lg:grid-cols-2">
+            {plans.map(({ icon: Icon, code, title, price, desc, suitable, features, cta, featured }) => (
               <div
-                key={p.name}
-                className={`panel p-8 flex flex-col gap-5 ${p.featured ? "ring-2 ring-gold relative lg:-translate-y-2" : ""}`}
+                key={code}
+                className={`panel p-8 flex flex-col gap-5 ${featured ? "ring-2 ring-gold relative" : ""}`}
               >
-                {p.featured && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 tag flex items-center gap-1">
-                    <Sparkles className="h-3 w-3" /> <L zh="最受歡迎" en="Most Popular" />
+                {featured && (
+                  <span className="absolute -top-3 left-6 tag">
+                    <L zh="最常被選擇" en="Most Chosen" />
                   </span>
                 )}
+                <div className="flex items-start justify-between">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="text-xs font-mono text-muted-foreground tracking-widest">{code}</span>
+                </div>
                 <div>
-                  <div className="text-sm font-semibold text-gold uppercase tracking-wider">{p.name}</div>
-                  <h3 className="mt-1 text-2xl">{tr(p.title)}</h3>
+                  <h3 className="text-2xl">{tr(title)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{tr(desc)}</p>
                 </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tight">{tr(p.price)}</span>
-                  <span className="text-sm text-muted-foreground">{tr(p.suffix)}</span>
+                <div className="rounded-md border border-border bg-surface/40 p-4">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground"><L zh="報價方式" en="Pricing" /></div>
+                  <div className="mt-1 text-base font-semibold text-foreground">{tr(price)}</div>
                 </div>
-                <p className="text-sm text-muted-foreground">{tr(p.desc)}</p>
+                <div className="text-xs text-muted-foreground">{tr(suitable)}</div>
                 <ul className="space-y-2.5 text-sm">
-                  {p.features.map((f) => (
+                  {features.map((f) => (
                     <li key={f.en} className="flex gap-2"><Check className="h-4 w-4 mt-0.5 text-gold flex-none" />{tr(f)}</li>
                   ))}
                 </ul>
                 <div className="mt-auto pt-2">
-                  <Link to="/demo" className={`btn w-full ${p.variant === "primary" ? "btn-primary" : "btn-ghost"}`}>
-                    {tr(p.cta)}
+                  <Link to="/contact" className={`btn w-full ${featured ? "btn-primary" : "btn-ghost"}`}>
+                    {tr(cta)}
                   </Link>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="container-x mt-14">
-            <div className="panel p-8 grid gap-6 md:grid-cols-3 text-sm">
-              {[
-                { t: { zh: "導入時程", en: "Rollout Timeline" }, d: { zh: "標準導入 2–4 週可上線第一階段功能。", en: "Standard rollout: phase-one goes live in 2–4 weeks." } },
-                { t: { zh: "資料搬遷", en: "Data Migration" }, d: { zh: "支援 Excel / CSV 匯入，常見欄位皆有對應範本。", en: "Excel / CSV import supported with templates for common fields." } },
-                { t: { zh: "合約彈性", en: "Contract Flexibility" }, d: { zh: "月繳與年繳擇一，年繳享 2 個月優惠。", en: "Monthly or annual; annual plans include 2 months free." } },
-              ].map((x) => (
-                <div key={x.t.en}>
-                  <div className="font-semibold">{tr(x.t)}</div>
-                  <div className="text-muted-foreground mt-1">{tr(x.d)}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Rollout services */}
-        <section className="py-20 bg-surface/40 border-y border-border/60">
-          <div className="container-x">
-            <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> <L zh="導入服務費" en="Rollout Services" /></span>
-              <h2 className="mt-5 text-3xl md:text-4xl"><L zh="導入服務費" en="Rollout Service Fees" /></h2>
-              <p className="mt-4 text-muted-foreground">
+          <div className="container-x mt-12">
+            <div className="panel-lift p-8 md:p-10 max-w-4xl">
+              <span className="tag"><L zh="關於報價的說明" en="Note on Pricing" /></span>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
                 <L
-                  zh="從流程盤點到上線陪跑，協助系統真正落地。以下為一次性導入服務費，依公司流程複雜度、資料量與需要串接的系統選擇方案。"
-                  en="From process discovery to go-live coaching, we ensure real adoption. The one-time rollout fees below are chosen based on complexity, data volume and integration needs."
+                  zh="宏鼎集成將依企業現況、資料完整度、使用人數、串接範圍及導入目標提供正式報價，不以未訪談前的固定價格取代需求評估。工程整合、資料中心、光纖與弱電工程另依現場條件、施工範圍、設備規格、工期與協力廠商需求評估報價。"
+                  en="Formal quotes are issued after reviewing your context, data readiness, user count, integration scope and adoption goals — we do not substitute list prices for real scoping. Engineering, data-center, fiber and ELV work is quoted separately based on site conditions, scope, specs, timeline and subcontractor needs."
                 />
               </p>
-            </div>
-
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              {rolloutPackages.map((p) => (
-                <div key={p.name.en} className={`panel p-6 flex flex-col gap-4 ${p.featured ? "ring-2 ring-gold" : ""}`}>
-                  <div>
-                    <div className="text-sm font-semibold">{tr(p.name)}</div>
-                    <div className="mt-2 flex items-baseline gap-1">
-                      <span className="text-2xl font-bold tracking-tight">{tr(p.price)}</span>
-                      {p.suffix.zh && <span className="text-sm text-muted-foreground">{tr(p.suffix)}</span>}
-                    </div>
-                    <p className="mt-2 text-xs text-muted-foreground">{tr(p.desc)}</p>
-                  </div>
-                  <ul className="space-y-1.5 text-xs text-muted-foreground">
-                    {p.items.map((i) => (
-                      <li key={i.en} className="flex gap-1.5"><Check className="h-3.5 w-3.5 mt-0.5 text-gold flex-none" />{tr(i)}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-8 text-sm text-muted-foreground max-w-3xl leading-relaxed">
-              <L
-                zh="※ 導入服務費為一次性支付；訂閱方案另外計算。實際報價依公司規模、流程複雜度、資料量、所需串接系統與訓練場次調整。簽約前提供書面估價單。"
-                en="※ Rollout fees are one-time; subscription is billed separately. Final pricing adjusts for company size, complexity, data volume, integrations and training sessions. A written quote is provided before signing."
-              />
-            </p>
-
-            <div className="mt-8 panel-lift p-6 md:p-8 max-w-4xl">
-              <div className="flex flex-col md:flex-row md:items-start gap-4">
-                <span className="tag shrink-0"><L zh="服務範圍說明" en="Scope Note" /></span>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  <L
-                    zh={<>以上價格主要適用於 Aegis Business Apps 與 AI 系統整合導入。<strong className="text-foreground"> 工程集成服務</strong>將依現場條件、施工範圍、設備規格、工期與協力廠商需求另行報價。</>}
-                    en={<>These prices apply to Aegis Business Apps and AI integration rollouts. <strong className="text-foreground">Engineering integration services</strong> are quoted separately based on site conditions, scope, equipment specs, timeline and subcontractor requirements.</>}
-                  />
-                </p>
-              </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="py-20">
+        <section className="py-20 bg-surface/40 border-y border-border/60">
           <div className="container-x max-w-4xl">
             <span className="eyebrow"><span className="dot" /> <L zh="常見問題" en="FAQ" /></span>
             <h2 className="mt-5 text-3xl md:text-4xl">
-              <L zh="價格與導入常見問題" en="Pricing & Rollout FAQ" />
+              <L zh="合作方式常見問題" en="Engagement FAQ" />
             </h2>
 
             <div className="mt-10 grid gap-4">
