@@ -52,40 +52,15 @@ function Brand({ variant = "header" }: { variant?: "header" | "footer" }) {
   );
 }
 
-function LangSwitcher({ className = "" }: { className?: string }) {
-  const { lang, setLang } = useLang();
-  const btn =
-    "px-1.5 py-0.5 rounded-sm transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary";
-  const active = "text-foreground font-semibold";
-  const idle = "text-muted-foreground hover:text-foreground";
-  return (
-    <div
-      className={`flex items-center gap-0.5 text-xs font-medium ${className}`}
-      role="group"
-      aria-label="Language switcher"
-    >
-      <button
-        type="button"
-        onClick={() => setLang("zh-TW")}
-        aria-pressed={lang === "zh-TW"}
-        aria-label="切換為繁體中文"
-        className={`${btn} ${lang === "zh-TW" ? active : idle}`}
-      >
-        中文
-      </button>
-      <span className="text-muted-foreground/40" aria-hidden="true">|</span>
-      <button
-        type="button"
-        onClick={() => setLang("en")}
-        aria-pressed={lang === "en"}
-        aria-label="Switch to English"
-        className={`${btn} ${lang === "en" ? active : idle}`}
-      >
-        EN
-      </button>
-    </div>
-  );
+/**
+ * Language switcher — temporarily hidden while the English version is
+ * incomplete. Site is served as zh-Hant-TW by default. Re-enable once the
+ * English translation is fully audited.
+ */
+function LangSwitcher(_: { className?: string }) {
+  return null;
 }
+
 
 /** Desktop nav item with hover/focus dropdown for children. */
 function NavItemDesktop({ item }: { item: NavItem }) {
