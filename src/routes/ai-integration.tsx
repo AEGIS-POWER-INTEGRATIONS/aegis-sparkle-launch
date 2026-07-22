@@ -4,7 +4,7 @@ import { ArrowRight, BrainCircuit, Database, FileBarChart, MessagesSquare, Setti
 
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
-import { L, useLang, useT } from "@/lib/i18n";
+import { L, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/ai-integration")({
   head: () => ({
@@ -63,7 +63,7 @@ const scenarios: Bi[] = [
 
 function AiIntegration() {
   const { isEn } = useLang();
-  const t = useT();
+  
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   return (
