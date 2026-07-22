@@ -271,42 +271,15 @@ function Home() {
           </div>
         </section>
 
-        {/* Industries */}
+        {/* AI Advisory (second pillar) — placed right after Engineering */}
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Industries"
-              titleZh="服務產業"
-              titleEn="Industries We Serve"
-              descZh="從半導體與資料中心工程現場，到製造業與商辦企業的 AI 顧問與流程整合，宏鼎集成為多元產業提供落地服務。"
-              descEn="From semiconductor and data center engineering to AI advisory and process integration for manufacturers and enterprises — serving a wide range of industries."
-            />
-            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {industries.map(({ icon: Icon, en, zh, desc }) => (
-                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
-                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
-                    {isEn ? zh : en}
-                  </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* AI Advisory & Integration (40%) */}
-        <section className="py-24 md:py-28">
-          <div className="container-x">
-            <SectionHeader
               eyebrow="AI Advisory · Second Pillar"
-              titleZh="企業 AI 顧問與流程整合"
-              titleEn="Enterprise AI Advisory & Process Integration"
-              descZh="我們不是軟體開發商，而是 AI 顧問與整合夥伴。從流程盤點、資料治理、工具選型、AI 代理與自動化串接到員工教育訓練與導入陪跑，協助企業把 AI 真正嵌入日常工作流程。"
-              descEn="We are AI advisors and integrators — not software vendors. From process discovery and data governance to tool selection, AI agents, automation, training and adoption coaching, we help you embed AI into daily workflows."
+              titleZh="企業 AI 顧問與導入服務"
+              titleEn="Enterprise AI Advisory & Implementation"
+              descZh="以顧問先行、導入陪跑的方式，協助企業盤點問題、選擇工具、串接既有系統與 AI 模型，並以教育訓練與陪跑，讓 AI 真正落到日常工作。我們不會要求客戶全面更換既有系統。"
+              descEn="Advisory-first, coaching-alongside — we help you audit problems, select tools, integrate existing systems and AI models, and land AI into daily work through training and hands-on coaching. We do not push wholesale system replacement."
             />
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {aiServices.map(({ icon: Icon, en, zh, desc }) => (
@@ -329,6 +302,34 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {/* Industries */}
+        <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Industries"
+              titleZh="主要服務產業"
+              titleEn="Industries We Serve"
+              descZh="以資料中心與工程現場為核心，延伸至製造業、能源與 ESG、中小企業數位轉型、商業建築等產業。半導體以供應鏈工程與資料流角色參與，不承接晶圓廠自動化整體專案。"
+              descEn="Anchored on data centers and engineering delivery, extending to manufacturing, energy & ESG, SME digital transformation and commercial buildings. In semiconductor we work at the supply-chain engineering and data layer, not end-to-end fab automation."
+            />
+            <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {industries.map(({ icon: Icon, en, zh, desc }) => (
+                <div key={en} className="panel p-7 hover:border-primary/40 hover:shadow-lift transition-all">
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg">{isEn ? en : zh}</h3>
+                  <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
+                    {isEn ? zh : en}
+                  </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
 
         {/* Business Applications */}
