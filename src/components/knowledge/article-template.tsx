@@ -316,12 +316,13 @@ export function ArticleTemplate({ article }: { article: KnowledgeArticle }) {
                 <ArrowRight className="ml-1.5 h-4 w-4" />
               </Link>
               <Link
-                to="/demo"
+                to="/contact"
                 className="btn border border-ink-foreground/25 text-ink-foreground hover:bg-ink-foreground/10"
               >
                 <L zh="預約諮詢" en="Book a Consultation" />
               </Link>
             </div>
+
           </section>
 
           {/* Share */}

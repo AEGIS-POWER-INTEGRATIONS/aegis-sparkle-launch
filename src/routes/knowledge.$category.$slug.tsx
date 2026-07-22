@@ -12,7 +12,7 @@ export const Route = createFileRoute("/knowledge/$category/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Not found" }, { name: "robots", content: "noindex, follow" }] };
     }
     const a = loaderData.article;
     const url = `${SITE.domain}${articlePath(a)}`;
@@ -44,6 +44,7 @@ export const Route = createFileRoute("/knowledge/$category/$slug")({
       ],
     };
   },
+
   component: ArticlePage,
   notFoundComponent: ArticleNotFound,
 });

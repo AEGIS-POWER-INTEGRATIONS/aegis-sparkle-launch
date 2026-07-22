@@ -80,9 +80,12 @@ export type KnowledgeArticle = {
   faq?: FaqItem[];
   /** Related service links; falls back to a default set per-category. */
   relatedServices?: { label: Bi; to: string }[];
-  /** Rendered HTML or markdown body — when omitted, template shows placeholder. */
+  /** Rendered HTML or markdown body — when omitted, article is treated as draft. */
   body?: Bi;
+  /** Draft = never listed publicly, never in sitemap, noindex if visited directly. */
+  draft?: boolean;
 };
+
 
 export const CATEGORIES: KnowledgeCategory[] = [
   {
@@ -180,8 +183,10 @@ export const DEFAULT_RELATED_SERVICES_BY_CATEGORY: Record<string, { label: Bi; t
 };
 
 /**
- * Generate 10 article placeholders per content-category (5 × 10 = 50).
- * Titles are meaningful stubs so listing pages read well before bodies land.
+ * Article stubs — kept as data placeholders so categories can be reintroduced
+ * later without losing slug history. Every stub is marked `draft: true` and is
+ * therefore hidden from listings, search, related-article lookups and the
+ * sitemap. Do NOT rely on stubs for public content.
  */
 function stub(
   slug: string,
@@ -196,14 +201,16 @@ function stub(
     category,
     title: { zh: zhTitle, en: enTitle },
     excerpt: {
-      zh: "本篇文章正在準備中。上線後將完整涵蓋方法、步驟、常見陷阱與可落地的範例。",
-      en: "This article is in preparation. The final version will cover methodology, steps, common pitfalls and actionable examples.",
+      zh: "本篇文章正在準備中。",
+      en: "This article is in preparation.",
     },
     tags,
-    publishedAt: "2026-01-01",
+    publishedAt: "",
     readingMinutes: minutes,
+    draft: true,
   };
 }
+
 
 export const ARTICLES: KnowledgeArticle[] = [
   // ── AI Integration ───────────────────────────────────────────────
@@ -269,21 +276,27 @@ export const ARTICLES: KnowledgeArticle[] = [
 
 // ── Lookups ────────────────────────────────────────────────────────
 
+/** Public article list — draft stubs are filtered out. */
+export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter((a) => !a.draft);
+
 export function getCategory(slug: string): KnowledgeCategory | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
+/** Draft articles behave as not-found for public visitors. */
 export function getArticle(categorySlug: string, articleSlug: string): KnowledgeArticle | undefined {
-  return ARTICLES.find((a) => a.category === categorySlug && a.slug === articleSlug);
+  const a = ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
+  if (!a || a.draft) return undefined;
+  return a;
 }
 
 export function getArticlesByCategory(categorySlug: string): KnowledgeArticle[] {
-  return ARTICLES.filter((a) => a.category === categorySlug);
+  return PUBLISHED_ARTICLES.filter((a) => a.category === categorySlug);
 }
 
 export function getRelatedArticles(article: KnowledgeArticle, limit = 4): KnowledgeArticle[] {
   const tagSet = new Set(article.tags);
-  const scored = ARTICLES
+  const scored = PUBLISHED_ARTICLES
     .filter((a) => a.slug !== article.slug)
     .map((a) => {
       const shared = a.tags.filter((t) => tagSet.has(t)).length;
@@ -294,11 +307,13 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
   return scored.slice(0, limit).map((x) => x.a);
 }
 
+
 export function getAllTags(): KnowledgeTag[] {
   const set = new Set<KnowledgeTag>();
-  ARTICLES.forEach((a) => a.tags.forEach((t) => set.add(t)));
+  PUBLISHED_ARTICLES.forEach((a) => a.tags.forEach((t) => set.add(t)));
   return Array.from(set);
 }
+
 
 export function articlePath(a: Pick<KnowledgeArticle, "category" | "slug">): string {
   return `/knowledge/${a.category}/${a.slug}`;

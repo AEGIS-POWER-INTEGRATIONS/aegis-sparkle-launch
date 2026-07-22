@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import mockCostflow from "@/assets/mock-costflow.jpg";
-import reportsAsset from "@/assets/costflow-reports-charts.webp.asset.json";
-import deskAsset from "@/assets/costflow-analytics-desk.webp.asset.json";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 
 export const Route = createFileRoute("/costflow")({
   head: () => ({
@@ -45,7 +44,7 @@ function CostFlow() {
                 協助工程公司把 Excel 報價與成本資料轉成可追蹤、可分析、可決策的專案成本平台。
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
+                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
                 <Link to="/pricing" className="btn btn-ghost">查看方案</Link>
               </div>
             </div>
@@ -55,11 +54,15 @@ function CostFlow() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                 <img
                   src={mockCostflow}
-                  alt="Aegis CostFlow 工程成本分析 Dashboard 介面示意"
+                  alt="Aegis CostFlow 工程成本分析介面概念示意"
                   width={1408}
                   height={1008}
                   className="w-full h-auto object-cover"
                 />
+                <span className="absolute bottom-2 right-3 text-[10px] uppercase tracking-widest text-ink-foreground/70 bg-ink/60 px-2 py-0.5 rounded">
+                  介面概念示意
+                </span>
+
               </div>
               <div className="mt-4 panel p-4 flex gap-3 items-start">
                 <AlertTriangle className="h-5 w-5 text-gold flex-none mt-0.5" />
@@ -125,53 +128,42 @@ function CostFlow() {
           </div>
         </section>
 
-        {/* 實際使用情境 — Real-world scenario */}
+        {/* 實際使用情境 — Scenario walk-through */}
         <section className="py-24 bg-surface/40 border-y border-border/60">
           <div className="container-x">
             <div className="max-w-2xl">
-              <span className="eyebrow"><span className="dot" /> 實際使用情境</span>
+              <span className="eyebrow"><span className="dot" /> 導入情境示意</span>
               <h2 className="mt-5 text-3xl md:text-4xl">一家機電工程公司，<br />從 Excel 報價到成本決策的完整流程。</h2>
               <p className="mt-4 text-muted-foreground">
-                以下情境取自典型的 30 人規模機電工程公司，導入 CostFlow 後第一個專案的真實操作節奏。
+                以下情境依機電工程公司常見流程所設計，用於說明 CostFlow 的操作節奏，非既有客戶實績。
               </p>
-            </div>
-
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {[
-                { src: reportsAsset.url, alt: "工程報價與成本分析報表" },
-                { src: deskAsset.url, alt: "企業營運數據分析" },
-              ].map((it) => (
-                <figure key={it.alt} className="panel overflow-hidden">
-                  <div className="relative aspect-[16/10] bg-ink overflow-hidden">
-                    <img src={it.src} alt={it.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                  </div>
-                </figure>
-              ))}
+              <div className="mt-4 rounded-lg border border-border/70 bg-background/60 p-4 text-sm text-muted-foreground leading-relaxed">
+                情境案例說明：本節內容係依產業常見流程與痛點所設計的導入情境，相關數據僅供企業評估參考，不代表宏鼎集成既有客戶的實際成果。
+              </div>
             </div>
 
             <div className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-start">
               <ol className="space-y-5">
                 {[
                   {
-                    icon: Upload, time: "Day 1 · 09:00", t: "匯入 Excel 材料表",
-                    d: "工程部把過去三個月的報價單與材料成本表上傳至 CostFlow，系統自動辨識欄位、對應「材料／人工／外包」分類，建立 1,240 項材料主檔。",
+                    icon: Upload, time: "Step 1", t: "匯入 Excel 材料表",
+                    d: "工程部把既有的報價單與材料成本表上傳至 CostFlow，系統辨識欄位並依「材料／人工／外包」分類，建立材料主檔。",
                   },
                   {
-                    icon: FileText, time: "Day 1 · 14:30", t: "產生第一版報價",
-                    d: "業務根據新案 RFP 在系統內勾選材料、輸入數量與工時，10 分鐘內產出 v1 報價單；版本紀錄自動保留，方便後續調整比對。",
+                    icon: FileText, time: "Step 2", t: "產生第一版報價",
+                    d: "業務依 RFP 在系統內勾選材料、輸入數量與工時，快速產出 v1 報價單；版本紀錄自動保留，方便後續調整比對。",
                   },
                   {
-                    icon: Calculator, time: "Day 2 · 10:15", t: "試算毛利與調整方案",
-                    d: "系統即時試算材料 62%、人工 18%、外包 12%、管理 + 利潤 8%；老闆檢視儀表板，發現毛利只有 11.8%，請業務調整付款條件與外包比重。",
+                    icon: Calculator, time: "Step 3", t: "試算毛利與調整方案",
+                    d: "系統即時試算材料、人工、外包、管理與利潤比例；主管於儀表板檢視結果，並與業務討論付款條件與外包比重。",
                   },
                   {
-                    icon: ShieldAlert, time: "Day 2 · 16:42", t: "AI 抓出成本異常",
-                    d: "送出 v3 報價前，AI 偵測到材料 #M-2031 單價較歷史均價高 24%，且遺漏一項常用配件。系統提醒重新詢價，避免接案後才發現虧錢。",
+                    icon: ShieldAlert, time: "Step 4", t: "AI 抓出成本異常",
+                    d: "送出下一版報價前，AI 針對單價偏高、遺漏配件、毛利偏低等情況提出提醒，協助避免接到越做越賠的案子。",
                   },
                   {
-                    icon: LayoutDashboard, time: "Day 7 · 簽約後", t: "進度與毛利持續追蹤",
-                    d: "專案開工後，採購、施工、外包成本陸續輸入，老闆儀表板每日更新預估與實際毛利差異，異常超過 ±5% 自動推送至 LINE。",
+                    icon: LayoutDashboard, time: "Step 5", t: "進度與毛利持續追蹤",
+                    d: "簽約後採購、施工、外包成本陸續輸入；儀表板持續呈現預估與實際毛利差異，供主管即時介入。",
                   },
                 ].map(({ icon: Icon, time, t, d }, i) => (
                   <li key={i} className="panel p-6 flex gap-4">
@@ -190,30 +182,29 @@ function CostFlow() {
               </ol>
 
               <aside className="panel-lift p-7 lg:sticky lg:top-24">
-                <div className="text-xs uppercase tracking-wider text-muted-foreground">導入成效（前 30 天）</div>
+                <div className="text-xs uppercase tracking-wider text-muted-foreground">預期改善方向</div>
                 <div className="mt-5 space-y-5">
                   {[
-                    ["報價產出時間", "由 4 小時 → 25 分鐘", "85%↓"],
-                    ["成本異常被攔截", "12 件 / 月", "避免虧損"],
-                    ["平均專案毛利", "由 14.2% → 18.6%", "+4.4 pp"],
-                    ["主管追問成本次數", "由每週 18 次 → 3 次", "83%↓"],
-                  ].map(([k, v, tag]) => (
-                    <div key={k} className="flex items-start justify-between gap-4 border-b border-border pb-4 last:border-b-0 last:pb-0">
-                      <div>
-                        <div className="text-sm font-semibold">{k}</div>
-                        <div className="text-sm text-muted-foreground mt-0.5">{v}</div>
-                      </div>
-                      <span className="tag flex-none">{tag}</span>
+                    ["報價產出時間", "從多份 Excel 拼湊 → 單一系統快速產出"],
+                    ["成本異常提醒", "AI 於送出前提示單價偏高與遺漏項目"],
+                    ["專案毛利可視化", "預估與實際毛利差異可持續追蹤"],
+                    ["主管追問成本次數", "改為以儀表板為單一資訊來源"],
+                  ].map(([k, v]) => (
+                    <div key={k} className="border-b border-border pb-4 last:border-b-0 last:pb-0">
+                      <div className="text-sm font-semibold">{k}</div>
+                      <div className="text-sm text-muted-foreground mt-0.5">{v}</div>
                     </div>
                   ))}
                 </div>
                 <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
-                  ※ 數據為典型導入案例，實際成效依公司流程、資料完整度與導入深度而定。
+                  ※ 以上為評估參考方向，實際成效依公司流程、資料完整度與導入深度而定。
                 </p>
               </aside>
             </div>
           </div>
         </section>
+
+
 
         <section className="py-24">
           <div className="container-x">
@@ -224,8 +215,8 @@ function CostFlow() {
                 CostFlow 不取代你的工程經驗，而是把經驗轉成可管理、可複製、可交接的數據流程。
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary">預約諮詢</Link>
-                <Link to="/demo" className="btn btn-ghost">申請試用</Link>
+                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
+                <Link to="/contact" className="btn btn-ghost">申請試用</Link>
               </div>
             </div>
           </div>
