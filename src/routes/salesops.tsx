@@ -50,16 +50,25 @@ function SalesOps() {
 
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/20 via-transparent to-transparent blur-2xl" />
-              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
-                <img
-                  src={mockSalesops}
-                  alt="業務管理與 CRM 儀表板"
-                  width={1408}
-                  height={1008}
-                  className="w-full h-auto object-cover"
-                />
+              <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink text-ink-foreground p-8">
+                <div className="text-xs uppercase tracking-widest text-ink-foreground/60">介面概念示意</div>
+                <div className="mt-4 grid gap-3">
+                  <div className="rounded-lg bg-ink-foreground/10 p-4">
+                    <div className="text-xs text-ink-foreground/60">今日拜訪紀錄</div>
+                    <div className="mt-1 text-sm">12 家客戶 · 3 家已成交、5 家追蹤中</div>
+                  </div>
+                  <div className="rounded-lg bg-ink-foreground/10 p-4">
+                    <div className="text-xs text-ink-foreground/60">AI 週報摘要</div>
+                    <div className="mt-1 text-sm">彙整本週業務進度、客戶動態與待跟進事項</div>
+                  </div>
+                  <div className="rounded-lg bg-ink-foreground/10 p-4">
+                    <div className="text-xs text-ink-foreground/60">LINE 回報</div>
+                    <div className="mt-1 text-sm">語音轉文字、自動分類重點與代辦</div>
+                  </div>
+                </div>
               </div>
             </div>
+
           </div>
         </section>
 
