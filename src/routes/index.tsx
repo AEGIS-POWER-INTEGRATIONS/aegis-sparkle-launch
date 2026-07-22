@@ -503,24 +503,25 @@ function Home() {
                 </div>
                 <h2 className="mt-4 text-3xl md:text-4xl font-bold tracking-tight text-white">
                   <L
-                    zh="準備以企業規模整合工程與 AI？"
-                    en="Ready to integrate engineering and AI at enterprise scale?"
+                    zh="從工程現場開始，或從 AI 流程健檢開始？"
+                    en="Start from the engineering floor, or from an AI workflow check-up?"
                   />
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-white/75 leading-relaxed">
                   <L
-                    zh="預約與 AEGIS POWER INTEGRATIONS 的初步諮詢，我們將協助評估工程範圍、系統整合與 AI 導入路徑。"
-                    en="Book an initial consultation and we will help assess your engineering scope, system integration and AI adoption roadmap."
+                    zh="不論您需要的是工程整合，或想先為既有流程做一次 AI 導入健檢，我們都能從第一次訪談開始，逐步協助落地。"
+                    en="Whether you need engineering integration or want an AI adoption check-up on existing workflows, we start from the first interview and help you land it step by step."
                   />
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
-                    <L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" />
+                    <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/engineering" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
-                    <L zh="工程整合服務" en="Engineering Services" />
+                  <Link to="/contact" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                    <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                   </Link>
                 </div>
+
               </div>
             </div>
           </div>
