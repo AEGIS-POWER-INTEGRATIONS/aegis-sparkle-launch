@@ -13,7 +13,7 @@ export const Route = createFileRoute("/insights/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Article not found" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Article not found" }, { name: "robots", content: "noindex, follow" }] };
     }
     const { insight } = loaderData;
     const title = `${insight.title.zh}｜${insight.title.en}｜AEGIS POWER INTEGRATIONS`;
