@@ -450,7 +450,41 @@ function Home() {
           </div>
         </section>
 
+        {/* Engagement Process */}
+        <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Process"
+              titleZh="合作流程"
+              titleEn="Engagement Process"
+              descZh="從初步需求訪談到導入陪跑，我們以顧問先行、逐步落地的節奏推進，實際範圍與費用皆以書面報價為準。"
+              descEn="From initial needs discovery to hands-on adoption, we move at an advisory-first, stepwise pace — actual scope and pricing are confirmed in writing."
+            />
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                { n: "01", t: { zh: "需求訪談", en: "Needs Discovery" }, d: { zh: "訪談現場與管理層，釐清問題、目標與導入節奏。", en: "Interview field and management to clarify problems, goals and pace." } },
+                { n: "02", t: { zh: "診斷與建議", en: "Diagnosis & Advice" }, d: { zh: "提供書面問題清單與可行導入方向，判斷應調整流程、串接工具或引入合作廠商。", en: "Deliver written problem list and viable directions — adjust workflow, integrate or bring in partners." } },
+                { n: "03", t: { zh: "PoC 或工程執行", en: "PoC or Engineering" }, d: { zh: "依方向啟動 PoC 導入專案或工程整合執行，逐步驗證與交付。", en: "Kick off a PoC or engineering execution based on the chosen direction." } },
+                { n: "04", t: { zh: "導入陪跑", en: "Adoption Coaching" }, d: { zh: "以教育訓練、月度顧問與後續維運，讓成果真正嵌入日常營運。", en: "Training, monthly advisory and ongoing operations so results actually stick." } },
+              ].map((s) => (
+                <div key={s.n} className="panel p-7">
+                  <span className="num-badge">{s.n}</span>
+                  <h3 className="mt-4 text-lg font-semibold">{t(s.t)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(s.d)}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-8 text-xs text-muted-foreground">
+              <L
+                zh="※ 宏鼎集成依企業現況、資料完整度、使用人數、串接範圍及導入目標提供正式報價，不以未訪談前的固定價格取代需求評估。"
+                en="※ Formal quotes reflect your current state, data readiness, user count, integration scope and adoption goals — we do not substitute list prices for real scoping."
+              />
+            </p>
+          </div>
+        </section>
+
         {/* Final CTA */}
+
         <section className="py-24 md:py-28">
           <div className="container-x">
             <div className="relative overflow-hidden rounded-lg border border-border bg-ink text-ink-foreground p-10 md:p-16">
