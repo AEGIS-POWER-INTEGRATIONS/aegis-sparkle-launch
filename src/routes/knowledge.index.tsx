@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { L, useLang, useT } from "@/lib/i18n";
 import {
-  ARTICLES,
+  PUBLISHED_ARTICLES,
   CATEGORIES,
   TAG_LABEL,
   articlePath,
@@ -11,6 +11,7 @@ import {
   getAllTags,
   type KnowledgeTag,
 } from "@/lib/knowledge";
+
 import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/knowledge/")({
@@ -60,7 +61,7 @@ function KnowledgeIndex() {
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
-    return ARTICLES.filter((a) => {
+    return PUBLISHED_ARTICLES.filter((a) => {
       if (activeTag && !a.tags.includes(activeTag)) return false;
       if (!query) return true;
       const haystack = [
@@ -75,6 +76,7 @@ function KnowledgeIndex() {
       return haystack.includes(query);
     });
   }, [q, activeTag]);
+
 
   return (
     <div className="pb-24">
@@ -237,12 +239,13 @@ function KnowledgeIndex() {
                       <L zh="前往產業頁面" en="Go to industry pages" />
                     ) : (
                       <>
-                        {ARTICLES.filter((a) => a.category === c.slug).length}{" "}
+                        {PUBLISHED_ARTICLES.filter((a) => a.category === c.slug).length}{" "}
                         <L zh="篇文章" en="articles" />
                       </>
                     )}
                     <ArrowRight className="h-3.5 w-3.5" />
                   </span>
+
                 </Link>
               ))}
             </div>
@@ -266,13 +269,14 @@ function KnowledgeIndex() {
             </span>
           </div>
           {filtered.length === 0 ? (
-            <p className="mt-10 text-muted-foreground">
+            <div className="mt-10 rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
               <L
-                zh="沒有符合條件的文章。試著調整關鍵字或篩選標籤。"
-                en="No articles match your criteria. Try adjusting the keyword or tags."
+                zh="相關內容整理中，歡迎訂閱或與我們聯繫。"
+                en="Content is being prepared — please subscribe or contact us for updates."
               />
-            </p>
+            </div>
           ) : (
+
             <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((a) => (
                 <li key={`${a.category}/${a.slug}`}>

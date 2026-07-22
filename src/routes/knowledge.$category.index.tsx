@@ -111,40 +111,50 @@ function CategoryPage() {
 
       <section className="py-16">
         <div className="container-x">
-          <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((a) => (
-              <li key={a.slug}>
-                <Link
-                  to="/knowledge/$category/$slug"
-                  params={{ category: a.category, slug: a.slug }}
-                  className="panel p-6 flex h-full flex-col gap-3 hover:border-primary/40 transition-colors"
-                >
-                  <div className="flex flex-wrap items-center gap-2">
-                    {a.tags.slice(0, 2).map((t2) => (
-                      <span
-                        key={t2}
-                        className="text-[10px] font-semibold uppercase tracking-widest text-primary"
-                      >
-                        <L zh={TAG_LABEL[t2].zh} en={TAG_LABEL[t2].en} />
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-base font-semibold leading-snug text-foreground">
-                    <L zh={a.title.zh} en={a.title.en} />
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    <L zh={a.excerpt.zh} en={a.excerpt.en} />
-                  </p>
-                  <span className="mt-auto text-xs text-muted-foreground inline-flex items-center gap-1">
-                    {a.readingMinutes} <L zh="分鐘閱讀" en="min read" />
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {articles.length === 0 ? (
+            <div className="rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
+              <L
+                zh="相關內容整理中，歡迎訂閱或與我們聯繫。"
+                en="Content is being prepared — please subscribe or contact us for updates."
+              />
+            </div>
+          ) : (
+            <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {articles.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    to="/knowledge/$category/$slug"
+                    params={{ category: a.category, slug: a.slug }}
+                    className="panel p-6 flex h-full flex-col gap-3 hover:border-primary/40 transition-colors"
+                  >
+                    <div className="flex flex-wrap items-center gap-2">
+                      {a.tags.slice(0, 2).map((t2) => (
+                        <span
+                          key={t2}
+                          className="text-[10px] font-semibold uppercase tracking-widest text-primary"
+                        >
+                          <L zh={TAG_LABEL[t2].zh} en={TAG_LABEL[t2].en} />
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-base font-semibold leading-snug text-foreground">
+                      <L zh={a.title.zh} en={a.title.en} />
+                    </h3>
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      <L zh={a.excerpt.zh} en={a.excerpt.en} />
+                    </p>
+                    <span className="mt-auto text-xs text-muted-foreground inline-flex items-center gap-1">
+                      {a.readingMinutes} <L zh="分鐘閱讀" en="min read" />
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
+
     </div>
   );
 }
