@@ -180,51 +180,46 @@ function Home() {
               <h1 className="mt-6 text-[2.2rem] leading-[1.15] md:text-[3.2rem] xl:text-[3.9rem] xl:leading-[1.08] font-bold tracking-[-0.02em] text-white">
                 {isEn ? (
                   <>
-                    Engineering-Led Integration,
+                    From the engineering floor to enterprise AI,
                     <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">Powered by AI Advisory</span>
+                    <span className="text-[oklch(0.85_0.12_235)]">integrating your workflow end to end</span>
                   </>
                 ) : (
                   <>
-                    以工程實務為核心，
+                    從工程現場到企業 AI 導入，
                     <br />
-                    <span className="text-[oklch(0.85_0.12_235)]">結合 AI 顧問與流程整合</span>
+                    <span className="text-[oklch(0.85_0.12_235)]">協助企業把流程真正整合起來</span>
                   </>
                 )}
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
                 <L
-                  zh="宏鼎集成股份有限公司（AEGIS POWER INTEGRATIONS）是以工程實務為核心的產業整合服務公司。我們協助企業完成工程整合與專案執行，並結合企業 AI 顧問、流程優化、工具整合、教育訓練與導入陪跑，讓工程與 AI 真正落地在營運現場。"
-                  en="Aegis Power Integrations is an engineering-first integration services firm. We combine on-site engineering delivery with enterprise AI advisory, process optimization, tool integration, training and adoption coaching — so both engineering and AI actually land in your operations."
+                  zh="宏鼎集成提供資料中心、光纖弱電、工程管理與企業 AI 導入顧問服務，從需求盤點、流程改善到實際落地，陪伴企業逐步完成轉型。"
+                  en="Aegis Power Integrations delivers data-center, fiber and ELV engineering, project management and enterprise AI advisory — from discovery and process improvement to on-the-ground rollout, walking alongside your team through the transformation."
                 />
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
                 <L
-                  zh="我們不是軟體開發商，也不是單純的 ERP／SaaS 廠商。我們是把工程、系統與 AI 整合進企業流程的顧問與執行夥伴。"
-                  en="We are not a custom software vendor or a boxed ERP/SaaS reseller — we are the advisory and execution partner that integrates engineering, systems and AI into your workflows."
+                  zh="工程整合是我們的第一主軸，企業 AI 顧問是第二主軸。我們不是純軟體開發公司，也不是低價 SaaS 工具商。"
+                  en="Engineering integration is our first pillar; enterprise AI advisory is our second. We are not a pure software vendor or a low-cost SaaS tool reseller."
                 />
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link to="/engineering" className="btn btn-primary">
-                  <L zh="工程整合服務" en="Engineering Services" /> <ArrowRight className="h-4 w-4" />
-                </Link>
-                <Link
-                  to="/ai-integration"
-                  className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
-                >
-                  <L zh="企業 AI 顧問服務" en="Enterprise AI Advisory" />
+                <Link to="/contact" className="btn btn-primary">
+                  <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   to="/contact"
                   className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10"
                 >
-                  <L zh="聯絡我們" en="Contact Us" />
+                  <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                 </Link>
               </div>
             </div>
           </div>
         </section>
+
 
         {/* Trust pillars — qualitative capabilities (no unverified metrics) */}
         <section className="border-b border-border bg-background">
