@@ -26,13 +26,14 @@ export type Insight = {
 };
 
 export const CATEGORY_LABEL: Record<InsightCategory, Bi> = {
-  "case-study": { zh: "客戶案例", en: "Case Study" },
+  "case-study": { zh: "情境案例", en: "Scenario Example" },
   "ai-adoption": { zh: "AI 導入指南", en: "AI Adoption Guide" },
   "digital-transformation": { zh: "數位轉型觀點", en: "Digital Transformation" },
   "engineering-management": { zh: "工程管理實務", en: "Engineering Management" },
   workflow: { zh: "企業流程優化", en: "Workflow Improvement" },
   automation: { zh: "自動化範例", en: "Automation Example" },
 };
+
 
 const engineering = { label: { zh: "工程整合服務", en: "Engineering Integration" }, to: "/engineering" };
 const ai = { label: { zh: "AI 系統整合", en: "AI System Integration" }, to: "/ai-integration" };
