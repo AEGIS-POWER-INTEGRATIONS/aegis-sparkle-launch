@@ -1,11 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import mockCostflow from "@/assets/mock-costflow.jpg";
-import reportsAsset from "@/assets/costflow-reports-charts.webp.asset.json";
-import deskAsset from "@/assets/costflow-analytics-desk.webp.asset.json";
 import { Check, TrendingUp, GitBranch, Bot, FileSpreadsheet, LayoutDashboard, AlertTriangle, Upload, Calculator, FileText, ShieldAlert } from "lucide-react";
 
 import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+
 
 export const Route = createFileRoute("/costflow")({
   head: () => ({
@@ -55,11 +54,15 @@ function CostFlow() {
               <div className="relative overflow-hidden rounded-2xl border border-border shadow-lift bg-ink">
                 <img
                   src={mockCostflow}
-                  alt="Aegis CostFlow 工程成本分析 Dashboard 介面示意"
+                  alt="Aegis CostFlow 工程成本分析介面概念示意"
                   width={1408}
                   height={1008}
                   className="w-full h-auto object-cover"
                 />
+                <span className="absolute bottom-2 right-3 text-[10px] uppercase tracking-widest text-ink-foreground/70 bg-ink/60 px-2 py-0.5 rounded">
+                  介面概念示意
+                </span>
+
               </div>
               <div className="mt-4 panel p-4 flex gap-3 items-start">
                 <AlertTriangle className="h-5 w-5 text-gold flex-none mt-0.5" />
