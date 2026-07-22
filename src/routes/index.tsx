@@ -119,10 +119,11 @@ const aiServices: Card[] = [
 ];
 
 const products = [
-  { name: "Aegis CostFlow", tagline: { zh: "工程報價與成本分析", en: "Engineering Quotation & Cost Analytics" }, desc: { zh: "工程報價、材料、人工、外包與毛利一體化管理，內建 AI 成本提醒。", en: "Unified management of quotations, materials, labor, subcontracts and margin with AI cost alerts." }, icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
-  { name: "Aegis SalesOps", tagline: { zh: "業務管理與 AI 週報", en: "Sales Management & AI Weekly Reports" }, desc: { zh: "整合 CRM、拜訪紀錄、LINE 回報與 AI 週報，讓業務管理即時透明。", en: "CRM, visit logs, LINE reports and AI weekly summaries for real-time sales visibility." }, icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
-  { name: "Aegis AI Launch", tagline: { zh: "企業 AI 導入服務", en: "Enterprise AI Adoption Service" }, desc: { zh: "從流程盤點、資料整理、AI 助理設計到自動化串接的完整服務。", en: "End-to-end service from process discovery and data prep to AI assistant design and automation." }, icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
+  { name: "Aegis CostFlow", tagline: { zh: "工程報價與成本分析應用模組", en: "Engineering Quotation & Cost Analytics Module" }, desc: { zh: "把工程報價、材料、人工與外包成本整合為可追蹤的資料流，內建 AI 成本提醒。實際功能與費用需經需求訪談確認。", en: "Turns quotation, materials, labor and subcontract costs into a trackable data flow with AI cost alerts. Final scope and cost confirmed after discovery." }, icon: FileSpreadsheet, image: mockCostflow, to: "/costflow" as const },
+  { name: "Aegis SalesOps", tagline: { zh: "業務、現場回報與管理資訊整合模組", en: "Sales, Field-Report & Management Info Module" }, desc: { zh: "整合業務拜訪、LINE 回報、CRM 與 AI 週報，讓現場資訊即時進入管理視野。實際功能與費用需經需求訪談確認。", en: "Unifies sales visits, LINE reports, CRM and AI weekly summaries. Final scope and cost confirmed after discovery." }, icon: MessagesSquare, image: mockSalesops, to: "/salesops" as const },
+  { name: "Aegis AI Launch", tagline: { zh: "企業 AI 導入啟動服務", en: "Enterprise AI Adoption Kickoff" }, desc: { zh: "從流程盤點、資料整理、AI 助理設計到自動化串接的 PoC 導入啟動服務。實際範圍需經需求訪談確認。", en: "PoC kickoff service spanning process discovery, data prep, AI-assistant design and automation. Scope confirmed after discovery." }, icon: Network, image: mockAilaunch, to: "/ai-launch" as const },
 ];
+
 
 const whyUs: Card[] = [
   { icon: Wrench, en: "Engineering Experience", zh: "工程實務經驗", desc: { zh: "核心團隊具備能源、機電、弱電、光纖、資料中心等現場工程經驗。", en: "Core team with hands-on experience in energy, MEP, ELV, fiber and data center engineering." } },
@@ -334,12 +335,13 @@ function Home() {
         <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
           <div className="container-x">
             <SectionHeader
-              eyebrow="Products"
-              titleZh="Aegis 企業應用"
-              titleEn="Business Applications"
-              descZh="AEGIS POWER INTEGRATIONS 旗下模組化企業應用系列，協助企業從報價、業務到 AI 導入逐步建立自己的數位營運。"
-              descEn="Our modular enterprise application suite helps companies build their own digital operations — from quotation and sales to AI adoption."
+              eyebrow="AI Application Modules · PoC"
+              titleZh="AI 應用模組與 PoC 方案"
+              titleEn="AI Application Modules & PoC Programs"
+              descZh="Aegis CostFlow、SalesOps 與 AI Launch 是我們在企業端常用的 AI 應用模組與 PoC 導入方案，並非已成熟的 SaaS 產品線。實際功能、資料需求與費用皆需經需求訪談後確認。"
+              descEn="CostFlow, SalesOps and AI Launch are the AI application modules and PoC programs we typically deploy — not a packaged SaaS product line. Actual scope, data requirements and cost are confirmed after discovery."
             />
+
             <div className="mt-14 grid gap-6 md:grid-cols-3">
               {products.map(({ name, tagline, desc, icon: Icon, image, to }) => (
                 <Link key={name} to={to} className="panel-lift flex flex-col group overflow-hidden">

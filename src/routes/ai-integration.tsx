@@ -49,7 +49,7 @@ const services: { icon: React.ComponentType<{ className?: string }>; t: Bi; d: B
   { icon: BrainCircuit, t: { zh: "AI 助理與知識庫", en: "AI Assistants & Knowledge Base" }, d: { zh: "建置內部 AI 助理與企業知識庫，讓員工可快速查詢與決策。", en: "Deploy internal AI assistants and knowledge bases so staff can query and decide faster." } },
   { icon: MessagesSquare, t: { zh: "自動化串接", en: "Automation Integration" }, d: { zh: "LINE、Google Workspace、API、n8n 等工具串接與工作流自動化。", en: "LINE, Google Workspace, APIs, n8n and workflow automation integrations." } },
   { icon: FileBarChart, t: { zh: "管理儀表板與週報", en: "Dashboards & Weekly Reports" }, d: { zh: "依角色設計儀表板與自動週報，主管可即時掌握營運狀態。", en: "Role-based dashboards and automated weekly reports for real-time management visibility." } },
-  { icon: Database, t: { zh: "客製化企業系統開發", en: "Custom Enterprise Systems" }, d: { zh: "依產業特性與既有系統，提供模組化或客製化開發服務。", en: "Modular or fully custom development to fit your industry and existing systems." } },
+  { icon: Database, t: { zh: "既有系統與流程改善", en: "Existing System & Workflow Improvement" }, d: { zh: "盤點 ERP、CRM、Excel 等既有工具，判斷應調整流程、加做串接，或引入合作廠商，避免不必要的重建。", en: "Audit ERP, CRM, Excel and other tools, then decide whether to adjust workflows, add integrations or bring in partners — instead of unnecessary rebuilds." } },
 ];
 
 const scenarios: Bi[] = [
@@ -74,19 +74,20 @@ function AiIntegration() {
           <div className="container-x grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <div>
               <span className="eyebrow"><span className="dot" /> <L zh="企業 AI 顧問" en="Enterprise AI Advisory" /></span>
-              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="企業 AI 顧問與流程整合" en="Enterprise AI Advisory & Process Integration" /></h1>
+              <h1 className="mt-6 text-4xl md:text-5xl"><L zh="企業 AI 顧問與導入服務" en="Enterprise AI Advisory & Implementation" /></h1>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 <L
-                  zh="宏鼎集成是企業的 AI 顧問與整合夥伴，不是軟體開發商，也不是 ERP／SaaS 廠商。我們從企業流程與資料出發，協助盤點、選型、整合現成工具與 AI 模型，並用教育訓練與導入陪跑，讓 AI 真正落到日常工作。"
-                  en="Aegis Power Integrations is your AI advisor and integrator — not a custom software vendor or an ERP/SaaS reseller. We start from your workflows and data, help you assess, select and integrate off-the-shelf tools and AI models, and coach adoption until AI actually lands in daily operations."
+                  zh="宏鼎集成提供企業 AI 顧問與導入陪跑服務。我們協助企業盤點問題、選擇工具、串接既有系統與 AI 模型，並以教育訓練與導入陪跑，讓 AI 真正落到日常工作。我們不會要求客戶全面更換既有系統，而是依現況判斷應採用既有工具、系統串接、流程調整或合作廠商導入。"
+                  en="We provide enterprise AI advisory and adoption coaching. We help you audit problems, select tools, integrate with existing systems and AI models, and land AI into daily work through training and hands-on coaching. We do not push wholesale system replacement — we choose between keeping existing tools, integrating, adjusting workflows or bringing in partners."
                 />
               </p>
               <p className="mt-4 text-base text-foreground font-medium leading-relaxed">
                 <L
-                  zh="我們不寫沒人用的系統，只把有用的 AI 放進企業流程。"
-                  en="We don't build software that goes unused — we embed useful AI into real workflows."
+                  zh="顧問先行、導入陪跑；不做沒人用的系統，只把有用的 AI 放進企業流程。"
+                  en="Advisory first, adoption coaching alongside — we embed useful AI, not shelfware."
                 />
               </p>
+
             </div>
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />

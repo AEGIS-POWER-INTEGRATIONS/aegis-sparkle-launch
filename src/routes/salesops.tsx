@@ -43,9 +43,10 @@ function SalesOps() {
                 用 LINE 回報、語音日誌、CRM 與 AI 週報，解決業務行蹤不清、客戶進度斷線、主管難追蹤的問題。
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
-                <Link to="/contact" className="btn btn-ghost">申請試用</Link>
+                <Link to="/contact" className="btn btn-primary">預約需求訪談</Link>
+                <Link to="/contact" className="btn btn-ghost">申請 PoC 評估</Link>
               </div>
+
             </div>
 
             <div className="relative">
@@ -98,9 +99,10 @@ function SalesOps() {
                 適合保險、房仲、物流、B2B 業務團隊、POS 通路與顧問型銷售團隊。
               </p>
               <div className="mt-7 flex flex-wrap justify-center gap-3">
-                <Link to="/contact" className="btn btn-primary">預約諮詢</Link>
-                <Link to="/contact" className="btn btn-ghost">申請試用</Link>
+                <Link to="/contact" className="btn btn-primary">預約需求訪談</Link>
+                <Link to="/contact" className="btn btn-ghost">申請 PoC 評估</Link>
               </div>
+
             </div>
           </div>
         </section>
