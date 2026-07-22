@@ -92,13 +92,15 @@ const trustPillars: { label: Bi; sub: Bi }[] = [
 ];
 
 const industries: Card[] = [
-  { icon: Cpu, en: "Semiconductor", zh: "半導體與科技廠", desc: { zh: "Fab 與供應鏈廠區的弱電、光纖、系統整合與 AI 導入。", en: "ELV, fiber, system integration and AI adoption for fabs and their supply chains." } },
-  { icon: Server, en: "Data Centers", zh: "資料中心", desc: { zh: "資料中心基礎建設、佈線、機櫃與運維系統整合。", en: "Data center infrastructure, cabling, racks and operations system integration." } },
-  { icon: Factory, en: "Manufacturing", zh: "製造業", desc: { zh: "工廠 IT/OT 整合、報價成本、業務與生產流程數位化。", en: "IT/OT integration, quotation, cost and sales/production workflow digitalization." } },
-  { icon: Building2, en: "Commercial Buildings", zh: "商辦與智慧建築", desc: { zh: "弱電、監控、門禁、網路與能源監測系統整合。", en: "ELV, surveillance, access control, network and energy monitoring integration." } },
-  { icon: Leaf, en: "Energy & ESG", zh: "能源與 ESG", desc: { zh: "太陽光電、儲能、機電工程與能源管理平台。", en: "Solar PV, energy storage, MEP engineering and energy management platforms." } },
-  { icon: BrainCircuit, en: "Enterprise AI", zh: "企業 AI", desc: { zh: "為企業建置可落地的 AI 工作流、代理人與知識庫。", en: "Production-ready AI workflows, agents and knowledge bases for enterprises." } },
+  { icon: Server, en: "Data Centers", zh: "資料中心與機房", desc: { zh: "資料中心與機房基礎工程、佈線、機櫃、監控與運維系統整合。", en: "Data-center and server-room infrastructure, cabling, racks, monitoring and operations integration." } },
+  { icon: Wrench, en: "Engineering & EPC", zh: "工程與 EPC", desc: { zh: "光纖弱電、機電協調、工程進度與品質管理，支援 EPC 統包與跨承包商整合。", en: "Fiber & ELV, MEP coordination, schedule and quality management for EPC and multi-contractor integration." } },
+  { icon: Factory, en: "Manufacturing", zh: "製造業", desc: { zh: "工廠 IT/OT 整合、報價成本、業務與生產流程數位化改善。", en: "IT/OT integration, quotation and cost workflows, sales and production digitalization." } },
+  { icon: Leaf, en: "Energy & Environment", zh: "能源與環保", desc: { zh: "太陽光電、儲能、能源計量、ESG 資料與能源管理平台。", en: "Solar PV, storage, metering, ESG data and energy-management platforms." } },
+  { icon: BrainCircuit, en: "SMEs Digital Transformation", zh: "中小企業數位轉型", desc: { zh: "以務實節奏協助中小企業從關鍵流程開始建立可持續的數位能力。", en: "A pragmatic pace of digital adoption for SMEs, starting from critical workflows." } },
+  { icon: Building2, en: "Commercial Buildings & Others", zh: "商業建築及其他產業", desc: { zh: "商辦、園區、商業空間的弱電、監控、網路與能源監測整合。", en: "ELV, surveillance, networking and energy monitoring for offices, campuses and commercial spaces." } },
+  { icon: Cpu, en: "Semiconductor Supply Chain", zh: "半導體供應鏈", desc: { zh: "以光纖弱電、廠區網路、工程進度回報、供應商資料整合的角色參與，不承接晶圓廠自動化整體專案。", en: "Participating at the fiber/ELV, site-network, engineering-progress and supplier-data layer — not end-to-end fab automation." } },
 ];
+
 
 const engineeringServices: Card[] = [
   { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A / Cat 8 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
