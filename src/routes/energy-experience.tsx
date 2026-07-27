@@ -15,6 +15,7 @@ import s22 from "@/assets/energy-s22.webp.asset.json";
 export const Route = createFileRoute("/energy-experience")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "能源與機電工程經驗｜宏鼎集成" },
       { name: "description", content: "宏鼎集成核心工程團隊具備大型太陽光電、儲能系統、機電工程與現場施工管理經驗，涵蓋屋頂型光電、水面型光電與工業區儲能等領域。" },
       { name: "keywords", content: "太陽光電, 儲能系統, 機電工程, 能源工程, 屋頂型光電, 水面型光電, 工業區儲能, 台灣能源工程" },
