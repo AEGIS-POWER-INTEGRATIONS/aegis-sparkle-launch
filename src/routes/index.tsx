@@ -352,7 +352,10 @@ function Home() {
                     <img
                       src={image}
                       alt={`${name} — ${t(tagline)}`}
+                      width={800}
+                      height={500}
                       loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     />
                   </div>
