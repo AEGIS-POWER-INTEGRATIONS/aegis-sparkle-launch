@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Legacy / internal routes — excluded from indexing and sitemap.
+Disallow: /demo
+Disallow: /costflow
+Disallow: /salesops
+Disallow: /ai-launch
+Disallow: /energy-experience
+Disallow: /buildquest
+Disallow: /lovable/
+
 Sitemap: https://aegispowerapi.com/sitemap.xml
