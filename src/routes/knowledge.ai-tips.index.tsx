@@ -10,8 +10,9 @@ import {
 import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/knowledge/ai-tips/")({
-  head: () => ({
-    meta: [
+  head: () => {
+    const empty = PUBLISHED_AI_TIPS.length === 0;
+    const meta: Array<Record<string, string>> = [
       { title: "企業 AI 使用技巧 AI Tips — AEGIS 宏鼎集成" },
       {
         name: "description",
@@ -26,23 +27,27 @@ export const Route = createFileRoute("/knowledge/ai-tips/")({
       { property: "og:url", content: `${SITE.domain}/knowledge/ai-tips` },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE.domain}/knowledge/ai-tips` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
-            { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
-            { "@type": "ListItem", position: 3, name: "AI 使用技巧", item: `${SITE.domain}/knowledge/ai-tips` },
-          ],
-        }),
-      },
-    ],
-  }),
+    ];
+    if (empty) meta.push({ name: "robots", content: "noindex, follow" });
+    return {
+      meta,
+      links: [{ rel: "canonical", href: `${SITE.domain}/knowledge/ai-tips` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
+              { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
+              { "@type": "ListItem", position: 3, name: "AI 使用技巧", item: `${SITE.domain}/knowledge/ai-tips` },
+            ],
+          }),
+        },
+      ],
+    };
+  },
   component: TipsIndex,
 });
 

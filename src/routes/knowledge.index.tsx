@@ -11,12 +11,21 @@ import {
   getAllTags,
   type KnowledgeTag,
 } from "@/lib/knowledge";
+import { PUBLISHED_PROMPTS } from "@/lib/prompts";
+import { PUBLISHED_AI_TIPS } from "@/lib/ai-tips";
 
 import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/knowledge/")({
-  head: () => ({
-    meta: [
+  head: () => {
+    // The hub itself has no substantive content when every sub-hub is empty.
+    // In that state emit noindex,follow — the page still 200s so crawlers can
+    // pick up nav links and re-verify later.
+    const empty =
+      PUBLISHED_ARTICLES.length === 0 &&
+      PUBLISHED_PROMPTS.length === 0 &&
+      PUBLISHED_AI_TIPS.length === 0;
+    const meta: Array<Record<string, string>> = [
       { title: "知識中心 Knowledge Center — AEGIS POWER INTEGRATIONS" },
       {
         name: "description",
@@ -33,22 +42,26 @@ export const Route = createFileRoute("/knowledge/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Knowledge Center — AEGIS POWER INTEGRATIONS" },
-    ],
-    links: [{ rel: "canonical", href: `${SITE.domain}/knowledge` }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
-            { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
-          ],
-        }),
-      },
-    ],
-  }),
+    ];
+    if (empty) meta.push({ name: "robots", content: "noindex, follow" });
+    return {
+      meta,
+      links: [{ rel: "canonical", href: `${SITE.domain}/knowledge` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "首頁", item: `${SITE.domain}/` },
+              { "@type": "ListItem", position: 2, name: "知識中心", item: `${SITE.domain}/knowledge` },
+            ],
+          }),
+        },
+      ],
+    };
+  },
   component: KnowledgeIndex,
 });
 

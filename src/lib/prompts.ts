@@ -13,7 +13,14 @@
  * Only `published` prompts are listed publicly and 404 otherwise.
  */
 
-import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+import {
+  isPublishable,
+  publishBlockers,
+  resolveStatus,
+  validateFields,
+  type PublishStatus,
+  type ValidationResult,
+} from "./publish-status";
 
 
 
@@ -1337,25 +1344,6 @@ const MANAGEMENT: Prompt[] = [
 
 export const PROMPTS: Prompt[] = [...WEBSITE, ...SYSTEM, ...MANAGEMENT];
 
-/** Public list — only records explicitly marked `status: "published"`. */
-export const PUBLISHED_PROMPTS: Prompt[] = PROMPTS.filter(isPublished);
-
-export function getPrompt(slug: string): Prompt | undefined {
-  const p = PROMPTS.find((x) => x.slug === slug);
-  if (!p || !isPublished(p)) return undefined;
-  return p;
-}
-
-export function getPromptsByCategory(cat: PromptCategory): Prompt[] {
-  return PUBLISHED_PROMPTS.filter((x) => x.category === cat);
-}
-
-export function getRelatedPrompts(p: Prompt): Prompt[] {
-  return p.relatedSlugs
-    .map((s) => getPrompt(s))
-    .filter((x): x is Prompt => Boolean(x));
-}
-
 export function getPromptStatus(p: Prompt): PublishStatus {
   return resolveStatus(p);
 }
@@ -1402,4 +1390,52 @@ export function validatePromptRecord(p: Prompt): ValidationResult {
   }
   return base;
 }
+
+export function promptBlockers(p: Prompt) {
+  return publishBlockers({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+function isPromptPublishable(p: Prompt): boolean {
+  return isPublishable({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+/** Public list — fail-closed. Incomplete or ill-dated records never surface. */
+export const PUBLISHED_PROMPTS: Prompt[] = (() => {
+  const out: Prompt[] = [];
+  const seenSlug = new Set<string>();
+  const seenId = new Set<string>();
+  for (const p of PROMPTS) {
+    if (!isPromptPublishable(p)) continue;
+    if (seenSlug.has(p.slug) || seenId.has(p.id)) continue;
+    seenSlug.add(p.slug);
+    seenId.add(p.id);
+    out.push(p);
+  }
+  return out;
+})();
+
+export function getPrompt(slug: string): Prompt | undefined {
+  return PUBLISHED_PROMPTS.find((x) => x.slug === slug);
+}
+
+export function getPromptsByCategory(cat: PromptCategory): Prompt[] {
+  return PUBLISHED_PROMPTS.filter((x) => x.category === cat);
+}
+
+export function getRelatedPrompts(p: Prompt): Prompt[] {
+  return p.relatedSlugs
+    .map((s) => getPrompt(s))
+    .filter((x): x is Prompt => Boolean(x));
+}
+
 

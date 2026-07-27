@@ -250,6 +250,36 @@ export function ArticleTemplate({ article }: { article: KnowledgeArticle }) {
       {/* Body layout */}
       <div className="container-x py-12 md:py-16 grid gap-12 lg:grid-cols-[minmax(0,1fr)_260px]">
         <div className="min-w-0 max-w-3xl">
+          {/* Mobile TOC — collapsed by default, hidden on lg where sidebar shows. */}
+          {article.toc && article.toc.length > 0 && (
+            <details className="lg:hidden mb-8 rounded-md border border-border bg-surface/40 group">
+              <summary className="cursor-pointer list-none flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium">
+                <span className="inline-flex items-center gap-2">
+                  <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
+                    <L zh="目錄" en="On this page" />
+                  </span>
+                  <span className="text-muted-foreground">
+                    ({article.toc.length})
+                  </span>
+                </span>
+                <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+              </summary>
+              <nav className="border-t border-border/70 px-4 py-3">
+                <ul className="space-y-2 text-sm">
+                  {article.toc.map((e) => (
+                    <li key={e.id}>
+                      <a
+                        href={`#${e.id}`}
+                        className="block text-muted-foreground hover:text-foreground leading-snug"
+                      >
+                        <L zh={e.title.zh} en={e.title.en} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </details>
+          )}
           {article.body ? (
             <div
               className="prose prose-slate max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-h2:text-2xl prose-h2:mt-12 prose-h3:text-xl prose-p:text-foreground/85 prose-p:leading-[1.85] prose-li:leading-[1.85] prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
@@ -419,6 +449,7 @@ export function buildArticleJsonLd(article: KnowledgeArticle, lang: "zh-TW" | "e
     headline: en ? article.title.en : article.title.zh,
     description: en ? article.excerpt.en : article.excerpt.zh,
     datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     inLanguage: en ? "en" : "zh-TW",
     mainEntityOfPage: url,
     author: { "@type": "Organization", name: en ? author.name.en : author.name.zh },

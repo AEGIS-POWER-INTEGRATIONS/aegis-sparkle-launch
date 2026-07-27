@@ -11,7 +11,14 @@
  * `applicableVersion` and `sourceUrls` before promotion.
  */
 
-import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+import {
+  isPublishable,
+  publishBlockers,
+  resolveStatus,
+  validateFields,
+  type PublishStatus,
+  type ValidationResult,
+} from "./publish-status";
 
 export type AiTipCategory =
   | "ai-basics"
@@ -496,25 +503,6 @@ export const AI_TIPS: AiTip[] = [
   }),
 ];
 
-/** Public list — only records explicitly marked `status: "published"`. */
-export const PUBLISHED_AI_TIPS: AiTip[] = AI_TIPS.filter(isPublished);
-
-export function getAiTip(slug: string): AiTip | undefined {
-  const a = AI_TIPS.find((t) => t.slug === slug);
-  if (!a || !isPublished(a)) return undefined;
-  return a;
-}
-
-export function getAiTipsByCategory(cat: AiTipCategory): AiTip[] {
-  return PUBLISHED_AI_TIPS.filter((t) => t.category === cat);
-}
-
-export function getRelatedAiTips(t: AiTip): AiTip[] {
-  return t.relatedArticleSlugs
-    .map((s) => getAiTip(s))
-    .filter((x): x is AiTip => Boolean(x));
-}
-
 export function getAiTipStatus(t: AiTip): PublishStatus {
   return resolveStatus(t);
 }
@@ -551,4 +539,52 @@ export function validateAiTip(a: AiTip): ValidationResult {
   }
   return base;
 }
+
+export function aiTipBlockers(t: AiTip) {
+  return publishBlockers({
+    record: t as unknown as Record<string, unknown>,
+    validate: () => validateAiTip(t),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+function isAiTipPublishable(t: AiTip): boolean {
+  return isPublishable({
+    record: t as unknown as Record<string, unknown>,
+    validate: () => validateAiTip(t),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+/** Public list — fail-closed. */
+export const PUBLISHED_AI_TIPS: AiTip[] = (() => {
+  const out: AiTip[] = [];
+  const seenSlug = new Set<string>();
+  const seenId = new Set<string>();
+  for (const t of AI_TIPS) {
+    if (!isAiTipPublishable(t)) continue;
+    if (seenSlug.has(t.slug) || seenId.has(t.id)) continue;
+    seenSlug.add(t.slug);
+    seenId.add(t.id);
+    out.push(t);
+  }
+  return out;
+})();
+
+export function getAiTip(slug: string): AiTip | undefined {
+  return PUBLISHED_AI_TIPS.find((t) => t.slug === slug);
+}
+
+export function getAiTipsByCategory(cat: AiTipCategory): AiTip[] {
+  return PUBLISHED_AI_TIPS.filter((t) => t.category === cat);
+}
+
+export function getRelatedAiTips(t: AiTip): AiTip[] {
+  return t.relatedArticleSlugs
+    .map((s) => getAiTip(s))
+    .filter((x): x is AiTip => Boolean(x));
+}
+
 

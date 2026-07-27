@@ -130,11 +130,37 @@ function PromptDetail() {
       </header>
 
       <div className="container-x py-12 md:py-16 max-w-4xl">
-        <Section title="適用情境">
+        {/* Prompt TOC — collapsible on mobile, expanded on md+. */}
+        <details open className="mb-10 rounded-md border border-border bg-surface/40 group">
+          <summary className="cursor-pointer list-none flex items-center justify-between px-4 py-3 text-sm font-medium">
+            <span className="text-[11px] uppercase tracking-widest text-muted-foreground font-semibold">
+              目錄
+            </span>
+            <ArrowRight className="h-4 w-4 transition-transform group-open:rotate-90" />
+          </summary>
+          <nav aria-label="目錄" className="border-t border-border/70 px-4 py-3">
+            <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground marker:text-muted-foreground/60">
+              <li><a href="#scenario" className="hover:text-foreground">適用情境</a></li>
+              <li><a href="#audience" className="hover:text-foreground">適用產業或公司規模</a></li>
+              <li><a href="#preparation" className="hover:text-foreground">使用前需要準備的資料</a></li>
+              <li><a href="#variables" className="hover:text-foreground">可替換欄位說明</a></li>
+              <li><a href="#prompt" className="hover:text-foreground">完整提示詞</a></li>
+              <li><a href="#usage" className="hover:text-foreground">使用步驟</a></li>
+              <li><a href="#example" className="hover:text-foreground">實際填寫範例</a></li>
+              <li><a href="#mistakes" className="hover:text-foreground">常見錯誤</a></li>
+              <li><a href="#cautions" className="hover:text-foreground">注意事項</a></li>
+              {related.length > 0 && (
+                <li><a href="#related" className="hover:text-foreground">相關提示詞</a></li>
+              )}
+            </ol>
+          </nav>
+        </details>
+
+        <Section id="scenario" title="適用情境">
           <p className="text-foreground/85 leading-[1.85]">{prompt.summary}</p>
         </Section>
 
-        <Section title="適用產業或公司規模">
+        <Section id="audience" title="適用產業或公司規模">
           <ul className="list-disc pl-5 space-y-1 text-foreground/85">
             {prompt.industries.map((i) => (
               <li key={i}>{PROMPT_AUDIENCE_LABEL[i]}</li>
@@ -142,13 +168,13 @@ function PromptDetail() {
           </ul>
         </Section>
 
-        <Section title="使用前需要準備的資料">
+        <Section id="preparation" title="使用前需要準備的資料">
           <ul className="list-disc pl-5 space-y-1 text-foreground/85">
             {prompt.preparation.map((p, i) => <li key={i}>{p}</li>)}
           </ul>
         </Section>
 
-        <Section title="可替換欄位說明">
+        <Section id="variables" title="可替換欄位說明">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
@@ -169,7 +195,7 @@ function PromptDetail() {
           </div>
         </Section>
 
-        <Section title="完整提示詞">
+        <Section id="prompt" title="完整提示詞">
           <div className="rounded-md border border-border bg-surface/60">
             <div className="flex items-center justify-between px-4 py-2 border-b border-border/60">
               <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
@@ -187,30 +213,31 @@ function PromptDetail() {
           </div>
         </Section>
 
-        <Section title="使用步驟">
+        <Section id="usage" title="使用步驟">
           <ol className="list-decimal pl-5 space-y-2 text-foreground/85">
             {prompt.usageSteps.map((s, i) => <li key={i}>{s}</li>)}
           </ol>
         </Section>
 
-        <Section title="實際填寫範例">
+        <Section id="example" title="實際填寫範例">
           <p className="text-foreground/85 leading-[1.85]">{prompt.example}</p>
         </Section>
 
-        <Section title="常見錯誤">
+        <Section id="mistakes" title="常見錯誤">
           <ul className="list-disc pl-5 space-y-1 text-foreground/85">
             {prompt.commonMistakes.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
         </Section>
 
-        <Section title="注意事項">
+        <Section id="cautions" title="注意事項">
           <ul className="list-disc pl-5 space-y-1 text-foreground/85">
             {prompt.cautions.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
         </Section>
 
+
         {related.length > 0 && (
-          <Section title="相關提示詞">
+          <Section id="related" title="相關提示詞">
             <ul className="grid gap-3 md:grid-cols-2">
               {related.map((r) => (
                 <li key={r.slug}>
@@ -266,12 +293,13 @@ function PromptDetail() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="mt-10 first:mt-0">
+    <section id={id} className="mt-10 first:mt-0 knowledge-toc-target">
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4">{title}</h2>
       {children}
     </section>
   );
 }
+
 

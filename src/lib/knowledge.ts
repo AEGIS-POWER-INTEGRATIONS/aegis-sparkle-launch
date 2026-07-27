@@ -10,7 +10,14 @@
  * without touching route files.
  */
 
-import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+import {
+  isPublishable,
+  publishBlockers,
+  resolveStatus,
+  validateFields,
+  type PublishStatus,
+  type ValidationResult,
+} from "./publish-status";
 
 export type Bi = { zh: string; en: string };
 
@@ -292,19 +299,64 @@ export const ARTICLES: KnowledgeArticle[] = [
 
 // ── Lookups ────────────────────────────────────────────────────────
 
-/** Public article list — draft stubs are filtered out. */
-/** Public article list — only records with status === "published". */
-export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter(isPublished);
+
+
+/**
+ * Fields required before a knowledge article can be promoted to `published`.
+ * Missing fields do NOT auto-fill; the editor must supply real content.
+ */
+export const ARTICLE_REQUIRED_FIELDS = [
+  "slug",
+  "category",
+  "title",
+  "excerpt",
+  "publishedAt",
+  "updatedAt",
+  "body",
+  "toc",
+  "scenarios",
+  "cautions",
+  "faq",
+  "author",
+] as const;
+
+export function validateKnowledgeArticle(a: KnowledgeArticle): ValidationResult {
+  return validateFields(a as unknown as Record<string, unknown>, ARTICLE_REQUIRED_FIELDS);
+}
+
+export function articleBlockers(a: KnowledgeArticle) {
+  return publishBlockers({
+    record: a as unknown as Record<string, unknown>,
+    validate: () => validateKnowledgeArticle(a),
+    dateFields: ["publishedAt", "updatedAt"],
+    slugField: "slug",
+  });
+}
+
+function isArticlePublishable(a: KnowledgeArticle): boolean {
+  return articleBlockers(a).length === 0;
+}
+
+/** Public article list — fail-closed gate. Incomplete records never surface. */
+export const PUBLISHED_ARTICLES: KnowledgeArticle[] = (() => {
+  const out: KnowledgeArticle[] = [];
+  const seen = new Set<string>();
+  for (const a of ARTICLES) {
+    if (!isArticlePublishable(a)) continue;
+    const key = `${a.category}/${a.slug}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(a);
+  }
+  return out;
+})();
 
 export function getCategory(slug: string): KnowledgeCategory | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
-/** Non-published articles behave as not-found for public visitors. */
 export function getArticle(categorySlug: string, articleSlug: string): KnowledgeArticle | undefined {
-  const a = ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
-  if (!a || !isPublished(a)) return undefined;
-  return a;
+  return PUBLISHED_ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
 }
 
 export function getArticlesByCategory(categorySlug: string): KnowledgeArticle[] {
@@ -322,28 +374,6 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
     })
     .sort((x, y) => y.score - x.score);
   return scored.slice(0, limit).map((x) => x.a);
-}
-
-/**
- * Fields required before a knowledge article can be promoted to `published`.
- * Missing fields do NOT auto-fill; the editor must supply real content.
- */
-export const ARTICLE_REQUIRED_FIELDS = [
-  "slug",
-  "category",
-  "title",
-  "excerpt",
-  "publishedAt",
-  "body",
-  "toc",
-  "scenarios",
-  "cautions",
-  "faq",
-  "author",
-] as const;
-
-export function validateKnowledgeArticle(a: KnowledgeArticle): ValidationResult {
-  return validateFields(a as unknown as Record<string, unknown>, ARTICLE_REQUIRED_FIELDS);
 }
 
 export function getArticleStatus(a: KnowledgeArticle): PublishStatus {

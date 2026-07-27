@@ -413,3 +413,9 @@
   background-size: 32px 32px;
 
 }
+
+/* Anchor scroll offset — keep TOC jumps clear of the sticky top nav. */
+article [id],
+.knowledge-toc-target {
+  scroll-margin-top: 6rem;
+}
