@@ -17,6 +17,10 @@ function Brand({ variant = "header" }: { variant?: "header" | "footer" }) {
         <img
           src={logoAsset.url}
           alt="宏鼎集成 AEGIS POWER INTEGRATIONS 標誌"
+          width={200}
+          height={56}
+          loading="lazy"
+          decoding="async"
           className="w-[180px] md:w-[200px] h-auto object-contain block"
         />
       </Link>
