@@ -30,6 +30,18 @@ export const Route = createFileRoute("/insights/$slug")({
         { name: "twitter:image", content: OG_IMAGE },
       ],
       links: [{ rel: "canonical", href: `${SITE_URL}/insights/${insight.slug}` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "首頁", path: "/" },
+              { name: "產業洞見與應用情境", path: "/insights" },
+              { name: insight.title.zh, path: `/insights/${insight.slug}` },
+            ]),
+          ),
+        },
+      ],
     };
   },
   component: InsightDetail,
