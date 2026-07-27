@@ -266,12 +266,13 @@ function PromptDetail() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <section className="mt-10 first:mt-0">
+    <section id={id} className="mt-10 first:mt-0 knowledge-toc-target">
       <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-4">{title}</h2>
       {children}
     </section>
   );
 }
+
 
