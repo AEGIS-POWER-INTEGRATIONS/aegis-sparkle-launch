@@ -428,7 +428,10 @@ function Home() {
                     <img
                       src={p.image}
                       alt={`${t(p.industry)} project`}
+                      width={1200}
+                      height={675}
                       loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
