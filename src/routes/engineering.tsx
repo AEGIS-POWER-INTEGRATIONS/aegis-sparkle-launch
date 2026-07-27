@@ -110,6 +110,8 @@ function Engineering() {
                   alt={t({ zh: "光纖與弱電工程施工情境", en: "Fiber and ELV engineering installation" })}
                   width={1600}
                   height={912}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
               </div>
