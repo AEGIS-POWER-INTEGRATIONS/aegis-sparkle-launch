@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { Breadcrumbs, breadcrumbJsonLd } from "@/components/breadcrumbs";
 import { INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
 import { L, useLang } from "@/lib/i18n";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
@@ -29,6 +30,18 @@ export const Route = createFileRoute("/industries/$slug")({
         { name: "twitter:image", content: OG_IMAGE },
       ],
       links: [{ rel: "canonical", href: `${SITE_URL}/industries/${industry.slug}` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "首頁", path: "/" },
+              { name: "產業解決方案", path: "/industries" },
+              { name: industry.name.zh, path: `/industries/${industry.slug}` },
+            ]),
+          ),
+        },
+      ],
     };
   },
   component: IndustryDetail,
@@ -67,13 +80,14 @@ function IndustryDetail() {
         {/* Hero */}
         <section className="border-b border-border bg-surface/50">
           <div className="container-x py-20 md:py-24">
-            <div className="text-xs font-semibold tracking-[0.18em] uppercase text-muted-foreground">
-              <L zh="產業解決方案" en="Industry Solutions" /> ·{" "}
-              <Link to="/industries" className="hover:text-foreground">
-                <L zh="全部產業" en="All industries" />
-              </Link>
-            </div>
-            <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
+            <Breadcrumbs
+              items={[
+                { label: isEn ? "Home" : "首頁", to: "/" },
+                { label: isEn ? "Industry Solutions" : "產業解決方案", to: "/industries" },
+                { label: tr(industry.name) },
+              ]}
+            />
+            <h1 className="mt-4 text-4xl md:text-5xl font-semibold tracking-tight text-foreground">
               {tr(industry.name)}
             </h1>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl leading-relaxed">

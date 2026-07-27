@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { Breadcrumbs, breadcrumbJsonLd } from "@/components/breadcrumbs";
 import { INSIGHTS, CATEGORY_LABEL, getInsight, type Insight } from "@/lib/insights";
 import { L, useLang } from "@/lib/i18n";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
@@ -29,6 +30,18 @@ export const Route = createFileRoute("/insights/$slug")({
         { name: "twitter:image", content: OG_IMAGE },
       ],
       links: [{ rel: "canonical", href: `${SITE_URL}/insights/${insight.slug}` }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "首頁", path: "/" },
+              { name: "產業洞見與應用情境", path: "/insights" },
+              { name: insight.title.zh, path: `/insights/${insight.slug}` },
+            ]),
+          ),
+        },
+      ],
     };
   },
   component: InsightDetail,
@@ -68,11 +81,15 @@ function InsightDetail() {
         {/* Header */}
         <section className="border-b border-border bg-surface/50">
           <div className="container-x py-20 md:py-24 max-w-4xl">
-            <div className="text-xs font-semibold tracking-[0.18em] uppercase text-muted-foreground">
-              <Link to="/insights" className="hover:text-foreground">
-                <L zh="洞見與案例" en="Insights" />
-              </Link>{" "}
-              · {tr(CATEGORY_LABEL[insight.category])}
+            <Breadcrumbs
+              items={[
+                { label: isEn ? "Home" : "首頁", to: "/" },
+                { label: isEn ? "Insights" : "產業洞見與應用情境", to: "/insights" },
+                { label: tr(insight.title) },
+              ]}
+            />
+            <div className="mt-4 text-xs font-semibold tracking-[0.18em] uppercase text-muted-foreground">
+              {tr(CATEGORY_LABEL[insight.category])}
               {insight.industryTag && <> · {tr(insight.industryTag)}</>}
             </div>
             <h1 className="mt-3 text-3xl md:text-5xl font-semibold tracking-tight text-foreground leading-tight">

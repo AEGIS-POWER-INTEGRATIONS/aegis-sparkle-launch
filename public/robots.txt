@@ -1,13 +1,15 @@
 User-agent: *
 Allow: /
 
-# Legacy / internal routes — excluded from indexing and sitemap.
-Disallow: /demo
-Disallow: /costflow
-Disallow: /salesops
-Disallow: /ai-launch
-Disallow: /energy-experience
-Disallow: /buildquest
+# Internal / system routes — blocked from crawling.
 Disallow: /lovable/
+Disallow: /buildquest
+Disallow: /buildquest/
+
+# Note: legacy product pages (/demo, /costflow, /salesops, /ai-launch,
+# /energy-experience) are intentionally NOT disallowed here. They carry
+# <meta name="robots" content="noindex, follow"> and are excluded from
+# sitemap.xml. Crawlers must be allowed to fetch them so they can read
+# the noindex directive.
 
 Sitemap: https://aegispowerapi.com/sitemap.xml
