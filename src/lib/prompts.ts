@@ -8,7 +8,14 @@
  *
  * NOTE: Prompt content contains variable placeholders in the form [變數名稱].
  * Users are expected to replace these before using the prompt with an LLM.
+ *
+ * Publish status: every record has a `status` (defaults to `review`).
+ * Only `published` prompts are listed publicly and 404 otherwise.
  */
+
+import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+
+
 
 export type PromptCategory = "website-build" | "system-build" | "management";
 export type PromptDifficulty = "beginner" | "intermediate" | "advanced";
@@ -60,6 +67,18 @@ export type Prompt = {
   relatedSlugs: string[];
   seoTitle: string;
   seoDescription: string;
+  /** Publish state — defaults to `review` for existing records (see publish-status.ts). */
+  status?: PublishStatus;
+  /**
+   * Fields required only when the prompt is tied to a fast-moving tool
+   * (ChatGPT, Codex, Lovable, Claude, Gemini …). Editors must fill these in
+   * before promoting to `published`.
+   */
+  lastVerifiedAt?: string;      // ISO — when was the tool behaviour last verified?
+  applicableTools?: string[];   // e.g. ["ChatGPT (GPT-5)", "Claude 4 Sonnet"]
+  sourceUrls?: { label: string; url: string }[]; // official vendor docs
+  versionNote?: string;         // human note about tool version scope
+  changeLog?: { date: string; note: string }[];
 };
 
 /** Common variables reused across many prompts. */
@@ -1318,12 +1337,17 @@ const MANAGEMENT: Prompt[] = [
 
 export const PROMPTS: Prompt[] = [...WEBSITE, ...SYSTEM, ...MANAGEMENT];
 
+/** Public list — only records explicitly marked `status: "published"`. */
+export const PUBLISHED_PROMPTS: Prompt[] = PROMPTS.filter(isPublished);
+
 export function getPrompt(slug: string): Prompt | undefined {
-  return PROMPTS.find((p) => p.slug === slug);
+  const p = PROMPTS.find((x) => x.slug === slug);
+  if (!p || !isPublished(p)) return undefined;
+  return p;
 }
 
 export function getPromptsByCategory(cat: PromptCategory): Prompt[] {
-  return PROMPTS.filter((p) => p.category === cat);
+  return PUBLISHED_PROMPTS.filter((x) => x.category === cat);
 }
 
 export function getRelatedPrompts(p: Prompt): Prompt[] {
@@ -1331,3 +1355,51 @@ export function getRelatedPrompts(p: Prompt): Prompt[] {
     .map((s) => getPrompt(s))
     .filter((x): x is Prompt => Boolean(x));
 }
+
+export function getPromptStatus(p: Prompt): PublishStatus {
+  return resolveStatus(p);
+}
+
+/**
+ * Baseline fields every prompt must supply. Prompts targeting fast-moving AI
+ * tools (ChatGPT, Codex, Lovable, Claude, Gemini …) additionally require
+ * `lastVerifiedAt`, `applicableTools` and `sourceUrls` — those extra checks
+ * are triggered by `validatePromptRecord` when the title or tags mention
+ * such tools.
+ */
+export const PROMPT_REQUIRED_FIELDS = [
+  "id",
+  "slug",
+  "title",
+  "summary",
+  "category",
+  "audience",
+  "industries",
+  "difficulty",
+  "updatedAt",
+  "preparation",
+  "variables",
+  "promptContent",
+  "usageSteps",
+  "example",
+  "cautions",
+  "seoTitle",
+  "seoDescription",
+] as const;
+
+const TOOL_SENSITIVE = /(chatgpt|codex|lovable|claude|gemini|copilot|cursor)/i;
+
+export function validatePromptRecord(p: Prompt): ValidationResult {
+  const base = validateFields(p as unknown as Record<string, unknown>, PROMPT_REQUIRED_FIELDS);
+  const haystack = `${p.title} ${p.tags.join(" ")} ${p.promptContent}`;
+  if (TOOL_SENSITIVE.test(haystack)) {
+    const extra = validateFields(p as unknown as Record<string, unknown>, [
+      "lastVerifiedAt",
+      "applicableTools",
+      "sourceUrls",
+    ]);
+    return { ok: base.ok && extra.ok, missing: [...base.missing, ...extra.missing] };
+  }
+  return base;
+}
+

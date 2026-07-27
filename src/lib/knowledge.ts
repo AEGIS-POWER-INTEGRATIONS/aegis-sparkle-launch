@@ -10,6 +10,8 @@
  * without touching route files.
  */
 
+import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+
 export type Bi = { zh: string; en: string };
 
 export type KnowledgeCategory = {
@@ -291,16 +293,17 @@ export const ARTICLES: KnowledgeArticle[] = [
 // ── Lookups ────────────────────────────────────────────────────────
 
 /** Public article list — draft stubs are filtered out. */
-export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter((a) => !a.draft);
+/** Public article list — only records with status === "published". */
+export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter(isPublished);
 
 export function getCategory(slug: string): KnowledgeCategory | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
-/** Draft articles behave as not-found for public visitors. */
+/** Non-published articles behave as not-found for public visitors. */
 export function getArticle(categorySlug: string, articleSlug: string): KnowledgeArticle | undefined {
   const a = ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
-  if (!a || a.draft) return undefined;
+  if (!a || !isPublished(a)) return undefined;
   return a;
 }
 
@@ -319,6 +322,32 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
     })
     .sort((x, y) => y.score - x.score);
   return scored.slice(0, limit).map((x) => x.a);
+}
+
+/**
+ * Fields required before a knowledge article can be promoted to `published`.
+ * Missing fields do NOT auto-fill; the editor must supply real content.
+ */
+export const ARTICLE_REQUIRED_FIELDS = [
+  "slug",
+  "category",
+  "title",
+  "excerpt",
+  "publishedAt",
+  "body",
+  "toc",
+  "scenarios",
+  "cautions",
+  "faq",
+  "author",
+] as const;
+
+export function validateKnowledgeArticle(a: KnowledgeArticle): ValidationResult {
+  return validateFields(a as unknown as Record<string, unknown>, ARTICLE_REQUIRED_FIELDS);
+}
+
+export function getArticleStatus(a: KnowledgeArticle): PublishStatus {
+  return resolveStatus(a);
 }
 
 
