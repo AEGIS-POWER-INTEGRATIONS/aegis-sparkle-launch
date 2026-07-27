@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { PUBLISHED_ARTICLES, CATEGORIES, articlePath } from "@/lib/knowledge";
 import { INSIGHTS } from "@/lib/insights";
-import { PROMPTS } from "@/lib/prompts";
-import { AI_TIPS } from "@/lib/ai-tips";
+import { PUBLISHED_PROMPTS } from "@/lib/prompts";
+import { PUBLISHED_AI_TIPS } from "@/lib/ai-tips";
 import { INDUSTRIES } from "@/lib/industries";
 
 const BASE_URL = "https://aegispowerapi.com";
@@ -81,13 +81,13 @@ export const Route = createFileRoute("/sitemap.xml")({
           priority: "0.6",
         }));
 
-        const promptEntries: SitemapEntry[] = PROMPTS.map((p) => ({
+        const promptEntries: SitemapEntry[] = PUBLISHED_PROMPTS.map((p) => ({
           path: `/knowledge/prompts/${p.slug}`,
           changefreq: "monthly",
           priority: "0.5",
         }));
 
-        const aiTipEntries: SitemapEntry[] = AI_TIPS.map((t) => ({
+        const aiTipEntries: SitemapEntry[] = PUBLISHED_AI_TIPS.map((t) => ({
           path: `/knowledge/ai-tips/${t.slug}`,
           changefreq: "monthly",
           priority: "0.5",

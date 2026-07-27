@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import {
-  AI_TIPS,
+  PUBLISHED_AI_TIPS,
   AI_TIP_CATEGORY_LABEL,
   AI_TIP_AUDIENCE_LABEL,
   type AiTipCategory,
@@ -62,7 +62,7 @@ function TipsIndex() {
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
-    return AI_TIPS.filter((a) => {
+    return PUBLISHED_AI_TIPS.filter((a) => {
       if (cat !== "all" && a.category !== cat) return false;
       if (!query) return true;
       const hay = [a.title, a.summary, a.tags.join(" ")].join(" ").toLowerCase();
@@ -130,7 +130,16 @@ function TipsIndex() {
             <span className="text-sm text-muted-foreground">{filtered.length} 篇文章</span>
           </div>
           {filtered.length === 0 ? (
-            <p className="mt-10 text-muted-foreground">沒有符合條件的文章。試著調整關鍵字或分類。</p>
+            <div className="mt-10 panel p-8">
+              <p className="text-foreground/85">
+                {PUBLISHED_AI_TIPS.length === 0
+                  ? "AI 使用技巧文章正在整備中。所有內容皆處於內部審核（review）狀態，於補齊工具版本、官方來源與最後查核日期後才會公開。"
+                  : "沒有符合條件的文章。試著調整關鍵字或分類。"}
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                想優先看某個主題？歡迎透過「聯絡我們」告知，我們會列入下一批釋出優先順序。
+              </p>
+            </div>
           ) : (
             <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((a) => (
