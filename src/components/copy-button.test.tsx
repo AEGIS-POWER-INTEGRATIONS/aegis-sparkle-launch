@@ -33,7 +33,7 @@ afterEach(() => {
   if (originalClipboard) {
     Object.defineProperty(navigator, "clipboard", originalClipboard);
   } else {
-    // @ts-expect-error test teardown
+    // @ts-ignore test teardown
     delete (navigator as { clipboard?: unknown }).clipboard;
   }
 });
@@ -60,7 +60,7 @@ describe("CopyButton", () => {
   it("[fallback] uses execCommand path when Clipboard API is missing", async () => {
     Object.defineProperty(navigator, "clipboard", { configurable: true, value: undefined });
     const exec = vi.fn().mockReturnValue(true);
-    // @ts-expect-error legacy API stub for the fallback branch
+    // @ts-ignore legacy API stub for the fallback branch
     document.execCommand = exec;
     render(<CopyButton text="fallback text" ariaLabel="Copy fallback" />);
     await userEvent.click(screen.getByRole("button", { name: "Copy fallback" }));
@@ -70,7 +70,7 @@ describe("CopyButton", () => {
 
   it("[fail] surfaces an error toast when both paths fail", async () => {
     stubClipboard(vi.fn().mockRejectedValue(new Error("denied")));
-    // @ts-expect-error legacy API stub for the fallback branch
+    // @ts-ignore legacy API stub for the fallback branch
     document.execCommand = vi.fn().mockReturnValue(false);
     render(<CopyButton text="x" ariaLabel="Copy x" />);
     await userEvent.click(screen.getByRole("button", { name: "Copy x" }));
