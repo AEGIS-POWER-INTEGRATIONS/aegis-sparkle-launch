@@ -97,6 +97,10 @@ function EnergyExperience() {
             <img
               src={s66.url}
               alt="能源與機電工程經驗"
+              width={1600}
+              height={900}
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
             />
             <div

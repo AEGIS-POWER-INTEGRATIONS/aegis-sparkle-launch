@@ -22,7 +22,10 @@ export const Route = createFileRoute("/engineering")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/engineering` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/engineering` },
+      { rel: "preload", as: "image", href: heroEngAsset.url, fetchpriority: "high" } as never,
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -107,6 +110,8 @@ function Engineering() {
                   alt={t({ zh: "光纖與弱電工程施工情境", en: "Fiber and ELV engineering installation" })}
                   width={1600}
                   height={912}
+                  fetchPriority="high"
+                  decoding="async"
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
               </div>
