@@ -371,7 +371,7 @@ function About() {
                 />
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/demo" className="btn btn-primary"><L zh="預約諮詢" en="Book Consultation" /> <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/contact" className="btn btn-primary"><L zh="預約需求諮詢" en="Book Consultation" /> <ArrowRight className="h-4 w-4" /></Link>
                 <Link to="/contact" className="btn btn-ghost"><L zh="聯絡我們" en="Contact Us" /></Link>
               </div>
             </div>
