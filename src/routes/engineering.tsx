@@ -22,7 +22,10 @@ export const Route = createFileRoute("/engineering")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/engineering` }],
+    links: [
+      { rel: "canonical", href: `${SITE_URL}/engineering` },
+      { rel: "preload", as: "image", href: heroEngAsset.url, fetchpriority: "high" } as never,
+    ],
     scripts: [
       {
         type: "application/ld+json",
