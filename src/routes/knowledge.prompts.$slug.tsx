@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
-import { ArrowRight, Check, Copy, Share2 } from "lucide-react";
+import { ArrowRight, Share2 } from "lucide-react";
 import { toast } from "sonner";
+import { CopyButton } from "@/components/copy-button";
 import {
   PROMPT_CATEGORY_LABEL,
   PROMPT_DIFFICULTY_LABEL,
@@ -77,25 +77,13 @@ function PromptDetail() {
   const { prompt } = Route.useLoaderData() as { prompt: Prompt };
   const related = getRelatedPrompts(prompt);
   const url = `${SITE.domain}/knowledge/prompts/${prompt.slug}`;
-  const [copied, setCopied] = useState(false);
-
-  async function copyPrompt() {
-    try {
-      await navigator.clipboard.writeText(prompt.promptContent);
-      setCopied(true);
-      toast.success("提示詞已複製到剪貼簿");
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      toast.error("複製失敗，請手動選取文字。");
-    }
-  }
 
   async function shareLink() {
     try {
       await navigator.clipboard.writeText(url);
       toast.success("頁面連結已複製");
     } catch {
-      toast.error("複製失敗");
+      toast.error("複製失敗，請手動複製網址列連結。");
     }
   }
 
@@ -187,15 +175,11 @@ function PromptDetail() {
               <span className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
                 Prompt
               </span>
-              <button
-                type="button"
-                onClick={copyPrompt}
-                className="inline-flex items-center gap-1.5 rounded-sm border border-border/80 px-3 py-1.5 text-xs font-medium hover:bg-surface"
-                aria-label="複製提示詞"
-              >
-                {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-                {copied ? "已複製" : "複製提示詞"}
-              </button>
+              <CopyButton
+                text={prompt.promptContent}
+                ariaLabel={`複製提示詞：${prompt.title}`}
+                label="複製提示詞"
+              />
             </div>
             <pre className="p-4 md:p-6 whitespace-pre-wrap break-words font-mono text-[13px] leading-[1.75] text-foreground/90">
 {prompt.promptContent}
