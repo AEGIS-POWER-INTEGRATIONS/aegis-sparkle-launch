@@ -251,6 +251,8 @@ function Contact() {
                   alt={t({ zh: "企業諮詢與流程訪談會議情境", en: "Enterprise consultation and process interview scene" })}
                   width={1408}
                   height={912}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-cover aspect-[16/10]"
                 />
                 <div className="absolute left-3 bottom-3">
