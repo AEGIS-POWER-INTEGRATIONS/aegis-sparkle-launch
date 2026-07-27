@@ -419,6 +419,7 @@ export function buildArticleJsonLd(article: KnowledgeArticle, lang: "zh-TW" | "e
     headline: en ? article.title.en : article.title.zh,
     description: en ? article.excerpt.en : article.excerpt.zh,
     datePublished: article.publishedAt,
+    dateModified: article.updatedAt ?? article.publishedAt,
     inLanguage: en ? "en" : "zh-TW",
     mainEntityOfPage: url,
     author: { "@type": "Organization", name: en ? author.name.en : author.name.zh },
