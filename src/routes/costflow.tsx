@@ -9,6 +9,7 @@ import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 export const Route = createFileRoute("/costflow")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Aegis CostFlow｜工程報價與成本分析平台" },
       { name: "description", content: "工程公司專用的成本、報價、毛利與專案決策平台。把 Excel 報價轉成可追蹤、可分析、可決策的成本系統。" },
       { name: "keywords", content: "工程報價系統, 工程成本分析, 專案毛利, 工程管理系統, Aegis CostFlow, 台灣工程公司" },
