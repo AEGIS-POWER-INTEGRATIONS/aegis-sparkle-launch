@@ -1344,13 +1344,41 @@ const MANAGEMENT: Prompt[] = [
 
 export const PROMPTS: Prompt[] = [...WEBSITE, ...SYSTEM, ...MANAGEMENT];
 
-/** Public list — only records explicitly marked `status: "published"`. */
-export const PUBLISHED_PROMPTS: Prompt[] = PROMPTS.filter(isPublished);
+function isPromptPublishable(p: Prompt): boolean {
+  return isPublishable({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+export function promptBlockers(p: Prompt) {
+  return publishBlockers({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+/** Public list — fail-closed. Incomplete or ill-dated records never surface. */
+export const PUBLISHED_PROMPTS: Prompt[] = (() => {
+  const out: Prompt[] = [];
+  const seenSlug = new Set<string>();
+  const seenId = new Set<string>();
+  for (const p of PROMPTS) {
+    if (!isPromptPublishable(p)) continue;
+    if (seenSlug.has(p.slug) || seenId.has(p.id)) continue;
+    seenSlug.add(p.slug);
+    seenId.add(p.id);
+    out.push(p);
+  }
+  return out;
+})();
 
 export function getPrompt(slug: string): Prompt | undefined {
-  const p = PROMPTS.find((x) => x.slug === slug);
-  if (!p || !isPublished(p)) return undefined;
-  return p;
+  return PUBLISHED_PROMPTS.find((x) => x.slug === slug);
 }
 
 export function getPromptsByCategory(cat: PromptCategory): Prompt[] {
