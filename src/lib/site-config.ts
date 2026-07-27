@@ -195,13 +195,14 @@ export const PRIMARY_CTA = {
 
 /** Standardized inquiry types used by the contact form + CTAs. */
 export const INQUIRY_TYPES = {
-  engineering: { zh: "工程需求", en: "Engineering inquiry" },
-  aiHealth: { zh: "AI 導入健檢", en: "AI readiness diagnostic" },
-  aiMonthly: { zh: "月度 AI 顧問", en: "Monthly AI advisory" },
-  training: { zh: "企業內訓／工作坊", en: "Training / workshop" },
-  poc: { zh: "AI PoC 或流程改善", en: "AI PoC / process improvement" },
+  engineering: { zh: "工程合作", en: "Engineering partnership" },
+  dataCenter: { zh: "資料中心／光纖／弱電", en: "Data center / fiber / ELV" },
+  aiHealth: { zh: "AI 流程健檢", en: "AI process diagnostic" },
+  training: { zh: "企業教育訓練", en: "Enterprise training" },
+  poc: { zh: "PoC 導入評估", en: "PoC assessment" },
+  aiMonthly: { zh: "月度顧問", en: "Monthly advisory" },
   grant: { zh: "政府補助輔導", en: "Government grant advisory" },
-  partnership: { zh: "合作提案", en: "Partnership" },
+  partnership: { zh: "合作夥伴洽詢", en: "Partner inquiry" },
   other: { zh: "其他", en: "Other" },
 } as const;
 
