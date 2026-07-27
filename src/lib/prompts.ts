@@ -1348,10 +1348,6 @@ export function getPromptStatus(p: Prompt): PublishStatus {
   return resolveStatus(p);
 }
 
-export function getPromptStatus(p: Prompt): PublishStatus {
-  return resolveStatus(p);
-}
-
 /**
  * Baseline fields every prompt must supply. Prompts targeting fast-moving AI
  * tools (ChatGPT, Codex, Lovable, Claude, Gemini …) additionally require
@@ -1394,4 +1390,52 @@ export function validatePromptRecord(p: Prompt): ValidationResult {
   }
   return base;
 }
+
+export function promptBlockers(p: Prompt) {
+  return publishBlockers({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+function isPromptPublishable(p: Prompt): boolean {
+  return isPublishable({
+    record: p as unknown as Record<string, unknown>,
+    validate: () => validatePromptRecord(p),
+    dateFields: ["updatedAt", "lastVerifiedAt"],
+    slugField: "slug",
+  });
+}
+
+/** Public list — fail-closed. Incomplete or ill-dated records never surface. */
+export const PUBLISHED_PROMPTS: Prompt[] = (() => {
+  const out: Prompt[] = [];
+  const seenSlug = new Set<string>();
+  const seenId = new Set<string>();
+  for (const p of PROMPTS) {
+    if (!isPromptPublishable(p)) continue;
+    if (seenSlug.has(p.slug) || seenId.has(p.id)) continue;
+    seenSlug.add(p.slug);
+    seenId.add(p.id);
+    out.push(p);
+  }
+  return out;
+})();
+
+export function getPrompt(slug: string): Prompt | undefined {
+  return PUBLISHED_PROMPTS.find((x) => x.slug === slug);
+}
+
+export function getPromptsByCategory(cat: PromptCategory): Prompt[] {
+  return PUBLISHED_PROMPTS.filter((x) => x.category === cat);
+}
+
+export function getRelatedPrompts(p: Prompt): Prompt[] {
+  return p.relatedSlugs
+    .map((s) => getPrompt(s))
+    .filter((x): x is Prompt => Boolean(x));
+}
+
 
