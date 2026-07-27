@@ -237,7 +237,7 @@ function PromptDetail() {
 
 
         {related.length > 0 && (
-          <Section title="相關提示詞">
+          <Section id="related" title="相關提示詞">
             <ul className="grid gap-3 md:grid-cols-2">
               {related.map((r) => (
                 <li key={r.slug}>
