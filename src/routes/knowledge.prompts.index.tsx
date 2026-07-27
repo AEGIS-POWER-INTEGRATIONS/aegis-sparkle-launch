@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import {
-  PROMPTS,
+  PUBLISHED_PROMPTS,
   PROMPT_CATEGORY_LABEL,
   PROMPT_DIFFICULTY_LABEL,
   PROMPT_AUDIENCE_LABEL,
@@ -80,7 +80,7 @@ function PromptsIndex() {
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
-    return PROMPTS.filter((p) => {
+    return PUBLISHED_PROMPTS.filter((p) => {
       if (cat !== "all" && p.category !== cat) return false;
       if (diff !== "all" && p.difficulty !== diff) return false;
       if (aud !== "all" && !p.industries.includes(aud)) return false;
@@ -143,7 +143,16 @@ function PromptsIndex() {
           </div>
 
           {filtered.length === 0 ? (
-            <p className="mt-10 text-muted-foreground">沒有符合條件的提示詞。試著調整關鍵字或篩選。</p>
+            <div className="mt-10 panel p-8">
+              <p className="text-foreground/85">
+                {PUBLISHED_PROMPTS.length === 0
+                  ? "提示詞庫正在整備中。目前所有提示詞皆處於內部審核（review）狀態，將於通過查核並補齊版本與官方來源後陸續公開。"
+                  : "沒有符合條件的提示詞。試著調整關鍵字或篩選。"}
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                如有特定情境需求，歡迎透過「聯絡我們」提出，我們會列入下一批釋出優先順序。
+              </p>
+            </div>
           ) : (
             <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((p) => (

@@ -10,6 +10,8 @@
  * without touching route files.
  */
 
+import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
+
 export type Bi = { zh: string; en: string };
 
 export type KnowledgeCategory = {
@@ -67,8 +69,10 @@ export type KnowledgeArticle = {
   title: Bi;
   excerpt: Bi;
   tags: KnowledgeTag[];
-  /** ISO date. */
+  /** ISO date. Required before an article can be `published`. */
   publishedAt: string;
+  /** ISO date of the last content update or fact-check. */
+  updatedAt?: string;
   /** Reading time in minutes. */
   readingMinutes: number;
   author?: Author;
@@ -76,13 +80,25 @@ export type KnowledgeArticle = {
   heroImage?: string;
   /** Table of contents; template renders it when article body is filled in. */
   toc?: TocEntry[];
-  /** Frequently-asked questions; renders JSON-LD when present. */
+  /** Frequently-asked questions; renders in-page. No FAQPage JSON-LD (by directive). */
   faq?: FaqItem[];
   /** Related service links; falls back to a default set per-category. */
   relatedServices?: { label: Bi; to: string }[];
-  /** Rendered HTML or markdown body — when omitted, article is treated as draft. */
+  /** Rendered HTML or markdown body — required before `published`. */
   body?: Bi;
-  /** Draft = never listed publicly, never in sitemap, noindex if visited directly. */
+  /** Real-world usage scenarios; required for `published`. */
+  scenarios?: Bi[];
+  /** Cautions / caveats; required for `published`. */
+  cautions?: Bi[];
+  /**
+   * Publish status. When omitted the article is treated as `draft` if the
+   * legacy `draft` flag is set, otherwise defaults to `review`.
+   *
+   * Only `published` articles appear in listings, related-content lookups,
+   * search and the sitemap. Direct visits to non-published slugs 404.
+   */
+  status?: PublishStatus;
+  /** @deprecated legacy flag — set `status: "draft"` instead. */
   draft?: boolean;
 };
 
@@ -277,16 +293,17 @@ export const ARTICLES: KnowledgeArticle[] = [
 // ── Lookups ────────────────────────────────────────────────────────
 
 /** Public article list — draft stubs are filtered out. */
-export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter((a) => !a.draft);
+/** Public article list — only records with status === "published". */
+export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter(isPublished);
 
 export function getCategory(slug: string): KnowledgeCategory | undefined {
   return CATEGORIES.find((c) => c.slug === slug);
 }
 
-/** Draft articles behave as not-found for public visitors. */
+/** Non-published articles behave as not-found for public visitors. */
 export function getArticle(categorySlug: string, articleSlug: string): KnowledgeArticle | undefined {
   const a = ARTICLES.find((x) => x.category === categorySlug && x.slug === articleSlug);
-  if (!a || a.draft) return undefined;
+  if (!a || !isPublished(a)) return undefined;
   return a;
 }
 
@@ -305,6 +322,32 @@ export function getRelatedArticles(article: KnowledgeArticle, limit = 4): Knowle
     })
     .sort((x, y) => y.score - x.score);
   return scored.slice(0, limit).map((x) => x.a);
+}
+
+/**
+ * Fields required before a knowledge article can be promoted to `published`.
+ * Missing fields do NOT auto-fill; the editor must supply real content.
+ */
+export const ARTICLE_REQUIRED_FIELDS = [
+  "slug",
+  "category",
+  "title",
+  "excerpt",
+  "publishedAt",
+  "body",
+  "toc",
+  "scenarios",
+  "cautions",
+  "faq",
+  "author",
+] as const;
+
+export function validateKnowledgeArticle(a: KnowledgeArticle): ValidationResult {
+  return validateFields(a as unknown as Record<string, unknown>, ARTICLE_REQUIRED_FIELDS);
+}
+
+export function getArticleStatus(a: KnowledgeArticle): PublishStatus {
+  return resolveStatus(a);
 }
 
 

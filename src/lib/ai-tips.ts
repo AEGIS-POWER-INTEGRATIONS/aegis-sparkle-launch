@@ -4,7 +4,14 @@
  * tool comparisons must be based on documented capabilities, not marketing
  * claims, and readers are reminded to verify prices and features against
  * each vendor's official documentation.
+ *
+ * Publish status: every record has a `status` (defaults to `review`).
+ * Only `published` tips are listed publicly and 404 otherwise. Tips that
+ * mention fast-moving AI tools also require `lastVerifiedAt`,
+ * `applicableVersion` and `sourceUrls` before promotion.
  */
+
+import { isPublished, resolveStatus, validateFields, type PublishStatus, type ValidationResult } from "./publish-status";
 
 export type AiTipCategory =
   | "ai-basics"
@@ -40,7 +47,7 @@ export const AI_TIP_AUDIENCE_LABEL: Record<AiTipAudience, string> = {
 
 export type AiTipSection = {
   heading: string;
-  content: string; // markdown-lite (plain paragraphs, we render as pre-wrapped text)
+  content: string;
 };
 
 export type AiTip = {
@@ -62,6 +69,13 @@ export type AiTip = {
   relatedArticleSlugs: string[];
   seoTitle: string;
   seoDescription: string;
+  /** Publish state — defaults to `review` for existing records. */
+  status?: PublishStatus;
+  /** Required for tool-specific tips before promotion to `published`. */
+  lastVerifiedAt?: string;
+  applicableVersion?: string;
+  sourceUrls?: { label: string; url: string }[];
+  versionNote?: string;
 };
 
 function t(a: AiTip): AiTip {
@@ -482,12 +496,17 @@ export const AI_TIPS: AiTip[] = [
   }),
 ];
 
+/** Public list — only records explicitly marked `status: "published"`. */
+export const PUBLISHED_AI_TIPS: AiTip[] = AI_TIPS.filter(isPublished);
+
 export function getAiTip(slug: string): AiTip | undefined {
-  return AI_TIPS.find((t) => t.slug === slug);
+  const a = AI_TIPS.find((t) => t.slug === slug);
+  if (!a || !isPublished(a)) return undefined;
+  return a;
 }
 
 export function getAiTipsByCategory(cat: AiTipCategory): AiTip[] {
-  return AI_TIPS.filter((t) => t.category === cat);
+  return PUBLISHED_AI_TIPS.filter((t) => t.category === cat);
 }
 
 export function getRelatedAiTips(t: AiTip): AiTip[] {
@@ -495,3 +514,41 @@ export function getRelatedAiTips(t: AiTip): AiTip[] {
     .map((s) => getAiTip(s))
     .filter((x): x is AiTip => Boolean(x));
 }
+
+export function getAiTipStatus(t: AiTip): PublishStatus {
+  return resolveStatus(t);
+}
+
+/** Baseline required fields; tool-specific tips add three more (see below). */
+export const AI_TIP_REQUIRED_FIELDS = [
+  "id",
+  "slug",
+  "title",
+  "summary",
+  "category",
+  "audience",
+  "updatedAt",
+  "learningPoints",
+  "sections",
+  "examples",
+  "cautions",
+  "seoTitle",
+  "seoDescription",
+] as const;
+
+const TOOL_SENSITIVE = /(chatgpt|codex|lovable|claude|gemini|copilot|cursor)/i;
+
+export function validateAiTip(a: AiTip): ValidationResult {
+  const base = validateFields(a as unknown as Record<string, unknown>, AI_TIP_REQUIRED_FIELDS);
+  const haystack = `${a.title} ${a.summary} ${a.tags.join(" ")}`;
+  if (TOOL_SENSITIVE.test(haystack)) {
+    const extra = validateFields(a as unknown as Record<string, unknown>, [
+      "lastVerifiedAt",
+      "applicableVersion",
+      "sourceUrls",
+    ]);
+    return { ok: base.ok && extra.ok, missing: [...base.missing, ...extra.missing] };
+  }
+  return base;
+}
+
