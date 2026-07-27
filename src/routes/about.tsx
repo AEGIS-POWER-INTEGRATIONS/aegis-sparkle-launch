@@ -131,6 +131,54 @@ function About() {
           </div>
         </section>
 
+        {/* Why we started */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="max-w-3xl">
+              <span className="eyebrow"><span className="dot" /> <L zh="為什麼成立宏鼎集成" en="Why We Started AEGIS" /></span>
+              <h2 className="mt-4 text-3xl md:text-4xl">
+                <L
+                  zh="因為工程現場與企業 AI 導入，中間長期缺一座橋"
+                  en="Because the field and enterprise AI have long lacked a bridge in between"
+                />
+              </h2>
+            </div>
+            <div className="mt-8 grid gap-6 md:grid-cols-2 max-w-5xl">
+              {[
+                {
+                  title: { zh: "為什麼成立宏鼎集成", en: "Why we exist" },
+                  body: { zh: "長期參與資料中心、光纖弱電與工程專案後，我們看見同樣的問題不斷重演：現場執行力強，卻無法在報價、成本、資料與管理系統上得到相對的支持。宏鼎集成成立的目的，就是把工程執行力與企業數位化能力真正接在一起。", en: "After years in data-center, fiber, ELV and engineering projects, we kept seeing the same pattern: strong field execution let down by weak estimating, cost, data and management systems. AEGIS exists to connect field execution with real enterprise digital capability." },
+                },
+                {
+                  title: { zh: "為什麼把工程與 AI 顧問結合", en: "Why we combine engineering with AI advisory" },
+                  body: { zh: "工程專案的複雜度、變更頻率與資料量，正好是 AI 與自動化最能發揮效益的地方。我們用工程人的角度看 AI，避免過度承諾與「換系統就好」的迷思，讓 AI 成為現場與辦公室之間的加速器。", en: "The complexity, change frequency and data volume of engineering projects is exactly where AI and automation pay off most. We look at AI through an engineer's lens — no over-promising, no 'just replace the system' myth — and use it as an accelerator between field and back office." },
+                },
+                {
+                  title: { zh: "我們如何協助客戶", en: "How we help clients" },
+                  body: { zh: "先聽現場、再談系統。我們以流程訪談與健檢作為起點，提出可分階段執行的建議，並在 PoC 與導入陪跑中與客戶團隊一起調整，而不是丟一份規格書就結案。", en: "Listen to the field first, then talk systems. We start with interviews and diagnostics, deliver a phased recommendation, and iterate with your team through PoC and adoption — never a hand-off spec doc." },
+                },
+                {
+                  title: { zh: "團隊重視的執行原則", en: "Principles the team lives by" },
+                  body: { zh: "務實而不誇大；只承諾能落地的範圍。保守使用客戶資料，未經授權不對外揭露專案名稱、Logo 或現場影像。工程與顧問一致遵守保密協議與資訊安全要求。", en: "Pragmatic, never over-claiming — we commit only to what we can deliver. We treat client data conservatively and never publish names, logos or on-site footage without permission. Both engineering and advisory work observe NDAs and information-security requirements." },
+                },
+                {
+                  title: { zh: "合作方式與服務精神", en: "How we engage" },
+                  body: { zh: "採諮詢報價制，不以未訪談前的固定價格取代需求評估。每一段合作都會產出明確可衡量的階段性成果，也保留客戶隨時中止的彈性。", en: "Every engagement is quote-based — we never replace needs assessment with a pre-interview fixed price. Each phase produces clear, measurable outputs, and clients keep the flexibility to pause at any stage." },
+                },
+              ].map((b) => (
+                <div key={b.title.en} className="panel p-6">
+                  <h3 className="text-lg font-semibold">
+                    <L zh={b.title.zh} en={b.title.en} />
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    <L zh={b.body.zh} en={b.body.en} />
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Positioning */}
         <section className="pb-20">
           <div className="container-x">
