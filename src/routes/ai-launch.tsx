@@ -8,6 +8,7 @@ import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 export const Route = createFileRoute("/ai-launch")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Aegis AI Launch｜企業 AI 導入與流程自動化服務" },
       { name: "description", content: "協助台灣中小企業與製造業完成流程診斷、AI 助理設計、資料整理與員工訓練，讓 AI 真正落地日常營運。" },
       { name: "keywords", content: "企業 AI 導入, 流程自動化, AI 顧問, AI 助理設計, 中小企業 AI, Aegis AI Launch" },
