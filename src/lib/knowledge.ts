@@ -299,9 +299,7 @@ export const ARTICLES: KnowledgeArticle[] = [
 
 // ── Lookups ────────────────────────────────────────────────────────
 
-/** Public article list — draft stubs are filtered out. */
-/** Public article list — only records with status === "published". */
-export const PUBLISHED_ARTICLES: KnowledgeArticle[] = ARTICLES.filter(isPublished);
+
 
 /**
  * Fields required before a knowledge article can be promoted to `published`.
