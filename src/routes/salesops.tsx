@@ -8,6 +8,7 @@ import { OG_IMAGE, SITE_URL } from "@/lib/seo";
 export const Route = createFileRoute("/salesops")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "Aegis SalesOps｜AI 業務管理與週報系統" },
       { name: "description", content: "整合客戶拜訪、LINE 回報、語音日誌、CRM、主管週報與客戶進度追蹤，讓中小企業與工程公司的業務管理更即時、更透明。" },
       { name: "keywords", content: "CRM, 業務管理系統, AI 週報, 業務日報, LINE 業務回報, 中小企業 CRM, Aegis SalesOps" },
