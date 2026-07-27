@@ -40,9 +40,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/ai-integration", changefreq: "monthly", priority: "0.9" },
           { path: "/industries", changefreq: "monthly", priority: "0.9" },
           { path: "/insights", changefreq: "weekly", priority: "0.8" },
-          { path: "/knowledge", changefreq: "weekly", priority: "0.9" },
-          { path: "/knowledge/prompts", changefreq: "weekly", priority: "0.8" },
-          { path: "/knowledge/ai-tips", changefreq: "weekly", priority: "0.8" },
           { path: "/about", changefreq: "monthly", priority: "0.7" },
           { path: "/company-profile", changefreq: "monthly", priority: "0.7" },
           { path: "/pricing", changefreq: "monthly", priority: "0.7" },
@@ -50,6 +47,23 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms", changefreq: "yearly", priority: "0.3" },
         ];
+
+        // Knowledge Hubs — only listed when they have at least one live entry.
+        // A hub with 0 published items renders as noindex,follow and is
+        // therefore excluded from the sitemap (fail-closed).
+        const hasAnyKnowledge =
+          PUBLISHED_ARTICLES.length > 0 ||
+          PUBLISHED_PROMPTS.length > 0 ||
+          PUBLISHED_AI_TIPS.length > 0;
+        if (hasAnyKnowledge) {
+          staticEntries.push({ path: "/knowledge", changefreq: "weekly", priority: "0.9" });
+        }
+        if (PUBLISHED_PROMPTS.length > 0) {
+          staticEntries.push({ path: "/knowledge/prompts", changefreq: "weekly", priority: "0.8" });
+        }
+        if (PUBLISHED_AI_TIPS.length > 0) {
+          staticEntries.push({ path: "/knowledge/ai-tips", changefreq: "weekly", priority: "0.8" });
+        }
 
         const industryEntries: SitemapEntry[] = INDUSTRIES.map((i) => ({
           path: `/industries/${i.slug}`,
