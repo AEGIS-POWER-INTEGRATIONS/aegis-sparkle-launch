@@ -13,10 +13,10 @@ import { L, useLang, useT } from "@/lib/i18n";
 export const Route = createFileRoute("/engineering")({
   head: () => ({
     meta: [
-      { title: "工程集成服務｜AEGIS POWER INTEGRATIONS｜Engineering Services" },
-      { name: "description", content: "提供弱電與網路工程、光纖建置、資料中心基礎工程支援、監控與門禁系統與廠區資訊系統整合，服務台灣工程公司、製造業與科技廠供應鏈。Structured cabling, fiber, data center engineering, surveillance and facility integration." },
-      { property: "og:title", content: "Engineering Services | AEGIS POWER INTEGRATIONS" },
-      { property: "og:description", content: "Engineering integration, ELV, fiber, data center support and facility system integration." },
+      { title: "資料中心光纖工程與弱電整合｜宏鼎集成" },
+      { name: "description", content: "宏鼎集成提供台灣資料中心工程服務：結構化佈線、光纖骨幹、弱電工程整合、監控門禁與工程進度管理，結合每日回報與 EPC 成本管理，協助資料中心、製造業廠區與商業建築穩健導入。" },
+      { property: "og:title", content: "資料中心光纖工程與弱電整合｜宏鼎集成" },
+      { property: "og:description", content: "台灣資料中心工程服務、結構化佈線、光纖骨幹、弱電整合、工程進度與每日回報、EPC 成本管理。" },
       { property: "og:url", content: `${SITE_URL}/engineering` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
