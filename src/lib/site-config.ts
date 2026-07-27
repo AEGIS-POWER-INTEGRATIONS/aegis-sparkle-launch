@@ -9,6 +9,10 @@ export const SITE = {
     zh: "宏鼎集成股份有限公司",
     en: "Aegis Power Integrations Co., Ltd.",
   },
+  brandName: {
+    zh: "宏鼎集成",
+    en: "AEGIS POWER INTEGRATIONS",
+  },
   domain: "https://aegispowerapi.com",
   address: {
     zh: "台中市西區台灣大道二段2號20樓",
@@ -30,17 +34,69 @@ export const SITE = {
     en: "We aim to reply within 1–2 business days.",
   },
   copyrightYear: 2026,
-  /** Short positioning line used in footer and meta. */
   positioning: {
     zh: "以工程實務為核心，整合企業流程、AI 應用與產業資源，協助企業穩健完成營運升級。",
     en: "Engineering-led industry integration: process, AI adoption and long-term partnership that helps enterprises deliver operational upgrades that stick.",
   },
-  /** Extended core brand narrative used on home + about. */
   narrative: {
     zh: "宏鼎集成是一家以工程實務為基礎的產業整合服務公司，結合工程執行、企業流程顧問、AI 工具整合與導入陪跑，協助企業從現場問題出發，逐步建立更有效率、更透明、更具決策能力的營運方式。",
     en: "AEGIS POWER INTEGRATIONS is an engineering-led industry integration firm. We combine field execution, enterprise process consulting, AI tooling integration and long-term adoption support to help companies build more efficient, transparent and decision-ready operations.",
   },
 } as const;
+
+type ProfileBi = { zh: string; en: string };
+
+/**
+ * Formal company profile fields. Values marked `null` render as
+ * "資料待公司確認" — never invent them client-side.
+ */
+export const COMPANY_PROFILE: {
+  legalNameZh: string;
+  legalNameEn: string;
+  taxId: string | null;
+  founded: string | null;
+  responsiblePerson: ProfileBi;
+  address: ProfileBi;
+  phone: string;
+  emails: { general: string; sales: string };
+  website: string;
+  serviceArea: ProfileBi;
+  services: ProfileBi[];
+  insurance: ProfileBi[] | null;
+  certifications: ProfileBi[] | null;
+  partnerships: ProfileBi[] | null;
+} = {
+  legalNameZh: "宏鼎集成股份有限公司",
+  legalNameEn: "Aegis Power Integrations Co., Ltd.",
+  taxId: null,
+  founded: null,
+  responsiblePerson: { zh: "田家駿", en: "Johnny Tian" },
+  address: {
+    zh: "台中市西區台灣大道二段2號20樓",
+    en: "20F., No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan",
+  },
+  phone: "+886-955-104351",
+  emails: {
+    general: "jtian@aegispowerapi.com",
+    sales: "sales@aegispowerapi.com",
+  },
+  website: "https://aegispowerapi.com",
+  serviceArea: {
+    zh: "台灣全境（以北中南三大都會為主），並支援跨區域專案與海外供應鏈整合。",
+    en: "Nationwide Taiwan (primarily Taipei, Taichung, Kaohsiung metros); cross-region and overseas supply-chain projects on request.",
+  },
+  services: [
+    { zh: "工程整合服務（資料中心、弱電、光纖、機電）", en: "Engineering integration (data center, ELV, fiber, MEP)" },
+    { zh: "工程專案管理與現場協調", en: "Engineering project management & site coordination" },
+    { zh: "企業 AI 顧問與流程健檢", en: "Enterprise AI advisory & process diagnostic" },
+    { zh: "AI 工具選型、PoC 導入與陪跑", en: "AI tool selection, PoC and adoption coaching" },
+    { zh: "企業內訓與 AI 教育訓練", en: "Enterprise training & AI workshops" },
+    { zh: "政府補助計畫輔導", en: "Government grant program advisory" },
+  ],
+  insurance: null,
+  certifications: null,
+  partnerships: null,
+};
 
 /**
  * Approved anonymized project descriptors for public-facing pages.
