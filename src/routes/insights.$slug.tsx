@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import { Breadcrumbs, breadcrumbJsonLd } from "@/components/breadcrumbs";
 import { INSIGHTS, CATEGORY_LABEL, getInsight, type Insight } from "@/lib/insights";
 import { L, useLang } from "@/lib/i18n";
 import { SITE_URL, OG_IMAGE } from "@/lib/seo";
