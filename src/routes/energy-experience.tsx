@@ -73,7 +73,10 @@ function Gallery({ title, desc, items }: { title: string; desc: string; items: I
                 <img
                   src={it.src}
                   alt={it.alt}
+                  width={800}
+                  height={600}
                   loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
