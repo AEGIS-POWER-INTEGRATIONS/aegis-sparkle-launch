@@ -143,7 +143,7 @@ function Engineering() {
             ].map((it) => (
               <figure key={it.label.en} className="panel overflow-hidden">
                 <div className="relative aspect-[4/3] bg-ink overflow-hidden">
-                  <img src={it.src} alt={tr(it.alt)} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+                  <img src={it.src} alt={tr(it.alt)} width={800} height={600} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
                 </div>
                 <figcaption className="p-5 text-sm font-semibold">{tr(it.label)}</figcaption>
