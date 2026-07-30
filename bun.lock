@@ -92,6 +92,10 @@
       },
     },
   },
+  "overrides": {
+    "seroval": "^1.5.6",
+    "seroval-plugins": "^1.5.6",
+  },
   "packages": {
     "@adobe/css-tools": ["@adobe/css-tools@4.5.0", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/@adobe/css-tools/-/css-tools-4.5.0.tgz", {}, "sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q=="],
 
@@ -1237,9 +1241,9 @@
 
     "semver": ["semver@7.7.4", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA=="],
 
-    "seroval": ["seroval@1.5.2", "", {}, "sha512-xcRN39BdsnO9Tf+VzsE7b3JyTJASItIV1FVFewJKCFcW4s4haIKS3e6vj8PGB9qBwC7tnuOywQMdv5N4qkzi7Q=="],
+    "seroval": ["seroval@1.5.6", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/seroval/-/seroval-1.5.6.tgz", {}, "sha512-rVQVWjjSvlINzaQPZH5JFqsqEsIWdTxY3iJZCnTL/5gQbXIRooVZKI60tVCkOVfzcRPejboxO2t0P89dg5mQaA=="],
 
-    "seroval-plugins": ["seroval-plugins@1.5.2", "", { "peerDependencies": { "seroval": "^1.0" } }, "sha512-qpY0Cl+fKYFn4GOf3cMiq6l72CpuVaawb6ILjubOQ+diJ54LfOWaSSPsaswN8DRPIPW4Yq+tE1k5aKd7ILyaFg=="],
+    "seroval-plugins": ["seroval-plugins@1.5.6", "https://europe-west4-npm.pkg.dev/lovable-core-prod/sandbox-npm-cache/seroval-plugins/-/seroval-plugins-1.5.6.tgz", { "peerDependencies": { "seroval": "^1.0" } }, "sha512-HXuLAX2pu/UByPpaeo/TaMfvMIi+1QqIoPJYCcAtU8QkVNwgR6MPlGuCQTErV1JwraaMbYaWVIBX7mppzGLATQ=="],
 
     "shebang-command": ["shebang-command@2.0.0", "", { "dependencies": { "shebang-regex": "^3.0.0" } }, "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA=="],
 
