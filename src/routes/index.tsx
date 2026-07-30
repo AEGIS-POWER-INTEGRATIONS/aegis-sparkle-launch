@@ -103,7 +103,7 @@ const industries: Card[] = [
 
 
 const engineeringServices: Card[] = [
-  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A / Cat 8 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
+  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
   { icon: Waypoints, en: "Fiber Optic Installation", zh: "光纖建置", desc: { zh: "單模／多模光纖佈設、熔接與測試，涵蓋園區與跨建物骨幹。", en: "Single-mode / multi-mode fiber deployment, splicing and testing across campus backbones." } },
   { icon: Zap, en: "Electrical Integration", zh: "電氣整合", desc: { zh: "配電、UPS、機櫃供電、接地與電力品質整合。", en: "Power distribution, UPS, rack power, grounding and power quality integration." } },
   { icon: Wrench, en: "Mechanical Coordination", zh: "機電協調", desc: { zh: "空調、消防、機電與工地介面協調，確保多專業同步交付。", en: "HVAC, fire, MEP and site interface coordination for synchronized delivery." } },
