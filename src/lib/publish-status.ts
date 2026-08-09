@@ -104,6 +104,8 @@ export type PublishableCheck<T> = {
   dateFields?: readonly string[];
   /** Which field to check as URL-safe slug. */
   slugField?: string;
+  /** Status assumed when the record has no explicit `status`. */
+  defaultStatus?: PublishStatus;
 };
 
 export type PublishableError = {
