@@ -23,18 +23,29 @@ export type PublishStatus = "draft" | "review" | "published";
 
 export const DEFAULT_STATUS: PublishStatus = "review";
 
-export function resolveStatus(input: {
-  status?: PublishStatus;
-  /** Legacy flag on knowledge articles. */
-  draft?: boolean;
-}): PublishStatus {
+export function resolveStatus(
+  input: {
+    status?: PublishStatus;
+    /** Legacy flag on knowledge articles. */
+    draft?: boolean;
+  },
+  /**
+   * Fallback when the record carries no explicit status. Collections whose
+   * records are all fully authored (prompts, AI tips) pass "published";
+   * knowledge article stubs keep the conservative default.
+   */
+  fallback: PublishStatus = DEFAULT_STATUS,
+): PublishStatus {
   if (input.status) return input.status;
   if (input.draft) return "draft";
-  return DEFAULT_STATUS;
+  return fallback;
 }
 
-export function isPublished(input: { status?: PublishStatus; draft?: boolean }): boolean {
-  return resolveStatus(input) === "published";
+export function isPublished(
+  input: { status?: PublishStatus; draft?: boolean },
+  fallback: PublishStatus = DEFAULT_STATUS,
+): boolean {
+  return resolveStatus(input, fallback) === "published";
 }
 
 export type ValidationResult = {
