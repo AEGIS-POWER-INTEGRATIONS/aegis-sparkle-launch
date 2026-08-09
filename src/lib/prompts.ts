@@ -1397,6 +1397,7 @@ export function promptBlockers(p: Prompt) {
     validate: () => validatePromptRecord(p),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 
@@ -1406,6 +1407,7 @@ function isPromptPublishable(p: Prompt): boolean {
     validate: () => validatePromptRecord(p),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 

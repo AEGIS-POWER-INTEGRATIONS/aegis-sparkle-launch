@@ -546,6 +546,7 @@ export function aiTipBlockers(t: AiTip) {
     validate: () => validateAiTip(t),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 
@@ -555,6 +556,7 @@ function isAiTipPublishable(t: AiTip): boolean {
     validate: () => validateAiTip(t),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 

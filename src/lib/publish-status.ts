@@ -124,7 +124,7 @@ export function publishBlockers<T extends Record<string, unknown>>(
 ): PublishableError[] {
   const errs: PublishableError[] = [];
   const r = args.record;
-  if (!isPublished(r as { status?: PublishStatus; draft?: boolean })) {
+  if (!isPublished(r as { status?: PublishStatus; draft?: boolean }, args.defaultStatus)) {
     errs.push({ kind: "not-published" });
     return errs; // no need to run other checks
   }
