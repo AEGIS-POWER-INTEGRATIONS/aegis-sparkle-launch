@@ -20,12 +20,13 @@ function collect<T extends { slug?: string; id?: string; status?: string }>(
   kind: string,
   arr: readonly T[],
   fn: (r: T) => PublishableError[],
+  defaultStatus: "published" | undefined = undefined,
 ): Issue[] {
   const issues: Issue[] = [];
   const seen = new Map<string, number>();
   const seenId = new Map<string, number>();
   for (const r of arr) {
-    if (!isPublished(r as { status?: "published" })) continue;
+    if (!isPublished(r as { status?: "published" }, defaultStatus)) continue;
     const errs = fn(r);
     if (errs.length > 0) {
       issues.push({ kind, slug: r.slug ?? r.id ?? "(no id)", errors: errs });
@@ -78,14 +79,14 @@ function printIssues(issues: Issue[]) {
 }
 
 const articleIssues = collect("article", ARTICLES, articleBlockers);
-const promptIssues = collect("prompt", PROMPTS, promptBlockers);
-const tipIssues = collect("ai-tip", AI_TIPS, aiTipBlockers);
+const promptIssues = collect("prompt", PROMPTS, promptBlockers, "published");
+const tipIssues = collect("ai-tip", AI_TIPS, aiTipBlockers, "published");
 
 const all = [...articleIssues, ...promptIssues, ...tipIssues];
 
 const publishedArticleCount = ARTICLES.filter((a) => isPublished(a)).length;
-const publishedPromptCount = PROMPTS.filter((p) => isPublished(p)).length;
-const publishedTipCount = AI_TIPS.filter((t) => isPublished(t)).length;
+const publishedPromptCount = PROMPTS.filter((p) => isPublished(p, "published")).length;
+const publishedTipCount = AI_TIPS.filter((t) => isPublished(t, "published")).length;
 
 console.log(
   `content:check — articles: ${ARTICLES.length} total / ${publishedArticleCount} published`,

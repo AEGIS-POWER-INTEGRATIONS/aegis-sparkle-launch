@@ -196,6 +196,8 @@ export const AI_TIPS: AiTip[] = [
   t({
     id: "t3",
     slug: "how-to-brief-company-context",
+    // Tool-version-sensitive: awaiting lastVerifiedAt / applicableVersion / sourceUrls.
+    status: "review",
     title: "如何讓 ChatGPT 了解公司的背景與需求？",
     summary: "建立一份可重複使用的『公司簡介卡』，讓每次對話都能快速對齊背景。",
     category: "ai-basics",
@@ -433,6 +435,8 @@ export const AI_TIPS: AiTip[] = [
   t({
     id: "t11",
     slug: "chatgpt-codex-lovable",
+    // Tool-version-sensitive: awaiting lastVerifiedAt / applicableVersion / sourceUrls.
+    status: "review",
     title: "ChatGPT、Codex 與 Lovable 分別適合做什麼？",
     summary: "以工作任務類型比較三類工具的定位，功能與定價請以官方最新資訊為準。",
     category: "advanced",
@@ -546,6 +550,7 @@ export function aiTipBlockers(t: AiTip) {
     validate: () => validateAiTip(t),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 
@@ -555,6 +560,7 @@ function isAiTipPublishable(t: AiTip): boolean {
     validate: () => validateAiTip(t),
     dateFields: ["updatedAt", "lastVerifiedAt"],
     slugField: "slug",
+    defaultStatus: "published",
   });
 }
 
