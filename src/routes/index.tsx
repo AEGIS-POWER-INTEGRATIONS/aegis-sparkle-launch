@@ -243,8 +243,8 @@ function Home() {
           <div className="container-x">
             <SectionHeader
               eyebrow="Engineering · Core Service"
-              titleZh="工程集成服務（主力業務）"
-              titleEn="Engineering Integration (Flagship)"
+              titleZh="工程集成服務"
+              titleEn="Engineering Integration"
               descZh="工程整合與專案執行是宏鼎集成的核心業務，涵蓋弱電、光纖、資料中心、機電協調、監控門禁與廠區資訊整合，從現場勘查、規劃、施工到驗收與後續維運全程負責。"
               descEn="Engineering integration and project execution are our core business — from ELV, fiber, data centers and MEP coordination to surveillance, access control and facility integration, delivered end-to-end from site survey to acceptance and operations."
             />
