@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { ChevronDown, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
-import markAsset from "@/assets/api-mark.png.asset.json";
 import { L } from "@/lib/i18n";
 import { PRIMARY_CTA, PRIMARY_NAV, SITE, type NavItem } from "@/lib/site-config";
 
