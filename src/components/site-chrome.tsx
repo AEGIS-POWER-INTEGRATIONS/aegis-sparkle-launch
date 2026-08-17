@@ -254,7 +254,7 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
-          className="xl:hidden border-t border-border/60 bg-background/98 backdrop-blur max-h-[calc(100vh-84px)] overflow-y-auto"
+          className="lg:hidden border-t border-border/60 bg-background/98 backdrop-blur max-h-[calc(100vh-84px)] overflow-y-auto"
         >
           <div className="container-x py-3">
             <nav className="flex flex-col">
