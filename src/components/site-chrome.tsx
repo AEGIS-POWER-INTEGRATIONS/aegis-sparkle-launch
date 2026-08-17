@@ -225,14 +225,14 @@ export function SiteNav() {
       <div className="container-x flex h-[84px] md:h-[88px] items-center justify-between gap-4">
         <Brand />
 
-        <nav className="hidden items-center gap-7 text-sm font-medium xl:flex">
+        <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {PRIMARY_NAV.map((n) => (
             <NavItemDesktop key={n.to} item={n} />
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden xl:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <LangSwitcher />
             <Link to={PRIMARY_CTA.to} className="btn btn-primary">
               <L zh={PRIMARY_CTA.zh} en={PRIMARY_CTA.en} />
@@ -240,7 +240,7 @@ export function SiteNav() {
           </div>
           <button
             type="button"
-            className="xl:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
+            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md border border-border/70 text-foreground hover:bg-surface/60 transition-colors"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -254,7 +254,7 @@ export function SiteNav() {
       {open && (
         <div
           id="mobile-nav"
-          className="xl:hidden border-t border-border/60 bg-background/98 backdrop-blur max-h-[calc(100vh-84px)] overflow-y-auto"
+          className="lg:hidden border-t border-border/60 bg-background/98 backdrop-blur max-h-[calc(100vh-84px)] overflow-y-auto"
         >
           <div className="container-x py-3">
             <nav className="flex flex-col">
