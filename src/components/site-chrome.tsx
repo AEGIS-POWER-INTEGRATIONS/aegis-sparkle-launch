@@ -211,7 +211,7 @@ export function SiteNav() {
 
         <nav
           aria-label="主要導覽"
-          className="flex min-w-0 items-center gap-4 overflow-x-auto whitespace-nowrap text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6"
+          className="flex min-w-0 items-center gap-4 overflow-x-auto overscroll-x-contain whitespace-nowrap text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6"
         >
           {PRIMARY_NAV.map((n) => (
             <NavItemDesktop key={n.to} item={n} />
