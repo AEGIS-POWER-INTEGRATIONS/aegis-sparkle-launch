@@ -123,7 +123,12 @@
     font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent whole-page horizontal drift on narrow screens.
+       `clip` keeps position: sticky working (unlike `hidden`). */
+    overflow-x: clip;
+    max-width: 100%;
   }
+
 
   body {
     background-color: var(--color-background);
