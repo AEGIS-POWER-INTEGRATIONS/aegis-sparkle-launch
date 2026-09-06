@@ -222,7 +222,7 @@ function KnowledgeIndex() {
                   分享生成式 AI、辦公應用、企業管理、網站系統與資訊安全等實務使用方法，適合企業內部培訓與流程建立。
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  查看使用技巧 <ArrowRight className="h-4 w-4" />
+                  查看使用技巧（{PUBLISHED_AI_TIPS.length}） <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
             </div>
