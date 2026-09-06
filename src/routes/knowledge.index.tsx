@@ -134,8 +134,8 @@ function KnowledgeIndex() {
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl leading-relaxed">
             <L
-              zh="AEGIS POWER INTEGRATIONS 知識中心涵蓋 AI 導入、工程管理、製造業數位轉型、資料中心工程、匿名情境案例與產業解決方案。"
-              en="The AEGIS POWER INTEGRATIONS Knowledge Center covers AI integration, engineering management, manufacturing transformation, data center engineering, anonymized scenarios and industry solutions."
+              zh="目前公開內容包含企業 AI 提示詞庫與 AI 使用技巧；長篇專題文章仍在撰寫中，完成後會陸續發布。"
+              en="Currently published: the enterprise AI prompt library and AI usage tips. Long-form articles are still being written and will be published as they are completed."
             />
           </p>
 
@@ -207,7 +207,7 @@ function KnowledgeIndex() {
                   提供網站建置、系統規劃與企業管理等可直接使用的實務提示詞，含變數說明、使用步驟與注意事項。
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  探索提示詞 <ArrowRight className="h-4 w-4" />
+                  探索提示詞（{PUBLISHED_PROMPTS.length}） <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
               <Link
