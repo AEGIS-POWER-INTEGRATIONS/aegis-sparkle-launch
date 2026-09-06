@@ -373,7 +373,8 @@ export function Home() {
 
 
         {/* Business Applications */}
-        <section className="py-20 md:py-24">
+        <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
+
           <div className="container-x">
             <SectionHeader
               eyebrow="AI Application Modules · PoC"
