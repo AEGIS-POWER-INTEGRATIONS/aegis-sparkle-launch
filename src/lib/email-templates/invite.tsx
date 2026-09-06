@@ -21,13 +21,10 @@ interface InviteEmailProps {
   confirmationUrl: string
 }
 
-export const InviteEmail = ({
-  siteUrl,
-  confirmationUrl,
-}: InviteEmailProps) => (
+export const InviteEmail = ({ confirmationUrl }: InviteEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>You've been invited to join {BRAND.name}</Preview>
+    <Preview>You've been invited to {BRAND.name}</Preview>
     <Body style={styles.main}>
       <Container style={styles.container}>
         <Img src={BRAND.logoUrl} alt={BRAND.name} style={styles.logo} />
@@ -37,12 +34,8 @@ export const InviteEmail = ({
         </div>
         <Heading style={styles.h1}>You've been invited</Heading>
         <Text style={styles.text}>
-          You've been invited to join{' '}
-          <Link href={siteUrl} style={styles.link}>
-            <strong>{BRAND.name}</strong>
-          </Link>
-          . Click the button below to accept the invitation and create your
-          account.
+          You have been invited to join {BRAND.name}. Click the button below to
+          accept the invitation.
         </Text>
         <Button style={styles.button} href={confirmationUrl}>
           Accept Invitation

@@ -20,9 +20,7 @@ interface MagicLinkEmailProps {
   confirmationUrl: string
 }
 
-export const MagicLinkEmail = ({
-  confirmationUrl,
-}: MagicLinkEmailProps) => (
+export const MagicLinkEmail = ({ confirmationUrl }: MagicLinkEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>Your login link for {BRAND.name}</Preview>

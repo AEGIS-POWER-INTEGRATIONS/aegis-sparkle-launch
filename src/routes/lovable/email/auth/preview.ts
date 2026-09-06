@@ -18,7 +18,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "AEGIS POWER INTEGRATIONS"
+const SITE_NAME = "Aegis Launchpad"
 const ROOT_DOMAIN = "aegispowerapi.com"
 
 // Sample data for preview mode ONLY (not used in actual email sending).
@@ -64,7 +64,7 @@ export const Route = createFileRoute("/lovable/email/auth/preview")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const apiKey = process.env.LOVABLE_API_KEY
+        const apiKey = process.env['LOVABLE_API_KEY']
 
         if (!apiKey) {
           return Response.json(

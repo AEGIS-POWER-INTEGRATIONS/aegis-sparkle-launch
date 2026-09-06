@@ -72,7 +72,7 @@ import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest
 import { Route as EnKnowledgePromptsIndexRouteImport } from './routes/en.knowledge.prompts.index'
 import { Route as EnKnowledgeAiTipsIndexRouteImport } from './routes/en.knowledge.ai-tips.index'
 import { Route as EnKnowledgeCategoryIndexRouteImport } from './routes/en.knowledge.$category.index'
-import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 import { Route as EnKnowledgePromptsSlugRouteImport } from './routes/en.knowledge.prompts.$slug'
@@ -395,10 +395,10 @@ const EnKnowledgeCategoryIndexRoute =
     path: '/$category/',
     getParentRoute: () => EnKnowledgeRoute,
   } as any)
-const LovableEmailQueueProcessRoute =
-  LovableEmailQueueProcessRouteImport.update({
-    id: '/lovable/email/queue/process',
-    path: '/lovable/email/queue/process',
+const LovableEmailTransactionalPreviewRoute =
+  LovableEmailTransactionalPreviewRouteImport.update({
+    id: '/lovable/email/transactional/preview',
+    path: '/lovable/email/transactional/preview',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
@@ -493,7 +493,7 @@ export interface FileRoutesByFullPath {
   '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
   '/en/knowledge/$category/': typeof EnKnowledgeCategoryIndexRoute
   '/en/knowledge/ai-tips/': typeof EnKnowledgeAiTipsIndexRoute
   '/en/knowledge/prompts/': typeof EnKnowledgePromptsIndexRoute
@@ -556,7 +556,7 @@ export interface FileRoutesByTo {
   '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
   '/en/knowledge/$category': typeof EnKnowledgeCategoryIndexRoute
   '/en/knowledge/ai-tips': typeof EnKnowledgeAiTipsIndexRoute
   '/en/knowledge/prompts': typeof EnKnowledgePromptsIndexRoute
@@ -628,7 +628,7 @@ export interface FileRoutesById {
   '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
-  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
   '/en/knowledge/$category/': typeof EnKnowledgeCategoryIndexRoute
   '/en/knowledge/ai-tips/': typeof EnKnowledgeAiTipsIndexRoute
   '/en/knowledge/prompts/': typeof EnKnowledgePromptsIndexRoute
@@ -701,7 +701,7 @@ export interface FileRouteTypes {
     | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
-    | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
     | '/en/knowledge/$category/'
     | '/en/knowledge/ai-tips/'
     | '/en/knowledge/prompts/'
@@ -764,7 +764,7 @@ export interface FileRouteTypes {
     | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
-    | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
     | '/en/knowledge/$category'
     | '/en/knowledge/ai-tips'
     | '/en/knowledge/prompts'
@@ -835,7 +835,7 @@ export interface FileRouteTypes {
     | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
-    | '/lovable/email/queue/process'
+    | '/lovable/email/transactional/preview'
     | '/en/knowledge/$category/'
     | '/en/knowledge/ai-tips/'
     | '/en/knowledge/prompts/'
@@ -865,7 +865,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
-  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
+  LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -1311,11 +1311,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnKnowledgeCategoryIndexRouteImport
       parentRoute: typeof EnKnowledgeRoute
     }
-    '/lovable/email/queue/process': {
-      id: '/lovable/email/queue/process'
-      path: '/lovable/email/queue/process'
-      fullPath: '/lovable/email/queue/process'
-      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+    '/lovable/email/transactional/preview': {
+      id: '/lovable/email/transactional/preview'
+      path: '/lovable/email/transactional/preview'
+      fullPath: '/lovable/email/transactional/preview'
+      preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/auth/webhook': {
@@ -1548,7 +1548,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
-  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
+  LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

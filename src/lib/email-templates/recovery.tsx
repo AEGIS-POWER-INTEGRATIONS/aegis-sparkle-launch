@@ -20,9 +20,7 @@ interface RecoveryEmailProps {
   confirmationUrl: string
 }
 
-export const RecoveryEmail = ({
-  confirmationUrl,
-}: RecoveryEmailProps) => (
+export const RecoveryEmail = ({ confirmationUrl }: RecoveryEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>Reset your password for {BRAND.name}</Preview>
@@ -35,15 +33,15 @@ export const RecoveryEmail = ({
         </div>
         <Heading style={styles.h1}>Reset your password</Heading>
         <Text style={styles.text}>
-          We received a request to reset your password for {BRAND.name}. Click
-          the button below to choose a new password.
+          We received a request to reset the password for your {BRAND.name}{' '}
+          account. Click the button below to choose a new password.
         </Text>
         <Button style={styles.button} href={confirmationUrl}>
           Reset Password
         </Button>
         <Text style={styles.footer}>
           If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          email.
           <br />
           <Link href={`https://${BRAND.rootDomain}`} style={styles.footerLink}>
             {BRAND.rootDomain}

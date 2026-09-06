@@ -22,11 +22,7 @@ interface SignupEmailProps {
   confirmationUrl: string
 }
 
-export const SignupEmail = ({
-  siteUrl,
-  recipient,
-  confirmationUrl,
-}: SignupEmailProps) => (
+export const SignupEmail = ({ recipient, confirmationUrl }: SignupEmailProps) => (
   <Html lang="en" dir="ltr">
     <Head />
     <Preview>Confirm your email for {BRAND.name}</Preview>
@@ -39,18 +35,8 @@ export const SignupEmail = ({
         </div>
         <Heading style={styles.h1}>Confirm your email</Heading>
         <Text style={styles.text}>
-          Thanks for signing up for{' '}
-          <Link href={siteUrl} style={styles.link}>
-            <strong>{BRAND.name}</strong>
-          </Link>
-          .
-        </Text>
-        <Text style={styles.text}>
-          Please confirm your email address (
-          <Link href={`mailto:${recipient}`} style={styles.link}>
-            {recipient}
-          </Link>
-          ) by clicking the button below:
+          Thanks for signing up for {BRAND.name}. Please confirm your email
+          address ({recipient}) by clicking the button below.
         </Text>
         <Button style={styles.button} href={confirmationUrl}>
           Verify Email
