@@ -113,6 +113,7 @@ const initial: FormState = {
 function Demo() {
   const { isEn } = useLang();
   const t = useT();
+  const privacyHref = isEn ? "/en/privacy" : "/privacy";
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   const [form, setForm] = useState<FormState>(initial);

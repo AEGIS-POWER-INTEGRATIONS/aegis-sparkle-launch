@@ -166,6 +166,7 @@ export function Contact() {
   const { inquiry } = useSearch({ strict: false }) as { inquiry?: InquiryType };
   const { isEn } = useLang();
   const t = useT();
+  const privacyHref = isEn ? "/en/privacy" : "/privacy";
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   const [inquiryType, setInquiryType] = useState<InquiryType>(inquiry ?? "engineering");
