@@ -270,5 +270,6 @@ export const submitInquiry = createServerFn({ method: "POST" })
       id: inquiryId,
       notified: notify.status === "sent",
       duplicate: false,
+      rateLimited: false as const,
     };
   });
