@@ -225,7 +225,7 @@ export function Contact() {
     }
 
     try {
-      await submit({
+      const result = await submit({
         data: {
           inquiryType,
           name: String(data.name ?? ""),
@@ -239,6 +239,15 @@ export function Contact() {
           sourcePath: typeof window !== "undefined" ? window.location.pathname : undefined,
         },
       });
+      if (result?.rateLimited) {
+        toast.error(
+          t({
+            zh: "短時間內送出次數過多，請稍候幾分鐘再試，或直接來信 jtian@aegispowerapi.com。",
+            en: "Too many submissions in a short time. Please wait a few minutes, or email jtian@aegispowerapi.com.",
+          }),
+        );
+        return;
+      }
       setSubmitted(true);
       toast.success(
         t({
