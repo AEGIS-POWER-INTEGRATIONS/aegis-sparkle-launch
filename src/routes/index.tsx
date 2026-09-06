@@ -6,7 +6,11 @@ import {
   OWNERSHIP_BADGE,
   OWNERSHIP_DISCLOSURE,
 } from "@/lib/real-projects";
+import { PUBLISHED_PROMPTS } from "@/lib/prompts";
+import { PUBLISHED_AI_TIPS } from "@/lib/ai-tips";
 import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
+
+const KNOWLEDGE_TOTAL = PUBLISHED_PROMPTS.length + PUBLISHED_AI_TIPS.length;
 import mockCostflow from "@/assets/mock-costflow.jpg";
 import mockSalesops from "@/assets/mock-salesops.jpg";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
