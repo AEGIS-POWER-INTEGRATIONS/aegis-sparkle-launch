@@ -18,9 +18,9 @@ export function alternates(canonical: string) {
   const enPath = withLocale(path, "en");
   return [
     { rel: "canonical", href: `${SITE_URL}${path}` },
-    { rel: "alternate", hreflang: "zh-Hant-TW", href: `${SITE_URL}${zhPath}` },
-    { rel: "alternate", hreflang: "en", href: `${SITE_URL}${enPath}` },
-    { rel: "alternate", hreflang: "x-default", href: `${SITE_URL}${zhPath}` },
+    { rel: "alternate", hrefLang: "zh-Hant-TW", href: `${SITE_URL}${zhPath}` },
+    { rel: "alternate", hrefLang: "en", href: `${SITE_URL}${enPath}` },
+    { rel: "alternate", hrefLang: "x-default", href: `${SITE_URL}${zhPath}` },
   ];
 }
 
