@@ -248,11 +248,18 @@ export function Contact() {
       );
     } catch (err) {
       console.error(err);
+      const rateLimited =
+        err instanceof Error && err.message.includes("inquiry_rate_limited");
       toast.error(
-        t({
-          zh: "送出失敗，請稍後再試，或直接來信 jtian@aegispowerapi.com。",
-          en: "Submission failed. Please try again, or email jtian@aegispowerapi.com.",
-        }),
+        rateLimited
+          ? t({
+              zh: "短時間內送出次數過多，請稍候幾分鐘再試，或直接來信 jtian@aegispowerapi.com。",
+              en: "Too many submissions in a short time. Please wait a few minutes, or email jtian@aegispowerapi.com.",
+            })
+          : t({
+              zh: "送出失敗，請稍後再試，或直接來信 jtian@aegispowerapi.com。",
+              en: "Submission failed. Please try again, or email jtian@aegispowerapi.com.",
+            }),
       );
     } finally {
       setSubmitting(false);
