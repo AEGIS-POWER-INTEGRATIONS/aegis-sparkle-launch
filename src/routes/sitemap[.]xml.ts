@@ -126,12 +126,9 @@ export const Route = createFileRoute("/sitemap.xml")({
           return true;
         });
 
-        // Pages that exist in English at /en/*. The prompt library and AI tips
-        // are Traditional Chinese only; their /en URLs redirect, so they are
-        // listed in Chinese only (never as an English URL).
-        const hasEnglish = (path: string) =>
-          !path.startsWith("/knowledge/prompts") &&
-          !path.startsWith("/knowledge/ai-tips");
+        // Every published page now has a real English mirror at /en/*,
+        // including the prompt library and the AI tips.
+        const hasEnglish = (_path: string) => true;
 
         const enPath = (path: string) => (path === "/" ? "/en" : `/en${path}`);
 
