@@ -170,8 +170,8 @@ function Demo() {
     if (error) {
       setServerError(
         t({
-          zh: "送出失敗，請稍後再試，或來信至 sales@aegispowerapi.com",
-          en: "Submission failed. Please try again later or email sales@aegispowerapi.com",
+          zh: "送出失敗，請稍後再試，或來信至 jtian@aegispowerapi.com",
+          en: "Submission failed. Please try again later or email jtian@aegispowerapi.com",
         })
       );
       return;
@@ -240,8 +240,8 @@ function Demo() {
               </div>
               <div className="text-sm text-muted-foreground">
                 <L zh="也可以直接來信：" en="Prefer email? Reach us at " />
-                <a href="mailto:sales@aegispowerapi.com" className="text-foreground font-medium underline underline-offset-4">
-                  sales@aegispowerapi.com
+                <a href="mailto:jtian@aegispowerapi.com" className="text-foreground font-medium underline underline-offset-4">
+                  jtian@aegispowerapi.com
                 </a>
               </div>
             </div>

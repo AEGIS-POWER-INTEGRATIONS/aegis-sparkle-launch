@@ -71,13 +71,8 @@ export const REAL_PROJECTS: RealProject[] = [
       zh: "核心團隊成員擔任現場工程執行與驗收協調角色。",
       en: "Core team member acted as on-site engineering execution and acceptance coordinator.",
     },
-    period: { zh: "資料待公司確認", en: "Pending company confirmation" },
-    work: [
-      { zh: "資料待公司確認之工項清單。", en: "Task list pending company confirmation." },
-    ],
-    deliverables: [
-      { zh: "資料待公司確認之交付內容。", en: "Deliverables pending company confirmation." },
-    ],
+    work: [],
+    deliverables: [],
     photos: [],
     confidentiality: {
       zh: "客戶名稱依保密協議不公開。",
@@ -101,13 +96,8 @@ export const REAL_PROJECTS: RealProject[] = [
       zh: "核心團隊成員擔任流程顧問與導入輔導。",
       en: "Core team member acted as process advisor and adoption coach.",
     },
-    period: { zh: "資料待公司確認", en: "Pending company confirmation" },
-    work: [
-      { zh: "資料待公司確認之工項清單。", en: "Task list pending company confirmation." },
-    ],
-    deliverables: [
-      { zh: "資料待公司確認之交付內容。", en: "Deliverables pending company confirmation." },
-    ],
+    work: [],
+    deliverables: [],
     photos: [],
     confidentiality: {
       zh: "客戶名稱依保密協議不公開。",

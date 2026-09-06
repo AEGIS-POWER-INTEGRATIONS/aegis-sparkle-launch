@@ -15,8 +15,8 @@ export const SITE = {
   },
   domain: "https://aegispowerapi.com",
   address: {
-    zh: "台中市西區台灣大道二段2號20樓",
-    en: "20F., No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan",
+    zh: "臺中市西區臺灣大道二段2號20樓之1",
+    en: "20F.-1, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan",
   },
   phone: "+886-955-104351",
   phoneDisplay: "+886 955 104 351",
@@ -24,10 +24,9 @@ export const SITE = {
     zh: "田家駿",
     en: "Johnny Tian",
   },
-  taxId: "",
+  taxId: "62110468",
   emails: {
     general: "jtian@aegispowerapi.com",
-    sales: "sales@aegispowerapi.com",
   },
   replyWindow: {
     zh: "原則上將於 1–2 個工作日內回覆。",
@@ -47,8 +46,8 @@ export const SITE = {
 type ProfileBi = { zh: string; en: string };
 
 /**
- * Formal company profile fields. Values marked `null` render as
- * "資料待公司確認" — never invent them client-side.
+ * Formal company profile fields. Values marked `null` are hidden entirely —
+ * never invent them, never render a public placeholder.
  */
 export const COMPANY_PROFILE: {
   legalNameZh: string;
@@ -58,7 +57,7 @@ export const COMPANY_PROFILE: {
   responsiblePerson: ProfileBi;
   address: ProfileBi;
   phone: string;
-  emails: { general: string; sales: string };
+  emails: { general: string };
   website: string;
   serviceArea: ProfileBi;
   services: ProfileBi[];
@@ -68,17 +67,16 @@ export const COMPANY_PROFILE: {
 } = {
   legalNameZh: "宏鼎集成股份有限公司",
   legalNameEn: "Aegis Power Integrations Co., Ltd.",
-  taxId: null,
-  founded: null,
+  taxId: "62110468",
+  founded: "2026-07-16",
   responsiblePerson: { zh: "田家駿", en: "Johnny Tian" },
   address: {
-    zh: "台中市西區台灣大道二段2號20樓",
-    en: "20F., No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan",
+    zh: "臺中市西區臺灣大道二段2號20樓之1",
+    en: "20F.-1, No. 2, Sec. 2, Taiwan Blvd., West Dist., Taichung City, Taiwan",
   },
   phone: "+886-955-104351",
   emails: {
     general: "jtian@aegispowerapi.com",
-    sales: "sales@aegispowerapi.com",
   },
   website: "https://aegispowerapi.com",
   serviceArea: {
