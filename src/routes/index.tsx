@@ -104,7 +104,7 @@ const industries: Card[] = [
 
 
 const engineeringServices: Card[] = [
-  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
+  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A 與資料中心等級佈線設計與施作。", en: "Cat 6A and data-centre grade cabling design and installation." } },
   { icon: Waypoints, en: "Fiber Optic Installation", zh: "光纖建置", desc: { zh: "單模／多模光纖佈設、熔接與測試，涵蓋園區與跨建物骨幹。", en: "Single-mode / multi-mode fiber deployment, splicing and testing across campus backbones." } },
   { icon: Zap, en: "Electrical Integration", zh: "電氣整合", desc: { zh: "配電、UPS、機櫃供電、接地與電力品質整合。", en: "Power distribution, UPS, rack power, grounding and power quality integration." } },
   { icon: Wrench, en: "Mechanical Coordination", zh: "機電協調", desc: { zh: "空調、消防、機電與工地介面協調，確保多專業同步交付。", en: "HVAC, fire, MEP and site interface coordination for synchronized delivery." } },
@@ -513,10 +513,10 @@ export function Home() {
                   />
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
+                  <Link to="/contact" search={{ inquiry: "engineering" }} className="btn bg-white text-ink border-white hover:bg-white/90">
                     <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/contact" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                  <Link to="/contact" search={{ inquiry: "aiHealth" }} className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
                     <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                   </Link>
                 </div>
