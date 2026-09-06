@@ -1,4 +1,6 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { alternates } from "@/lib/seo";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArticleTemplate, buildArticleJsonLd, buildBreadcrumbJsonLd } from "@/components/knowledge/article-template";
 import { L } from "@/lib/i18n";
 import { articlePath, getArticle } from "@/lib/knowledge";
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/knowledge/$category/$slug")({
         { name: "twitter:title", content: a.title.en },
         { name: "twitter:description", content: a.excerpt.en },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: alternates(url),
       scripts: [
         {
           type: "application/ld+json",
@@ -49,12 +51,13 @@ export const Route = createFileRoute("/knowledge/$category/$slug")({
   notFoundComponent: ArticleNotFound,
 });
 
-function ArticlePage() {
-  const { article } = Route.useLoaderData();
+export function ArticlePage() {
+  const { category, slug } = useParams({ strict: false }) as { category: string; slug: string };
+  const article = getArticle(category, slug)!;
   return <ArticleTemplate article={article} />;
 }
 
-function ArticleNotFound() {
+export function ArticleNotFound() {
   return (
     <div className="container-x py-24">
       <h1 className="text-2xl font-semibold">

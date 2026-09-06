@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, Building2, Cpu, Factory, HardHat, Leaf, ServerCog, Sprout } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { INDUSTRIES } from "@/lib/industries";
 import { L, useLang } from "@/lib/i18n";
-import { SITE_URL, OG_IMAGE } from "@/lib/seo";
+import { SITE_URL, OG_IMAGE, alternates } from "@/lib/seo";
 
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   semiconductor: Cpu,
@@ -27,12 +28,12 @@ export const Route = createFileRoute("/industries/")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/industries` }],
+    links: alternates(`${SITE_URL}/industries`),
   }),
   component: IndustriesHub,
 });
 
-function IndustriesHub() {
+export function IndustriesHub() {
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);
 

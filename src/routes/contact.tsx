@@ -1,7 +1,9 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useMemo, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { submitInquiry } from "@/lib/inquiry.functions";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import contactMeeting from "@/assets/contact-meeting.jpg";
 import { ImageCaption } from "@/components/image-caption";
@@ -15,7 +17,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { SITE, INQUIRY_TYPES, type InquiryType } from "@/lib/site-config";
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang, useT } from "@/lib/i18n";
 
 type SearchShape = { inquiry?: InquiryType };
@@ -41,7 +43,7 @@ export const Route = createFileRoute("/contact")({
       { name: "twitter:description", content: "工程合作、AI 流程健檢與企業導入的統一諮詢窗口。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/contact` }],
+    links: alternates(`${SITE_URL}/contact`),
     scripts: [
       {
         type: "application/ld+json",
@@ -159,8 +161,9 @@ const baseSchema = z.object({
   hp: z.literal("").optional(), // honeypot
 });
 
-function Contact() {
-  const { inquiry } = useSearch({ from: "/contact" });
+export function Contact() {
+  const submit = useServerFn(submitInquiry);
+  const { inquiry } = useSearch({ strict: false }) as { inquiry?: InquiryType };
   const { isEn } = useLang();
   const t = useT();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
@@ -202,19 +205,57 @@ function Contact() {
     setErrors({});
     setSubmitting(true);
 
-    // Frontend-only submission for now — backend wiring is Phase-4 work.
-    // We simulate to give the user immediate confirmation and to prevent
-    // exposing any credentials on the client.
-    await new Promise((r) => setTimeout(r, 500));
+    // Extra, inquiry-type specific answers are forwarded as-is.
+    const base = new Set([
+      "hp",
+      "name",
+      "company",
+      "role",
+      "email",
+      "phone",
+      "notes",
+      "title",
+      "inquiryType",
+      "consent",
+    ]);
+    const details: Record<string, string> = {};
+    for (const [k, v] of Object.entries(data)) {
+      if (!base.has(k) && typeof v === "string" && v.trim()) details[k] = v;
+    }
 
-    setSubmitting(false);
-    setSubmitted(true);
-    toast.success(
-      t({
-        zh: "已收到您的諮詢需求，我們會盡快與您聯繫。",
-        en: "Inquiry received — we will contact you shortly.",
-      }),
-    );
+    try {
+      await submit({
+        data: {
+          inquiryType,
+          name: String(data.name ?? ""),
+          company: String(data.company ?? ""),
+          role: String(data.title ?? ""),
+          email: String(data.email ?? ""),
+          phone: String(data.phone ?? ""),
+          message: String(data.notes ?? "").trim() || String(data.industry ?? "") || "（未填寫需求描述）",
+          details,
+          locale: isEn ? "en" : "zh-TW",
+          sourcePath: typeof window !== "undefined" ? window.location.pathname : undefined,
+        },
+      });
+      setSubmitted(true);
+      toast.success(
+        t({
+          zh: "已收到您的諮詢需求，我們會盡快與您聯繫。",
+          en: "Inquiry received — we will contact you shortly.",
+        }),
+      );
+    } catch (err) {
+      console.error(err);
+      toast.error(
+        t({
+          zh: "送出失敗，請稍後再試，或直接來信 jtian@aegispowerapi.com。",
+          en: "Submission failed. Please try again, or email jtian@aegispowerapi.com.",
+        }),
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (

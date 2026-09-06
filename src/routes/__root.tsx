@@ -1,18 +1,20 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { Toaster } from "sonner";
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider, L } from "@/lib/i18n";
+import { langFromPath } from "@/lib/locale";
 
 function NotFoundComponent() {
   return (
@@ -178,8 +180,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const lang = langFromPath(pathname) === "en" ? "en" : "zh-Hant-TW";
   return (
-    <html lang="zh-Hant-TW">
+    <html lang={lang}>
 
       <head>
         <HeadContent />

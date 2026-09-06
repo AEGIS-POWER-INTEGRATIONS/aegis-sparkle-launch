@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { L } from "@/lib/i18n";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, alternates } from "@/lib/seo";
 import { SITE } from "@/lib/site-config";
 
 export const Route = createFileRoute("/privacy")({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:url", content: `${SITE_URL}/privacy` },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/privacy` }],
+    links: alternates(`${SITE_URL}/privacy`),
   }),
   component: PrivacyPage,
 });
@@ -35,7 +35,7 @@ function Section({
   );
 }
 
-function PrivacyPage() {
+export function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteNav />

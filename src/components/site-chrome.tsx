@@ -1,8 +1,9 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ChevronDown, Mail, MapPin, Phone } from "lucide-react";
 import { useRef, useState } from "react";
 import logoAsset from "@/assets/api-logo.png.asset.json";
-import { L } from "@/lib/i18n";
+import { L, useLang } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
 import { PRIMARY_CTA, PRIMARY_NAV, SITE, type NavItem } from "@/lib/site-config";
 
 function Brand({ variant = "header" }: { variant?: "header" | "footer" }) {
@@ -61,12 +62,50 @@ function Brand({ variant = "header" }: { variant?: "header" | "footer" }) {
 }
 
 /**
- * Language switcher — temporarily hidden while the English version is
- * incomplete. Site is served as zh-Hant-TW by default. Re-enable once the
- * English translation is fully audited.
+ * Language switcher. Language is decided by the URL: `/` is Traditional
+ * Chinese (default), `/en/*` is English. Switching keeps the current page.
  */
-function LangSwitcher(_: { className?: string }) {
-  return null;
+function LangSwitcher({ className }: { className?: string }) {
+  const { lang, targetHref } = useLang();
+  const item = (
+    code: "zh-TW" | "en",
+    htmlLang: string,
+    label: string,
+  ) => {
+    const active = lang === code;
+    const cls = cn(
+      "rounded-full px-2.5 py-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+      active
+        ? "bg-primary text-primary-foreground"
+        : "text-muted-foreground hover:text-foreground",
+    );
+    if (active) {
+      return (
+        <span lang={htmlLang} aria-current="true" className={cls}>
+          {label}
+        </span>
+      );
+    }
+    return (
+      <a lang={htmlLang} href={targetHref(code)} hrefLang={htmlLang} className={cls}>
+        {label}
+      </a>
+    );
+  };
+
+  return (
+    <div
+      className={cn(
+        "flex items-center rounded-full border border-border/70 p-0.5 text-xs font-medium",
+        className,
+      )}
+      role="group"
+      aria-label="Language / 語言"
+    >
+      {item("zh-TW", "zh-Hant-TW", "繁體中文")}
+      {item("en", "en", "English")}
+    </div>
+  );
 }
 
 

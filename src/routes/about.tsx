@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import {
   ArrowRight,
@@ -18,7 +19,7 @@ import {
   HardHat,
 } from "lucide-react";
 
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
@@ -36,7 +37,7 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:description", content: "工程整合、AI 系統整合與企業數位化的整合型夥伴。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/about` }],
+    links: alternates(`${SITE_URL}/about`),
 
   }),
   component: About,
@@ -103,7 +104,7 @@ const audiences: { icon: React.ComponentType<{ className?: string }>; label: Bi 
   { icon: Building2, label: { zh: "想導入 AI 與輕量化企業管理系統的中小企業", en: "SMBs adopting AI and lightweight enterprise systems" } },
 ];
 
-function About() {
+export function About() {
   const { isEn } = useLang();
   const t = (b: Bi) => (isEn ? b.en : b.zh);
 

@@ -1,4 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { CopyButton } from "@/components/copy-button";
@@ -73,8 +74,9 @@ export const Route = createFileRoute("/knowledge/prompts/$slug")({
   ),
 });
 
-function PromptDetail() {
-  const { prompt } = Route.useLoaderData() as { prompt: Prompt };
+export function PromptDetail() {
+  const { slug } = useParams({ strict: false }) as { slug: string };
+  const prompt = getPrompt(slug)!;
   const related = getRelatedPrompts(prompt);
   const url = `${SITE.domain}/knowledge/prompts/${prompt.slug}`;
 

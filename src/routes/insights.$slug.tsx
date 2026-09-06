@@ -1,10 +1,11 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Breadcrumbs, breadcrumbJsonLd } from "@/components/breadcrumbs";
 import { INSIGHTS, CATEGORY_LABEL, getInsight, type Insight } from "@/lib/insights";
 import { L, useLang } from "@/lib/i18n";
-import { SITE_URL, OG_IMAGE } from "@/lib/seo";
+import { SITE_URL, OG_IMAGE, alternates } from "@/lib/seo";
 
 export const Route = createFileRoute("/insights/$slug")({
   loader: ({ params }): { insight: Insight } => {
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/insights/$slug")({
         { property: "og:image", content: OG_IMAGE },
         { name: "twitter:image", content: OG_IMAGE },
       ],
-      links: [{ rel: "canonical", href: `${SITE_URL}/insights/${insight.slug}` }],
+      links: alternates(`${SITE_URL}/insights/${insight.slug}`),
       scripts: [
         {
           type: "application/ld+json",
@@ -48,7 +49,7 @@ export const Route = createFileRoute("/insights/$slug")({
   notFoundComponent: InsightNotFound,
 });
 
-function InsightNotFound() {
+export function InsightNotFound() {
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
@@ -65,8 +66,9 @@ function InsightNotFound() {
   );
 }
 
-function InsightDetail() {
-  const data = Route.useLoaderData() as { insight: Insight };
+export function InsightDetail() {
+  const { slug } = useParams({ strict: false }) as { slug: string };
+  const data = { insight: getInsight(slug)! };
   const insight = data.insight;
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);

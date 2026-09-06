@@ -1,4 +1,6 @@
-import { createFileRoute, Link, notFound, Navigate } from "@tanstack/react-router";
+import { alternates } from "@/lib/seo";
+import { createFileRoute, notFound, Navigate, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight } from "lucide-react";
 import { L, useLang } from "@/lib/i18n";
 import {
@@ -30,7 +32,7 @@ export const Route = createFileRoute("/knowledge/$category/")({
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: alternates(url),
       scripts: [
         {
           type: "application/ld+json",
@@ -60,8 +62,9 @@ export const Route = createFileRoute("/knowledge/$category/")({
   ),
 });
 
-function CategoryPage() {
-  const { category } = Route.useLoaderData();
+export function CategoryPage() {
+  const { category: categorySlug } = useParams({ strict: false }) as { category: string };
+  const category = getCategory(categorySlug)!;
   const { isEn } = useLang();
 
   // Category 6 aggregates the existing /industries/* pages — redirect there.

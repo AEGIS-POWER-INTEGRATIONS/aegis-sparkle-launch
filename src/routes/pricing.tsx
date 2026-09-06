@@ -1,8 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Check, Compass, Users, FlaskConical, Layers } from "lucide-react";
 
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
 
 type Bi = { zh: string; en: string };
@@ -44,7 +45,7 @@ export const Route = createFileRoute("/pricing")({
       { name: "twitter:description", content: "顧問、PoC 與企業整合方案，依需求評估報價。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/pricing` }],
+    links: alternates(`${SITE_URL}/pricing`),
     scripts: [
       {
         type: "application/ld+json",
@@ -137,7 +138,7 @@ const plans: {
   },
 ];
 
-function Pricing() {
+export function Pricing() {
   const { isEn } = useLang();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 

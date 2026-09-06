@@ -1,4 +1,5 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -72,8 +73,9 @@ export const Route = createFileRoute("/knowledge/ai-tips/$slug")({
   ),
 });
 
-function TipDetail() {
-  const { tip } = Route.useLoaderData() as { tip: AiTip };
+export function TipDetail() {
+  const { slug } = useParams({ strict: false }) as { slug: string };
+  const tip = getAiTip(slug)!;
   const related = getRelatedAiTips(tip);
   const relatedPrompts: Prompt[] = tip.relatedPromptSlugs
     .map((s) => getPrompt(s))

@@ -14,6 +14,54 @@ export type Database = {
   }
   public: {
     Tables: {
+      contact_inquiries: {
+        Row: {
+          company: string | null
+          created_at: string
+          details: Json
+          email: string
+          id: string
+          inquiry_type: string
+          locale: string
+          message: string
+          name: string
+          phone: string | null
+          role: string | null
+          source_path: string | null
+          status: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          details?: Json
+          email: string
+          id?: string
+          inquiry_type: string
+          locale?: string
+          message: string
+          name: string
+          phone?: string | null
+          role?: string | null
+          source_path?: string | null
+          status?: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          details?: Json
+          email?: string
+          id?: string
+          inquiry_type?: string
+          locale?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          role?: string | null
+          source_path?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       demo_requests: {
         Row: {
           company: string

@@ -20,6 +20,7 @@ import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as EnergyExperienceRouteImport } from './routes/energy-experience'
+import { Route as EnRouteImport } from './routes/en'
 import { Route as DemoRouteImport } from './routes/demo'
 import { Route as CostflowRouteImport } from './routes/costflow'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -32,9 +33,22 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as KnowledgeIndexRouteImport } from './routes/knowledge.index'
 import { Route as InsightsIndexRouteImport } from './routes/insights.index'
 import { Route as IndustriesIndexRouteImport } from './routes/industries.index'
+import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as BuildquestIndexRouteImport } from './routes/buildquest.index'
 import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
 import { Route as IndustriesSlugRouteImport } from './routes/industries.$slug'
+import { Route as EnTermsRouteImport } from './routes/en.terms'
+import { Route as EnProjectsRouteImport } from './routes/en.projects'
+import { Route as EnPrivacyRouteImport } from './routes/en.privacy'
+import { Route as EnPricingRouteImport } from './routes/en.pricing'
+import { Route as EnKnowledgeRouteImport } from './routes/en.knowledge'
+import { Route as EnInsightsRouteImport } from './routes/en.insights'
+import { Route as EnIndustriesRouteImport } from './routes/en.industries'
+import { Route as EnEngineeringRouteImport } from './routes/en.engineering'
+import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnCompanyProfileRouteImport } from './routes/en.company-profile'
+import { Route as EnAiIntegrationRouteImport } from './routes/en.ai-integration'
+import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as BuildquestQuestsRouteImport } from './routes/buildquest.quests'
 import { Route as BuildquestProfileRouteImport } from './routes/buildquest.profile'
 import { Route as BuildquestKnowledgeRouteImport } from './routes/buildquest.knowledge'
@@ -45,14 +59,25 @@ import { Route as BuildquestAdminRouteImport } from './routes/buildquest.admin'
 import { Route as KnowledgePromptsIndexRouteImport } from './routes/knowledge.prompts.index'
 import { Route as KnowledgeAiTipsIndexRouteImport } from './routes/knowledge.ai-tips.index'
 import { Route as KnowledgeCategoryIndexRouteImport } from './routes/knowledge.$category.index'
+import { Route as EnKnowledgeIndexRouteImport } from './routes/en.knowledge.index'
+import { Route as EnInsightsIndexRouteImport } from './routes/en.insights.index'
+import { Route as EnIndustriesIndexRouteImport } from './routes/en.industries.index'
 import { Route as KnowledgePromptsSlugRouteImport } from './routes/knowledge.prompts.$slug'
 import { Route as KnowledgeAiTipsSlugRouteImport } from './routes/knowledge.ai-tips.$slug'
 import { Route as KnowledgeCategorySlugRouteImport } from './routes/knowledge.$category.$slug'
+import { Route as EnInsightsSlugRouteImport } from './routes/en.insights.$slug'
+import { Route as EnIndustriesSlugRouteImport } from './routes/en.industries.$slug'
 import { Route as BuildquestResultIdRouteImport } from './routes/buildquest.result.$id'
 import { Route as BuildquestQuestIdRouteImport } from './routes/buildquest.quest.$id'
+import { Route as EnKnowledgePromptsIndexRouteImport } from './routes/en.knowledge.prompts.index'
+import { Route as EnKnowledgeAiTipsIndexRouteImport } from './routes/en.knowledge.ai-tips.index'
+import { Route as EnKnowledgeCategoryIndexRouteImport } from './routes/en.knowledge.$category.index'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as EnKnowledgePromptsSlugRouteImport } from './routes/en.knowledge.prompts.$slug'
+import { Route as EnKnowledgeAiTipsSlugRouteImport } from './routes/en.knowledge.ai-tips.$slug'
+import { Route as EnKnowledgeCategorySlugRouteImport } from './routes/en.knowledge.$category.$slug'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -107,6 +132,11 @@ const EngineeringRoute = EngineeringRouteImport.update({
 const EnergyExperienceRoute = EnergyExperienceRouteImport.update({
   id: '/energy-experience',
   path: '/energy-experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoRoute = DemoRouteImport.update({
@@ -169,6 +199,11 @@ const IndustriesIndexRoute = IndustriesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => IndustriesRoute,
 } as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnRoute,
+} as any)
 const BuildquestIndexRoute = BuildquestIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -183,6 +218,66 @@ const IndustriesSlugRoute = IndustriesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => IndustriesRoute,
+} as any)
+const EnTermsRoute = EnTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnProjectsRoute = EnProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnPrivacyRoute = EnPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnPricingRoute = EnPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnKnowledgeRoute = EnKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnInsightsRoute = EnInsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnIndustriesRoute = EnIndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnEngineeringRoute = EnEngineeringRouteImport.update({
+  id: '/engineering',
+  path: '/engineering',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnContactRoute = EnContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnCompanyProfileRoute = EnCompanyProfileRouteImport.update({
+  id: '/company-profile',
+  path: '/company-profile',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAiIntegrationRoute = EnAiIntegrationRouteImport.update({
+  id: '/ai-integration',
+  path: '/ai-integration',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnAboutRoute = EnAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => EnRoute,
 } as any)
 const BuildquestQuestsRoute = BuildquestQuestsRouteImport.update({
   id: '/quests',
@@ -234,6 +329,21 @@ const KnowledgeCategoryIndexRoute = KnowledgeCategoryIndexRouteImport.update({
   path: '/$category/',
   getParentRoute: () => KnowledgeRoute,
 } as any)
+const EnKnowledgeIndexRoute = EnKnowledgeIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
+const EnInsightsIndexRoute = EnInsightsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnInsightsRoute,
+} as any)
+const EnIndustriesIndexRoute = EnIndustriesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EnIndustriesRoute,
+} as any)
 const KnowledgePromptsSlugRoute = KnowledgePromptsSlugRouteImport.update({
   id: '/prompts/$slug',
   path: '/prompts/$slug',
@@ -249,6 +359,16 @@ const KnowledgeCategorySlugRoute = KnowledgeCategorySlugRouteImport.update({
   path: '/$category/$slug',
   getParentRoute: () => KnowledgeRoute,
 } as any)
+const EnInsightsSlugRoute = EnInsightsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EnInsightsRoute,
+} as any)
+const EnIndustriesSlugRoute = EnIndustriesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => EnIndustriesRoute,
+} as any)
 const BuildquestResultIdRoute = BuildquestResultIdRouteImport.update({
   id: '/result/$id',
   path: '/result/$id',
@@ -259,6 +379,22 @@ const BuildquestQuestIdRoute = BuildquestQuestIdRouteImport.update({
   path: '/quest/$id',
   getParentRoute: () => BuildquestRoute,
 } as any)
+const EnKnowledgePromptsIndexRoute = EnKnowledgePromptsIndexRouteImport.update({
+  id: '/prompts/',
+  path: '/prompts/',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
+const EnKnowledgeAiTipsIndexRoute = EnKnowledgeAiTipsIndexRouteImport.update({
+  id: '/ai-tips/',
+  path: '/ai-tips/',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
+const EnKnowledgeCategoryIndexRoute =
+  EnKnowledgeCategoryIndexRouteImport.update({
+    id: '/$category/',
+    path: '/$category/',
+    getParentRoute: () => EnKnowledgeRoute,
+  } as any)
 const LovableEmailQueueProcessRoute =
   LovableEmailQueueProcessRouteImport.update({
     id: '/lovable/email/queue/process',
@@ -275,6 +411,21 @@ const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
   path: '/lovable/email/auth/preview',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnKnowledgePromptsSlugRoute = EnKnowledgePromptsSlugRouteImport.update({
+  id: '/prompts/$slug',
+  path: '/prompts/$slug',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
+const EnKnowledgeAiTipsSlugRoute = EnKnowledgeAiTipsSlugRouteImport.update({
+  id: '/ai-tips/$slug',
+  path: '/ai-tips/$slug',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
+const EnKnowledgeCategorySlugRoute = EnKnowledgeCategorySlugRouteImport.update({
+  id: '/$category/$slug',
+  path: '/$category/$slug',
+  getParentRoute: () => EnKnowledgeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -286,6 +437,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/en': typeof EnRouteWithChildren
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/industries': typeof IndustriesRouteWithChildren
@@ -304,23 +456,47 @@ export interface FileRoutesByFullPath {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/ai-integration': typeof EnAiIntegrationRoute
+  '/en/company-profile': typeof EnCompanyProfileRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/engineering': typeof EnEngineeringRoute
+  '/en/industries': typeof EnIndustriesRouteWithChildren
+  '/en/insights': typeof EnInsightsRouteWithChildren
+  '/en/knowledge': typeof EnKnowledgeRouteWithChildren
+  '/en/pricing': typeof EnPricingRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/projects': typeof EnProjectsRoute
+  '/en/terms': typeof EnTermsRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest/': typeof BuildquestIndexRoute
+  '/en/': typeof EnIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/knowledge/': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/en/industries/$slug': typeof EnIndustriesSlugRoute
+  '/en/insights/$slug': typeof EnInsightsSlugRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
   '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
   '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
+  '/en/industries/': typeof EnIndustriesIndexRoute
+  '/en/insights/': typeof EnInsightsIndexRoute
+  '/en/knowledge/': typeof EnKnowledgeIndexRoute
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
+  '/en/knowledge/$category/$slug': typeof EnKnowledgeCategorySlugRoute
+  '/en/knowledge/ai-tips/$slug': typeof EnKnowledgeAiTipsSlugRoute
+  '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/en/knowledge/$category/': typeof EnKnowledgeCategoryIndexRoute
+  '/en/knowledge/ai-tips/': typeof EnKnowledgeAiTipsIndexRoute
+  '/en/knowledge/prompts/': typeof EnKnowledgePromptsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -346,23 +522,44 @@ export interface FileRoutesByTo {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/ai-integration': typeof EnAiIntegrationRoute
+  '/en/company-profile': typeof EnCompanyProfileRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/engineering': typeof EnEngineeringRoute
+  '/en/pricing': typeof EnPricingRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/projects': typeof EnProjectsRoute
+  '/en/terms': typeof EnTermsRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest': typeof BuildquestIndexRoute
+  '/en': typeof EnIndexRoute
   '/industries': typeof IndustriesIndexRoute
   '/insights': typeof InsightsIndexRoute
   '/knowledge': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/en/industries/$slug': typeof EnIndustriesSlugRoute
+  '/en/insights/$slug': typeof EnInsightsSlugRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
   '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
   '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
+  '/en/industries': typeof EnIndustriesIndexRoute
+  '/en/insights': typeof EnInsightsIndexRoute
+  '/en/knowledge': typeof EnKnowledgeIndexRoute
   '/knowledge/$category': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts': typeof KnowledgePromptsIndexRoute
+  '/en/knowledge/$category/$slug': typeof EnKnowledgeCategorySlugRoute
+  '/en/knowledge/ai-tips/$slug': typeof EnKnowledgeAiTipsSlugRoute
+  '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/en/knowledge/$category': typeof EnKnowledgeCategoryIndexRoute
+  '/en/knowledge/ai-tips': typeof EnKnowledgeAiTipsIndexRoute
+  '/en/knowledge/prompts': typeof EnKnowledgePromptsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -375,6 +572,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/costflow': typeof CostflowRoute
   '/demo': typeof DemoRoute
+  '/en': typeof EnRouteWithChildren
   '/energy-experience': typeof EnergyExperienceRoute
   '/engineering': typeof EngineeringRoute
   '/industries': typeof IndustriesRouteWithChildren
@@ -393,23 +591,47 @@ export interface FileRoutesById {
   '/buildquest/knowledge': typeof BuildquestKnowledgeRoute
   '/buildquest/profile': typeof BuildquestProfileRoute
   '/buildquest/quests': typeof BuildquestQuestsRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/ai-integration': typeof EnAiIntegrationRoute
+  '/en/company-profile': typeof EnCompanyProfileRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/engineering': typeof EnEngineeringRoute
+  '/en/industries': typeof EnIndustriesRouteWithChildren
+  '/en/insights': typeof EnInsightsRouteWithChildren
+  '/en/knowledge': typeof EnKnowledgeRouteWithChildren
+  '/en/pricing': typeof EnPricingRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/projects': typeof EnProjectsRoute
+  '/en/terms': typeof EnTermsRoute
   '/industries/$slug': typeof IndustriesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
   '/buildquest/': typeof BuildquestIndexRoute
+  '/en/': typeof EnIndexRoute
   '/industries/': typeof IndustriesIndexRoute
   '/insights/': typeof InsightsIndexRoute
   '/knowledge/': typeof KnowledgeIndexRoute
   '/buildquest/quest/$id': typeof BuildquestQuestIdRoute
   '/buildquest/result/$id': typeof BuildquestResultIdRoute
+  '/en/industries/$slug': typeof EnIndustriesSlugRoute
+  '/en/insights/$slug': typeof EnInsightsSlugRoute
   '/knowledge/$category/$slug': typeof KnowledgeCategorySlugRoute
   '/knowledge/ai-tips/$slug': typeof KnowledgeAiTipsSlugRoute
   '/knowledge/prompts/$slug': typeof KnowledgePromptsSlugRoute
+  '/en/industries/': typeof EnIndustriesIndexRoute
+  '/en/insights/': typeof EnInsightsIndexRoute
+  '/en/knowledge/': typeof EnKnowledgeIndexRoute
   '/knowledge/$category/': typeof KnowledgeCategoryIndexRoute
   '/knowledge/ai-tips/': typeof KnowledgeAiTipsIndexRoute
   '/knowledge/prompts/': typeof KnowledgePromptsIndexRoute
+  '/en/knowledge/$category/$slug': typeof EnKnowledgeCategorySlugRoute
+  '/en/knowledge/ai-tips/$slug': typeof EnKnowledgeAiTipsSlugRoute
+  '/en/knowledge/prompts/$slug': typeof EnKnowledgePromptsSlugRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
   '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
+  '/en/knowledge/$category/': typeof EnKnowledgeCategoryIndexRoute
+  '/en/knowledge/ai-tips/': typeof EnKnowledgeAiTipsIndexRoute
+  '/en/knowledge/prompts/': typeof EnKnowledgePromptsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -423,6 +645,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/costflow'
     | '/demo'
+    | '/en'
     | '/energy-experience'
     | '/engineering'
     | '/industries'
@@ -441,23 +664,47 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/en/about'
+    | '/en/ai-integration'
+    | '/en/company-profile'
+    | '/en/contact'
+    | '/en/engineering'
+    | '/en/industries'
+    | '/en/insights'
+    | '/en/knowledge'
+    | '/en/pricing'
+    | '/en/privacy'
+    | '/en/projects'
+    | '/en/terms'
     | '/industries/$slug'
     | '/insights/$slug'
     | '/buildquest/'
+    | '/en/'
     | '/industries/'
     | '/insights/'
     | '/knowledge/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/en/industries/$slug'
+    | '/en/insights/$slug'
     | '/knowledge/$category/$slug'
     | '/knowledge/ai-tips/$slug'
     | '/knowledge/prompts/$slug'
+    | '/en/industries/'
+    | '/en/insights/'
+    | '/en/knowledge/'
     | '/knowledge/$category/'
     | '/knowledge/ai-tips/'
     | '/knowledge/prompts/'
+    | '/en/knowledge/$category/$slug'
+    | '/en/knowledge/ai-tips/$slug'
+    | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/en/knowledge/$category/'
+    | '/en/knowledge/ai-tips/'
+    | '/en/knowledge/prompts/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -483,23 +730,44 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/en/about'
+    | '/en/ai-integration'
+    | '/en/company-profile'
+    | '/en/contact'
+    | '/en/engineering'
+    | '/en/pricing'
+    | '/en/privacy'
+    | '/en/projects'
+    | '/en/terms'
     | '/industries/$slug'
     | '/insights/$slug'
     | '/buildquest'
+    | '/en'
     | '/industries'
     | '/insights'
     | '/knowledge'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/en/industries/$slug'
+    | '/en/insights/$slug'
     | '/knowledge/$category/$slug'
     | '/knowledge/ai-tips/$slug'
     | '/knowledge/prompts/$slug'
+    | '/en/industries'
+    | '/en/insights'
+    | '/en/knowledge'
     | '/knowledge/$category'
     | '/knowledge/ai-tips'
     | '/knowledge/prompts'
+    | '/en/knowledge/$category/$slug'
+    | '/en/knowledge/ai-tips/$slug'
+    | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/en/knowledge/$category'
+    | '/en/knowledge/ai-tips'
+    | '/en/knowledge/prompts'
   id:
     | '__root__'
     | '/'
@@ -511,6 +779,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/costflow'
     | '/demo'
+    | '/en'
     | '/energy-experience'
     | '/engineering'
     | '/industries'
@@ -529,23 +798,47 @@ export interface FileRouteTypes {
     | '/buildquest/knowledge'
     | '/buildquest/profile'
     | '/buildquest/quests'
+    | '/en/about'
+    | '/en/ai-integration'
+    | '/en/company-profile'
+    | '/en/contact'
+    | '/en/engineering'
+    | '/en/industries'
+    | '/en/insights'
+    | '/en/knowledge'
+    | '/en/pricing'
+    | '/en/privacy'
+    | '/en/projects'
+    | '/en/terms'
     | '/industries/$slug'
     | '/insights/$slug'
     | '/buildquest/'
+    | '/en/'
     | '/industries/'
     | '/insights/'
     | '/knowledge/'
     | '/buildquest/quest/$id'
     | '/buildquest/result/$id'
+    | '/en/industries/$slug'
+    | '/en/insights/$slug'
     | '/knowledge/$category/$slug'
     | '/knowledge/ai-tips/$slug'
     | '/knowledge/prompts/$slug'
+    | '/en/industries/'
+    | '/en/insights/'
+    | '/en/knowledge/'
     | '/knowledge/$category/'
     | '/knowledge/ai-tips/'
     | '/knowledge/prompts/'
+    | '/en/knowledge/$category/$slug'
+    | '/en/knowledge/ai-tips/$slug'
+    | '/en/knowledge/prompts/$slug'
     | '/lovable/email/auth/preview'
     | '/lovable/email/auth/webhook'
     | '/lovable/email/queue/process'
+    | '/en/knowledge/$category/'
+    | '/en/knowledge/ai-tips/'
+    | '/en/knowledge/prompts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -558,6 +851,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CostflowRoute: typeof CostflowRoute
   DemoRoute: typeof DemoRoute
+  EnRoute: typeof EnRouteWithChildren
   EnergyExperienceRoute: typeof EnergyExperienceRoute
   EngineeringRoute: typeof EngineeringRoute
   IndustriesRoute: typeof IndustriesRouteWithChildren
@@ -653,6 +947,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnergyExperienceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/demo': {
       id: '/demo'
       path: '/demo'
@@ -737,6 +1038,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustriesIndexRouteImport
       parentRoute: typeof IndustriesRoute
     }
+    '/en/': {
+      id: '/en/'
+      path: '/'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof EnRoute
+    }
     '/buildquest/': {
       id: '/buildquest/'
       path: '/'
@@ -757,6 +1065,90 @@ declare module '@tanstack/react-router' {
       fullPath: '/industries/$slug'
       preLoaderRoute: typeof IndustriesSlugRouteImport
       parentRoute: typeof IndustriesRoute
+    }
+    '/en/terms': {
+      id: '/en/terms'
+      path: '/terms'
+      fullPath: '/en/terms'
+      preLoaderRoute: typeof EnTermsRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/projects': {
+      id: '/en/projects'
+      path: '/projects'
+      fullPath: '/en/projects'
+      preLoaderRoute: typeof EnProjectsRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/privacy': {
+      id: '/en/privacy'
+      path: '/privacy'
+      fullPath: '/en/privacy'
+      preLoaderRoute: typeof EnPrivacyRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/pricing': {
+      id: '/en/pricing'
+      path: '/pricing'
+      fullPath: '/en/pricing'
+      preLoaderRoute: typeof EnPricingRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/knowledge': {
+      id: '/en/knowledge'
+      path: '/knowledge'
+      fullPath: '/en/knowledge'
+      preLoaderRoute: typeof EnKnowledgeRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/insights': {
+      id: '/en/insights'
+      path: '/insights'
+      fullPath: '/en/insights'
+      preLoaderRoute: typeof EnInsightsRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/industries': {
+      id: '/en/industries'
+      path: '/industries'
+      fullPath: '/en/industries'
+      preLoaderRoute: typeof EnIndustriesRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/engineering': {
+      id: '/en/engineering'
+      path: '/engineering'
+      fullPath: '/en/engineering'
+      preLoaderRoute: typeof EnEngineeringRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/contact': {
+      id: '/en/contact'
+      path: '/contact'
+      fullPath: '/en/contact'
+      preLoaderRoute: typeof EnContactRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/company-profile': {
+      id: '/en/company-profile'
+      path: '/company-profile'
+      fullPath: '/en/company-profile'
+      preLoaderRoute: typeof EnCompanyProfileRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/ai-integration': {
+      id: '/en/ai-integration'
+      path: '/ai-integration'
+      fullPath: '/en/ai-integration'
+      preLoaderRoute: typeof EnAiIntegrationRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/about': {
+      id: '/en/about'
+      path: '/about'
+      fullPath: '/en/about'
+      preLoaderRoute: typeof EnAboutRouteImport
+      parentRoute: typeof EnRoute
     }
     '/buildquest/quests': {
       id: '/buildquest/quests'
@@ -828,6 +1220,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeCategoryIndexRouteImport
       parentRoute: typeof KnowledgeRoute
     }
+    '/en/knowledge/': {
+      id: '/en/knowledge/'
+      path: '/'
+      fullPath: '/en/knowledge/'
+      preLoaderRoute: typeof EnKnowledgeIndexRouteImport
+      parentRoute: typeof EnKnowledgeRoute
+    }
+    '/en/insights/': {
+      id: '/en/insights/'
+      path: '/'
+      fullPath: '/en/insights/'
+      preLoaderRoute: typeof EnInsightsIndexRouteImport
+      parentRoute: typeof EnInsightsRoute
+    }
+    '/en/industries/': {
+      id: '/en/industries/'
+      path: '/'
+      fullPath: '/en/industries/'
+      preLoaderRoute: typeof EnIndustriesIndexRouteImport
+      parentRoute: typeof EnIndustriesRoute
+    }
     '/knowledge/prompts/$slug': {
       id: '/knowledge/prompts/$slug'
       path: '/prompts/$slug'
@@ -849,6 +1262,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeCategorySlugRouteImport
       parentRoute: typeof KnowledgeRoute
     }
+    '/en/insights/$slug': {
+      id: '/en/insights/$slug'
+      path: '/$slug'
+      fullPath: '/en/insights/$slug'
+      preLoaderRoute: typeof EnInsightsSlugRouteImport
+      parentRoute: typeof EnInsightsRoute
+    }
+    '/en/industries/$slug': {
+      id: '/en/industries/$slug'
+      path: '/$slug'
+      fullPath: '/en/industries/$slug'
+      preLoaderRoute: typeof EnIndustriesSlugRouteImport
+      parentRoute: typeof EnIndustriesRoute
+    }
     '/buildquest/result/$id': {
       id: '/buildquest/result/$id'
       path: '/result/$id'
@@ -862,6 +1289,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/buildquest/quest/$id'
       preLoaderRoute: typeof BuildquestQuestIdRouteImport
       parentRoute: typeof BuildquestRoute
+    }
+    '/en/knowledge/prompts/': {
+      id: '/en/knowledge/prompts/'
+      path: '/prompts'
+      fullPath: '/en/knowledge/prompts/'
+      preLoaderRoute: typeof EnKnowledgePromptsIndexRouteImport
+      parentRoute: typeof EnKnowledgeRoute
+    }
+    '/en/knowledge/ai-tips/': {
+      id: '/en/knowledge/ai-tips/'
+      path: '/ai-tips'
+      fullPath: '/en/knowledge/ai-tips/'
+      preLoaderRoute: typeof EnKnowledgeAiTipsIndexRouteImport
+      parentRoute: typeof EnKnowledgeRoute
+    }
+    '/en/knowledge/$category/': {
+      id: '/en/knowledge/$category/'
+      path: '/$category'
+      fullPath: '/en/knowledge/$category/'
+      preLoaderRoute: typeof EnKnowledgeCategoryIndexRouteImport
+      parentRoute: typeof EnKnowledgeRoute
     }
     '/lovable/email/queue/process': {
       id: '/lovable/email/queue/process'
@@ -883,6 +1331,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/lovable/email/auth/preview'
       preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/en/knowledge/prompts/$slug': {
+      id: '/en/knowledge/prompts/$slug'
+      path: '/prompts/$slug'
+      fullPath: '/en/knowledge/prompts/$slug'
+      preLoaderRoute: typeof EnKnowledgePromptsSlugRouteImport
+      parentRoute: typeof EnKnowledgeRoute
+    }
+    '/en/knowledge/ai-tips/$slug': {
+      id: '/en/knowledge/ai-tips/$slug'
+      path: '/ai-tips/$slug'
+      fullPath: '/en/knowledge/ai-tips/$slug'
+      preLoaderRoute: typeof EnKnowledgeAiTipsSlugRouteImport
+      parentRoute: typeof EnKnowledgeRoute
+    }
+    '/en/knowledge/$category/$slug': {
+      id: '/en/knowledge/$category/$slug'
+      path: '/$category/$slug'
+      fullPath: '/en/knowledge/$category/$slug'
+      preLoaderRoute: typeof EnKnowledgeCategorySlugRouteImport
+      parentRoute: typeof EnKnowledgeRoute
     }
   }
 }
@@ -916,6 +1385,92 @@ const BuildquestRouteChildren: BuildquestRouteChildren = {
 const BuildquestRouteWithChildren = BuildquestRoute._addFileChildren(
   BuildquestRouteChildren,
 )
+
+interface EnIndustriesRouteChildren {
+  EnIndustriesSlugRoute: typeof EnIndustriesSlugRoute
+  EnIndustriesIndexRoute: typeof EnIndustriesIndexRoute
+}
+
+const EnIndustriesRouteChildren: EnIndustriesRouteChildren = {
+  EnIndustriesSlugRoute: EnIndustriesSlugRoute,
+  EnIndustriesIndexRoute: EnIndustriesIndexRoute,
+}
+
+const EnIndustriesRouteWithChildren = EnIndustriesRoute._addFileChildren(
+  EnIndustriesRouteChildren,
+)
+
+interface EnInsightsRouteChildren {
+  EnInsightsSlugRoute: typeof EnInsightsSlugRoute
+  EnInsightsIndexRoute: typeof EnInsightsIndexRoute
+}
+
+const EnInsightsRouteChildren: EnInsightsRouteChildren = {
+  EnInsightsSlugRoute: EnInsightsSlugRoute,
+  EnInsightsIndexRoute: EnInsightsIndexRoute,
+}
+
+const EnInsightsRouteWithChildren = EnInsightsRoute._addFileChildren(
+  EnInsightsRouteChildren,
+)
+
+interface EnKnowledgeRouteChildren {
+  EnKnowledgeIndexRoute: typeof EnKnowledgeIndexRoute
+  EnKnowledgeCategorySlugRoute: typeof EnKnowledgeCategorySlugRoute
+  EnKnowledgeAiTipsSlugRoute: typeof EnKnowledgeAiTipsSlugRoute
+  EnKnowledgePromptsSlugRoute: typeof EnKnowledgePromptsSlugRoute
+  EnKnowledgeCategoryIndexRoute: typeof EnKnowledgeCategoryIndexRoute
+  EnKnowledgeAiTipsIndexRoute: typeof EnKnowledgeAiTipsIndexRoute
+  EnKnowledgePromptsIndexRoute: typeof EnKnowledgePromptsIndexRoute
+}
+
+const EnKnowledgeRouteChildren: EnKnowledgeRouteChildren = {
+  EnKnowledgeIndexRoute: EnKnowledgeIndexRoute,
+  EnKnowledgeCategorySlugRoute: EnKnowledgeCategorySlugRoute,
+  EnKnowledgeAiTipsSlugRoute: EnKnowledgeAiTipsSlugRoute,
+  EnKnowledgePromptsSlugRoute: EnKnowledgePromptsSlugRoute,
+  EnKnowledgeCategoryIndexRoute: EnKnowledgeCategoryIndexRoute,
+  EnKnowledgeAiTipsIndexRoute: EnKnowledgeAiTipsIndexRoute,
+  EnKnowledgePromptsIndexRoute: EnKnowledgePromptsIndexRoute,
+}
+
+const EnKnowledgeRouteWithChildren = EnKnowledgeRoute._addFileChildren(
+  EnKnowledgeRouteChildren,
+)
+
+interface EnRouteChildren {
+  EnAboutRoute: typeof EnAboutRoute
+  EnAiIntegrationRoute: typeof EnAiIntegrationRoute
+  EnCompanyProfileRoute: typeof EnCompanyProfileRoute
+  EnContactRoute: typeof EnContactRoute
+  EnEngineeringRoute: typeof EnEngineeringRoute
+  EnIndustriesRoute: typeof EnIndustriesRouteWithChildren
+  EnInsightsRoute: typeof EnInsightsRouteWithChildren
+  EnKnowledgeRoute: typeof EnKnowledgeRouteWithChildren
+  EnPricingRoute: typeof EnPricingRoute
+  EnPrivacyRoute: typeof EnPrivacyRoute
+  EnProjectsRoute: typeof EnProjectsRoute
+  EnTermsRoute: typeof EnTermsRoute
+  EnIndexRoute: typeof EnIndexRoute
+}
+
+const EnRouteChildren: EnRouteChildren = {
+  EnAboutRoute: EnAboutRoute,
+  EnAiIntegrationRoute: EnAiIntegrationRoute,
+  EnCompanyProfileRoute: EnCompanyProfileRoute,
+  EnContactRoute: EnContactRoute,
+  EnEngineeringRoute: EnEngineeringRoute,
+  EnIndustriesRoute: EnIndustriesRouteWithChildren,
+  EnInsightsRoute: EnInsightsRouteWithChildren,
+  EnKnowledgeRoute: EnKnowledgeRouteWithChildren,
+  EnPricingRoute: EnPricingRoute,
+  EnPrivacyRoute: EnPrivacyRoute,
+  EnProjectsRoute: EnProjectsRoute,
+  EnTermsRoute: EnTermsRoute,
+  EnIndexRoute: EnIndexRoute,
+}
+
+const EnRouteWithChildren = EnRoute._addFileChildren(EnRouteChildren)
 
 interface IndustriesRouteChildren {
   IndustriesSlugRoute: typeof IndustriesSlugRoute
@@ -979,6 +1534,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CostflowRoute: CostflowRoute,
   DemoRoute: DemoRoute,
+  EnRoute: EnRouteWithChildren,
   EnergyExperienceRoute: EnergyExperienceRoute,
   EngineeringRoute: EngineeringRoute,
   IndustriesRoute: IndustriesRouteWithChildren,
