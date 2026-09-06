@@ -170,10 +170,11 @@ export const PRIMARY_NAV: NavItem[] = [
     ],
   },
   {
-    to: "/insights",
-    zh: "案例與知識",
-    en: "Insights & Knowledge",
+    to: "/projects",
+    zh: "專案經驗",
+    en: "Projects",
     children: [
+      { to: "/projects", zh: "專案經驗", en: "Project Experience" },
       { to: "/insights", zh: "應用情境與導入觀點", en: "Insights & Scenarios" },
       { to: "/knowledge", zh: "知識中心", en: "Knowledge Center" },
       { to: "/knowledge/ai-tips", zh: "AI 使用技巧", en: "AI Tips" },
