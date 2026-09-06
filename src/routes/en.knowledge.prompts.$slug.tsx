@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import { PromptDetail } from "./knowledge.prompts.$slug";
-import { getPrompt, getRelatedPrompts, PROMPT_CATEGORY_LABEL_EN as _unused } from "@/lib/prompts";
+import { getPrompt, getRelatedPrompts } from "@/lib/prompts";
 import { localizePrompt } from "@/lib/knowledge-i18n";
 import { PROMPT_CATEGORY_LABEL_EN } from "@/lib/prompts.en";
 import { SITE } from "@/lib/site-config";
