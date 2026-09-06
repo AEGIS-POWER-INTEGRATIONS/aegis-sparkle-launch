@@ -225,7 +225,7 @@ export function Contact() {
     }
 
     try {
-      await submit({
+      const result = await submit({
         data: {
           inquiryType,
           name: String(data.name ?? ""),
