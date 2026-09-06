@@ -142,13 +142,17 @@ export function ProjectsPage() {
         </section>
 
         <section className="pb-24">
-          <div className="container-x max-w-4xl">
+          <div className="container-x max-w-4xl flex flex-wrap gap-3">
             <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-primary">
-              <L zh="洽詢工程合作" en="Discuss an Engineering Project" />{" "}
+              <L zh="洽詢工程專案" en="Discuss an Engineering Project" />{" "}
               <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/engineering" className="btn btn-ghost">
+              <L zh="查看工程服務" en="View engineering services" />
             </Link>
           </div>
         </section>
+
       </main>
       <SiteFooter />
     </div>
