@@ -232,7 +232,63 @@ export function AiIntegration() {
           </div>
         </section>
 
+        {/* Stages & deliverables */}
+        <section className="pb-24">
+          <div className="container-x">
+            <div className="max-w-2xl">
+              <span className="eyebrow"><span className="dot" /> <L zh="合作階段與交付內容" en="Stages & Deliverables" /></span>
+              <h2 className="mt-4 text-3xl md:text-4xl">
+                <L zh="每個階段會得到什麼" en="What you get at each stage" />
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
+              {[
+                {
+                  t: { zh: "初步需求聯繫", en: "Initial enquiry" },
+                  d: {
+                    zh: "了解目標、現況與基本資料，確認適合的下一步以及是否需要進行正式流程診斷。此階段為方向確認，不等同完整診斷報告。",
+                    en: "We learn your goals, current state and basic context, then agree the suitable next step and whether a formal process diagnosis is needed. This stage aligns direction; it is not a full diagnostic report.",
+                  },
+                },
+                {
+                  t: { zh: "正式流程診斷", en: "Formal process diagnosis" },
+                  d: {
+                    zh: "依委任範圍整理流程現況、問題清單、改善優先順序與導入建議；實際交付項目於合作前確認。",
+                    en: "Within the agreed engagement scope we document current workflows, an issue list, improvement priorities and adoption recommendations; the actual deliverables are confirmed before we start.",
+                  },
+                },
+                {
+                  t: { zh: "小規模驗證／PoC", en: "Small-scale validation / PoC" },
+                  d: {
+                    zh: "開案前確認使用情境、資料來源、試作或串接範圍、測試案例與驗收條件；完成後整理結果與下一階段建議。",
+                    en: "Before kickoff we confirm use cases, data sources, the build or integration scope, test cases and acceptance criteria; afterwards we summarise results and next-phase recommendations.",
+                  },
+                },
+                {
+                  t: { zh: "持續導入與顧問", en: "Ongoing adoption & advisory" },
+                  d: {
+                    zh: "依合約安排顧問會議、教育訓練、導入追蹤與後續改善，場次與範圍以雙方約定為準。",
+                    en: "Advisory meetings, training, adoption tracking and follow-up improvements are arranged per contract; sessions and scope follow what both sides agree.",
+                  },
+                },
+              ].map((s) => (
+                <div key={s.t.en} className="panel p-7">
+                  <h3 className="text-lg font-semibold">{tr(s.t)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{tr(s.d)}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
+              <L
+                zh="涉及收費的診斷、現勘、顧問或建置服務，會先說明範圍與費用，經雙方確認後進行。"
+                en="For any chargeable diagnosis, site visit, advisory or build work, we set out the scope and fee first and proceed once both sides confirm."
+              />
+            </p>
+          </div>
+        </section>
+
         {/* CTA */}
+
         <section className="pb-24">
           <div className="container-x">
             <div className="panel-lift p-10 md:p-12 text-center">

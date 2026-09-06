@@ -37,11 +37,9 @@ import {
   FileSpreadsheet,
   MessagesSquare,
   Network,
-  Layers3,
-  Rocket,
-  Clock,
   Handshake,
 } from "lucide-react";
+
 
 import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
@@ -133,13 +131,7 @@ const products = [
 ];
 
 
-const whyUs: Card[] = [
-  { icon: Wrench, en: "Engineering Experience", zh: "工程實務經驗", desc: { zh: "核心團隊具備能源、機電、弱電、光纖、資料中心等現場工程經驗。", en: "Core team with hands-on experience in energy, MEP, ELV, fiber and data center engineering." } },
-  { icon: ClipboardCheck, en: "Professional Project Management", zh: "專業專案管理", desc: { zh: "以標準化的專案管理流程，進行範圍、進度、風險與驗收管理。", en: "Standardized project management covering scope, schedule, risk and acceptance." } },
-  { icon: Layers3, en: "Enterprise Integration", zh: "企業級系統整合", desc: { zh: "跨工程、IT、OT 與企業應用系統的整合能力，一站式落地。", en: "One-stop integration across engineering, IT, OT and enterprise applications." } },
-  { icon: Clock, en: "Responsive Support", zh: "回應與支援", desc: { zh: "依專案需求設置溝通窗口、回應機制與必要支援安排。", en: "Communication channels, response mechanisms and support arrangements set per project needs." } },
-  { icon: Rocket, en: "Scalable Solutions", zh: "可擴展方案", desc: { zh: "模組化架構讓系統與服務可隨企業成長逐步擴充。", en: "Modular architecture that scales systems and services as your business grows." } },
-];
+
 
 
 export function Home() {
@@ -231,7 +223,7 @@ export function Home() {
         </section>
 
         {/* Engineering Services — flagship (60% of business) */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Engineering · Core Service"
@@ -265,8 +257,62 @@ export function Home() {
           </div>
         </section>
 
+        {/* Project Experience — placed directly after engineering services */}
+        <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Experience"
+              titleZh="專案經驗"
+              titleEn="Project Experience"
+              descZh="以下為核心團隊過往參與的工程經驗，呈現實際施工範圍、現場協作與交付紀錄。"
+              descEn="Engineering work our core team has previously taken part in — actual scope, on-site coordination and delivery records."
+            />
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {PUBLISHED_REAL_PROJECTS.map((p) => (
+                <div key={p.slug} className="panel p-7 flex flex-col">
+                  <div className="inline-flex w-fit items-center rounded-sm border border-border bg-surface px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                    {t(OWNERSHIP_BADGE[p.ownership])}
+                  </div>
+                  <h3 className="mt-4 text-lg">{t(p.industry)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(p.background)}</p>
+                  <div className="mt-4">
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                      <L zh="參與範圍" en="Scope" />
+                    </div>
+                    <p className="mt-1 text-sm leading-relaxed">{t(p.scope)}</p>
+                  </div>
+                  {p.deliverables.length > 0 && (
+                    <div className="mt-4">
+                      <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                        <L zh="交付紀錄" en="Delivery records" />
+                      </div>
+                      <ul className="mt-1 space-y-1 text-sm text-muted-foreground leading-relaxed">
+                        {p.deliverables.map((d) => (
+                          <li key={d.en}>· {t(d)}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link to="/projects" className="btn btn-ghost">
+                <L zh="查看團隊工程經驗" en="View team engineering experience" /> <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <p className="mt-6 text-xs text-muted-foreground leading-relaxed">
+              <L
+                zh="本區為核心團隊成員過往參與經驗，並非宏鼎集成股份有限公司直接承攬實績；案例以匿名方式呈現。"
+                en="These describe prior participation by core team members, not projects contracted directly by Aegis Power Integrations Co., Ltd.; cases are presented anonymously."
+              />
+            </p>
+          </div>
+        </section>
+
+
         {/* AI Advisory (second pillar) — placed right after Engineering */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="AI Advisory · Second Pillar"
@@ -298,7 +344,7 @@ export function Home() {
         </section>
 
         {/* Industries */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Industries"
@@ -327,7 +373,8 @@ export function Home() {
 
 
         {/* Business Applications */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
+        <section className="py-20 md:py-24 bg-surface/40 border-y border-border">
+
           <div className="container-x">
             <SectionHeader
               eyebrow="AI Application Modules · PoC"
@@ -371,77 +418,11 @@ export function Home() {
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="py-24 md:py-28">
-          <div className="container-x">
-            <SectionHeader
-              eyebrow="Why Aegis"
-              titleZh="為什麼選擇我們"
-              titleEn="Why Choose Us"
-              descZh="工程實務、專案管理、企業整合、快速回應與可擴展方案，五大優勢構成 AEGIS POWER INTEGRATIONS 的核心價值。"
-              descEn="Engineering experience, project management, enterprise integration, fast response and scalable solutions — five core strengths that define our value."
-            />
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {whyUs.map(({ icon: Icon, en, zh, desc }, i) => (
-                <div key={en} className="panel p-7 flex gap-5">
-                  <div className="shrink-0">
-                    <div className="text-xs font-mono tracking-widest text-muted-foreground">0{i + 1}</div>
-                    <div className="mt-2 inline-flex h-11 w-11 items-center justify-center rounded bg-ink text-ink-foreground">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-lg">{isEn ? en : zh}</h3>
-                    <div className="text-xs text-muted-foreground tracking-widest mt-0.5 uppercase">
-                      {isEn ? zh : en}
-                    </div>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(desc)}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Project Experience */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
-          <div className="container-x">
-            <SectionHeader
-              eyebrow="Experience"
-              titleZh="專案經驗"
-              titleEn="Project Experience"
-              descZh="以下為核心團隊曾參與或目前可提供的專案類型，實際承攬主體、執行範圍及合作內容依個別專案為準。"
-              descEn="The following are project categories the core team has participated in or can currently provide. Actual contracting entity, execution scope and cooperation terms are subject to each individual project."
-            />
-            <div className="mt-14 grid gap-6 md:grid-cols-2">
-              {PUBLISHED_REAL_PROJECTS.map((p) => (
-                <div key={p.slug} className="panel p-7 flex flex-col">
-                  <div className="inline-flex w-fit items-center rounded-sm border border-border bg-surface px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                    {t(OWNERSHIP_BADGE[p.ownership])}
-                  </div>
-                  <h3 className="mt-4 text-lg">{t(p.industry)}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(p.background)}</p>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(p.scope)}</p>
-                  <p className="mt-4 text-xs text-muted-foreground leading-relaxed">{t(OWNERSHIP_DISCLOSURE[p.ownership])}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <Link to="/projects" className="btn btn-ghost">
-                <L zh="查看專案經驗說明" en="View project experience" /> <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <p className="mt-6 text-xs text-muted-foreground">
-              <L
-                zh="* 以上為可佐證之實際參與經驗，客戶名稱與現場照片依合約保密；未列為宏鼎集成承攬或整廠統包。"
-                en="* Verified participation experience only. Client names and site photography are confidential; not presented as AEGIS-contracted or turnkey scope."
-              />
-            </p>
-          </div>
-        </section>
+
 
         {/* Knowledge Center */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Knowledge"
@@ -491,7 +472,7 @@ export function Home() {
         </section>
 
         {/* Engagement Process */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Process"
@@ -525,7 +506,7 @@ export function Home() {
 
         {/* Final CTA */}
 
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <div className="relative overflow-hidden rounded-lg border border-border bg-ink text-ink-foreground p-10 md:p-16">
               <div

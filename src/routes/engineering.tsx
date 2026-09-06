@@ -227,6 +227,35 @@ export function Engineering() {
           </div>
         </section>
 
+        {/* Execution & delivery */}
+        <section className="pb-20">
+          <div className="container-x">
+            <div className="panel p-8 md:p-10 max-w-4xl">
+              <span className="eyebrow"><span className="dot" /> <L zh="施工與交付方式" en="Execution & Delivery" /></span>
+              <h2 className="mt-4 text-2xl md:text-3xl"><L zh="施工與交付方式" en="How we execute and hand over" /></h2>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <L
+                  zh="我們會依實際工項，於施工前確認需要留存與交付的資料，例如施工紀錄、進度回報、線路標示與配線清冊、驗收所需文件等。實際交付項目、格式與份數列於報價或合約中。"
+                  en="Before work starts we confirm, per work item, which records will be kept and handed over — for example execution records, progress reporting, labelling and patching schedules, and acceptance documentation. The actual deliverables, formats and copies are listed in the quotation or contract."
+                />
+              </p>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-sm">
+                {[
+                  { zh: "依工項確認施工紀錄與進度回報方式", en: "Execution records and progress reporting agreed per work item" },
+                  { zh: "線路標示、配線清冊與現場標示規則", en: "Labelling, patching schedules and on-site marking conventions" },
+                  { zh: "驗收所需文件與交付形式", en: "Acceptance documentation and handover format" },
+                  { zh: "介面協調窗口與現場溝通方式", en: "Interface coordination contacts and on-site communication" },
+                ].map((it) => (
+                  <li key={it.en} className="flex items-start gap-2.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0 mt-2" />
+                    <span>{tr(it)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section className="pb-24">
           <div className="container-x">
             <div className="panel-lift p-10 md:p-12 text-center">
@@ -240,12 +269,13 @@ export function Engineering() {
                 />
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-primary"><L zh="聯絡我們" en="Contact Us" /> <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/ai-integration" className="btn btn-ghost"><L zh="了解 AI 顧問服務" en="Explore AI Advisory" /></Link>
+                <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-primary"><L zh="洽詢工程專案" en="Discuss an Engineering Project" /> <ArrowRight className="h-4 w-4" /></Link>
+                <Link to="/projects" className="btn btn-ghost"><L zh="查看團隊工程經驗" en="View team engineering experience" /></Link>
               </div>
             </div>
           </div>
         </section>
+
       </main>
       <SiteFooter />
     </div>

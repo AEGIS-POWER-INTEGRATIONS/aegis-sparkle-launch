@@ -8,9 +8,9 @@ import { SITE_URL, alternates } from "@/lib/seo";
 import {
   PUBLISHED_REAL_PROJECTS,
   OWNERSHIP_BADGE,
-  OWNERSHIP_DISCLOSURE,
   type Bi,
 } from "@/lib/real-projects";
+
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -60,34 +60,19 @@ export function ProjectsPage() {
             </h1>
             <p className="mt-6 text-base text-muted-foreground leading-relaxed text-pretty">
               <L
-                zh="本頁列出核心團隊實際參與的工程專案。所有案例以匿名案名呈現，僅描述有依據的參與角色與施工範圍；期間、數量與金額等缺乏可公開資料者一律省略。"
-                en="Projects our core team has actually worked on. Every case is presented anonymously and describes only the participation role and scope we can substantiate; duration, quantities and contract values are omitted where no releasable data exists."
+                zh="以下為核心團隊過往參與的工程經驗，呈現實際施工範圍、現場協作與交付紀錄。"
+                en="The following describes engineering work our core team has previously taken part in — actual scope, on-site coordination and delivery records."
               />
             </p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               <L
-                zh={
-                  <>
-                    產業情境示例（非實際客戶案例）另列於{" "}
-                    <Link to="/insights" className="underline underline-offset-4">
-                      應用情境與導入觀點
-                    </Link>
-                    。
-                  </>
-                }
-                en={
-                  <>
-                    Illustrative industry scenarios (not client case studies) are kept separately under{" "}
-                    <Link to="/insights" className="underline underline-offset-4">
-                      Insights &amp; Scenarios
-                    </Link>
-                    .
-                  </>
-                }
+                zh="本頁為核心團隊成員過往參與經驗，並非宏鼎集成股份有限公司直接承攬實績；案例以匿名方式呈現。"
+                en="This page describes prior participation by core team members, not projects contracted directly by Aegis Power Integrations Co., Ltd.; cases are presented anonymously."
               />
             </p>
           </div>
         </section>
+
 
         <section className="py-14 md:py-16">
           <div className="container-x max-w-4xl grid gap-6">
@@ -105,29 +90,29 @@ export function ProjectsPage() {
                     {tr(OWNERSHIP_BADGE[p.ownership])}
                   </span>
                   <h2 className="mt-4 text-2xl font-semibold">{tr(p.industry)}</h2>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {tr(p.background)}
-                  </p>
 
-                  <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+                  <div className="mt-5 grid gap-5 sm:grid-cols-2">
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-muted-foreground">
-                        <L zh="施工範圍" en="Scope" />
-                      </dt>
-                      <dd className="mt-1 text-sm">{tr(p.scope)}</dd>
+                      <h3 className="text-xs uppercase tracking-wider text-muted-foreground">
+                        <L zh="專案背景" en="Background" />
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed">{tr(p.background)}</p>
                     </div>
                     <div>
-                      <dt className="text-xs uppercase tracking-wider text-muted-foreground">
-                        <L zh="參與角色" en="Role" />
-                      </dt>
-                      <dd className="mt-1 text-sm">{tr(p.role)}</dd>
+                      <h3 className="text-xs uppercase tracking-wider text-muted-foreground">
+                        <L zh="參與範圍" en="Participation scope" />
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed">{tr(p.scope)}</p>
+                      <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                        {tr(p.role)}
+                      </p>
                     </div>
-                  </dl>
+                  </div>
 
                   {p.work.length > 0 && (
                     <div className="mt-6">
                       <h3 className="text-sm font-semibold">
-                        <L zh="工項內容" en="Work performed" />
+                        <L zh="現場工作" en="On-site work" />
                       </h3>
                       <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
                         {p.work.map((w) => (
@@ -140,7 +125,7 @@ export function ProjectsPage() {
                   {p.deliverables.length > 0 && (
                     <div className="mt-6">
                       <h3 className="text-sm font-semibold">
-                        <L zh="交付成果" en="Deliverables" />
+                        <L zh="交付紀錄" en="Delivery records" />
                       </h3>
                       <ul className="mt-2 space-y-1.5 text-sm text-muted-foreground">
                         {p.deliverables.map((d) => (
@@ -150,9 +135,6 @@ export function ProjectsPage() {
                     </div>
                   )}
 
-                  <p className="mt-6 border-t border-border/60 pt-4 text-xs text-muted-foreground leading-relaxed">
-                    {tr(OWNERSHIP_DISCLOSURE[p.ownership])} {tr(p.confidentiality)}
-                  </p>
                 </article>
               ))
             )}
@@ -160,13 +142,17 @@ export function ProjectsPage() {
         </section>
 
         <section className="pb-24">
-          <div className="container-x max-w-4xl">
+          <div className="container-x max-w-4xl flex flex-wrap gap-3">
             <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-primary">
-              <L zh="洽詢工程合作" en="Discuss an Engineering Project" />{" "}
+              <L zh="洽詢工程專案" en="Discuss an Engineering Project" />{" "}
               <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/engineering" className="btn btn-ghost">
+              <L zh="查看工程服務" en="View engineering services" />
             </Link>
           </div>
         </section>
+
       </main>
       <SiteFooter />
     </div>

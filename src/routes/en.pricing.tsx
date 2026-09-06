@@ -8,8 +8,8 @@ export const Route = createFileRoute("/en/pricing")({
     meta: pageMeta({
       path: "/en/pricing",
       locale: "en_US",
-      title: "Ways to Work With Us | AEGIS POWER INTEGRATIONS",
-      description: "Quotation-based collaboration models for engineering integration and enterprise AI advisory, scoped to each project after an initial consultation.",
+      title: "Engineering Projects & AI Advisory Engagement | AEGIS POWER INTEGRATIONS",
+      description: "Engineering project quotation and enterprise AI advisory engagement: engineering is quoted from site conditions and work scope; AI advisory covers diagnosis, monthly advisory, PoC and enterprise integration.",
     }),
     links: alternates("/en/pricing"),
   }),
