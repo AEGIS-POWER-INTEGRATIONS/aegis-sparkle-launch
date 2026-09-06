@@ -73,6 +73,7 @@ const plans: {
   suitable: Bi;
   features: Bi[];
   cta: Bi;
+  inquiry: "aiHealth" | "aiMonthly" | "poc";
   featured?: boolean;
 }[] = [
   {
@@ -89,6 +90,7 @@ const plans: {
       { zh: "書面診斷建議報告", en: "Written diagnostic recommendation report" },
     ],
     cta: { zh: "預約需求諮詢", en: "Book Needs Consultation" },
+    inquiry: "aiHealth",
   },
   {
     icon: Users,
@@ -104,6 +106,7 @@ const plans: {
       { zh: "導入進度追蹤與月度摘要", en: "Adoption tracking and monthly summary" },
     ],
     cta: { zh: "預約 AI 流程健檢", en: "Book AI Workflow Check-up" },
+    inquiry: "aiMonthly",
     featured: true,
   },
   {
@@ -120,6 +123,7 @@ const plans: {
       { zh: "成效評估與下一階段建議", en: "Outcome review and next-phase recommendation" },
     ],
     cta: { zh: "申請 PoC 評估", en: "Request PoC Assessment" },
+    inquiry: "poc",
   },
   {
     icon: Layers,
@@ -135,6 +139,7 @@ const plans: {
       { zh: "後續維運與擴充支援", en: "Ongoing operations and expansion support" },
     ],
     cta: { zh: "預約顧問評估", en: "Book Advisory Assessment" },
+    inquiry: "aiHealth",
   },
 ];
 
@@ -267,7 +272,7 @@ export function Pricing() {
           </div>
           <div className="container-x grid gap-6 lg:grid-cols-2">
 
-            {plans.map(({ icon: Icon, code, title, price, desc, suitable, features, cta, featured }) => (
+            {plans.map(({ icon: Icon, code, title, price, desc, suitable, features, cta, inquiry, featured }) => (
               <div
                 key={code}
                 className={`panel p-8 flex flex-col gap-5 ${featured ? "ring-2 ring-gold relative" : ""}`}
@@ -298,7 +303,7 @@ export function Pricing() {
                   ))}
                 </ul>
                 <div className="mt-auto pt-2">
-                  <Link to="/contact" className={`btn w-full ${featured ? "btn-primary" : "btn-ghost"}`}>
+                  <Link to="/contact" search={{ inquiry }} className={`btn w-full ${featured ? "btn-primary" : "btn-ghost"}`}>
                     {tr(cta)}
                   </Link>
                 </div>
