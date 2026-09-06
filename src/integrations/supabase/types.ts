@@ -16,45 +16,66 @@ export type Database = {
     Tables: {
       contact_inquiries: {
         Row: {
+          ack_error: string | null
+          ack_status: string
           company: string | null
           created_at: string
           details: Json
           email: string
+          email_attempts: number
           id: string
           inquiry_type: string
+          ip_hash: string | null
+          last_email_attempt_at: string | null
           locale: string
           message: string
           name: string
+          notify_error: string | null
+          notify_status: string
           phone: string | null
           role: string | null
           source_path: string | null
           status: string
         }
         Insert: {
+          ack_error?: string | null
+          ack_status?: string
           company?: string | null
           created_at?: string
           details?: Json
           email: string
+          email_attempts?: number
           id?: string
           inquiry_type: string
+          ip_hash?: string | null
+          last_email_attempt_at?: string | null
           locale?: string
           message: string
           name: string
+          notify_error?: string | null
+          notify_status?: string
           phone?: string | null
           role?: string | null
           source_path?: string | null
           status?: string
         }
         Update: {
+          ack_error?: string | null
+          ack_status?: string
           company?: string | null
           created_at?: string
           details?: Json
           email?: string
+          email_attempts?: number
           id?: string
           inquiry_type?: string
+          ip_hash?: string | null
+          last_email_attempt_at?: string | null
           locale?: string
           message?: string
           name?: string
+          notify_error?: string | null
+          notify_status?: string
           phone?: string | null
           role?: string | null
           source_path?: string | null
