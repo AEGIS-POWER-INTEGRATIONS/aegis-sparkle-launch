@@ -139,13 +139,25 @@ export const submitInquiry = createServerFn({ method: "POST" })
     // A repeat of the exact same message counts as an accidental double
     // submit: acknowledge it without creating a second record or resending.
     if (duplicate.data?.id) {
-      return { id: duplicate.data.id as string, notified: true, duplicate: true };
+      return {
+        id: duplicate.data.id as string,
+        notified: true,
+        duplicate: true,
+        rateLimited: false as const,
+      };
     }
     if (
       (byEmail.count ?? 0) >= LIMITS.perEmail.max ||
       (byIp.count ?? 0) >= LIMITS.perIp.max
     ) {
-      throw new Error("inquiry_rate_limited");
+      // Returned (not thrown) so the client can show a friendly notice
+      // instead of an unhandled server-function error / blank screen.
+      return {
+        id: null,
+        notified: false,
+        duplicate: false,
+        rateLimited: true as const,
+      };
     }
 
     // ── Persist first: the inquiry survives any email failure ────────
