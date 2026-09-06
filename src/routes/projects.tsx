@@ -51,8 +51,9 @@ function ProjectsPage() {
         <section className="py-16 md:py-20 border-b border-border">
           <div className="container-x max-w-4xl">
             <Breadcrumbs
-              items={[{ label: { zh: "專案經驗", en: "Project Experience" }, to: "/projects" }]}
+              items={[{ label: isEn ? "Project Experience" : "專案經驗" }]}
             />
+
             <h1 className="mt-6 text-4xl md:text-5xl text-balance">
               <L zh="專案經驗" en="Project Experience" />
             </h1>

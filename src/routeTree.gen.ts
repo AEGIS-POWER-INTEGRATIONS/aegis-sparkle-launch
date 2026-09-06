@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SalesopsRouteImport } from './routes/salesops'
+import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
@@ -66,6 +67,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SalesopsRoute = SalesopsRouteImport.update({
   id: '/salesops',
   path: '/salesops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -287,6 +293,7 @@ export interface FileRoutesByFullPath {
   '/knowledge': typeof KnowledgeRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/salesops': typeof SalesopsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -328,6 +335,7 @@ export interface FileRoutesByTo {
   '/engineering': typeof EngineeringRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/salesops': typeof SalesopsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -374,6 +382,7 @@ export interface FileRoutesById {
   '/knowledge': typeof KnowledgeRouteWithChildren
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/projects': typeof ProjectsRoute
   '/salesops': typeof SalesopsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
@@ -421,6 +430,7 @@ export interface FileRouteTypes {
     | '/knowledge'
     | '/pricing'
     | '/privacy'
+    | '/projects'
     | '/salesops'
     | '/sitemap.xml'
     | '/terms'
@@ -462,6 +472,7 @@ export interface FileRouteTypes {
     | '/engineering'
     | '/pricing'
     | '/privacy'
+    | '/projects'
     | '/salesops'
     | '/sitemap.xml'
     | '/terms'
@@ -507,6 +518,7 @@ export interface FileRouteTypes {
     | '/knowledge'
     | '/pricing'
     | '/privacy'
+    | '/projects'
     | '/salesops'
     | '/sitemap.xml'
     | '/terms'
@@ -553,6 +565,7 @@ export interface RootRouteChildren {
   KnowledgeRoute: typeof KnowledgeRouteWithChildren
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProjectsRoute: typeof ProjectsRoute
   SalesopsRoute: typeof SalesopsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
@@ -582,6 +595,13 @@ declare module '@tanstack/react-router' {
       path: '/salesops'
       fullPath: '/salesops'
       preLoaderRoute: typeof SalesopsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -966,6 +986,7 @@ const rootRouteChildren: RootRouteChildren = {
   KnowledgeRoute: KnowledgeRouteWithChildren,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  ProjectsRoute: ProjectsRoute,
   SalesopsRoute: SalesopsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
