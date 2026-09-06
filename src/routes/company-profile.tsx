@@ -94,8 +94,8 @@ function CompanyProfile() {
             </p>
             <p className="mt-6 text-base text-muted-foreground leading-relaxed">
               <L
-                zh="本頁為宏鼎集成股份有限公司的正式企業資訊頁。尚未取得公司書面確認的欄位一律標示「資料待公司確認」，不會由網站前端自行填寫。"
-                en="This is the formal company information page for Aegis Power Integrations Co., Ltd. Fields awaiting written confirmation from the company are labelled 'Pending company confirmation' — never populated on the front end."
+                zh="本頁為宏鼎集成股份有限公司的正式企業資訊頁，載明公司登記資訊、服務範圍與聯絡方式。"
+                en="Formal company information for Aegis Power Integrations Co., Ltd. — registration details, service scope and contact information."
               />
             </p>
           </div>
@@ -139,15 +139,7 @@ function CompanyProfile() {
                       {p.emails.general}
                     </a>
                     <span className="text-muted-foreground ml-2 text-xs">
-                      <L zh="一般洽詢" en="General" />
-                    </span>
-                  </div>
-                  <div className="mt-1">
-                    <a href={`mailto:${p.emails.sales}`} className="hover:underline">
-                      {p.emails.sales}
-                    </a>
-                    <span className="text-muted-foreground ml-2 text-xs">
-                      <L zh="業務與報價" en="Sales / RFQ" />
+                      <L zh="洽詢、報價與合作" en="Inquiries, RFQ & partnerships" />
                     </span>
                   </div>
                 </Row>
@@ -182,39 +174,38 @@ function CompanyProfile() {
           </div>
         </section>
 
-        {/* Insurance / certs / partnerships — placeholders */}
+        {/* Insurance / certs / partnerships — only rendered when documented */}
         <section className="pb-16">
           <div className="container-x max-w-4xl grid gap-6 md:grid-cols-3">
             {[
               { label: { zh: "保險", en: "Insurance" }, items: p.insurance },
               { label: { zh: "認證與證照", en: "Certifications & Licences" }, items: p.certifications },
               { label: { zh: "合作與供應商資格", en: "Partnerships & Vendor Qualifications" }, items: p.partnerships },
-            ].map((block) => (
-              <div key={block.label.en} className="panel p-6">
-                <h3 className="text-base font-semibold">
-                  <L zh={block.label.zh} en={block.label.en} />
-                </h3>
-                <div className="mt-3 text-sm">
-                  {block.items && block.items.length > 0 ? (
+            ]
+              .filter((block) => block.items && block.items.length > 0)
+              .map((block) => (
+                <div key={block.label.en} className="panel p-6">
+                  <h3 className="text-base font-semibold">
+                    <L zh={block.label.zh} en={block.label.en} />
+                  </h3>
+                  <div className="mt-3 text-sm">
                     <ul className="space-y-2">
-                      {block.items.map((it) => (
+                      {block.items!.map((it) => (
                         <li key={it.en} className="text-muted-foreground">
                           · {tr(it)}
                         </li>
                       ))}
                     </ul>
-                  ) : (
-                    <Pending />
-                  )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
+
           <div className="container-x max-w-4xl mt-6">
             <p className="text-xs text-muted-foreground leading-relaxed">
               <L
-                zh="本區塊之保險、認證及合作資格資料，須由宏鼎集成書面提供後方可上線；未確認之項目一律標示為「資料待公司確認」。"
-                en="Insurance, certification and partnership entries appear only after written confirmation from Aegis Power Integrations. Unconfirmed items remain labelled 'Pending company confirmation'."
+                zh="保險、證照與合作資格僅於取得書面文件後刊登；未列出之項目表示目前尚無可公開文件。"
+                en="Insurance, certifications and partnership credentials are listed only when documented. Items not shown have no publicly releasable documentation at this time."
               />
             </p>
           </div>

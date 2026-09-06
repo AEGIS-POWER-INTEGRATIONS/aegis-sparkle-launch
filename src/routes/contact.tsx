@@ -98,17 +98,10 @@ const infoCards: {
   },
   {
     icon: Mail,
-    label: { zh: "一般洽詢與合作", en: "General & Partnerships" },
+    label: { zh: "洽詢、報價與合作", en: "Inquiries, RFQ & Partnerships" },
     primary: { zh: SITE.emails.general, en: SITE.emails.general },
     secondary: { zh: "原則上 1–2 個工作日內回覆", en: "Reply within 1–2 business days" },
     href: `mailto:${SITE.emails.general}`,
-  },
-  {
-    icon: Mail,
-    label: { zh: "業務與報價", en: "Sales & RFQ" },
-    primary: { zh: SITE.emails.sales, en: SITE.emails.sales },
-    secondary: { zh: "業務洽詢與報價需求", en: "Sales inquiries and RFQs" },
-    href: `mailto:${SITE.emails.sales}`,
   },
 ];
 
@@ -502,7 +495,7 @@ function Contact() {
                           </>
                         )}
                       </button>
-                      <a href={`mailto:${SITE.emails.sales}`} className="btn btn-ghost">
+                      <a href={`mailto:${SITE.emails.general}`} className="btn btn-ghost">
                         <L zh="改用 Email 聯繫" en="Email us instead" />
                       </a>
                     </div>

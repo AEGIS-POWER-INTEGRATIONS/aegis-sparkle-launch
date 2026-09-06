@@ -136,10 +136,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           ],
           url: "https://aegispowerapi.com/",
           logo: "https://aegispowerapi.com/__l5e/assets-v1/ac05f61c-af8a-40fd-985b-4b747d757366/api-logo.png",
-          email: [
-            "jtian@aegispowerapi.com",
-            "sales@aegispowerapi.com",
-          ],
+          email: "jtian@aegispowerapi.com",
           address: {
             "@type": "PostalAddress",
             streetAddress: "台灣大道二段2號20樓",

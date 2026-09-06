@@ -206,12 +206,13 @@ function NavItemMobile({
 export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-      <div className="container-x flex h-[84px] md:h-[88px] items-center gap-3 md:gap-4">
+      <div className="container-x flex h-[68px] md:h-[88px] items-center gap-3 md:gap-4">
         <Brand />
 
+        {/* Wide screens: nav sits inline between brand and CTA. */}
         <nav
           aria-label="主要導覽"
-          className="flex min-w-0 items-center gap-4 overflow-x-auto overscroll-x-contain whitespace-nowrap text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6"
+          className="hidden min-w-0 lg:flex items-center gap-4 overflow-x-auto overscroll-x-contain whitespace-nowrap text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden xl:gap-6"
         >
           {PRIMARY_NAV.map((n) => (
             <NavItemDesktop key={n.to} item={n} />
@@ -225,7 +226,20 @@ export function SiteNav() {
           </Link>
         </div>
       </div>
+
+      {/* Narrow screens: same links stay visible on their own scrollable row. */}
+      <div className="lg:hidden border-t border-border/50">
+        <nav
+          aria-label="主要導覽"
+          className="container-x flex items-center gap-5 overflow-x-auto overscroll-x-contain whitespace-nowrap py-2.5 text-sm font-medium [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {PRIMARY_NAV.map((n) => (
+            <NavItemDesktop key={n.to} item={n} />
+          ))}
+        </nav>
+      </div>
     </header>
+
   );
 }
 

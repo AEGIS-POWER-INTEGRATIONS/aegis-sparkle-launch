@@ -41,7 +41,7 @@ export type RealProject = {
   background: Bi;
   scope: Bi;
   role: Bi;
-  period: Bi;
+  period?: Bi;
   work: Bi[];
   deliverables: Bi[];
   photos: { src: string; alt: Bi }[];
@@ -49,11 +49,72 @@ export type RealProject = {
 };
 
 /**
- * NOTE (Phase 3): the two entries below are TEMPLATES kept as drafts so the
- * UI/data shape is exercised but nothing publishes without AEGIS-approved copy
- * and imagery. Do NOT flip `draft: false` here without company confirmation.
+ * The first two entries are company-approved anonymized team experience.
+ * Entries kept as `draft: true` are UI templates and never render publicly.
+ * Do NOT flip `draft: false` without company confirmation, and never add
+ * customer names, logos or on-site photography without written approval.
  */
 export const REAL_PROJECTS: RealProject[] = [
+  {
+    slug: "chiayi-advanced-packaging-outdoor-piping",
+    draft: false,
+    ownership: "core-team",
+    industry: { zh: "先進封裝廠 · 外管線工程", en: "Advanced packaging facility · Outdoor piping" },
+    background: {
+      zh: "嘉義先進封裝廠新建期間的廠外管線工程。",
+      en: "Outdoor piping works during construction of an advanced packaging facility in Chiayi.",
+    },
+    scope: {
+      zh: "廠區外管線施工介面協調與現場執行。",
+      en: "Outdoor piping installation, site interface coordination and field execution.",
+    },
+    role: {
+      zh: "核心團隊成員參與外管線工程，非整廠統包。",
+      en: "Core team members participated in the outdoor piping scope — not a turnkey plant contract.",
+    },
+    work: [
+      { zh: "外管線施工現場作業與介面協調。", en: "Outdoor piping field works and interface coordination." },
+    ],
+    deliverables: [
+      { zh: "現場施工紀錄與進度回報。", en: "Site execution records and progress reporting." },
+    ],
+    photos: [],
+    confidentiality: {
+      zh: "客戶名稱與現場照片未經授權不公開；本頁以匿名案名呈現。",
+      en: "Client name and site photography are withheld; presented anonymously.",
+    },
+  },
+  {
+    slug: "changbin-datacenter-fiber",
+    draft: false,
+    ownership: "core-team",
+    industry: { zh: "大型資料中心 · 光纖工程", en: "Large data center · Fiber optic works" },
+    background: {
+      zh: "彰濱大型資料中心的光纖工程。",
+      en: "Fiber optic works at a large data center in Changbin.",
+    },
+    scope: {
+      zh: "光纖佈設、配接、線路標示與整理。",
+      en: "Fiber deployment, patching, labelling and cable management.",
+    },
+    role: {
+      zh: "核心團隊成員參與光纖工程施作，非整案承攬。",
+      en: "Core team members participated in the fiber scope — not the overall project contract.",
+    },
+    work: [
+      { zh: "光纖佈設與機櫃內配接作業。", en: "Fiber routing and in-rack patching." },
+      { zh: "線路標示與線槽整理。", en: "Circuit labelling and cable tray dressing." },
+    ],
+    deliverables: [
+      { zh: "線路標示清冊與配線紀錄。", en: "Labelling schedule and patching records." },
+    ],
+    photos: [],
+    confidentiality: {
+      zh: "客戶名稱與現場照片未經授權不公開；本頁以匿名案名呈現。",
+      en: "Client name and site photography are withheld; presented anonymously.",
+    },
+  },
+
   {
     slug: "template-datacenter-fiber",
     draft: true,
@@ -71,13 +132,8 @@ export const REAL_PROJECTS: RealProject[] = [
       zh: "核心團隊成員擔任現場工程執行與驗收協調角色。",
       en: "Core team member acted as on-site engineering execution and acceptance coordinator.",
     },
-    period: { zh: "資料待公司確認", en: "Pending company confirmation" },
-    work: [
-      { zh: "資料待公司確認之工項清單。", en: "Task list pending company confirmation." },
-    ],
-    deliverables: [
-      { zh: "資料待公司確認之交付內容。", en: "Deliverables pending company confirmation." },
-    ],
+    work: [],
+    deliverables: [],
     photos: [],
     confidentiality: {
       zh: "客戶名稱依保密協議不公開。",
@@ -101,13 +157,8 @@ export const REAL_PROJECTS: RealProject[] = [
       zh: "核心團隊成員擔任流程顧問與導入輔導。",
       en: "Core team member acted as process advisor and adoption coach.",
     },
-    period: { zh: "資料待公司確認", en: "Pending company confirmation" },
-    work: [
-      { zh: "資料待公司確認之工項清單。", en: "Task list pending company confirmation." },
-    ],
-    deliverables: [
-      { zh: "資料待公司確認之交付內容。", en: "Deliverables pending company confirmation." },
-    ],
+    work: [],
+    deliverables: [],
     photos: [],
     confidentiality: {
       zh: "客戶名稱依保密協議不公開。",

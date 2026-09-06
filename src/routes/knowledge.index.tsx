@@ -89,6 +89,20 @@ function KnowledgeIndex() {
       return haystack.includes(query);
     });
   }, [q, activeTag]);
+  /**
+   * Only surface categories that actually have published articles (plus
+   * categories served by another section via `externalPath`). Rendering a
+   * category card that reads "0 articles" misrepresents the library.
+   */
+  const visibleCategories = useMemo(
+    () =>
+      CATEGORIES.filter(
+        (c) =>
+          c.externalPath ||
+          PUBLISHED_ARTICLES.some((a) => a.category === c.slug),
+      ),
+    [],
+  );
 
 
   return (
@@ -120,8 +134,8 @@ function KnowledgeIndex() {
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-3xl leading-relaxed">
             <L
-              zh="AEGIS POWER INTEGRATIONS 知識中心涵蓋 AI 導入、工程管理、製造業數位轉型、資料中心工程、匿名情境案例與產業解決方案。"
-              en="The AEGIS POWER INTEGRATIONS Knowledge Center covers AI integration, engineering management, manufacturing transformation, data center engineering, anonymized scenarios and industry solutions."
+              zh="目前公開內容包含企業 AI 提示詞庫與 AI 使用技巧；長篇專題文章仍在撰寫中，完成後會陸續發布。"
+              en="Currently published: the enterprise AI prompt library and AI usage tips. Long-form articles are still being written and will be published as they are completed."
             />
           </p>
 
@@ -193,7 +207,7 @@ function KnowledgeIndex() {
                   提供網站建置、系統規劃與企業管理等可直接使用的實務提示詞，含變數說明、使用步驟與注意事項。
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  探索提示詞 <ArrowRight className="h-4 w-4" />
+                  探索提示詞（{PUBLISHED_PROMPTS.length}） <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
               <Link
@@ -208,7 +222,7 @@ function KnowledgeIndex() {
                   分享生成式 AI、辦公應用、企業管理、網站系統與資訊安全等實務使用方法，適合企業內部培訓與流程建立。
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:gap-2 transition-all">
-                  查看使用技巧 <ArrowRight className="h-4 w-4" />
+                  查看使用技巧（{PUBLISHED_AI_TIPS.length}） <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
             </div>
@@ -217,7 +231,7 @@ function KnowledgeIndex() {
       )}
 
       {/* Categories overview */}
-      {!q.trim() && !activeTag && (
+      {!q.trim() && !activeTag && visibleCategories.length > 0 && (
         <section className="py-16 md:py-20 border-b border-border/60">
           <div className="container-x">
             <div className="flex items-end justify-between gap-4">
@@ -225,11 +239,12 @@ function KnowledgeIndex() {
                 <L zh="知識分類" en="Categories" />
               </h2>
               <span className="text-sm text-muted-foreground">
-                {CATEGORIES.length} <L zh="個分類" en="categories" />
+                {visibleCategories.length} <L zh="個分類" en="categories" />
               </span>
             </div>
             <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {CATEGORIES.map((c) => (
+              {visibleCategories.map((c) => (
+
                 <Link
                   key={c.slug}
                   to={categoryPath(c)}
@@ -266,7 +281,9 @@ function KnowledgeIndex() {
         </section>
       )}
 
-      {/* Results */}
+      {/* Results — the long-form article library. Hidden entirely while no
+          article has a published body, so the page never shows "0 articles". */}
+      {(PUBLISHED_ARTICLES.length > 0 || q.trim() || activeTag) && (
       <section className="py-16">
         <div className="container-x">
           <div className="flex items-end justify-between gap-4">
@@ -284,11 +301,12 @@ function KnowledgeIndex() {
           {filtered.length === 0 ? (
             <div className="mt-10 rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
               <L
-                zh="相關內容整理中，歡迎訂閱或與我們聯繫。"
-                en="Content is being prepared — please subscribe or contact us for updates."
+                zh="沒有符合條件的文章。請調整關鍵字或標籤條件。"
+                en="No articles match this search. Try a different keyword or tag."
               />
             </div>
           ) : (
+
 
             <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((a) => (
@@ -327,6 +345,8 @@ function KnowledgeIndex() {
           )}
         </div>
       </section>
+      )}
+
     </div>
   );
 }
