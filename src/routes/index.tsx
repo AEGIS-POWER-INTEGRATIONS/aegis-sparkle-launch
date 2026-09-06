@@ -6,7 +6,11 @@ import {
   OWNERSHIP_BADGE,
   OWNERSHIP_DISCLOSURE,
 } from "@/lib/real-projects";
+import { PUBLISHED_PROMPTS } from "@/lib/prompts";
+import { PUBLISHED_AI_TIPS } from "@/lib/ai-tips";
 import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
+
+const KNOWLEDGE_TOTAL = PUBLISHED_PROMPTS.length + PUBLISHED_AI_TIPS.length;
 import mockCostflow from "@/assets/mock-costflow.jpg";
 import mockSalesops from "@/assets/mock-salesops.jpg";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
@@ -433,6 +437,56 @@ export function Home() {
                 en="* Verified participation experience only. Client names and site photography are confidential; not presented as AEGIS-contracted or turnkey scope."
               />
             </p>
+          </div>
+        </section>
+
+        {/* Knowledge Center */}
+        <section className="py-24 md:py-28">
+          <div className="container-x">
+            <SectionHeader
+              eyebrow="Knowledge"
+              titleZh="知識中心"
+              titleEn="Knowledge Center"
+              descZh={`已上架 ${KNOWLEDGE_TOTAL} 篇實務內容：企業 AI 提示詞庫與 AI 使用技巧，依主題分類，可直接用於內部培訓與流程建立。`}
+              descEn={`${KNOWLEDGE_TOTAL} published practical entries across the AI prompt library and AI usage tips, organised by topic for internal training and workflow design.`}
+            />
+            <div className="mt-14 grid gap-6 md:grid-cols-2">
+              <Link to="/knowledge/prompts" className="panel p-7 flex flex-col hover:border-primary/40 transition-colors">
+                <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">Prompt Library</div>
+                <h3 className="mt-3 text-lg">
+                  <L zh="企業 AI 提示詞庫" en="AI Prompt Library" /> · {PUBLISHED_PROMPTS.length}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <L
+                    zh="網站建置、系統建置與企業管理三大分類，含變數說明與使用步驟。"
+                    en="Website build, system build and management categories, with variables and usage steps."
+                  />
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  <L zh="瀏覽提示詞" en="Browse prompts" /> <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+              <Link to="/knowledge/ai-tips" className="panel p-7 flex flex-col hover:border-primary/40 transition-colors">
+                <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">AI Tips</div>
+                <h3 className="mt-3 text-lg">
+                  <L zh="AI 使用技巧" en="AI Usage Tips" /> · {PUBLISHED_AI_TIPS.length}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <L
+                    zh="AI 入門、辦公效率、企業管理、網站系統、進階技巧與資安風險。"
+                    en="AI basics, office productivity, management, web systems, advanced techniques and security."
+                  />
+                </p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                  <L zh="瀏覽使用技巧" en="Browse tips" /> <ArrowRight className="h-4 w-4" />
+                </span>
+              </Link>
+            </div>
+            <div className="mt-8">
+              <Link to="/knowledge" className="btn btn-ghost">
+                <L zh="前往知識中心" en="Go to Knowledge Center" /> <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </section>
 
