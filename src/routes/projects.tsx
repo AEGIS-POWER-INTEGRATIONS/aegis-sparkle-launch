@@ -8,9 +8,9 @@ import { SITE_URL, alternates } from "@/lib/seo";
 import {
   PUBLISHED_REAL_PROJECTS,
   OWNERSHIP_BADGE,
-  OWNERSHIP_DISCLOSURE,
   type Bi,
 } from "@/lib/real-projects";
+
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
