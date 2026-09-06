@@ -232,6 +232,9 @@ export function KnowledgeIndex() {
         </section>
       )}
 
+      {/* Published library, broken down by category */}
+      {!q.trim() && !activeTag && <LibraryBreakdown />}
+
       {/* Categories overview */}
       {!q.trim() && !activeTag && visibleCategories.length > 0 && (
         <section className="py-16 md:py-20 border-b border-border/60">
