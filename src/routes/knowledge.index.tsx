@@ -217,7 +217,7 @@ function KnowledgeIndex() {
       )}
 
       {/* Categories overview */}
-      {!q.trim() && !activeTag && (
+      {!q.trim() && !activeTag && visibleCategories.length > 0 && (
         <section className="py-16 md:py-20 border-b border-border/60">
           <div className="container-x">
             <div className="flex items-end justify-between gap-4">
@@ -225,11 +225,12 @@ function KnowledgeIndex() {
                 <L zh="知識分類" en="Categories" />
               </h2>
               <span className="text-sm text-muted-foreground">
-                {CATEGORIES.length} <L zh="個分類" en="categories" />
+                {visibleCategories.length} <L zh="個分類" en="categories" />
               </span>
             </div>
             <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {CATEGORIES.map((c) => (
+              {visibleCategories.map((c) => (
+
                 <Link
                   key={c.slug}
                   to={categoryPath(c)}
