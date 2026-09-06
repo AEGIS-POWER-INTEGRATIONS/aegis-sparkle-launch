@@ -223,7 +223,7 @@ export function Home() {
         </section>
 
         {/* Engineering Services — flagship (60% of business) */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Engineering · Core Service"
@@ -312,7 +312,7 @@ export function Home() {
 
 
         {/* AI Advisory (second pillar) — placed right after Engineering */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="AI Advisory · Second Pillar"
@@ -344,7 +344,7 @@ export function Home() {
         </section>
 
         {/* Industries */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Industries"
@@ -373,7 +373,7 @@ export function Home() {
 
 
         {/* Business Applications */}
-        <section className="py-24 md:py-28 bg-surface/40 border-y border-border">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="AI Application Modules · PoC"
@@ -421,7 +421,7 @@ export function Home() {
 
 
         {/* Knowledge Center */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Knowledge"
@@ -471,7 +471,7 @@ export function Home() {
         </section>
 
         {/* Engagement Process */}
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <SectionHeader
               eyebrow="Process"
@@ -505,7 +505,7 @@ export function Home() {
 
         {/* Final CTA */}
 
-        <section className="py-24 md:py-28">
+        <section className="py-20 md:py-24">
           <div className="container-x">
             <div className="relative overflow-hidden rounded-lg border border-border bg-ink text-ink-foreground p-10 md:p-16">
               <div
