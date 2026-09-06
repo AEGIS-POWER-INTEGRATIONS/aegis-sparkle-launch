@@ -1,10 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { useState } from "react";
 import { ArrowRight, BookOpen } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { INSIGHTS, CATEGORY_LABEL, type InsightCategory } from "@/lib/insights";
 import { L, useLang } from "@/lib/i18n";
-import { SITE_URL, OG_IMAGE } from "@/lib/seo";
+import { SITE_URL, OG_IMAGE, alternates } from "@/lib/seo";
 
 export const Route = createFileRoute("/insights/")({
   head: () => ({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/insights/")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/insights` }],
+    links: alternates(`${SITE_URL}/insights`),
   }),
 
   component: InsightsHub,
@@ -34,7 +35,7 @@ const FILTERS: { key: "all" | InsightCategory; zh: string; en: string }[] = [
   { key: "automation", zh: "自動化", en: "Automation" },
 ];
 
-function InsightsHub() {
+export function InsightsHub() {
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);
   const [active, setActive] = useState<"all" | InsightCategory>("all");

@@ -1,10 +1,11 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useParams } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Breadcrumbs, breadcrumbJsonLd } from "@/components/breadcrumbs";
 import { INDUSTRIES, getIndustry, type Industry } from "@/lib/industries";
 import { L, useLang } from "@/lib/i18n";
-import { SITE_URL, OG_IMAGE } from "@/lib/seo";
+import { SITE_URL, OG_IMAGE, alternates } from "@/lib/seo";
 
 export const Route = createFileRoute("/industries/$slug")({
   loader: ({ params }): { industry: Industry } => {
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/industries/$slug")({
         { property: "og:image", content: OG_IMAGE },
         { name: "twitter:image", content: OG_IMAGE },
       ],
-      links: [{ rel: "canonical", href: `${SITE_URL}/industries/${industry.slug}` }],
+      links: alternates(`${SITE_URL}/industries/${industry.slug}`),
       scripts: [
         {
           type: "application/ld+json",
@@ -48,7 +49,7 @@ export const Route = createFileRoute("/industries/$slug")({
   notFoundComponent: IndustryNotFound,
 });
 
-function IndustryNotFound() {
+export function IndustryNotFound() {
   return (
     <div className="min-h-screen bg-background">
       <SiteNav />
@@ -65,8 +66,9 @@ function IndustryNotFound() {
   );
 }
 
-function IndustryDetail() {
-  const data = Route.useLoaderData() as { industry: Industry };
+export function IndustryDetail() {
+  const { slug } = useParams({ strict: false }) as { slug: string };
+  const data = { industry: getIndustry(slug)! };
   const industry = data.industry;
   const { isEn } = useLang();
   const tr = (b: { zh: string; en: string }) => (isEn ? b.en : b.zh);

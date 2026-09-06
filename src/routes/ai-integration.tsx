@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import {
   ArrowRight,
@@ -15,7 +16,7 @@ import {
   MessagesSquare,
 } from "lucide-react";
 
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/ai-integration")({
@@ -30,7 +31,7 @@ export const Route = createFileRoute("/ai-integration")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/ai-integration` }],
+    links: alternates(`${SITE_URL}/ai-integration`),
     scripts: [
       {
         type: "application/ld+json",
@@ -82,7 +83,7 @@ const process = [
   { n: "05", icon: GraduationCap, t: { zh: "導入陪跑", en: "Adoption Coaching" }, d: { zh: "教育訓練、流程調整與持續改善，讓工具真正被員工使用。", en: "Training, workflow tuning and continuous improvement so tools are actually used." } },
 ];
 
-function AiIntegration() {
+export function AiIntegration() {
   const { isEn } = useLang();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 

@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { L, useLang } from "@/lib/i18n";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, alternates } from "@/lib/seo";
 import {
   PUBLISHED_REAL_PROJECTS,
   OWNERSHIP_BADGE,
@@ -34,12 +35,12 @@ export const Route = createFileRoute("/projects")({
         content: "核心團隊實際參與的工程專案經驗，與產業情境示例清楚區分。",
       },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/projects` }],
+    links: alternates(`${SITE_URL}/projects`),
   }),
   component: ProjectsPage,
 });
 
-function ProjectsPage() {
+export function ProjectsPage() {
   const { isEn } = useLang();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
   const projects = PUBLISHED_REAL_PROJECTS;

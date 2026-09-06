@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import heroEngAsset from "@/assets/engineering-fiber-technician.webp.asset.json";
 import serverRackAsset from "@/assets/engineering-server-rack.webp.asset.json";
@@ -7,7 +8,7 @@ import camerasAsset from "@/assets/engineering-security-cameras.webp.asset.json"
 const bannerEngineering = heroEngAsset.url;
 import { ArrowRight, Cable, Camera, HardHat, Network, Radio, ServerCog } from "lucide-react";
 
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang, useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/engineering")({
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/engineering")({
       { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
-      { rel: "canonical", href: `${SITE_URL}/engineering` },
+      ...alternates(`${SITE_URL}/engineering`),
       { rel: "preload", as: "image", href: heroEngAsset.url, fetchpriority: "high" } as never,
     ],
     scripts: [
@@ -75,7 +76,7 @@ const features: { t: Bi; d: Bi }[] = [
   { t: { zh: "可結合 AI 系統與企業管理平台", en: "Combinable with AI systems and enterprise platforms" }, d: { zh: "工程資料可進一步串接 Aegis Business Apps 與 AI 系統，讓現場與管理流程連動。", en: "Engineering data can flow into Aegis Business Apps and AI systems, linking site operations with management." } },
 ];
 
-function Engineering() {
+export function Engineering() {
   const { isEn } = useLang();
   const t = useT();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);

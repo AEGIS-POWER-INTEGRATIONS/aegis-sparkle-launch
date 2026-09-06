@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import {
@@ -78,7 +79,7 @@ const AUDIENCE_OPTIONS: { value: PromptAudienceTag | "all"; label: string }[] = 
   { value: "general", label: "通用" },
 ];
 
-function PromptsIndex() {
+export function PromptsIndex() {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<PromptCategory | "all">("all");
   const [diff, setDiff] = useState<PromptDifficulty | "all">("all");

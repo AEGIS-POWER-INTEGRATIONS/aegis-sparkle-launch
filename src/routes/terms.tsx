@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { L } from "@/lib/i18n";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_URL, alternates } from "@/lib/seo";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -12,12 +12,12 @@ export const Route = createFileRoute("/terms")({
       { property: "og:url", content: `${SITE_URL}/terms` },
       { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/terms` }],
+    links: alternates(`${SITE_URL}/terms`),
   }),
   component: TermsPage,
 });
 
-function TermsPage() {
+export function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <SiteNav />

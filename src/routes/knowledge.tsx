@@ -5,7 +5,7 @@ export const Route = createFileRoute("/knowledge")({
   component: KnowledgeLayout,
 });
 
-function KnowledgeLayout() {
+export function KnowledgeLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteNav />

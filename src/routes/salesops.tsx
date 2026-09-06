@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { MapPin, Mic, BrainCircuit, MessageSquare } from "lucide-react";
 

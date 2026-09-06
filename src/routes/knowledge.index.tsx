@@ -1,4 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { alternates } from "@/lib/seo";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import { L, useLang, useT } from "@/lib/i18n";
@@ -46,7 +48,7 @@ export const Route = createFileRoute("/knowledge/")({
     if (empty) meta.push({ name: "robots", content: "noindex, follow" });
     return {
       meta,
-      links: [{ rel: "canonical", href: `${SITE.domain}/knowledge` }],
+      links: alternates(`${SITE.domain}/knowledge`),
       scripts: [
         {
           type: "application/ld+json",
@@ -65,7 +67,7 @@ export const Route = createFileRoute("/knowledge/")({
   component: KnowledgeIndex,
 });
 
-function KnowledgeIndex() {
+export function KnowledgeIndex() {
   const { isEn } = useLang();
   const t = useT();
   const [q, setQ] = useState("");

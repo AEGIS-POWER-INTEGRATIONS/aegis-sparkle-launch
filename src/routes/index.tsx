@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
 import engineeringFiberPanel from "@/assets/engineering-fiber-panel.webp.asset.json";
@@ -37,7 +38,7 @@ import {
   Handshake,
 } from "lucide-react";
 
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -60,7 +61,7 @@ export const Route = createFileRoute("/")({
     ],
 
     links: [
-      { rel: "canonical", href: `${SITE_URL}/` },
+      ...alternates(`${SITE_URL}/`),
       { rel: "preload", as: "image", href: heroAsset.url, fetchpriority: "high" } as never,
     ],
   }),
@@ -142,7 +143,7 @@ const projects = [
   { industry: { zh: "製造業", en: "Manufacturing" }, zh: "電子製造業", scopeEn: "IT/OT network & AI adoption", scope: "IT/OT 網路與 AI 導入", outcome: { zh: "產線網路重整並導入 AI 報表與週報系統，縮短決策時間。", en: "Production-line network overhaul with AI reporting and weekly-report system to speed decisions." }, image: engineeringFiberTech.url },
 ];
 
-function Home() {
+export function Home() {
   const { isEn } = useLang();
   const t = (b: Bi) => (isEn ? b.en : b.zh);
 

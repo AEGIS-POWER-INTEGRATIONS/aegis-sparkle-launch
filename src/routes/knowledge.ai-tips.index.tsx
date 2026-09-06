@@ -1,4 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { useMemo, useState } from "react";
 import { ArrowRight, Search } from "lucide-react";
 import {
@@ -61,7 +62,7 @@ const CAT_OPTIONS: { value: AiTipCategory | "all"; label: string }[] = [
   { value: "security", label: "資安與風險" },
 ];
 
-function TipsIndex() {
+export function TipsIndex() {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<AiTipCategory | "all">("all");
 

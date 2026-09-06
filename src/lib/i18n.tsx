@@ -1,67 +1,51 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  type ReactNode,
-} from "react";
+import { useRouterState } from "@tanstack/react-router";
+import { useEffect, type ReactNode } from "react";
 
-export type Lang = "zh-TW" | "en";
+import { langFromPath, withLocale, type Lang } from "@/lib/locale";
+
+export type { Lang };
 
 const STORAGE_KEY = "aegis-lang";
 
-type Ctx = {
-  lang: Lang;
-  setLang: (l: Lang) => void;
-  isEn: boolean;
-};
-
-const LangContext = createContext<Ctx>({
-  lang: "zh-TW",
-  setLang: () => {},
-  isEn: false,
-});
+/**
+ * Language is derived from the URL. `/en/*` is English, everything else is
+ * Traditional Chinese (zh-Hant-TW). A stored preference never overrides an
+ * explicit language URL — it is only used to offer the visitor their previous
+ * choice on first landing (handled by <LanguagePreferenceHint/> below, which
+ * only ever records, never redirects).
+ */
+export function useLangPathname() {
+  return useRouterState({ select: (s) => s.location.pathname });
+}
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Default zh-TW. Do NOT read localStorage synchronously — that would
-  // hydration-mismatch. Read after mount.
-  const [lang, setLangState] = useState<Lang>("zh-TW");
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored === "en" || stored === "zh-TW") {
-        setLangState(stored);
-      }
-    } catch {
-      // ignore
-    }
-  }, []);
+  const lang = langFromPath(useLangPathname());
 
   useEffect(() => {
     if (typeof document !== "undefined") {
-      document.documentElement.lang = lang === "en" ? "en" : "zh-Hant";
+      document.documentElement.lang = lang === "en" ? "en" : "zh-Hant-TW";
     }
-  }, [lang]);
-
-  function setLang(l: Lang) {
-    setLangState(l);
     try {
-      localStorage.setItem(STORAGE_KEY, l);
+      localStorage.setItem(STORAGE_KEY, lang);
     } catch {
       // ignore
     }
-  }
+  }, [lang]);
 
-  return (
-    <LangContext.Provider value={{ lang, setLang, isEn: lang === "en" }}>
-      {children}
-    </LangContext.Provider>
-  );
+  return <>{children}</>;
 }
 
 export function useLang() {
-  return useContext(LangContext);
+  const location = useRouterState({ select: (s) => s.location });
+  const lang = langFromPath(location.pathname);
+
+  /** Same page in the other language, keeping query string and hash. */
+  function targetHref(next: Lang) {
+    const path = withLocale(location.pathname, next);
+    return `${path}${location.searchStr ?? ""}${location.hash ? `#${location.hash}` : ""}`;
+  }
+
+  return { lang, targetHref, isEn: lang === "en" };
 }
 
 /** Bilingual inline switch. Renders `en` when current language is English. */

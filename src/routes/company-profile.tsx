@@ -1,7 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { ArrowRight } from "lucide-react";
-import { OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { OG_IMAGE, SITE_URL, alternates } from "@/lib/seo";
 import { L, useLang } from "@/lib/i18n";
 import { COMPANY_PROFILE, SITE } from "@/lib/site-config";
 
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/company-profile")({
       { property: "og:image", content: OG_IMAGE },
       { name: "twitter:image", content: OG_IMAGE },
     ],
-    links: [{ rel: "canonical", href: `${SITE_URL}/company-profile` }],
+    links: alternates(`${SITE_URL}/company-profile`),
     scripts: [
       {
         type: "application/ld+json",
@@ -68,7 +69,7 @@ function Row({
   );
 }
 
-function CompanyProfile() {
+export function CompanyProfile() {
   const { isEn } = useLang();
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
   const p = COMPANY_PROFILE;

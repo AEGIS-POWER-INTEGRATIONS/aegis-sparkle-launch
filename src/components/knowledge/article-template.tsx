@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@/lib/nav";
 import { ArrowRight, ArrowUpRight, Calendar, Clock, Copy, Link2, Share2, User } from "lucide-react";
 import { L, useLang, useT } from "@/lib/i18n";
 import {
