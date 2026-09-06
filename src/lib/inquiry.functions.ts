@@ -121,6 +121,11 @@ export const submitInquiry = createServerFn({ method: "POST" })
       label: string,
     ) => {
       const messageId = crypto.randomUUID();
+      // Transactional sends require an unsubscribe token per recipient.
+      const unsubscribeToken = crypto.randomUUID().replace(/-/g, "");
+      await supabase
+        .from("email_unsubscribe_tokens")
+        .insert({ email: to, token: unsubscribeToken });
       await supabase.from("email_send_log").insert({
         message_id: messageId,
         template_name: label,
@@ -140,6 +145,7 @@ export const submitInquiry = createServerFn({ method: "POST" })
           purpose: "transactional",
           label,
           idempotency_key: messageId,
+          unsubscribe_token: unsubscribeToken,
           queued_at: new Date().toISOString(),
         },
       });
