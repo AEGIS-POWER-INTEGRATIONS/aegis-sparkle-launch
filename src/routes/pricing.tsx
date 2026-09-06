@@ -274,7 +274,7 @@ export function Pricing() {
               >
                 {featured && (
                   <span className="absolute -top-3 left-6 tag">
-                    <L zh="最常被選擇" en="Most Chosen" />
+                    <L zh="持續導入陪跑" en="Ongoing adoption coaching" />
                   </span>
                 )}
                 <div className="flex items-start justify-between">
