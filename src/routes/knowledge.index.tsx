@@ -281,7 +281,9 @@ function KnowledgeIndex() {
         </section>
       )}
 
-      {/* Results */}
+      {/* Results — the long-form article library. Hidden entirely while no
+          article has a published body, so the page never shows "0 articles". */}
+      {(PUBLISHED_ARTICLES.length > 0 || q.trim() || activeTag) && (
       <section className="py-16">
         <div className="container-x">
           <div className="flex items-end justify-between gap-4">
@@ -299,11 +301,12 @@ function KnowledgeIndex() {
           {filtered.length === 0 ? (
             <div className="mt-10 rounded-lg border border-dashed border-border p-10 text-center text-muted-foreground">
               <L
-                zh="相關內容整理中，歡迎訂閱或與我們聯繫。"
-                en="Content is being prepared — please subscribe or contact us for updates."
+                zh="沒有符合條件的文章。請調整關鍵字或標籤條件。"
+                en="No articles match this search. Try a different keyword or tag."
               />
             </div>
           ) : (
+
 
             <ul className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {filtered.map((a) => (
