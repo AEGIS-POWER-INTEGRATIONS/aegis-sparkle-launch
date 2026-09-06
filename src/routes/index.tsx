@@ -7,10 +7,6 @@ import {
   OWNERSHIP_DISCLOSURE,
 } from "@/lib/real-projects";
 import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
-import engineeringFiberPanel from "@/assets/engineering-fiber-panel.webp.asset.json";
-import engineeringServerRack from "@/assets/engineering-server-rack.webp.asset.json";
-import engineeringSecurityCameras from "@/assets/engineering-security-cameras.webp.asset.json";
-import engineeringFiberTech from "@/assets/engineering-fiber-technician.webp.asset.json";
 import mockCostflow from "@/assets/mock-costflow.jpg";
 import mockSalesops from "@/assets/mock-salesops.jpg";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
