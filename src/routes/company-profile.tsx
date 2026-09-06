@@ -174,34 +174,33 @@ function CompanyProfile() {
           </div>
         </section>
 
-        {/* Insurance / certs / partnerships — placeholders */}
+        {/* Insurance / certs / partnerships — only rendered when documented */}
         <section className="pb-16">
           <div className="container-x max-w-4xl grid gap-6 md:grid-cols-3">
             {[
               { label: { zh: "保險", en: "Insurance" }, items: p.insurance },
               { label: { zh: "認證與證照", en: "Certifications & Licences" }, items: p.certifications },
               { label: { zh: "合作與供應商資格", en: "Partnerships & Vendor Qualifications" }, items: p.partnerships },
-            ].map((block) => (
-              <div key={block.label.en} className="panel p-6">
-                <h3 className="text-base font-semibold">
-                  <L zh={block.label.zh} en={block.label.en} />
-                </h3>
-                <div className="mt-3 text-sm">
-                  {block.items && block.items.length > 0 ? (
+            ]
+              .filter((block) => block.items && block.items.length > 0)
+              .map((block) => (
+                <div key={block.label.en} className="panel p-6">
+                  <h3 className="text-base font-semibold">
+                    <L zh={block.label.zh} en={block.label.en} />
+                  </h3>
+                  <div className="mt-3 text-sm">
                     <ul className="space-y-2">
-                      {block.items.map((it) => (
+                      {block.items!.map((it) => (
                         <li key={it.en} className="text-muted-foreground">
                           · {tr(it)}
                         </li>
                       ))}
                     </ul>
-                  ) : (
-                    <Pending />
-                  )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
+
           <div className="container-x max-w-4xl mt-6">
             <p className="text-xs text-muted-foreground leading-relaxed">
               <L
