@@ -13,8 +13,9 @@ import {
   getAllTags,
   type KnowledgeTag,
 } from "@/lib/knowledge";
-import { PUBLISHED_PROMPTS } from "@/lib/prompts";
-import { PUBLISHED_AI_TIPS } from "@/lib/ai-tips";
+import { PUBLISHED_PROMPTS, type PromptCategory } from "@/lib/prompts";
+import { PUBLISHED_AI_TIPS, type AiTipCategory } from "@/lib/ai-tips";
+import { usePromptLocale, useTipLocale } from "@/lib/knowledge-i18n";
 
 import { SITE } from "@/lib/site-config";
 
