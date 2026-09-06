@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
-    "@lovable.dev/email-js": "^0.1.2",
+    "@lovable.dev/email-js": "0.1.0",
     "@lovable.dev/webhooks-js": "^0.0.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
@@ -103,5 +103,10 @@
   "overrides": {
     "seroval": "^1.5.6",
     "seroval-plugins": "^1.5.6"
+  },
+  "pnpm": {
+    "overrides": {
+      "entities": "4.5.0"
+    }
   }
 }
