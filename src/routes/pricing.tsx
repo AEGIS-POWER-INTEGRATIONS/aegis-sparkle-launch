@@ -34,14 +34,14 @@ const FAQ_ITEMS: { q: Bi; a: Bi }[] = [
 export const Route = createFileRoute("/pricing")({
   head: () => ({
     meta: [
-      { title: "合作方式｜宏鼎集成｜工程整合與企業 AI 顧問" },
-      { name: "description", content: "宏鼎集成以顧問與導入服務為核心，提供初步需求診斷、月度 AI 顧問、PoC 導入專案與企業整合方案。實際費用依企業現況與導入目標評估報價。" },
-      { property: "og:title", content: "合作方式｜宏鼎集成" },
+      { title: "工程專案與 AI 顧問合作｜宏鼎集成" },
+      { name: "description", content: "宏鼎集成工程專案詢價與企業 AI 顧問合作方式：工程依現場條件與工項範圍書面報價，AI 顧問提供初步診斷、月度顧問、PoC 與企業整合方案。" },
+      { property: "og:title", content: "工程專案與 AI 顧問合作｜宏鼎集成" },
       { property: "og:description", content: "初步需求診斷、月度 AI 顧問、PoC 導入專案與企業整合方案，依需求評估報價。" },
       { property: "og:url", content: `${SITE_URL}/pricing` },
       { property: "og:type", content: "website" },
       { property: "og:image", content: OG_IMAGE },
-      { name: "twitter:title", content: "合作方式｜宏鼎集成" },
+      { name: "twitter:title", content: "工程專案與 AI 顧問合作｜宏鼎集成" },
       { name: "twitter:description", content: "顧問、PoC 與企業整合方案，依需求評估報價。" },
       { name: "twitter:image", content: OG_IMAGE },
     ],
