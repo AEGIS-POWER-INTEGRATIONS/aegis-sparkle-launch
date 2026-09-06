@@ -89,6 +89,20 @@ function KnowledgeIndex() {
       return haystack.includes(query);
     });
   }, [q, activeTag]);
+  /**
+   * Only surface categories that actually have published articles (plus
+   * categories served by another section via `externalPath`). Rendering a
+   * category card that reads "0 articles" misrepresents the library.
+   */
+  const visibleCategories = useMemo(
+    () =>
+      CATEGORIES.filter(
+        (c) =>
+          c.externalPath ||
+          PUBLISHED_ARTICLES.some((a) => a.category === c.slug),
+      ),
+    [],
+  );
 
 
   return (
