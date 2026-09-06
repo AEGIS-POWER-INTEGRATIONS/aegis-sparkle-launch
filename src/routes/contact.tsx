@@ -516,8 +516,8 @@ export function Contact() {
                       />
                       <label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
                         <L
-                          zh={<>本人已閱讀並同意<a href="/privacy" className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>，同意宏鼎集成使用上述資料進行需求聯繫、服務評估與後續合作溝通。</>}
-                          en={<>I have read and agree to the <a href="/privacy" className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>, and consent to AEGIS POWER INTEGRATIONS using this information for follow-up, needs assessment and cooperation.</>}
+                          zh={<>本人已閱讀並同意<a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>，同意宏鼎集成使用上述資料進行需求聯繫、服務評估與後續合作溝通。</>}
+                          en={<>I have read and agree to the <a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>, and consent to AEGIS POWER INTEGRATIONS using this information for follow-up, needs assessment and cooperation.</>}
                         />
                       </label>
                     </div>
@@ -560,7 +560,7 @@ export function Contact() {
                     />
                   </p>
                   <a
-                    href="/privacy"
+                    href={privacyHref}
                     className="mt-4 inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4"
                   >
                     <L zh="查看隱私權政策" en="View Privacy Policy" />
