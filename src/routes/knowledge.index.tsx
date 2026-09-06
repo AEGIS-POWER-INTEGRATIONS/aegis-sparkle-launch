@@ -355,3 +355,102 @@ export function KnowledgeIndex() {
     </div>
   );
 }
+
+/**
+ * Category breakdown for the two published libraries (prompt library + AI
+ * tips). Counts are derived from the published lists, so the numbers can
+ * never drift from what is actually online.
+ */
+const PROMPT_CATS: PromptCategory[] = ["website-build", "system-build", "management"];
+const TIP_CATS: AiTipCategory[] = [
+  "ai-basics",
+  "office",
+  "management",
+  "web-system",
+  "advanced",
+  "security",
+];
+
+function LibraryBreakdown() {
+  const { catLabel: promptCat } = usePromptLocale();
+  const { catLabel: tipCat } = useTipLocale();
+  const total = PUBLISHED_PROMPTS.length + PUBLISHED_AI_TIPS.length;
+
+  const promptRows = PROMPT_CATS.map((c) => ({
+    key: c,
+    label: promptCat(c),
+    count: PUBLISHED_PROMPTS.filter((p) => p.category === c).length,
+  })).filter((r) => r.count > 0);
+
+  const tipRows = TIP_CATS.map((c) => ({
+    key: c,
+    label: tipCat(c),
+    count: PUBLISHED_AI_TIPS.filter((t2) => t2.category === c).length,
+  })).filter((r) => r.count > 0);
+
+  if (total === 0) return null;
+
+  return (
+    <section className="py-14 md:py-16 border-b border-border/60">
+      <div className="container-x">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+            <L zh="已上架內容分類" en="Published Library by Category" />
+          </h2>
+          <span className="text-sm text-muted-foreground">
+            <L
+              zh={`共 ${total} 篇（提示詞 ${PUBLISHED_PROMPTS.length}．使用技巧 ${PUBLISHED_AI_TIPS.length}）`}
+              en={`${total} entries (${PUBLISHED_PROMPTS.length} prompts · ${PUBLISHED_AI_TIPS.length} tips)`}
+            />
+          </span>
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <div className="panel p-7">
+            <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">
+              Business Prompt Library
+            </div>
+            <h3 className="mt-3 text-xl font-semibold tracking-tight">
+              <L zh="企業 AI 提示詞庫" en="AI Prompt Library" /> · {PUBLISHED_PROMPTS.length}
+            </h3>
+            <ul className="mt-5 space-y-2 text-sm">
+              {promptRows.map((r) => (
+                <li key={r.key} className="flex items-center justify-between gap-4 border-b border-border/50 pb-2">
+                  <span className="text-foreground/85">{r.label}</span>
+                  <span className="text-muted-foreground tabular-nums">{r.count}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/knowledge/prompts"
+              className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary"
+            >
+              <L zh="瀏覽全部提示詞" en="Browse all prompts" /> <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="panel p-7">
+            <div className="text-[11px] uppercase tracking-widest text-primary font-semibold">AI Tips</div>
+            <h3 className="mt-3 text-xl font-semibold tracking-tight">
+              <L zh="AI 使用技巧" en="AI Usage Tips" /> · {PUBLISHED_AI_TIPS.length}
+            </h3>
+            <ul className="mt-5 space-y-2 text-sm">
+              {tipRows.map((r) => (
+                <li key={r.key} className="flex items-center justify-between gap-4 border-b border-border/50 pb-2">
+                  <span className="text-foreground/85">{r.label}</span>
+                  <span className="text-muted-foreground tabular-nums">{r.count}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/knowledge/ai-tips"
+              className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary"
+            >
+              <L zh="瀏覽全部使用技巧" en="Browse all tips" /> <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
