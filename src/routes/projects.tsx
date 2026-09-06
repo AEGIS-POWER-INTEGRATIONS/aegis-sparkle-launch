@@ -60,34 +60,19 @@ export function ProjectsPage() {
             </h1>
             <p className="mt-6 text-base text-muted-foreground leading-relaxed text-pretty">
               <L
-                zh="本頁列出核心團隊實際參與的工程專案。所有案例以匿名案名呈現，僅描述有依據的參與角色與施工範圍；期間、數量與金額等缺乏可公開資料者一律省略。"
-                en="Projects our core team has actually worked on. Every case is presented anonymously and describes only the participation role and scope we can substantiate; duration, quantities and contract values are omitted where no releasable data exists."
+                zh="以下為核心團隊過往參與的工程經驗，呈現實際施工範圍、現場協作與交付紀錄。"
+                en="The following describes engineering work our core team has previously taken part in — actual scope, on-site coordination and delivery records."
               />
             </p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               <L
-                zh={
-                  <>
-                    產業情境示例（非實際客戶案例）另列於{" "}
-                    <Link to="/insights" className="underline underline-offset-4">
-                      應用情境與導入觀點
-                    </Link>
-                    。
-                  </>
-                }
-                en={
-                  <>
-                    Illustrative industry scenarios (not client case studies) are kept separately under{" "}
-                    <Link to="/insights" className="underline underline-offset-4">
-                      Insights &amp; Scenarios
-                    </Link>
-                    .
-                  </>
-                }
+                zh="本頁為核心團隊成員過往參與經驗，並非宏鼎集成股份有限公司直接承攬實績；案例以匿名方式呈現。"
+                en="This page describes prior participation by core team members, not projects contracted directly by Aegis Power Integrations Co., Ltd.; cases are presented anonymously."
               />
             </p>
           </div>
         </section>
+
 
         <section className="py-14 md:py-16">
           <div className="container-x max-w-4xl grid gap-6">
