@@ -345,6 +345,8 @@ function KnowledgeIndex() {
           )}
         </div>
       </section>
+      )}
+
     </div>
   );
 }
