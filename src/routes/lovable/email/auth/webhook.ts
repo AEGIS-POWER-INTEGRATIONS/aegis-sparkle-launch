@@ -9,7 +9,7 @@ import { EmailChangeEmail } from '@/lib/email-templates/email-change'
 import { ReauthenticationEmail } from '@/lib/email-templates/reauthentication'
 
 // Configuration
-const SITE_NAME = "Aegis Launchpad"
+const SITE_NAME = "AEGIS POWER INTEGRATIONS"
 const SENDER_DOMAIN = "notify.aegispowerapi.com"
 const ROOT_DOMAIN = "aegispowerapi.com"
 const FROM_DOMAIN = "aegispowerapi.com"
