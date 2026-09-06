@@ -69,6 +69,7 @@ export function TipsIndex() {
   const { tips, catLabel } = useTipLocale();
 
   const localizedTips = useMemo(() => tips(PUBLISHED_AI_TIPS), [tips]);
+  const { audLabel } = useTipLocale();
 
   const filtered = useMemo(() => {
     const query = q.trim().toLowerCase();
@@ -180,10 +181,7 @@ export function TipsIndex() {
                     <div className="mt-1 flex flex-wrap gap-1.5 text-[10px] text-muted-foreground">
                       {a.audience.slice(0, 3).map((au) => (
                         <span key={au} className="rounded-sm border border-border/70 px-1.5 py-0.5">
-                          {(() => {
-                            const { audLabel } = useTipLocale();
-                            return audLabel(au);
-                          })()}
+                          {audLabel(au)}
                         </span>
                       ))}
                     </div>
