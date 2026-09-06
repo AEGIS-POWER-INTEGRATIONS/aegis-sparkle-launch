@@ -16,45 +16,66 @@ export type Database = {
     Tables: {
       contact_inquiries: {
         Row: {
+          ack_error: string | null
+          ack_status: string
           company: string | null
           created_at: string
           details: Json
           email: string
+          email_attempts: number
           id: string
           inquiry_type: string
+          ip_hash: string | null
+          last_email_attempt_at: string | null
           locale: string
           message: string
           name: string
+          notify_error: string | null
+          notify_status: string
           phone: string | null
           role: string | null
           source_path: string | null
           status: string
         }
         Insert: {
+          ack_error?: string | null
+          ack_status?: string
           company?: string | null
           created_at?: string
           details?: Json
           email: string
+          email_attempts?: number
           id?: string
           inquiry_type: string
+          ip_hash?: string | null
+          last_email_attempt_at?: string | null
           locale?: string
           message: string
           name: string
+          notify_error?: string | null
+          notify_status?: string
           phone?: string | null
           role?: string | null
           source_path?: string | null
           status?: string
         }
         Update: {
+          ack_error?: string | null
+          ack_status?: string
           company?: string | null
           created_at?: string
           details?: Json
           email?: string
+          email_attempts?: number
           id?: string
           inquiry_type?: string
+          ip_hash?: string | null
+          last_email_attempt_at?: string | null
           locale?: string
           message?: string
           name?: string
+          notify_error?: string | null
+          notify_status?: string
           phone?: string | null
           role?: string | null
           source_path?: string | null
@@ -220,32 +241,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      delete_email: {
-        Args: { message_id: number; queue_name: string }
-        Returns: boolean
-      }
-      email_queue_dispatch: { Args: never; Returns: undefined }
-      enqueue_email: {
-        Args: { payload: Json; queue_name: string }
-        Returns: number
-      }
-      move_to_dlq: {
-        Args: {
-          dlq_name: string
-          message_id: number
-          payload: Json
-          source_queue: string
-        }
-        Returns: number
-      }
-      read_email_batch: {
-        Args: { batch_size: number; queue_name: string; vt: number }
-        Returns: {
-          message: Json
-          msg_id: number
-          read_ct: number
-        }[]
-      }
+      [_ in never]: never
     }
     Enums: {
       [_ in never]: never

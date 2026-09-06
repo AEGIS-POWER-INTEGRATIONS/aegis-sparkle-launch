@@ -113,6 +113,7 @@ const initial: FormState = {
 function Demo() {
   const { isEn } = useLang();
   const t = useT();
+  const privacyHref = isEn ? "/en/privacy" : "/privacy";
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   const [form, setForm] = useState<FormState>(initial);
@@ -398,8 +399,8 @@ function Demo() {
                     />
                     <label htmlFor="demo-consent" className="text-sm text-muted-foreground leading-relaxed">
                       <L
-                        zh={<>我同意依<a href="/privacy" className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>提供上述資料，供本公司聯絡與需求評估使用。</>}
-                        en={<>I consent to AEGIS POWER INTEGRATIONS using the information above to contact me, in accordance with the <a href="/privacy" className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>.</>}
+                        zh={<>我同意依<a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>提供上述資料，供本公司聯絡與需求評估使用。</>}
+                        en={<>I consent to AEGIS POWER INTEGRATIONS using the information above to contact me, in accordance with the <a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>.</>}
                       />
                     </label>
                   </div>

@@ -166,6 +166,7 @@ export function Contact() {
   const { inquiry } = useSearch({ strict: false }) as { inquiry?: InquiryType };
   const { isEn } = useLang();
   const t = useT();
+  const privacyHref = isEn ? "/en/privacy" : "/privacy";
   const tr = (b: Bi) => (isEn ? b.en : b.zh);
 
   const [inquiryType, setInquiryType] = useState<InquiryType>(inquiry ?? "engineering");
@@ -247,11 +248,18 @@ export function Contact() {
       );
     } catch (err) {
       console.error(err);
+      const rateLimited =
+        err instanceof Error && err.message.includes("inquiry_rate_limited");
       toast.error(
-        t({
-          zh: "送出失敗，請稍後再試，或直接來信 jtian@aegispowerapi.com。",
-          en: "Submission failed. Please try again, or email jtian@aegispowerapi.com.",
-        }),
+        rateLimited
+          ? t({
+              zh: "短時間內送出次數過多，請稍候幾分鐘再試，或直接來信 jtian@aegispowerapi.com。",
+              en: "Too many submissions in a short time. Please wait a few minutes, or email jtian@aegispowerapi.com.",
+            })
+          : t({
+              zh: "送出失敗，請稍後再試，或直接來信 jtian@aegispowerapi.com。",
+              en: "Submission failed. Please try again, or email jtian@aegispowerapi.com.",
+            }),
       );
     } finally {
       setSubmitting(false);
@@ -516,8 +524,8 @@ export function Contact() {
                       />
                       <label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
                         <L
-                          zh={<>本人已閱讀並同意<a href="/privacy" className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>，同意宏鼎集成使用上述資料進行需求聯繫、服務評估與後續合作溝通。</>}
-                          en={<>I have read and agree to the <a href="/privacy" className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>, and consent to AEGIS POWER INTEGRATIONS using this information for follow-up, needs assessment and cooperation.</>}
+                          zh={<>本人已閱讀並同意<a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">隱私權政策</a>，同意宏鼎集成使用上述資料進行需求聯繫、服務評估與後續合作溝通。</>}
+                          en={<>I have read and agree to the <a href={privacyHref} className="underline underline-offset-4 hover:text-foreground">Privacy Policy</a>, and consent to AEGIS POWER INTEGRATIONS using this information for follow-up, needs assessment and cooperation.</>}
                         />
                       </label>
                     </div>
@@ -560,7 +568,7 @@ export function Contact() {
                     />
                   </p>
                   <a
-                    href="/privacy"
+                    href={privacyHref}
                     className="mt-4 inline-flex items-center gap-1 text-sm text-foreground underline underline-offset-4"
                   >
                     <L zh="查看隱私權政策" en="View Privacy Policy" />

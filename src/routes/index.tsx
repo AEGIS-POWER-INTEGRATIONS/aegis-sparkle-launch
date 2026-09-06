@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@/lib/nav";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
+import {
+  PUBLISHED_REAL_PROJECTS,
+  OWNERSHIP_BADGE,
+  OWNERSHIP_DISCLOSURE,
+} from "@/lib/real-projects";
 import heroAsset from "@/assets/hero-network-fiber.webp.asset.json";
-import engineeringFiberPanel from "@/assets/engineering-fiber-panel.webp.asset.json";
-import engineeringServerRack from "@/assets/engineering-server-rack.webp.asset.json";
-import engineeringSecurityCameras from "@/assets/engineering-security-cameras.webp.asset.json";
-import engineeringFiberTech from "@/assets/engineering-fiber-technician.webp.asset.json";
 import mockCostflow from "@/assets/mock-costflow.jpg";
 import mockSalesops from "@/assets/mock-salesops.jpg";
 import mockAilaunch from "@/assets/mock-ailaunch.jpg";
@@ -104,7 +105,7 @@ const industries: Card[] = [
 
 
 const engineeringServices: Card[] = [
-  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A 與資料中心等級佈線設計與施作。", en: "Cat 6A / Cat 8 and data-center grade cabling design and installation." } },
+  { icon: Cable, en: "Structured Cabling", zh: "結構化佈線", desc: { zh: "Cat 6A 與資料中心等級佈線設計與施作。", en: "Cat 6A and data-centre grade cabling design and installation." } },
   { icon: Waypoints, en: "Fiber Optic Installation", zh: "光纖建置", desc: { zh: "單模／多模光纖佈設、熔接與測試，涵蓋園區與跨建物骨幹。", en: "Single-mode / multi-mode fiber deployment, splicing and testing across campus backbones." } },
   { icon: Zap, en: "Electrical Integration", zh: "電氣整合", desc: { zh: "配電、UPS、機櫃供電、接地與電力品質整合。", en: "Power distribution, UPS, rack power, grounding and power quality integration." } },
   { icon: Wrench, en: "Mechanical Coordination", zh: "機電協調", desc: { zh: "空調、消防、機電與工地介面協調，確保多專業同步交付。", en: "HVAC, fire, MEP and site interface coordination for synchronized delivery." } },
@@ -136,12 +137,6 @@ const whyUs: Card[] = [
   { icon: Rocket, en: "Scalable Solutions", zh: "可擴展方案", desc: { zh: "模組化架構讓系統與服務可隨企業成長逐步擴充。", en: "Modular architecture that scales systems and services as your business grows." } },
 ];
 
-const projects = [
-  { industry: { zh: "半導體", en: "Semiconductor" }, zh: "半導體晶圓廠", scopeEn: "Campus ELV & fiber backbone integration", scope: "廠區弱電與光纖骨幹整合", outcome: { zh: "跨廠房光纖骨幹重建與監控系統整合交付。", en: "Cross-facility fiber backbone rebuild and surveillance system integration delivered." }, image: engineeringFiberPanel.url },
-  { industry: { zh: "資料中心", en: "Data Center" }, zh: "大型資料中心", scopeEn: "Structured cabling & rack power", scope: "結構化佈線與機櫃供電", outcome: { zh: "資料中心 Cat 6A 佈線、機櫃供電與冷通道協調交付。", en: "Data-center Cat 6A cabling, rack power and cold-aisle coordination delivered." }, image: engineeringServerRack.url },
-  { industry: { zh: "企業園區", en: "Enterprise Campus" }, zh: "企業園區", scopeEn: "Surveillance, access control & network", scope: "監控門禁與網路整合", outcome: { zh: "多棟建物監控、門禁與網路骨幹整合，統一管理平台。", en: "Multi-building surveillance, access control and network backbone unified into one platform." }, image: engineeringSecurityCameras.url },
-  { industry: { zh: "製造業", en: "Manufacturing" }, zh: "電子製造業", scopeEn: "IT/OT network & AI adoption", scope: "IT/OT 網路與 AI 導入", outcome: { zh: "產線網路重整並導入 AI 報表與週報系統，縮短決策時間。", en: "Production-line network overhaul with AI reporting and weekly-report system to speed decisions." }, image: engineeringFiberTech.url },
-];
 
 export function Home() {
   const { isEn } = useLang();
@@ -415,35 +410,27 @@ export function Home() {
               descEn="The following are project categories the core team has participated in or can currently provide. Actual contracting entity, execution scope and cooperation terms are subject to each individual project."
             />
             <div className="mt-14 grid gap-6 md:grid-cols-2">
-              {projects.map((p) => (
-                <div key={p.scope} className="panel overflow-hidden flex flex-col">
-                  <div className="relative aspect-[16/9] overflow-hidden bg-ink">
-                    <img
-                      src={p.image}
-                      alt={`${t(p.industry)} project`}
-                      width={1200}
-                      height={675}
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                    <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-sm bg-white/95 px-2.5 py-1 text-[11px] font-semibold tracking-widest uppercase text-foreground">
-                      {t(p.industry)}
-                    </div>
+              {PUBLISHED_REAL_PROJECTS.map((p) => (
+                <div key={p.slug} className="panel p-7 flex flex-col">
+                  <div className="inline-flex w-fit items-center rounded-sm border border-border bg-surface px-2.5 py-1 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                    {t(OWNERSHIP_BADGE[p.ownership])}
                   </div>
-                  <div className="p-7 flex-1 flex flex-col">
-                    <div className="text-xs font-semibold tracking-widest text-primary uppercase">{p.zh}</div>
-                    <h3 className="mt-2 text-lg">{isEn ? p.scopeEn : p.scope}</h3>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(p.outcome)}</p>
-                  </div>
+                  <h3 className="mt-4 text-lg">{t(p.industry)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(p.background)}</p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(p.scope)}</p>
+                  <p className="mt-4 text-xs text-muted-foreground leading-relaxed">{t(OWNERSHIP_DISCLOSURE[p.ownership])}</p>
                 </div>
               ))}
             </div>
+            <div className="mt-8">
+              <Link to="/projects" className="btn btn-ghost">
+                <L zh="查看專案經驗說明" en="View project experience" /> <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
             <p className="mt-6 text-xs text-muted-foreground">
               <L
-                zh="* 客戶名稱依合約保密，僅以產業類別呈現。"
-                en="* Client names are confidential and shown as industry categories only."
+                zh="* 以上為可佐證之實際參與經驗，客戶名稱與現場照片依合約保密；未列為宏鼎集成承攬或整廠統包。"
+                en="* Verified participation experience only. Client names and site photography are confidential; not presented as AEGIS-contracted or turnkey scope."
               />
             </p>
           </div>
@@ -513,10 +500,10 @@ export function Home() {
                   />
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link to="/contact" className="btn bg-white text-ink border-white hover:bg-white/90">
+                  <Link to="/contact" search={{ inquiry: "engineering" }} className="btn bg-white text-ink border-white hover:bg-white/90">
                     <L zh="洽詢工程合作" en="Discuss Engineering Partnership" /> <ArrowRight className="h-4 w-4" />
                   </Link>
-                  <Link to="/contact" className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
+                  <Link to="/contact" search={{ inquiry: "aiHealth" }} className="btn border border-white/30 bg-white/5 text-white hover:bg-white/10">
                     <L zh="預約 AI 流程健檢" en="Book AI Workflow Check-up" />
                   </Link>
                 </div>
