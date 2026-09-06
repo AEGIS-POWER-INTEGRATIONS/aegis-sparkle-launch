@@ -41,7 +41,7 @@ export type RealProject = {
   background: Bi;
   scope: Bi;
   role: Bi;
-  period: Bi;
+  period?: Bi;
   work: Bi[];
   deliverables: Bi[];
   photos: { src: string; alt: Bi }[];
