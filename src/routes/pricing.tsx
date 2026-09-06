@@ -150,25 +150,123 @@ export function Pricing() {
           <div className="container-x max-w-3xl">
             <span className="eyebrow"><span className="dot" /> <L zh="合作方式" en="How We Work" /></span>
             <h1 className="mt-6 text-4xl md:text-5xl">
-              <L zh="以顧問與導入服務為核心的合作方式" en="Advisory-first, implementation-anchored engagement" />
+              <L zh="工程專案與 AI 顧問合作" en="Engineering Projects & AI Advisory Engagement" />
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
               <L
-                zh="宏鼎集成以工程整合為核心，結合企業 AI 顧問、流程改善、教育訓練、工具選型與導入陪跑，協助企業從現場工程到日常營運逐步完成數位化與 AI 導入。實際費用將依企業現況、資料完整度、使用人數、串接範圍與導入目標評估報價。"
-                en="Aegis Power Integrations is engineering-led, layered with AI advisory, process improvement, training, tool selection and adoption coaching. Final quotes reflect your current state, data readiness, user count, integration scope and adoption goals."
-              />
-            </p>
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              <L
-                zh="我們不以未訪談前的固定價格取代需求評估；每份正式報價均以書面提供。"
-                en="We do not replace real scoping with pre-interview list prices. Every formal quote is issued in writing."
+                zh="宏鼎集成以工程整合為核心，並提供企業 AI 顧問、流程改善、教育訓練與導入陪跑。工程專案與 AI 顧問的合作方式不同，請由下方兩個入口選擇適合的起點。"
+                en="Aegis Power Integrations is engineering-led, complemented by AI advisory, process improvement, training and adoption coaching. Engineering projects and AI advisory work differently — pick the starting point that fits below."
               />
             </p>
           </div>
+
+          <div className="container-x mt-10 grid gap-5 md:grid-cols-2">
+            <div className="panel p-7 flex flex-col">
+              <h2 className="text-xl font-semibold"><L zh="工程專案詢價" en="Engineering Project Quotation" /></h2>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                <L
+                  zh="弱電、光纖、資料中心、機電與監控門禁等工程整合，依現場條件與工項範圍評估報價。"
+                  en="ELV, fiber, data center, MEP, surveillance and access-control integration — quoted from site conditions and work scope."
+                />
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href="#engineering-quote" className="btn btn-primary">
+                  <L zh="查看工程詢價說明" en="See engineering quotation" />
+                </a>
+                <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-ghost">
+                  <L zh="直接洽詢" en="Contact us" />
+                </Link>
+              </div>
+            </div>
+            <div className="panel p-7 flex flex-col">
+              <h2 className="text-xl font-semibold"><L zh="AI 顧問與系統導入" en="AI Advisory & System Adoption" /></h2>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                <L
+                  zh="流程診斷、月度顧問、PoC 驗證與企業整合方案，依委任範圍與導入目標評估報價。"
+                  en="Process diagnosis, monthly advisory, PoC validation and enterprise integration — quoted by engagement scope and adoption goals."
+                />
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <a href="#ai-plans" className="btn btn-primary">
+                  <L zh="查看 AI 合作方案" en="See AI engagement options" />
+                </a>
+                <Link to="/contact" search={{ inquiry: "aiHealth" }} className="btn btn-ghost">
+                  <L zh="預約 AI 流程健檢" en="Book AI workflow check-up" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </section>
 
-        <section className="pb-24">
+        {/* Engineering quotation — before AI plans */}
+        <section id="engineering-quote" className="pb-20 scroll-mt-24">
+          <div className="container-x">
+            <div className="panel-lift p-8 md:p-10">
+              <span className="eyebrow"><span className="dot" /> <L zh="工程專案詢價" en="Engineering Quotation" /></span>
+              <h2 className="mt-4 text-2xl md:text-3xl">
+                <L zh="工程詢價可以先提供的資訊" en="Helpful details when requesting an engineering quote" />
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <L
+                  zh="資料尚未備齊也可以先聯繫，我們會協助釐清。以下資訊有助於加快評估："
+                  en="You can contact us before everything is ready — we will help clarify. The following details speed up the assessment:"
+                />
+              </p>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2 text-sm">
+                {[
+                  { zh: "案場地點及場域類型", en: "Site location and facility type" },
+                  { zh: "希望施作的工項與範圍", en: "Work items and scope you need" },
+                  { zh: "設備、線路或點位的規格與數量", en: "Specs and quantities of equipment, cabling or points" },
+                  { zh: "現有圖面、照片或規範是否備齊", en: "Whether drawings, photos or specifications are available" },
+                  { zh: "預計工期與可施工時段", en: "Target schedule and available working windows" },
+                  { zh: "材料、設備與人力的供應分工", en: "Split of material, equipment and manpower supply" },
+                ].map((it) => (
+                  <li key={it.en} className="flex items-start gap-2.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold shrink-0 mt-2" />
+                    <span>{tr(it)}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="mt-8 text-lg font-semibold"><L zh="工程合作流程" en="Engineering engagement flow" /></h3>
+              <div className="mt-4 grid gap-5 md:grid-cols-4">
+                {[
+                  { n: "01", t: { zh: "需求確認", en: "Requirement confirmation" }, d: { zh: "了解場域、工項範圍與期望時程。", en: "Understand the site, work scope and target timeline." } },
+                  { n: "02", t: { zh: "視需要補充資料或現勘", en: "Additional info or site visit" }, d: { zh: "依案件複雜度補充圖面資料或安排現場勘查。", en: "Request drawings or arrange a site survey where needed." } },
+                  { n: "03", t: { zh: "工項與書面報價", en: "Work items and written quote" }, d: { zh: "以工項方式列出範圍，提供書面報價。", en: "Scope broken down by work item, issued as a written quote." } },
+                  { n: "04", t: { zh: "依約施工與驗收", en: "Execution and acceptance" }, d: { zh: "依合約進場施工，完成後辦理驗收與交付。", en: "Execute per contract, then complete acceptance and handover." } },
+                ].map((s) => (
+                  <div key={s.n}>
+                    <span className="num-badge">{s.n}</span>
+                    <h4 className="mt-3 text-base font-semibold">{tr(s.t)}</h4>
+                    <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{tr(s.d)}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-7">
+                <Link to="/contact" search={{ inquiry: "engineering" }} className="btn btn-primary">
+                  <L zh="洽詢工程專案" en="Discuss an Engineering Project" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ai-plans" className="pb-24 scroll-mt-24">
+          <div className="container-x max-w-3xl mb-10">
+            <span className="eyebrow"><span className="dot" /> <L zh="AI 顧問與系統導入" en="AI Advisory & Adoption" /></span>
+            <h2 className="mt-4 text-2xl md:text-3xl">
+              <L zh="AI 顧問合作方案" en="AI advisory engagement options" />
+            </h2>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              <L
+                zh="以下方案可依需求單獨或組合委任；實際費用依企業現況、資料完整度、使用人數、串接範圍與導入目標，以書面報價提供。"
+                en="These options can be engaged individually or combined. Actual cost reflects your current state, data readiness, user count, integration scope and adoption goals, and is always issued in writing."
+              />
+            </p>
+          </div>
           <div className="container-x grid gap-6 lg:grid-cols-2">
+
             {plans.map(({ icon: Icon, code, title, price, desc, suitable, features, cta, featured }) => (
               <div
                 key={code}
